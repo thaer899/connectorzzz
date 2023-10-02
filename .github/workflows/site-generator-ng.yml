@@ -50,7 +50,9 @@ jobs:
     - name: Login to Firebase
       run: firebase login
       working-directory: site-generator-ng
-
+      env:
+        GOOGLE_APPLICATION_CREDENTIALS: ./firebase-service-account.json
+        
     - name: Deploy to Firebase
       run: firebase deploy
       working-directory: site-generator-ng
