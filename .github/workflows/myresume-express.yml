@@ -28,6 +28,8 @@ jobs:
       with:
         node-version: 18.x
         cache: 'npm'
+      working-directory: myresume-express
+
 
     - name: Install snapd
       run: sudo apt install snapd
