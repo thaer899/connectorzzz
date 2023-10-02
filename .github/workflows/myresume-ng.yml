@@ -57,8 +57,30 @@ jobs:
         node-version: 18.x
         cache: 'npm'
         cache-dependency-path: myresume-express/package-lock.json
-    - run: cd myresume-ng && npm ci
-    - run: cd myresume-ng && npm run build --configuration=development --if-present
+    - name: Install Firebase Tools
+      run: npm install -g firebase-tools
+      working-directory: myresume-express
+    
+    - name: Install Dependencies
+      run: npm install
+      working-directory: myresume-express
+      env:
+        NODE_OPTIONS: --openssl-legacy-provider
+
+    - name: Build Project
+      run: npm run build
+      working-directory: myresume-express
+      env:
+        NODE_OPTIONS: --openssl-legacy-provider
+    
+    - name: Login to Firebase
+      run: firebase login
+      working-directory: myresume-express
+
+    - name: Deploy to Firebase
+      run: firebase deploy
+      working-directory: myresume-express
+
   com:
     needs: test
     if: (always() && github.event_name == 'workflow_dispatch' && github.event.inputs.env == 'com')
