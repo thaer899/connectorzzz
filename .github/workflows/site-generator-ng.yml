@@ -9,7 +9,7 @@ on:
         required: true
         options:
           - deploy
-
+jobs:
   deploy:
     if:  github.event.inputs.job == 'deploy'
     name: Deploy Job
