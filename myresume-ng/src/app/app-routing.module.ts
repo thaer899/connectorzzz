@@ -8,9 +8,8 @@ export const Approutes: Routes = [
     path: '',
     component: FullComponent,
     children: [
-      { path: '', redirectTo: '/resume', pathMatch: 'full' },
-      { path: 'path', redirectTo: '/path', pathMatch: 'full' },
-      { path: 'resume', loadChildren: () => import('./resume/resume.module').then(m => m.ResumeModule) }
+      { path: 'resume', loadChildren: () => import('./resume/resume.module').then(m => m.ResumeModule) },
+      { path: '', redirectTo: '/resume', pathMatch: 'full' }
     ]
   },
   {
