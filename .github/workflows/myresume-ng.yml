@@ -37,7 +37,7 @@ jobs:
      - name: Install Playwright Browsers
        run: cd myresume-ng && npx playwright install --with-deps
      - name: Run Playwright tests
-       run: cd myresume-ng && nnpx playwright test
+       run: cd myresume-ng && npx playwright test
      - uses: actions/upload-artifact@v3
        if: always()
        with:
@@ -57,8 +57,8 @@ jobs:
         node-version: 18.x
         cache: 'npm'
         cache-dependency-path: myresume-express/package-lock.json
-    - run: cd myresume-ng && nnpm ci
-    - run: cd myresume-ng && nnpm run build --configuration=development --if-present
+    - run: cd myresume-ng && npm ci
+    - run: cd myresume-ng && npm run build --configuration=development --if-present
   com:
     needs: test
     if: (always() && github.event_name == 'workflow_dispatch' && github.event.inputs.env == 'com')
