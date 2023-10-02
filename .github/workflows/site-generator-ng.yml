@@ -42,6 +42,10 @@ jobs:
       working-directory: site-generator-ng
       env:
         NODE_OPTIONS: --openssl-legacy-provider
+    
+    - name: Login to Firebase
+        run: firebase login
+        working-directory: site-generator-ng
 
     - name: Deploy to Firebase
       run: firebase deploy
