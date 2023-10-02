@@ -18,6 +18,7 @@ jobs:
       SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       API_KEY: ${{ secrets.API_KEY }}
+      GOOGLE_APPLICATION_CREDENTIALS: ./firebase-service-account.json
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js 18.x
@@ -47,15 +48,8 @@ jobs:
       run: echo "${{ secrets.FIREBASE_SECRET_SITE_GENERATOR }}" > ./firebase-service-account.json
       working-directory: site-generator-ng
 
-    - name: Login to Firebase
-      run: firebase login
-      working-directory: site-generator-ng
-      env:
-        GOOGLE_APPLICATION_CREDENTIALS: ./firebase-service-account.json
-        
     - name: Deploy to Firebase
       run: firebase deploy
       working-directory: site-generator-ng
-      env:
-        GOOGLE_APPLICATION_CREDENTIALS: ./firebase-service-account.json
+
 
