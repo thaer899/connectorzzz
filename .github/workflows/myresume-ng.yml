@@ -44,9 +44,9 @@ jobs:
          retention-days: 30
   net:
    needs: test
-   if: (github.event_name == 'workflow_dispatch' && github.event.inputs.env == 'net')
+   if: (always() && github.event_name == 'workflow_dispatch' && github.event.inputs.env == 'net')
    runs-on: ubuntu-latest
-   name: Build Job
+   name: thaersaidi.net Job
    steps:
     - uses: actions/checkout@v3
     - name: Use Node.js 18.x
@@ -60,7 +60,7 @@ jobs:
     needs: test
     if: (always() && github.event_name == 'workflow_dispatch' && github.event.inputs.env == 'com')
     runs-on: ubuntu-latest
-    name: Deploy Job
+    name: thaersaidi.com Job
     steps:
     - uses: actions/checkout@v3
     - name: Build And Deploy
