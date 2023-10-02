@@ -1,0 +1,38 @@
+.tech-list {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.tech-list ul {
+    list-style-type: none;
+    /* Removes bullet points */
+    padding: 0;
+    /* Removes default padding */
+}
+
+.tech-list li {
+    display: inline-block;
+    /* Makes list items appear in a line */
+    margin-right: 10px;
+    /* Adds spacing between items */
+}
+
+.tech-list a {
+    text-decoration: underline;
+    padding: 5px;
+    transition: background-color 0.3s;
+    font-size: smaller;
+    color: #05080c !important;
+    font-weight: 500;
+}
+
+.tech-list a:hover {
+    /* Changes background color on hover */
+}
+
+em {
+    font-style: normal;
+    font-size: medium;
+    color: #696565;
+    font-weight: 400;
+}

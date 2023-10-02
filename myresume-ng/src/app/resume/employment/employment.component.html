@@ -1,0 +1,16 @@
+<section id="employment">
+  <h1>Employment</h1>
+  <div *ngFor="let emp of employment; let isLast=last">
+    <p>{{emp.period}}</p>
+    <h3>{{emp.title}}</h3>
+    {{emp.description}}
+    <br />
+    <div *ngIf="emp.technologies" class="tech-list">
+      <ul>
+        <li *ngFor="let tech of emp.technologies"><a href="#">{{tech}}</a></li>
+      </ul>
+    </div>
+    <hr *ngIf="!isLast">
+  </div>
+
+</section>

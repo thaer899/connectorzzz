@@ -1,0 +1,68 @@
+name: my-resume-express
+run-name: my-resume-express-${{ github.event.inputs.job }}-${{ github.run_number }}
+on:
+  workflow_dispatch:
+    inputs:
+      job:
+        type: choice
+        description: Task to run
+        required: true
+        options:
+          - scrap
+          - deploy
+      test:
+        type: boolean
+        description: Test
+        required: false
+        default: false
+jobs:
+  scrap:
+    if:  github.event.inputs.job == 'scrap'
+    name: Scrap Job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
+      - name: Scrap data
+        run: python utils/data_converter.py src/assets/data/ server/data/resume.json
+      - name: Commit changes
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add .
+          git commit -m "Scraping the data" || true
+        continue-on-error: true
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: master
+
+  deploy:
+    if:  github.event.inputs.job == 'deploy'
+    name: Deploy Job
+    runs-on: ubuntu-latest
+    env:
+      SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      API_KEY: ${{ secrets.API_KEY }}
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js 18.x
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18.x
+        cache: 'npm'
+    - run: sudo apt install snapd
+    - run: sudo snap install yq
+    - run: yq -i '.functions.message.environment.OPENAI_API_KEY =  "${{ env.OPENAI_API_KEY }}"' server/serverless.yml
+    - run: yq -i '.functions.message.environment.API_KEY =  "${{ env.API_KEY }}"' server/serverless.yml
+    - run: npm install -g serverless
+    - run: serverless config credentials --provider aws --key ${{ secrets.AWS_LAMDA_KEY }} --secret ${{ secrets.AWS_LAMDA_SECRET }}
+    - run: cd server && npm install
+    - run: cd server && serverless deploy
+     

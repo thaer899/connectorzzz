@@ -1,0 +1,13 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="col-md-12 background" *ngIf="data">
+    <mat-icon class="material-symbols-outlined logout" matTooltip="Logout" (click)="logout()">logout</mat-icon>
+    <mat-icon class="material-symbols-outlined download" matTooltip="Download data"
+        (click)="download()">download</mat-icon>
+    <mat-icon class="material-symbols-outlined upload" matTooltip="Upload data"
+        (click)="upload()">file_upload</mat-icon>
+
+    <jsonforms [data]="data" (dataChange)="onDataChange($event)" [schema]="schema" [uischema]="uischema"
+        [renderers]="renderers">
+    </jsonforms>
+
+</div>

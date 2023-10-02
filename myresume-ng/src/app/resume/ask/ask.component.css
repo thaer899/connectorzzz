@@ -1,0 +1,187 @@
+.ask-modal {
+    margin-top: 10%;
+}
+
+.modal-content {
+    background-color: #e5e5e5;
+    opacity: 0.95;
+    top: 100px;
+    /* opacity: 0.8; */
+    padding: 20px;
+}
+
+.skill-set {
+    background: #1D1D35;
+    border-radius: 5px;
+    color: #fff;
+    display: inline-block;
+    list-style: none;
+    margin: 15px 15px 0 0;
+    padding: 16px;
+    text-align: justify;
+    font-size: medium;
+}
+
+.skill-set:hover {
+    transform: scale(1.15);
+    transition: transform .2s;
+    cursor: pointer;
+    background: #2F5C00;
+}
+
+.modal-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1050;
+    /* Ensure it's on top of everything */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Optional: semi-transparent background */
+}
+
+.modal-center .modal-dialog {
+    width: 60vw;
+    /* 60% of the viewport width */
+    height: 60vh;
+    /* 60% of the viewport height */
+    max-width: 100%;
+    /* Override Bootstrap's max-width */
+    margin: 0;
+    /* Override Bootstrap's margin */
+}
+
+.modal-center .modal-content {
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-center .modal-body {
+    flex: 1;
+    overflow-y: auto;
+    /* Add scroll if the content overflows */
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: center;
+    /* Horizontally center the content */
+    align-items: center;
+    /* Vertically center the content */
+    height: 90%;
+    /* Take up full height of the parent */
+}
+
+
+.btn-primary {
+    background-color: #1D1D35 !important;
+    color: white;
+    border: #1c1d1d;
+}
+
+
+.btn-message {
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    top: 2% !important;
+    right: 2%;
+    display: inline-block;
+    z-index: 1000;
+    border: 0;
+    background-color: transparent;
+}
+
+
+.btn-message i {
+    color: #1D1D35 !important;
+    font-size: xx-large;
+    display: block;
+    -webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter: drop-shadow(5px 5px 5px #222);
+    transition: transform .2s;
+    z-index: 100;
+}
+
+.btn-message i:hover {
+    transform: scale(1.15);
+    transition: transform .2s;
+    cursor: pointer;
+}
+
+.contact-form textarea.form-control {
+    width: 90%;
+    box-sizing: border-box;
+    /* This ensures padding and border are included in the width */
+    resize: vertical;
+    /* Allows the user to resize the textarea vertically */
+}
+
+.frame-box {
+    width: 95%;
+}
+
+@media screen and (max-width: 30em) {
+    .skill-set {
+        font-size: medium;
+    }
+
+    .btn-message i {
+        display: inline-block;
+        color: #1D1D35 !important;
+        -webkit-transform: translateX(0%) translateY(0%);
+        transform: translateX(0%) translateY(0%);
+        width: 30px;
+        height: 30px;
+        position: fixed;
+        bottom: 15%;
+        right: 4%;
+        opacity: 0.8;
+        z-index: 10;
+        font-size: medium;
+    }
+
+    .ask-modal {
+        margin-top: 2%;
+    }
+
+}
+
+@media screen and (min-width: 30em) and (max-width: 48em) {
+
+    .btn-message i {
+        display: inline-block;
+        color: #1D1D35 !important;
+        -webkit-transform: translateX(0%) translateY(0%);
+        transform: translateX(0%) translateY(0%);
+        width: 30px;
+        height: 30px;
+        position: fixed;
+        bottom: 15%;
+        right: 4%;
+        opacity: 0.8;
+        z-index: 10;
+    }
+}
+
+@media screen and (min-width: 48em) and (max-width: 60em) {
+
+    .btn-message i {
+        display: inline-block;
+        color: #1D1D35 !important;
+        -webkit-transform: translateX(0%) translateY(0%);
+        transform: translateX(0%) translateY(0%);
+        width: 30px;
+        height: 30px;
+        position: fixed;
+        bottom: 15%;
+        right: 3%;
+        opacity: 0.8;
+        z-index: 10;
+    }
+}

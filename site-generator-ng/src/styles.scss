@@ -1,0 +1,107 @@
+/* Import the custom theme to access the variables */
+@import 'assets/scss/custom-theme.scss';
+
+
+.background {
+    background-color: $primary-color;
+    max-width: 1200px;
+    margin: 0 auto;
+    color: white;
+    min-height: 1000px;
+}
+
+.mat-drawer-content {
+    background-color: $primary-color !important;
+}
+
+.mat-title {
+    margin: 10px !important;
+}
+
+.mat-error {
+    color: transparent;
+}
+
+.add-button {
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.color {
+    color: $accent-color !important;
+}
+
+.mat-button-wrapper .mat-icon {
+    display: none;
+    display: inline-flex;
+    font-size: xx-large;
+    cursor: pointer;
+    z-index: 1000;
+    color: $accent-color !important;
+    font-weight: bold;
+    font-variation-settings: 'FILL' 1,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24;
+}
+
+.mat-drawer-content {
+    position: relative;
+    z-index: 1;
+    display: block;
+    height: 100%;
+    overflow: auto;
+    margin-left: 20%;
+}
+
+.material-symbols-outlined {
+    width: 50px !important;
+    height: 50px !important;
+    bottom: 0;
+    right: 0%;
+
+    background-color: $primary-color;
+    position: fixed;
+    color: $accent-color !important;
+    display: none;
+    display: inline-flex;
+    font-size: xxx-large;
+    cursor: pointer;
+    z-index: 1000;
+    font-variation-settings: 'FILL' 1,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24;
+}
+
+.upload {
+    color: #3b9029 !important;
+}
+
+.download {
+    color: #f96c6c !important;
+    right: 50px;
+}
+
+.logout {
+    color: #807991 !important;
+    top: 0;
+    height: 45px !important;
+}
+
+.mat-tab-label-active {
+    font-size: x-large !important;
+    color: white !important;
+    border-bottom: 1px solid white !important;
+    z-index: 1000;
+}
+
+
+.container {
+    height: 80vh !important
+}
+
+.mat-tooltip {
+    font-size: 16px;
+    /* Adjust this value as needed */
+}

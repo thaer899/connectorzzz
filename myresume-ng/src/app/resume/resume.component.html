@@ -1,0 +1,49 @@
+<div class="wrapper clearfix" id="content">
+    <div class="left">
+
+        <div class="name-hero">
+
+            <div class="me-img"><img [routerLink]="['/']" class="me-img" style="cursor: pointer;"
+                    src="../../assets/images/photo.jpg" alt=""></div>
+
+            <div class="name-text" *ngIf="resume">
+                <h1>{{resume.firstName}} <em>{{resume.lastName}}</em></h1>
+                <p>{{resume.address}}</p>
+                <p>{{resume.city}}, {{resume.country}}</p>
+                <p>{{resume.email}}</p>
+                <p>{{resume.phone}}</p>
+            </div>
+            <br /><br />
+            <div style="text-align: center">
+                <ul class="skill-set" style="display: inline-block">
+                    <li style="cursor: pointer;" (click)="changeToMenu('employment')"
+                        [ngClass]="{'activated': post==='employment'}" [routerLink]="['/resume/employment']">Employment
+                    </li>
+                    <li style="cursor: pointer;" (click)="changeToMenu('skills')"
+                        [ngClass]="{'activated': post==='skills'}" [routerLink]="['/resume/skills']">Skills
+                    </li>
+                    <li style="cursor: pointer;" (click)="changeToMenu('education')"
+                        [ngClass]="{'activated': post==='education'}" [routerLink]="['/resume/education']">Education
+                    </li>
+                    <li style="cursor: pointer;" (click)="changeToMenu('interests')"
+                        [ngClass]="{'activated': post==='interests'}" [routerLink]="['/resume/interests']">Interests
+                    </li>
+                    <li style="cursor: pointer;" (click)="changeToMenu('languages')"
+                        [ngClass]="{'activated': post==='languages'}" [routerLink]="['/resume/languages']">Languages
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <div class="inner" id="inner-content">
+            <app-sidebar></app-sidebar>
+            <div class="col-md-12 main">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+    <div class="handmade">
+        <p><em> Thaer Saidi</em></p>
+    </div>
+</div>

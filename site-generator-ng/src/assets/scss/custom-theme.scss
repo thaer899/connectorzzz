@@ -1,0 +1,75 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+$custom-accent: (
+    50: lighten(#a2461f, 40%),
+    100: lighten(#a2461f, 30%),
+    200: lighten(#a2461f, 20%),
+    300: lighten(#a2461f, 10%),
+    400: lighten(#a2461f, 5%),
+    500: white,
+    600: darken(#a2461f, 5%),
+    700: darken(#a2461f, 10%),
+    800: darken(#a2461f, 20%),
+    900: darken(#a2461f, 30%),
+    A100: lighten(#a2461f, 50%),
+    A200: lighten(#a2461f, 40%),
+    A400: lighten(#a2461f, 20%),
+    A700: darken(#a2461f, 10%),
+    contrast: (50: $black-87-opacity,
+        100: $black-87-opacity,
+        200: $black-87-opacity,
+        300: $black-87-opacity,
+        400: $black-87-opacity,
+        500: white,
+        600: white,
+        700: white,
+        800: $black-87-opacity,
+        900: $black-87-opacity,
+        A100: $black-87-opacity,
+        A200: $black-87-opacity,
+        A400: $black-87-opacity,
+        A700: white,
+    )
+);
+
+$custom-primary: (
+    50: lighten(#333131, 40%),
+    100: lighten(#333131, 30%),
+    200: lighten(#333131, 20%),
+    300: lighten(#333131, 10%),
+    400: lighten(#333131, 5%),
+    500: #333131,
+    600: darken(#333131, 5%),
+    700: darken(#333131, 10%),
+    800: darken(#333131, 20%),
+    900: darken(#333131, 30%),
+    A100: lighten(#333131, 50%),
+    A200: lighten(#333131, 40%),
+    A400: lighten(#333131, 20%),
+    A700: darken(#333131, 10%),
+    contrast: (50: $black-87-opacity,
+        100: $black-87-opacity,
+        200: $black-87-opacity,
+        300: $black-87-opacity,
+        400: $black-87-opacity,
+        500: white,
+        600: white,
+        700: white,
+        800: $black-87-opacity,
+        900: $black-87-opacity,
+        A100: $black-87-opacity,
+        A200: $black-87-opacity,
+        A400: $black-87-opacity,
+        A700: white,
+    )
+);
+$my-primary: mat-palette($custom-primary, 500);
+$my-accent: mat-palette($custom-accent, 500);
+
+$my-theme: mat-dark-theme($my-primary, $my-accent);
+
+$primary-color: mat-color($my-primary);
+$accent-color: mat-color($my-accent);
+
+@include angular-material-theme($my-theme);

@@ -1,0 +1,22 @@
+org: thaer899
+app: myresume-server
+service: myresume-server
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  # apiName: myresume-api
+  stage: prod
+  region: eu-west-1
+
+functions:
+  message:
+    handler: index.handler
+    url:
+      cors:
+        allowedOrigins: "*"
+        allowedHeaders: "*"
+    environment:
+      OPENAI_API_KEY:
+      API_KEY:

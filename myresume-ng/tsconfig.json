@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "module": "CommonJS", // Utilisez CommonJS pour TypeScript 5.1.6
+    "moduleResolution": "node",
+    "types": [
+      "node"
+    ],
+    "strictNullChecks": true,
+    "importHelpers": true,
+    "target": "ES2022", // Utilisez ES6 pour TypeScript 5.1.6
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "ESNext",
+      "DOM"
+    ], // Utilisez ESNext pour TypeScript 5.1.6
+    "useDefineForClassFields": false,
+    "plugins": [
+      {
+        "name": "@typescript-eslint/eslint-plugin"
+      }
+    ]
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true,
+    "enableIvy": false
+  }
+}

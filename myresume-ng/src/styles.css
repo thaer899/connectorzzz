@@ -1,0 +1,356 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* @import '~perfect-scrollbar/css/perfect-scrollbar.css';
+
+.ps .ps__scrollbar-y-rail {
+    left: 3px;
+    right: auto;
+} */
+*,
+*:before,
+*:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 100%;
+    background-color: #f3f4f3 !important;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    color: #1D1D35;
+    font-family: Lora, serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.4;
+    text-rendering: optimizeLegibility;
+}
+
+.skill-set li:hover {
+    background: #2F5C00;
+}
+
+h1 {
+    color: #1D1D35;
+}
+
+a {
+    color: #1D1D35 !important;
+}
+
+a:hover {
+    color: #84998b !important;
+}
+
+.wrapper {
+    height: 100%;
+}
+
+.left {
+    background-color: #84998b !important;
+    float: right;
+    height: 100%;
+    margin-left: -1px;
+    min-width: 256px;
+    position: fixed;
+    width: 33.33%;
+    overflow-y: auto;
+    z-index: 10;
+}
+
+.right {
+    float: right;
+    height: 100%;
+    position: relative;
+    width: 66.67%;
+    background-color: #f3f4f3;
+    margin-right: 10px;
+}
+
+
+.name-hero {
+    background: rgba(0, 0, 0, .001);
+    bottom: 0;
+    height: 70%;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 95%;
+}
+
+.me-img {
+    background-size: 100%;
+    background-position: 0px;
+    border-radius: 100%;
+    height: 150px;
+    margin: 0 auto;
+    position: relative;
+    width: 150px;
+}
+
+.name-hero h1 {
+    font-family: Open Sans, sans-serif;
+    font-size: 1.5em;
+    text-align: center;
+    color: #1D1D35;
+}
+
+.name-hero h1 em {
+    color: #1D1D35;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.name-hero p {
+    color: #fff;
+    font-size: 1em;
+    line-height: 1.5;
+    margin: 0 8px 0 0;
+    text-align: center;
+}
+
+.name-hero .name-text {
+    margin: 0 auto;
+    width: 85%;
+}
+
+.inner {
+    margin: 0 auto;
+    max-width: 975px;
+    padding: 3em;
+}
+
+.inner h1 {
+    font-size: 1.75em;
+}
+
+.inner p {
+    color: #1D1D35;
+}
+
+.inner p em {
+    color: #1D1D35;
+    font-style: normal;
+}
+
+.inner section {
+    margin: 20px auto;
+}
+
+ul {
+    list-style-type: none;
+    margin-top: -10px;
+    padding: 0;
+}
+
+.ask-set {
+    display: flex;
+    justify-content: center;
+    /* Horizontally center */
+    align-items: center;
+    /* Vertically center */
+    height: 100%;
+    /* Ensure the container takes up full height */
+}
+
+.skill-set-btn {
+    background: #366935;
+    border-radius: 5px;
+    border-color: #1D1D35;
+    color: #fff;
+    display: inline-block;
+    list-style: none;
+    padding: 16px;
+    text-align: justify;
+    font-size: x-large;
+    margin-bottom: 20px;
+}
+
+.skill-set-btn:hover {
+    transform: scale(1.15);
+    transition: transform .2s;
+    cursor: pointer;
+}
+
+.skill-set li {
+    background: #1D1D35;
+    border-radius: 5px;
+    color: #fff;
+    display: inline-block;
+    list-style: none;
+    margin: 15px 15px 0 0;
+    padding: 10px;
+    text-align: justify;
+
+}
+
+.skill-set li:hover {
+    background: #2F5C00;
+
+}
+
+.activated {
+    background-color: #84998b !important;
+}
+
+.scroll-top {
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    bottom: 2%;
+    left: 94%;
+    display: none;
+    opacity: 0.9;
+    border: 0;
+}
+
+.scroll-top i {
+    display: inline-block;
+    color: #1D1D35 !important;
+    font-size: 2em;
+}
+
+.dot {
+    height: 40px;
+    width: 40px;
+    margin: 4px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.black {
+    background: #2F5C00;
+}
+
+.black:hover {
+    background: #1D1D35;
+
+}
+
+.dashed {
+    border-bottom: dashed 1px;
+    padding: 15px;
+}
+
+.center-vertical {
+    transform: translateY(30%);
+
+}
+
+.handmade {
+    text-align: right;
+    bottom: 2%;
+    right: 5%;
+    position: absolute;
+    z-index: 999;
+}
+
+@media screen and (min-width: 30em) and (max-width: 48em) {
+    .scroll-top {
+        width: 30px;
+        height: 30px;
+        position: fixed;
+        bottom: 2%;
+        left: 96%;
+        display: none;
+        opacity: 0.9;
+    }
+}
+
+@media screen and (max-width: 48em) {
+
+    .right,
+    .left {
+        float: none;
+        position: relative !important;
+        width: 100%;
+        min-height: 700px;
+    }
+
+    .handmade {
+        text-align: center !important;
+        margin-top: 0px !important;
+    }
+
+    .name-hero {
+        height: 75%;
+    }
+
+    .me-img {
+
+        background-size: 100%;
+        background-position: 0px;
+        border-radius: 100%;
+        height: 100px;
+        margin: 0 auto;
+        position: relative;
+        width: 100px;
+    }
+
+    .name-hero {
+        margin-top: 10vh;
+    }
+
+    .scroll-top {
+        width: 40px;
+        height: 40px;
+        position: fixed;
+        bottom: 2%;
+        left: 96;
+        display: none;
+        opacity: 0.9;
+        background-color: transparent;
+    }
+
+    .scroll-top i {
+        display: inline-block;
+        color: #84998b;
+        -webkit-transform: translateX(-30%) translateY(-30%);
+        transform: translateX(-30%) translateY(-30%);
+    }
+
+    .dot {
+        height: 15px;
+        width: 15px;
+    }
+}
+
+@media screen and (max-width: 75em) {
+    body {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 60em) {
+    body {
+        font-size: 14px;
+    }
+
+    .dot {
+        height: 15px;
+        width: 15px;
+    }
+}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
+}
+
+.handmade {
+    text-align: right;
+    margin-top: 100px;
+}
+
+.handmade em {
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 1.2em;
+}

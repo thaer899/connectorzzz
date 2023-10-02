@@ -1,0 +1,63 @@
+{
+    "education": [
+        {
+            "title": "Dummy Degree",
+            "school": "Dummy University",
+            "period": "Jan 2000 - Dec 2003",
+            "summary": "Dummy summary about the degree and the studies."
+        }
+    ],
+    "employment": [
+        {
+            "title": "Dummy Job Title",
+            "description": "Dummy job description.",
+            "period": "Jan 2004 to Dec 2005",
+            "technologies": [
+                "DummyTech1",
+                "DummyTech2"
+            ]
+        }
+    ],
+    "interests": [
+        "DummyInterest1",
+        "DummyInterest2"
+    ],
+    "languages": [
+        {
+            "language": "DummyLanguage",
+            "profeciency": "Intermediate"
+        }
+    ],
+    "personal": [
+        {
+            "about": "Dummy personal description."
+        }
+    ],
+    "references": [
+        {
+            "platform": "dummyplatform",
+            "icon": "dummy/icon/path.svg",
+            "url": "https://www.dummyurl.com"
+        }
+    ],
+    "resume": {
+        "firstName": "DummyFirstName",
+        "lastName": "DummyLastName",
+        "address": "Dummy Address",
+        "city": "DummyCity",
+        "country": "DummyCountry",
+        "email": "dummy@email.com",
+        "phone": "1234567890",
+        "website": "https://www.dummywebsite.com",
+        "birthDate": "2000-01-01"
+    },
+    "skills": [
+        {
+            "type": "DummySkillType",
+            "list": [
+                "DummySkill1",
+                "DummySkill2"
+            ]
+        }
+    ]
+}

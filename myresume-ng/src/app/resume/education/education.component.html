@@ -1,0 +1,11 @@
+<section id="education">
+  <h1>Previous Education</h1>
+  <div *ngFor="let ed of education; let isLast=last">
+    <h3>{{ed.title}}</h3>
+    <h4>{{ed.school}} <em> ({{ed.period}})</em></h4>
+    {{ed.summary}}
+    <br />
+    <br />
+    <hr *ngIf="!isLast">
+  </div>
+</section>

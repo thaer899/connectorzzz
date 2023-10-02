@@ -1,0 +1,10 @@
+<section id="skills">
+  <h1>Technical Skills</h1>
+  <div *ngFor="let skill of skills; let isLast=last">
+    <h3>{{skill.type}}</h3>
+    <ul class="skill-set ">
+      <li *ngFor="let sk of skill.list">{{sk}}</li>
+    </ul>
+    <hr *ngIf="!isLast">
+  </div>
+</section>

@@ -1,0 +1,39 @@
+{
+    "references":[
+        {
+            "platform":"linkedin",
+            "icon": "assets/images/svg/linkedin.svg",
+            "url":"https://www.linkedin.com/in/thaersaidi/"
+        },
+        {
+            "platform":"github",
+            "icon": "assets/images/svg/github.svg",
+            "url":"https://github.com/thaer899"
+        },
+        {
+            "platform":"facebook",
+            "icon": "assets/images/svg/facebook.svg",
+            "url":"https://www.facebook.com/rebelthaersaidi"
+        },
+        {
+            "platform":"youtube",
+            "icon": "assets/images/svg/youtube.svg",
+            "url":"https://www.youtube.com/channel/UCwD6YE8ZIM59UiJZ1ZuayQQ"
+        },
+        {
+            "platform":"instagram",
+            "icon": "assets/images/svg/instagram.svg",
+            "url":"https://www.instagram.com/thaer.saidi/"
+        },
+        {
+            "platform":"twitter",
+            "icon": "assets/images/svg/twitter.svg",
+            "url":"https://twitter.com/thaer_saidi"
+        },
+        {
+            "platform":"spotify",
+            "icon": "assets/images/svg/spotify.svg",
+            "url":"https://open.spotify.com/user/21h5eenprb4nuyzruaov36qqq"
+        }
+    ]
+}
