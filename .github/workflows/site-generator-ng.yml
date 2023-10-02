@@ -29,6 +29,6 @@ jobs:
 
     - run: cd site-generator-ng && npm install -g firebase-tools
     - run: cd site-generator-ng && npm install
-    - run: cd site-generator-ng && npm build
+    - run: cd site-generator-ng && npm run build
     - run: cd site-generator-ng && firebase deploy
      
