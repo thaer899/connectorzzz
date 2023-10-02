@@ -56,30 +56,30 @@ jobs:
       with:
         node-version: 18.x
         cache: 'npm'
-        cache-dependency-path: myresume-express/package-lock.json
+        cache-dependency-path: myresume-ng/package-lock.json
     - name: Install Firebase Tools
       run: npm install -g firebase-tools
-      working-directory: myresume-express
+      working-directory: myresume-ng
     
     - name: Install Dependencies
       run: npm install
-      working-directory: myresume-express
+      working-directory: myresume-ng
       env:
         NODE_OPTIONS: --openssl-legacy-provider
 
     - name: Build Project
       run: npm run build
-      working-directory: myresume-express
+      working-directory: myresume-ng
       env:
         NODE_OPTIONS: --openssl-legacy-provider
     
     - name: Authenticate with Firebase
       run: firebase use --token ${{ secrets.FIREBASE_API_KEY }}
-      working-directory: myresume-express
+      working-directory: myresume-ng
 
     - name: Deploy to Firebase
       run: firebase deploy
-      working-directory: myresume-express
+      working-directory: myresume-ng
 
   com:
     needs: test
