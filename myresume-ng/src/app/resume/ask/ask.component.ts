@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { ChangeDetectorRef, Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
@@ -55,18 +55,30 @@ export class AskComponent implements OnInit {
   message() {
     this.available = false;
     this.recipentMessage = this.messageForm.get('recipentMessage')?.value;
+
     const headers = {
       'Content-Type': 'application/json',
       'API_KEY': environment.message_api_key
-    }
+    };
+
+    const options = {
+      headers: new HttpHeaders(headers),
+      params: new HttpParams().set('email', environment.mainEmail)
+    };
+
+    const body = {
+      recipentMessage: this.recipentMessage
+    };
+
     if (this.recipentMessage) {
-      this.http.post(environment.messageURL, { recipentMessage: this.recipentMessage }, { headers }).subscribe((response: any) => {
+      this.http.post(environment.messageURL, body, options).subscribe((response: any) => {
         if (response) {
           this.available = true;
           this.chatCompletion = response;
           this.chatConversation = this.chatCompletion.choices;
         }
-      })
+      });
     }
   }
+
 }
