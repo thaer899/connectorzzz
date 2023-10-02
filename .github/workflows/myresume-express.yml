@@ -21,7 +21,7 @@ jobs:
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       API_KEY: ${{ secrets.API_KEY }}
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Use Node.js 18.x
       uses: actions/setup-node@v3
@@ -40,7 +40,7 @@ jobs:
       working-directory: myresume-express
 
     - name: Update server/serverless.yml with API_KEY
-      run: yq -i '.functions.message.environment.API_KEY =  "${{ env.API_KEY }}"' myresume-express/serverless.yml
+      run: yq -i '.functions.message.environment.API_KEY =  "${{ env.API_KEY }}"' serverless.yml
       working-directory: myresume-express
 
     - name: Install serverless globally
