@@ -50,36 +50,22 @@ jobs:
    runs-on: ubuntu-latest
    name: thaersaidi.net Job
    steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js 18.x
-      uses: actions/setup-node@v3
-      with:
-        node-version: 18.x
-        cache: 'npm'
-        cache-dependency-path: myresume-ng/package-lock.json
-    - name: Install Firebase Tools
-      run: npm install -g firebase-tools
-      working-directory: myresume-ng
-    
-    - name: Install Dependencies
-      run: npm install
-      working-directory: myresume-ng
-      env:
-        NODE_OPTIONS: --openssl-legacy-provider
-
-    - name: Build Project
-      run: npm run build
-      working-directory: myresume-ng
-      env:
-        NODE_OPTIONS: --openssl-legacy-provider
-    
-    - name: Authenticate with Firebase
-      run: firebase use --token ${{ secrets.FIREBASE_API_KEY }}
-      working-directory: myresume-ng
-
-    - name: Deploy to Firebase
-      run: firebase deploy
-      working-directory: myresume-ng
+     - uses: actions/checkout@v3
+     # Build in the specific directory
+     - run: npm ci && npm run build
+       env:
+         NODE_OPTIONS: --openssl-legacy-provider
+       working-directory: ./myresume-ng
+     # Move the necessary files/folders to the root (or specific paths the action expects)
+     - run: mv ./myresume-ng/* ./
+     - uses: FirebaseExtended/action-hosting-deploy@v0
+       with:
+         repoToken: "${{ secrets.GITHUB_TOKEN }}"
+         firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
+         projectId: myresume-ng
+         channelId: live
+     # Optional cleanup or move back step (if necessary)
+     - run: mv ./* ./myresume-ng/
 
   com:
     needs: test

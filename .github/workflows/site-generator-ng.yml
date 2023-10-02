@@ -10,13 +10,15 @@ on:
         options:
           - deploy
 jobs:
-  deploy_live_website:
+  deploy:
     if:  github.event.inputs.job == 'deploy'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       # Build in the specific directory
       - run: npm ci && npm run build
+        env:
+          NODE_OPTIONS: --openssl-legacy-provider
         working-directory: ./site-generator-ng
       # Move the necessary files/folders to the root (or specific paths the action expects)
       - run: mv ./site-generator-ng/* ./
