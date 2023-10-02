@@ -62,10 +62,9 @@ jobs:
        with:
          repoToken: "${{ secrets.GITHUB_TOKEN }}"
          firebaseServiceAccount: "${{ secrets.FIREBASE_SECRET_SITE_GENERATOR }}"
-         projectId: myresume-ng
+         projectId: thaersaidi-da79c
          channelId: live
-     # Optional cleanup or move back step (if necessary)
-     - run: mv ./* ./myresume-ng/
+
 
   com:
     needs: test

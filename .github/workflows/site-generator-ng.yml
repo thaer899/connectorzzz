@@ -28,6 +28,4 @@ jobs:
           firebaseServiceAccount: "${{ secrets.FIREBASE_SECRET_SITE_GENERATOR }}"
           projectId: site-generator-ng
           channelId: live
-      # Optional cleanup or move back step (if necessary)
-      - run: mv ./* ./site-generator-ng/
   
