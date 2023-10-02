@@ -27,8 +27,22 @@ jobs:
         cache: 'npm'
         cache-dependency-path: site-generator-ng/package-lock.json
 
-    - run: cd site-generator-ng && npm install -g firebase-tools
-    - run: cd site-generator-ng && npm install
-    - run: cd site-generator-ng && npm run build
-    - run: cd site-generator-ng && firebase deploy
-     
+    - name: Install Firebase Tools
+      run: npm install -g firebase-tools
+      working-directory: site-generator-ng
+
+    - name: Install Dependencies
+      run: npm install
+      working-directory: site-generator-ng
+      env:
+        NODE_OPTIONS: --openssl-legacy-provider
+
+    - name: Build Project
+      run: npm run build
+      working-directory: site-generator-ng
+      env:
+        NODE_OPTIONS: --openssl-legacy-provider
+
+    - name: Deploy to Firebase
+      run: firebase deploy
+      working-directory: site-generator-ng
