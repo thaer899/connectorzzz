@@ -43,9 +43,9 @@ jobs:
       env:
         NODE_OPTIONS: --openssl-legacy-provider
     
-        - name: Authenticate with Firebase
-        run: firebase use --token ${{ secrets.FIREBASE_API_KEY }}
-        working-directory: site-generator-ng
+    - name: Authenticate with Firebase
+      run: firebase use --token ${{ secrets.FIREBASE_API_KEY }}
+      working-directory: site-generator-ng
 
     - name: Deploy to Firebase
       run: firebase deploy
