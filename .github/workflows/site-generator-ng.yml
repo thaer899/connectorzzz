@@ -11,49 +11,22 @@ on:
           - deploy
 jobs:
   deploy:
-    if:  github.event.inputs.job == 'deploy'
     name: Deploy Job
     runs-on: ubuntu-latest
-    env:
-      SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
-      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-      API_KEY: ${{ secrets.API_KEY }}
-      GOOGLE_APPLICATION_CREDENTIALS: ./firebase-service-account.json
     steps:
     - uses: actions/checkout@v3
-    - name: Use Node.js 18.x
-      uses: actions/setup-node@v3
-      with:
-        node-version: 18.x
-        cache: 'npm'
-        cache-dependency-path: site-generator-ng/package-lock.json
-
-    - name: Install Firebase Tools
-      run: npm install -g firebase-tools
-      working-directory: site-generator-ng
-
-    - name: Install Dependencies
-      run: npm install
-      working-directory: site-generator-ng
-      env:
-        NODE_OPTIONS: --openssl-legacy-provider
-
-    - name: Build Project
-      run: npm run build
-      working-directory: site-generator-ng
-      env:
-        NODE_OPTIONS: --openssl-legacy-provider
-    
-    - name: Set up Firebase Service Account
-      run: echo "${{ secrets.FIREBASE_SECRET_SITE_GENERATOR }}" > ./firebase-service-account.json
-      working-directory: site-generator-ng
-    
-    - name: Display Service Account JSON
-      run: cat ./firebase-service-account.json
-      working-directory: site-generator-ng
-      
-    - name: Deploy to Firebase
-      run: firebase deploy
-      working-directory: site-generator-ng
-
-
+  deploy_live_website:
+    if:  github.event.inputs.job == 'deploy'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      # Add any build steps here. For example:
+      - run: npm ci && npm run build
+        working-directory: ./site-generator-ng
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
+          projectId: site-generator-ng
+          channelId: live
+        working-directory: ./site-generator-ng
