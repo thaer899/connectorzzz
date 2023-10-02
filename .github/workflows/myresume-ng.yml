@@ -50,7 +50,7 @@ jobs:
    steps:
     - uses: actions/checkout@v3
     - name: Use Node.js 18.x
-      uses: actions/setup-node@v3
+      uses: cd myresume-ng && actions/setup-node@v3
       with:
         node-version: 18.x
         cache: 'npm'
@@ -70,6 +70,6 @@ jobs:
         azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_JOLLY_WAVE_04CA68203 }}
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         action: 'upload'
-        app_location: '/myresume-ng'
+        app_location: 'myresume-ng/'
         api_location: 'myresume-ng/api'
         app_artifact_location: 'myresume-ng/dist/angular-basic/browser'

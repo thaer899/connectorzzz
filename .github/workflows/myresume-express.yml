@@ -12,20 +12,6 @@ on:
           - deploy
 
 jobs:
-  scrap:
-    if:  github.event.inputs.job == 'test'
-    name: Scrap Job
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Set up Python 3.10
-        uses: actions/setup-python@v3
-        with:
-          python-version: "3.10"
-      - name: Scrap data
-        run: python utils/data_converter.py myresume-ng/src/assets/data/ myresume-express/data/resume.json
-
   deploy:
     if:  github.event.inputs.job == 'deploy'
     name: Deploy Job
@@ -37,16 +23,16 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js 18.x
-      uses: actions/setup-node@v3
+      uses: cd myresume-express && actions/setup-node@v3
       with:
         node-version: 18.x
         cache: 'npm'
-    - run: sudo apt install snapd
-    - run: sudo snap install yq
-    - run: yq -i '.functions.message.environment.OPENAI_API_KEY =  "${{ env.OPENAI_API_KEY }}"' server/serverless.yml
-    - run: yq -i '.functions.message.environment.API_KEY =  "${{ env.API_KEY }}"' server/serverless.yml
-    - run: npm install -g serverless
-    - run: serverless config credentials --provider aws --key ${{ secrets.AWS_LAMDA_KEY }} --secret ${{ secrets.AWS_LAMDA_SECRET }}
-    - run: cd server && npm install
-    - run: cd server && serverless deploy
+    - run: cd myresume-express && sudo apt install snapd
+    - run: cd myresume-express && sudo snap install yq
+    - run: cd myresume-express && yq -i '.functions.message.environment.OPENAI_API_KEY =  "${{ env.OPENAI_API_KEY }}"' serverless.yml
+    - run: cd myresume-express && yq -i '.functions.message.environment.API_KEY =  "${{ env.API_KEY }}"' server/serverless.yml
+    - run: cd myresume-express && npm install -g serverless
+    - run: cd myresume-express && serverless config credentials --provider aws --key ${{ secrets.AWS_LAMDA_KEY }} --secret ${{ secrets.AWS_LAMDA_SECRET }}
+    - run: cd myresume-express && npm install
+    - run: cd myresume-express && serverless deploy
      
