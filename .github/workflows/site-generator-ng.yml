@@ -25,6 +25,8 @@ jobs:
       with:
         node-version: 18.x
         cache: 'npm'
+        cache-dependency-path: site-generator-ng/package-lock.json
+
     - run: cd site-generator-ng && npm install -g firebase-tools
     - run: cd site-generator-ng && npm install
     - run: cd site-generator-ng && npm build

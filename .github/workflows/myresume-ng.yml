@@ -30,6 +30,8 @@ jobs:
        with:
          node-version: 18.x
          cache: 'npm'
+         cache-dependency-path: myresume-ng/package-lock.json
+
      - name: Install dependencies
        run: cd myresume-ng && npm ci
      - name: Install Playwright Browsers
@@ -50,10 +52,11 @@ jobs:
    steps:
     - uses: actions/checkout@v3
     - name: Use Node.js 18.x
-      uses: cd myresume-ng && actions/setup-node@v3
+      uses: actions/setup-node@v3
       with:
         node-version: 18.x
         cache: 'npm'
+        cache-dependency-path: myresume-express/package-lock.json
     - run: cd myresume-ng && nnpm ci
     - run: cd myresume-ng && nnpm run build --configuration=development --if-present
   com:
