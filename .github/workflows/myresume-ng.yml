@@ -73,8 +73,8 @@ jobs:
       env:
         NODE_OPTIONS: --openssl-legacy-provider
     
-    - name: Login to Firebase
-      run: firebase login
+    - name: Authenticate with Firebase
+      run: firebase use --token ${{ secrets.FIREBASE_API_KEY }}
       working-directory: myresume-express
 
     - name: Deploy to Firebase

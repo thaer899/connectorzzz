@@ -1,0 +1,26 @@
+[debug] [2023-10-02T16:12:46.563Z] ----------------------------------------------------------------------
+[debug] [2023-10-02T16:12:46.567Z] Command:       C:\Users\Thaer\.nvm\versions\node\v20.8.0\bin\node.exe C:\Users\Thaer\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js login:ci --no-localhost
+[debug] [2023-10-02T16:12:46.568Z] CLI Version:   12.6.1
+[debug] [2023-10-02T16:12:46.568Z] Platform:      win32
+[debug] [2023-10-02T16:12:46.568Z] Node Version:  v20.8.0
+[debug] [2023-10-02T16:12:46.568Z] Time:          Mon Oct 02 2023 18:12:46 GMT+0200 (Central European Summer Time)
+[debug] [2023-10-02T16:12:46.569Z] ----------------------------------------------------------------------
+[debug] 
+[warn] !  Authenticating with a `login:ci` token is deprecated and will be removed in a future major version of `firebase-tools`. Instead, use a service account key with `GOOGLE_APPLICATION_CREDENTIALS`: https://cloud.google.com/docs/authentication/getting-started 
+[debug] [2023-10-02T16:12:46.582Z] >>> [apiv2][query] POST https://auth.firebase.tools/attest [none]
+[debug] [2023-10-02T16:12:46.583Z] >>> [apiv2][body] POST https://auth.firebase.tools/attest {"session_id":"dd5bac08-83e2-458c-8a53-f46575df6e5f"}
+[debug] [2023-10-02T16:12:47.092Z] <<< [apiv2][status] POST https://auth.firebase.tools/attest 200
+[debug] [2023-10-02T16:12:47.092Z] <<< [apiv2][body] POST https://auth.firebase.tools/attest {"token":"992xXrfBYyOsU-mog2Yd-6NX3UsVoPIx_Wusgqc1Bb8"}
+[info] 
+[info] To sign in to the Firebase CLI:
+[info] 
+[info] 1. Take note of your session ID:
+[info] 
+[info]    DD5BA
+[info] 
+[info] 2. Visit the URL below on any device and follow the instructions to get your code:
+[info] 
+[info]    https://auth.firebase.tools/login?code_challenge=Roq7zzsP4_Zucern2ClRMcEhf1y6jjNeEzO9cTXopBg&session=dd5bac08-83e2-458c-8a53-f46575df6e5f&attest=992xXrfBYyOsU-mog2Yd-6NX3UsVoPIx_Wusgqc1Bb8
+[info] 
+[info] 3. Paste or enter the authorization code below once you have it:
+[info] 
