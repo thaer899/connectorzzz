@@ -47,6 +47,10 @@ jobs:
       run: echo "${{ secrets.FIREBASE_SECRET_SITE_GENERATOR }}" > ./firebase-service-account.json
       working-directory: site-generator-ng
 
+    - name: Login to Firebase
+      run: firebase login
+      working-directory: site-generator-ng
+
     - name: Deploy to Firebase
       run: firebase deploy
       working-directory: site-generator-ng
