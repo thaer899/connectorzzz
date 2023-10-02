@@ -21,18 +21,39 @@ jobs:
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       API_KEY: ${{ secrets.API_KEY }}
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v2
+
     - name: Use Node.js 18.x
-      uses: cd myresume-express && actions/setup-node@v3
+      uses: actions/setup-node@v3
       with:
         node-version: 18.x
         cache: 'npm'
-    - run: cd myresume-express && sudo apt install snapd
-    - run: cd myresume-express && sudo snap install yq
-    - run: cd myresume-express && yq -i '.functions.message.environment.OPENAI_API_KEY =  "${{ env.OPENAI_API_KEY }}"' serverless.yml
-    - run: cd myresume-express && yq -i '.functions.message.environment.API_KEY =  "${{ env.API_KEY }}"' server/serverless.yml
-    - run: cd myresume-express && npm install -g serverless
-    - run: cd myresume-express && serverless config credentials --provider aws --key ${{ secrets.AWS_LAMDA_KEY }} --secret ${{ secrets.AWS_LAMDA_SECRET }}
-    - run: cd myresume-express && npm install
-    - run: cd myresume-express && serverless deploy
-     
+
+    - name: Install snapd
+      run: sudo apt install snapd
+
+    - name: Install yq using snap
+      run: sudo snap install yq
+
+    - name: Update serverless.yml with OPENAI_API_KEY
+      run: yq -i '.functions.message.environment.OPENAI_API_KEY =  "${{ env.OPENAI_API_KEY }}"' serverless.yml
+      working-directory: myresume-express
+
+    - name: Update server/serverless.yml with API_KEY
+      run: yq -i '.functions.message.environment.API_KEY =  "${{ env.API_KEY }}"' myresume-express/serverless.yml
+      working-directory: myresume-express
+
+    - name: Install serverless globally
+      run: npm install -g serverless
+
+    - name: Configure serverless AWS credentials
+      run: serverless config credentials --provider aws --key ${{ secrets.AWS_LAMDA_KEY }} --secret ${{ secrets.AWS_LAMDA_SECRET }}
+      working-directory: myresume-express
+
+    - name: Install npm dependencies
+      run: npm install
+      working-directory: myresume-express
+
+    - name: Deploy using serverless
+      run: serverless deploy
+      working-directory: myresume-express
