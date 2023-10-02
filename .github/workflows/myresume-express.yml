@@ -28,7 +28,7 @@ jobs:
       with:
         node-version: 18.x
         cache: 'npm'
-      working-directory: myresume-express
+        cache-dependency-path: myresume-express/package-lock.json
 
 
     - name: Install snapd
