@@ -10,23 +10,22 @@ on:
         options:
           - deploy
 jobs:
-  deploy:
-    name: Deploy Job
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
   deploy_live_website:
     if:  github.event.inputs.job == 'deploy'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      # Add any build steps here. For example:
+      # Build in the specific directory
       - run: npm ci && npm run build
         working-directory: ./site-generator-ng
+      # Move the necessary files/folders to the root (or specific paths the action expects)
+      - run: mv ./site-generator-ng/* ./
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
           projectId: site-generator-ng
           channelId: live
-        working-directory: ./site-generator-ng
+      # Optional cleanup or move back step (if necessary)
+      - run: mv ./* ./site-generator-ng/
+  
