@@ -61,7 +61,7 @@ jobs:
      - uses: FirebaseExtended/action-hosting-deploy@v0
        with:
          repoToken: "${{ secrets.GITHUB_TOKEN }}"
-         firebaseServiceAccount: "${{ secrets.FIREBASE_SECRET_SITE_GENERATOR }}"
+         firebaseServiceAccount: "${{ secrets.FIREBASE_SECRET_MYRESUME }}"
          projectId: thaersaidi-da79c
          channelId: live
 
