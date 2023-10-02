@@ -1,5 +1,5 @@
-name: my-resume-ng
-run-name: my-resume-ng-${{ (github.event.inputs.env != 'nah') && github.event.inputs.env || 'no-deploy' }}-${{ github.run_number }}${{ (github.event.inputs.test == 'true') && '-test' || '' }}
+name: myresume-ng
+run-name: myresume-ng-${{ github.run_number }}${{ (github.event.inputs.test == 'true') && '-test' || '' }}
 
 on:
   workflow_dispatch:
@@ -10,9 +10,8 @@ on:
         required: false
         default: no
         options:
-          - nah
-          - dev
-          - prod
+          - net
+          - com
       test:
         type: boolean
         description: Test
@@ -20,24 +19,8 @@ on:
         default: false
 
 jobs:
-
-  dev:
-    if: (github.event_name == 'workflow_dispatch' && github.event.inputs.env == 'dev')
-    runs-on: ubuntu-latest
-    name: Build Job
-    steps:
-     - uses: actions/checkout@v3
-     - name: Use Node.js 18.x
-       uses: actions/setup-node@v3
-       with:
-         node-version: 18.x
-         cache: 'npm'
-     - run: npm ci
-     - run: npm run build --configuration=development --if-present
-
   test:
    if: (always() && github.event_name == 'workflow_dispatch' && github.event.inputs.test == 'true')
-   needs: dev
    runs-on: ubuntu-latest
    name: Test Job
    steps:
@@ -59,10 +42,23 @@ jobs:
          name: playwright-report
          path: playwright-report/
          retention-days: 30
-
-  prod:
+  net:
+   needs: test
+   if: (github.event_name == 'workflow_dispatch' && github.event.inputs.env == 'net')
+   runs-on: ubuntu-latest
+   name: Build Job
+   steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js 18.x
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18.x
+        cache: 'npm'
+    - run: npm ci
+    - run: npm run build --configuration=development --if-present
+  com:
     needs: test
-    if: (always() && github.event_name == 'workflow_dispatch' && github.event.inputs.env == 'prod')
+    if: (always() && github.event_name == 'workflow_dispatch' && github.event.inputs.env == 'com')
     runs-on: ubuntu-latest
     name: Deploy Job
     steps:

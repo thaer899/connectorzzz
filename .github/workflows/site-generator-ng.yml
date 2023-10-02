@@ -1,0 +1,32 @@
+name: site-generator-ng
+run-name: site-generator-ng-${{ github.event.inputs.job }}-${{ github.run_number }}
+on:
+  workflow_dispatch:
+    inputs:
+      job:
+        type: choice
+        description: Task to run
+        required: true
+        options:
+          - deploy
+
+  deploy:
+    if:  github.event.inputs.job == 'deploy'
+    name: Deploy Job
+    runs-on: ubuntu-latest
+    env:
+      SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      API_KEY: ${{ secrets.API_KEY }}
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js 18.x
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18.x
+        cache: 'npm'
+        - run: cd site-generator-ng && npm install -g firebase-tools
+        - run: cd site-generator-ng && npm install
+        - run: cd site-generator-ng && npm build
+        - run: cd site-generator-ng && firebase deploy
+     
