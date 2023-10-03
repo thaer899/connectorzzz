@@ -11,14 +11,32 @@ import { LanguagesComponent } from './languages/languages.component'
 import { ResumeRoutingModule } from './resume-routing.module'
 import { HomeComponent } from './home/home.component';
 import { AskComponent } from './ask/ask.component';
-import { SidenavComponent } from './shared/sidenav/sidenav.component'
+import { SidenavComponent } from './shared/sidenav/sidenav.component';
+import { MatButtonModule } from '@angular/material/button'
+import { MatListModule } from '@angular/material/list'
+import { MatCardModule } from '@angular/material/card'
+import { MatSidenavModule } from '@angular/material/sidenav'
+import { MatCheckboxModule } from '@angular/material/checkbox'
+import { MatToolbarModule } from '@angular/material/toolbar'
+import { MatInputModule } from '@angular/material/input'
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { FlexLayoutModule } from '@angular/flex-layout'
 
 @NgModule({
   imports: [
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    ResumeRoutingModule
+    ResumeRoutingModule,
+    MatButtonModule,
+    MatListModule,
+    MatCardModule,
+    MatSidenavModule,
+    MatCheckboxModule,
+    MatToolbarModule,
+    MatInputModule,
+    MatFormFieldModule,
+    FlexLayoutModule
   ],
   declarations: [
     EmploymentComponent,
@@ -27,9 +45,10 @@ import { SidenavComponent } from './shared/sidenav/sidenav.component'
     InterestsComponent,
     LanguagesComponent,
     HomeComponent,
-
-    AskComponent],
+    AskComponent,
+    SidenavComponent],
   exports: [SidenavComponent]
 
-})
+}
+)
 export class ResumeModule { }
