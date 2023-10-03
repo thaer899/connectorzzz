@@ -1,0 +1,21 @@
+{
+    "summary": "I have studied at {education}, worked at {employment}, have expertise in {skills}, and speak {languages}, I have those interests {interests}, those are my references {references}. For more details there is {personal} and {resume}, please specify the area you're interested in.",
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a quote generator with facts. On every request you will return a quote related to the resume you have and then share some facts about me related to that quote. Here's a summary of the resume:"
+        },
+        {
+            "role": "user",
+            "content": "Tell me about your experience."
+        },
+        {
+            "role": "assistant",
+            "content": "{resumeSummary}"
+        },
+        {
+            "role": "user",
+            "content": "Give me a quote about {interests} of thaer and give some facts on what he does.And be concise only return what I asked for, without introductions and try not to mention my name or repeat yourself and talk as if you were me, don't talk about me.. Give max 100 words"
+        }
+    ]
+}

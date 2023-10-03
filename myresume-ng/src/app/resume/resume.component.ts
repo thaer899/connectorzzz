@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 import { FormBuilder } from '@angular/forms';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -44,6 +45,7 @@ export class ResumeComponent implements OnInit, OnChanges {
 
   }
 
+
   ngOnChanges() {
     // Add code here if needed
   }
@@ -52,6 +54,21 @@ export class ResumeComponent implements OnInit, OnChanges {
     this.post = menu;
   }
 
+  getQuote() {
+    const headers = {
+      'Content-Type': 'application/json',
+      'API_KEY': environment.message_api_key
+    };
+    const options = {
+      headers: new HttpHeaders(headers),
+      params: new HttpParams().set('email', environment.mainEmail)
+    };
+    this.http.post(environment.messageURL, options).subscribe((response: any) => {
+      if (response) {
+        this.quote = response;
+      }
+    });
+  }
 
 
   scrollToTop() {
