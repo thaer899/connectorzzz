@@ -7,7 +7,9 @@ const API_KEY = process.env.API_KEY;
 const openai = new OpenAI({ apiKey: OPENAI_API_KEY });
 const MAX_TOKENS = 20000;
 const admin = require('firebase-admin');
-const serviceAccount = require('../secret/site-generator-ng-firebase.json');
+const serviceAccountPath = process.env.FIREBASE_CREDENTIALS_PATH;
+const serviceAccount = require(serviceAccountPath);
+
 const axios = require('axios');
 
 admin.initializeApp({
