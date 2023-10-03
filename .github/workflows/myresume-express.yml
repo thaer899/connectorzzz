@@ -60,6 +60,12 @@ jobs:
       run: echo '${{ secrets.FIREBASE_SECRET_MYRESUME }}' > ./secret/site-generator-ng-firebase.json
       working-directory: myresume-express
 
+    - name: Print Firebase Service Account file
+      run: |
+        echo "Printing Firebase Service Account file content:"
+        cat ./secret/site-generator-ng-firebase.json
+      working-directory: myresume-express
+
     - name: Deploy using serverless --
       run: serverless deploy
       working-directory: myresume-express
