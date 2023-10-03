@@ -19,6 +19,7 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { ContactBoxComponent } from './shared/contact-box/contact-box.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ResumeModule } from './resume/resume.module'
 
 
 // const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -47,7 +48,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ModalModule.forRoot(),
     TabsModule.forRoot(),
     RouterModule.forRoot(Approutes, { useHash: false, initialNavigation: 'enabledBlocking' }),
-    NgScrollbarModule
+    NgScrollbarModule,
+    ResumeModule
   ],
   providers: [
     provideClientHydration(),

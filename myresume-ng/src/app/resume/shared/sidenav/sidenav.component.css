@@ -1,0 +1,23 @@
+.mdc-card__media:first-child {
+  border-top-left-radius: 100%;
+  border-top-right-radius: 100%;
+
+}
+
+
+.is-mobile .resume-toolbar {
+  position: fixed;
+  z-index: 2;
+}
+
+h1.resume-app-name {
+  margin-left: 8px;
+}
+
+.resume-sidenav-container {
+  flex: 1;
+}
+
+.is-mobile .resume-sidenav-container {
+  flex: 1 0 auto;
+}

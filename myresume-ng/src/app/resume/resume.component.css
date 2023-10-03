@@ -1,5 +1,97 @@
+.sidenav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #84998b;
+    min-width: 256px;
+    overflow-y: auto;
+    width: 100%;
+    width: 250px;
+    /* Or your preferred width */
+    box-shadow: 3px 0 6px rgba(0, 0, 0, 0.16);
+}
+
+.sidenav-container {
+    height: 100vh;
+    /* Full height of the viewport */
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.sidenav-content {
+    flex-grow: 1;
+}
+
+
+
+.is-mobile .resume-toolbar {
+    position: fixed;
+    z-index: 2;
+}
+
+h1.resume-app-name {
+    margin-left: 8px;
+}
+
+.resume-sidenav-container {
+    flex: 1;
+}
+
+.is-mobile .resume-sidenav-container {
+    flex: 1 0 auto;
+}
+
+
+.transparent {
+    background-color: transparent;
+}
+
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    overflow: hidden;
+    /* Ensure that the text doesn't overflow the toolbar */
+
+}
+
+.title {
+    white-space: nowrap;
+    /* Keep text in a single line */
+}
+
+.marquee {
+    display: inline-block;
+    padding-left: 0%;
+    /* Start position off the right edge of the element */
+    animation: marquee 20s linear infinite;
+}
+
+
+
+@keyframes marquee {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+
+
 @media screen and (max-width: 30em) {
     .main {
         padding-right: 5%;
     }
+
+
 }
+
+@media(min-width: 768px) {}

@@ -11,6 +11,7 @@ import { LanguagesComponent } from './languages/languages.component'
 import { ResumeRoutingModule } from './resume-routing.module'
 import { HomeComponent } from './home/home.component';
 import { AskComponent } from './ask/ask.component';
+import { SidenavComponent } from './shared/sidenav/sidenav.component'
 
 @NgModule({
   imports: [
@@ -27,6 +28,8 @@ import { AskComponent } from './ask/ask.component';
     LanguagesComponent,
     HomeComponent,
 
-    AskComponent]
+    AskComponent],
+  exports: [SidenavComponent]
+
 })
 export class ResumeModule { }
