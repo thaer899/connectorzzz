@@ -60,12 +60,12 @@ jobs:
       run: echo '${{ secrets.FIREBASE_SECRET_MYRESUME }}' > ./secret/site-generator-ng-firebase.json
       working-directory: myresume-express
 
-    - name: Print Firebase Service Account file
+    - name: Validate Firebase Service Account file as JSON
       run: |
-        echo "Printing Firebase Service Account file content:"
-        cat ./secret/site-generator-ng-firebase.json
+        echo "Validating if Firebase Service Account file is valid JSON:"
+        jq . ./secret/site-generator-ng-firebase.json && echo "Valid JSON" || echo "Invalid JSON"
       working-directory: myresume-express
-
+    
     - name: Deploy using serverless --
       run: serverless deploy
       working-directory: myresume-express
