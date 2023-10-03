@@ -1,18 +1,25 @@
-<div class="name-hero" *ngIf="resume">
-  <img mat-card-image class="me-img" [routerLink]="['/']" src="../../assets/images/photo.jpg"
-    alt="Your description here">
-  <mat-card-title>{{resume.firstName}} <em>{{resume.lastName}}</em></mat-card-title>
-  <p>{{resume.address}}</p>
-  <p>{{resume.city}}, {{resume.country}}</p>
-  <p>{{resume.email}}</p>
-  <p>{{resume.phone}}</p>
-  <br /><br />
-  <div class="menu-container">
-    <ul class="skill-set">
-      <li *ngFor="let item of menuItems" role="button" [ngClass]="{'activated': post===item.key}"
-        (click)="changeToMenu(item.key)" [routerLink]="['/resume', item.key]">
-        {{item.label}}
-      </li>
-    </ul>
+<div class="left" *ngIf="resume">
+
+  <div class="name-hero">
+
+    <div class="me-img"><img [routerLink]="['/']" class="me-img" style="cursor: pointer;"
+        src="../../assets/images/photo.jpg" alt=""></div>
+
+    <div class="name-text" *ngIf="resume">
+      <h1>{{resume.firstName}} <em>{{resume.lastName}}</em></h1>
+      <p>{{resume.address}}</p>
+      <p>{{resume.city}}, {{resume.country}}</p>
+      <p>{{resume.email}}</p>
+      <p>{{resume.phone}}</p>
+    </div>
+    <br /><br />
+    <div style="text-align: center">
+      <ul class="skill-set">
+        <li *ngFor="let item of menuItems" role="button" [ngClass]="{'activated': post===item.key}"
+          (click)="changeToMenu(item.key)" [routerLink]="['/resume', item.key]">
+          {{item.label}}
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

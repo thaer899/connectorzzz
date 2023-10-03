@@ -1,25 +1,14 @@
-<div class="container-fluid pb-3 flex-grow-1 d-flex flex-column flex-sm-row overflow-auto">
-    <div class="row flex-grow-sm-1 flex-grow-0">
-        <aside class="col-sm-3 flex-grow-sm-1 flex-shrink-1 flex-grow-0 sticky-top pb-sm-0 pb-3">
-            <div class="sidenav h-100 fixed-top">
-                <app-sidenav></app-sidenav>
+<div class="wrapper clearfix" id="content">
+    <app-sidenav></app-sidenav>
+    <div class="right">
+        <div class="inner" id="inner-content">
+            <app-sidebar></app-sidebar>
+            <div class="col-md-12 main">
+                <router-outlet></router-outlet>
             </div>
-        </aside>
-
-        <main class="col overflow-auto h-100">
-            <div class="bg-light border rounded-3 p-3">
-
-
-                <div class="inner" id="inner-content">
-
-                    <app-sidebar></app-sidebar>
-                    <div class="col-md-12 main ">
-                        <router-outlet></router-outlet>
-                    </div>
-                </div>
-
-
-            </div>
-        </main>
+        </div>
+    </div>
+    <div class="handmade">
+        <p><em> Thaer Saidi</em></p>
     </div>
 </div>

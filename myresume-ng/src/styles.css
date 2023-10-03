@@ -59,6 +59,7 @@ a:hover {
     width: 33.33%;
     overflow-y: auto;
     z-index: 10;
+    box-shadow: 3px 0 6px rgba(0, 0, 0, 0.16);
 }
 
 .right {
@@ -186,12 +187,13 @@ ul {
     margin: 15px 15px 0 0;
     padding: 10px;
     text-align: justify;
+    box-shadow: 3px 0 6px rgba(0, 0, 0, 0.16);
 
 }
 
 .skill-set li:hover {
     background: #2F5C00;
-
+    box-shadow: none;
 }
 
 .activated {

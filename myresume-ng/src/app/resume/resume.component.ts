@@ -1,12 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { HostListener, Component, OnInit, OnChanges, ViewChild } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 import { FormBuilder } from '@angular/forms';
-import { MediaObserver } from '@angular/flex-layout';
-import { Subscription } from 'rxjs';
-import { MatSidenav } from '@angular/material/sidenav';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+
 
 @Component({
   selector: 'app-resume',
@@ -19,9 +16,7 @@ export class ResumeComponent implements OnInit, OnChanges {
   public data: any;
   public resume: any;
   public quote: string;
-  public sidenavMode: 'over' | 'push' | 'side' = 'side';
-  public isLargeScreen: boolean = true;
-  public sidenavOpened: boolean = true;
+
 
   public menuItems = [
     { key: 'employment', label: 'Employment' },
@@ -30,18 +25,8 @@ export class ResumeComponent implements OnInit, OnChanges {
     { key: 'interests', label: 'Interests' },
     { key: 'languages', label: 'Languages' },
   ];
-  private breakpointSubscription: Subscription;
-
-  @ViewChild('sidenav') sidenav!: MatSidenav;
-  options = this._formBuilder.group({
-    bottom: 0,
-    fixed: true,
-    top: 0,
-  });
 
   constructor(
-    private breakpointObserver: BreakpointObserver,
-    private media: MediaObserver,
     private _formBuilder: FormBuilder,
     private readonly dataService: DataService,
     private readonly router: Router,
@@ -56,12 +41,7 @@ export class ResumeComponent implements OnInit, OnChanges {
       console.log("Data from DataService:", data);
       this.resume = data.resume;
     });
-    this.breakpointSubscription = this.breakpointObserver.observe([
-      '(min-width: 600px)'
-    ]).subscribe(result => {
-      this.isLargeScreen = result.matches;
-      this.sidenavMode = this.isLargeScreen ? 'side' : 'over';
-    });
+
   }
 
   ngOnChanges() {
@@ -72,20 +52,7 @@ export class ResumeComponent implements OnInit, OnChanges {
     this.post = menu;
   }
 
-  @HostListener('window:resize')
-  onResize() {
-    this.adjustSidenavMode();
-  }
 
-  ngOnDestroy(): void {
-    this.breakpointSubscription.unsubscribe();
-  }
-
-  adjustSidenavMode(): void {
-    this.sidenavMode = this.isLargeScreen ? 'push' : 'over';
-    console.log('Is Large Screen:', this.isLargeScreen);
-    console.log('Sidenav Mode:', this.sidenavMode);
-  }
 
   scrollToTop() {
     const content = document.getElementById('content');

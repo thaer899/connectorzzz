@@ -1,7 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
-import { MediaObserver, MediaChange } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -9,12 +8,9 @@ import { Subscription } from 'rxjs';
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.css']
 })
-export class SidenavComponent implements OnInit, OnDestroy {
+export class SidenavComponent implements OnInit {
   public post: any;
   public resume: any;
-  public sidenavMode: 'side' | 'over' = 'side';
-  public isLargeScreen = false;
-  private mediaSubscription!: Subscription;
   public menuItems = [
     { key: 'employment', label: 'Employment' },
     { key: 'skills', label: 'Skills' },
@@ -24,7 +20,6 @@ export class SidenavComponent implements OnInit, OnDestroy {
   ];
 
   constructor(
-    private media: MediaObserver,
     private dataService: DataService,
     private router: Router,
   ) { }
@@ -34,25 +29,11 @@ export class SidenavComponent implements OnInit, OnDestroy {
       console.log("Data from DataService:", data);
       this.resume = data.resume;
     });
-
-    this.mediaSubscription = this.media.asObservable()
-      .subscribe((changes: MediaChange[]) => {
-        this.isLargeScreen = changes.some(change => change.mqAlias === 'lg' || change.mqAlias === 'xl');
-        this.adjustSidenavMode();
-      });
-
-    this.adjustSidenavMode();  // Ensure the mode is set even before a change happens
   }
 
   changeToMenu(menu: string): void {
     this.post = menu;
   }
 
-  ngOnDestroy(): void {
-    this.mediaSubscription.unsubscribe();
-  }
 
-  adjustSidenavMode(): void {
-    this.sidenavMode = this.isLargeScreen ? 'side' : 'over';
-  }
 }
