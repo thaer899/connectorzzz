@@ -34,7 +34,7 @@ export class ResumeComponent implements OnInit, OnChanges {
     private readonly http: HttpClient
   ) {
     this.post = router.url.replace('/resume/', '');
-    this.quote = "\"Believe in yourself and all that you are. Know that there is something inside you that is greater than any obstacle.\" - Christian D. Larson";
+    this.quote = "Welcome to my resume!"
   }
 
   ngOnInit() {
@@ -42,6 +42,8 @@ export class ResumeComponent implements OnInit, OnChanges {
       console.log("Data from DataService:", data);
       this.resume = data.resume;
     });
+
+    this.getQuote();
 
   }
 

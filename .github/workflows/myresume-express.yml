@@ -10,7 +10,7 @@ on:
         options:
           - test
           - deploy
-
+          
 jobs:
   deploy:
     if:  github.event.inputs.job == 'deploy'
@@ -29,7 +29,6 @@ jobs:
         node-version: 18.x
         cache: 'npm'
         cache-dependency-path: myresume-express/package-lock.json
-
 
     - name: Install snapd
       run: sudo apt install snapd
@@ -56,6 +55,11 @@ jobs:
       run: npm install
       working-directory: myresume-express
 
-    - name: Deploy using serverless
+
+    - name: Create Firebase Service Account file
+      run: echo '${{ secrets.FIREBASE_SECRET_MYRESUME }}' > ./secret/site-generator-ng-firebase.json
+      working-directory: myresume-express
+
+    - name: Deploy using serverless --
       run: serverless deploy
       working-directory: myresume-express
