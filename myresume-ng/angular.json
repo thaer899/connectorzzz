@@ -25,13 +25,11 @@
               ],
               "styles": [
                 "src/styles.css",
-                "src/assets/scss/style.scss",
-                "node_modules/bootstrap/dist/css/bootstrap.css"
+                "src/assets/scss/style.scss"
               ],
               "scripts": [
                 "node_modules/jquery/dist/jquery.min.js",
-                "node_modules/pace-js/pace.min.js",
-                "node_modules/bootstrap/dist/js/bootstrap.js"
+                "node_modules/pace-js/pace.min.js"
               ]
             },
             "configurations": {
