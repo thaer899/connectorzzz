@@ -7,6 +7,7 @@ const API_KEY = process.env.API_KEY;
 const openai = new OpenAI({ apiKey: OPENAI_API_KEY });
 const MAX_TOKENS = 20000;
 const admin = require('firebase-admin');
+
 const serviceAccountPath = process.env.FIREBASE_CREDENTIALS_PATH;
 const serviceAccount = require(serviceAccountPath);
 
