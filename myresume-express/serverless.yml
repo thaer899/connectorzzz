@@ -13,6 +13,7 @@ provider:
 functions:
   message:
     handler: index.handler
+    timeout: 30
     url:
       cors:
         allowedOrigins: "*"
