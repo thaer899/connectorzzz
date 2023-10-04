@@ -50,7 +50,6 @@ router.post('/skill', async (req, res) => {
         }
 
         const result = await getOpenAISkill(email, recipientMessage);
-        console.log(result.choices[0].message);
         res.send(result);
     } catch (error) {
         console.error("Error:", error);
@@ -62,14 +61,15 @@ router.post('/openai', async (req, res) => {
     try {
         const recipientMessage = req.body.recipientMessage;
         const email = req.query.email;
-        const topic = req.query.topic;
+        const templateType = req.query.templateType;
 
         if (!recipientMessage) {
             return res.status(400).send('Missing required parameters.');
         }
 
-        if (email && topic) {
-            const result = await getOpenAIByTopic(recipientMessage, topic, email, topic);
+        if (email) {
+            const result = await getOpenAICompletion(recipientMessage, templateType, email);
+            console.log("recipientMessage: ", recipientMessage);
             console.log(result.choices[0].message);
             res.send(result);
         } else {
@@ -82,5 +82,6 @@ router.post('/openai', async (req, res) => {
         res.status(500).send('Error processing the request.');
     }
 });
+
 
 module.exports = router;

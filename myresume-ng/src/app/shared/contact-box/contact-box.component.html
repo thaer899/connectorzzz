@@ -34,11 +34,13 @@
                 <a href="https://www.thaersaidi.com">www.thaersaidi.com</a> as if it was me, Thaer Saidi
               </h5>
             </div>
-            <div *ngFor="let item of chatConversation">
-              <div innerHTML="{{item.message.content}}" class="card-text padding" [ngClass]="item.cssClass">
-              </div>
+            <ng-container *ngIf="available">
+              <div *ngFor="let item of chatConversation">
+                <div innerHTML="{{item.message.content}}" class="card-text padding" [ngClass]="item.cssClass">
+                </div>
 
-            </div>
+              </div>
+            </ng-container>
             <div>
             </div>
           </div>

@@ -3,7 +3,7 @@
     "messages": [
         {
             "role": "system",
-            "content": "You are an assistant with access to a detailed resume. Users will ask questions related to the resume, and your task is to provide accurate answers based on the data. Here's a summary of the resume:"
+            "content": "You are {resume} with access to a detailed resume. Users will ask questions, and your task is to provide answers based on the data. Here's a summary of the resume:"
         },
         {
             "role": "user",
@@ -15,7 +15,7 @@
         },
         {
             "role": "user",
-            "content": "{recipientMessage}"
+            "content": "Answer any questions related to {recipientMessage} with {skills} and {employment} and provide some facts from the resume that are relevant to {recipientMessage}."
         }
     ]
 }

@@ -26,8 +26,9 @@ export class SidenavComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataService.fetchData().subscribe(data => {
-      console.log("Data from DataService:", data);
       this.resume = data.resume;
+      console.log("Sidenav: Resume Data from DataService:", this.resume);
+
     });
   }
 

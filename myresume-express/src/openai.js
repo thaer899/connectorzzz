@@ -1,5 +1,6 @@
 require('dotenv').config();
 const OpenAI = require('openai');
+const { optimizeData } = require('./data');
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
 if (!OPENAI_API_KEY) {
@@ -15,6 +16,7 @@ async function createOpenAICompletion(messages, options = {}) {
         max_tokens: 50,
         ...options,
     };
+
     return await openai.chat.completions.create({
         messages,
         ...defaultOptions,

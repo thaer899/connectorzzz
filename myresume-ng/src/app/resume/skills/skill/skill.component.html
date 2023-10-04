@@ -3,8 +3,11 @@
 
   <ng-container>
     <div *ngFor="let fact of facts; let isLast=last">
-      <p>{{fact}}</p>
-      <hr *ngIf="!isLast">
+      <ng-container *ngIf="fact !=''">
+        <p>{{fact}}</p>
+        <hr *ngIf="!isLast">
+      </ng-container>
+
     </div>
   </ng-container>
   <div class="ask">

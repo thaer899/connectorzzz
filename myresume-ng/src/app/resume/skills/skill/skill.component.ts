@@ -25,8 +25,8 @@ export class SkillComponent implements OnInit {
     this.getFacts(this.skillId);
   }
 
-  getFacts(id: string | null): void {
-    if (!id) {
+  getFacts(topic: string | null): void {
+    if (!topic) {
       console.error('ID is null');
       return;
     }
@@ -42,18 +42,16 @@ export class SkillComponent implements OnInit {
     };
 
     const body = {
-      recipientMessage: id
+      recipientMessage: topic
     };
 
-    const quoteURL = environment.functionURL + 'skill';
+    const skillURL = environment.functionURL + 'skill';
 
-    this.http.post<any>(quoteURL, body, options).subscribe(
+    this.http.post<any>(skillURL, body, options).subscribe(
       (response) => {
         try {
-          console.log("response:", response);
-
           this.facts = response.choices[0].message.content.split('\n')
-          console.log(" this.facts:", this.facts);
+          console.log("Skill Facts Response:", this.facts);
         } catch (error) {
           console.error("Parsing error:", error);
         }

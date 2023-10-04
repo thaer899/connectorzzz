@@ -37,13 +37,7 @@ export class ResumeComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.dataService.fetchData().subscribe(data => {
-      console.log("Data from DataService:", data);
-      this.resume = data.resume;
-    });
-
     this.getQuote();
-
   }
 
 

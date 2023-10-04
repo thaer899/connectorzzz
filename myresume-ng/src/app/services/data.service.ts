@@ -37,7 +37,7 @@ export class DataService {
         const fileRef = ref(storage, `${email}.json`);
         getDownloadURL(fileRef).then(downloadURL => {
             this.http.get(downloadURL).subscribe(data => {
-                console.log("Data from Firebase Storage:", data);
+                console.log("DataService: Data from Firebase Storage:", data);
                 this.data.next(data); // Update the BehaviorSubject with the fetched data
             });
         }).catch(error => {

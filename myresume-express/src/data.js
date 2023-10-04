@@ -5,11 +5,6 @@ const admin = require('firebase-admin');
 const axios = require('axios');
 
 const serviceAccount = require(process.env.FIREBASE_CREDENTIALS_PATH);
-const data = {
-    recipientMessage: 'Hello, John!'
-};
-
-const templateSummary = '{ "role": "user", "content": "{recipientMessage}" }';
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
@@ -20,22 +15,19 @@ const storage = admin.storage().bucket();
 const MAX_TOKENS = 20000;
 
 
-async function optimizeData(data, templateType, recipientMessage = '', topic = null) {
+async function optimizeData(data, templateType = 'messages', recipientMessage = '', topic = 'messages') {
     console.log('Optimizing data for template type:', templateType, 'and topic:', topic);
-    templateType = templateType.replace(/"/g, '');
+    if (templateType !== '' && templateType !== null) {
+        templateType = templateType.replace(/"/g, '');
+    }
     const filePath = path.join(__dirname, '..', 'data', `${templateType}.json`);
     const templateData = await getDataFromFile(filePath);
 
-    const resumeSummary = topic ?
-        createResumeSummaryForTopic(data, topic) :
-        createResumeSummaryForTemplate(data, templateData.summary);
-
-    console.log("TEST! ", createResumeSummaryForTemplate(data, templateSummary));
-
+    const resumeSummary = createResumeSummaryForTemplate(data, templateData.summary);
+    console.log('Resume summary:', resumeSummary);
     updateMessageContent(templateData, resumeSummary, recipientMessage);
     handleTokenCount(templateData);
 
-    console.log('Template data:', templateData);
     return templateData.messages;
 }
 
@@ -51,22 +43,29 @@ function createResumeSummaryForTopic(data, topic) {
     });
 
     if (topic === 'skills') {
-        addAttributes(mappedData, data.employment, 'technologies', 'title');
-    }
-
+    } else (topic === 'messages')
+    { }
+    addAttributes(mappedData, data.employment, 'technologies', 'title');
     return JSON.stringify(mappedData);
 }
 
 
-
 function createResumeSummaryForTemplate(data, templateSummary) {
-    console.log("TEST! ", templateSummary);
-    console.log("TEST! ", JSON.stringify(data));
-    return Object.keys(data).reduce(
-        (summary, key) => summary.replace(`{${key}}`, JSON.stringify(data[key])),
-        templateSummary
-    );
+
+    const summary = Object.keys(data).reduce((acc, key) => {
+        const placeholder = `{${key}}`;
+
+        if (!acc.includes(placeholder)) {
+            console.log(`Warning: placeholder ${placeholder} not found in templateSummary.`);
+            return acc;
+        }
+
+        return acc.replace(placeholder, JSON.stringify(data[key]));
+    }, templateSummary);
+
+    return summary;
 }
+
 
 
 
@@ -84,6 +83,7 @@ function addAttributes(mappedData, items, attributeName, propertyToPush) {
 
 
 function updateMessageContent(templateData, resumeSummary, recipientMessage) {
+
     templateData.messages.forEach(message => {
         message.content = message.content
             .replace('{resumeSummary}', resumeSummary)
