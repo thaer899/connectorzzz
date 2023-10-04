@@ -58,8 +58,13 @@ async function getOpenAIQuote(email) {
     return openai.chat.completions.create({
         messages: messages,
         model: 'gpt-3.5-turbo',
+        temperature: 0.2,
+        max_tokens: 50
     });
 }
+
+
+
 
 async function optimizeData(data, templateType, recipentMessage = '') {
     let templateData;
