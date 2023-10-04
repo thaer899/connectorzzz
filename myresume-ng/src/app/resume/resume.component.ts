@@ -34,7 +34,6 @@ export class ResumeComponent implements OnInit, OnChanges {
     private readonly http: HttpClient
   ) {
     this.post = router.url.replace('/resume/', '');
-    this.quote = "Welcome to my resume!"
   }
 
   ngOnInit() {
@@ -65,9 +64,12 @@ export class ResumeComponent implements OnInit, OnChanges {
       headers: new HttpHeaders(headers),
       params: new HttpParams().set('email', environment.mainEmail)
     };
-    this.http.post(environment.messageURL, options).subscribe((response: any) => {
+
+    const quoteURL = environment.functionURL + 'quote';
+    this.http.post(quoteURL, {}, options).subscribe((response: any) => {
       if (response) {
-        this.quote = response;
+        this.quote = response.choices[0].message.content;
+
       }
     });
   }

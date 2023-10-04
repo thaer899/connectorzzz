@@ -1,36 +1,34 @@
-/* The sidebar menu */
 .sidenav {
-    height: auto; /* Full-height: remove this if you want "auto" height */
-    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-    top: 20%; /* Stay at the top */
+    height: auto;
+    position: fixed;
+    top: 25%;
     right: 1%;
-    overflow-x: hidden; /* Disable horizontal scroll */
-    overflow-y: auto; /* scroll */
+    overflow-x: hidden;
+    overflow-y: auto;
     z-index: 99;
-  }
+}
 
-  .card {
-    width:50px;
+.card {
+    width: 50px;
     transition: transform .2s;
 }
 
-  #references {
+#references {
     min-height: 300px;
 }
 
 .references-bloc {
-    position: relative  ;
+    position: relative;
     margin-top: 5%;
 }
 
 .references-img-card {
-    width:40px
+    width: 40px
 }
 
-.ref-img
-{
-    width:35px;
-    position:relative;
+.ref-img {
+    width: 35px;
+    position: relative;
     display: block;
     margin: auto !important;
     -webkit-filter: drop-shadow(5px 5px 5px #222);
@@ -42,48 +40,51 @@
     transition: transform .2s;  Animation 
     filter: invert(15%) sepia(30%) saturate(596%) hue-rotate(350deg) brightness(92%) contrast(90%);
      fill: #747471; */
-   }
+}
 
 .ref-img:hover {
     transform: scale(1.15);
     transition: transform .2s;
-  }
+}
 
-  .column {
+.column {
     flex: 10%;
     padding: 10px;
-  }
-  
+}
+
 @media screen and (max-width: 30em) {
     #references {
         min-height: 200px;
     }
-    
+
     .references-bloc {
         position: relative;
         margin-top: 20%;
     }
+
     .sidenav {
         right: 2%;
-      }
+    }
 }
+
 @media screen and (min-width: 30em) and (max-width: 48em) {
     #references {
         min-height: 250px;
         width: 80%;
     }
-    
+
     .references-bloc {
         position: relative;
         margin-top: 20%;
         width: 80%;
     }
 }
+
 @media screen and (min-width: 48em) and (max-width: 60em) {
     #references {
         min-height: 300px;
     }
-    
+
     .references-bloc {
         position: relative;
         margin-top: 20%;
@@ -91,12 +92,18 @@
     }
 }
 
-  /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
-  @media screen and (max-height: 30em) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 30em) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+
     .sidenav {
         top: 10%;
         height: 70%;
-      }
-  }
+    }
+}

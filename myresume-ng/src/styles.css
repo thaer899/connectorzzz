@@ -69,6 +69,7 @@ a:hover {
     width: 75%;
     background-color: #f3f4f3;
     margin-right: 10px;
+    padding-top: 60px;
 }
 
 
@@ -198,7 +199,7 @@ ul {
 
 .activated {
     background-color: #84998b !important;
-    box-shadow: none;
+    box-shadow: none !important;
 }
 
 .scroll-top {

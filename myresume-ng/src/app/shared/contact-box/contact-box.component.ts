@@ -81,7 +81,8 @@ export class ContactBoxComponent implements OnInit {
     };
 
     if (this.recipentMessage) {
-      this.http.post(environment.messageURL, body, options).subscribe((response: any) => {
+      const messageURL = environment.functionURL + 'message';
+      this.http.post(messageURL, body, options).subscribe((response: any) => {
         if (response) {
           this.available = true;
           this.chatCompletion = response;

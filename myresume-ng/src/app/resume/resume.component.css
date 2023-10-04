@@ -60,23 +60,33 @@ h1.resume-app-name {
 
 }
 
-.title {
+.header-quote {
     white-space: nowrap;
-    /* Keep text in a single line */
+    height: 50px;
+    position: fixed;
+    left: 0;
+    width: 100%;
+    background-color: #c3c3c3;
+    z-index: 999;
+    text-align: center;
+    box-shadow: 3px 0 6px rgba(0, 0, 0, 0.16);
+    overflow: hidden;
+
+
 }
 
 .marquee {
     display: inline-block;
-    padding-left: 0%;
-    /* Start position off the right edge of the element */
-    animation: marquee 20s linear infinite;
+    padding-left: 10%;
+    animation: marquee 30s linear infinite;
+
 }
 
 
 
 @keyframes marquee {
     from {
-        transform: translateX(100%);
+        transform: translateX(90%);
     }
 
     to {
@@ -90,6 +100,8 @@ h1.resume-app-name {
     .main {
         padding-right: 5%;
     }
+
+
 
 
 }
