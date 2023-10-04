@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http'
 import { Component, OnInit } from '@angular/core'
+import { Router } from '@angular/router'
 import { Subscription } from 'rxjs'
 import { DataService } from 'src/app/services/data.service'
 
@@ -19,7 +20,7 @@ export class SkillsComponent implements OnInit {
   dataFromParent: any;
   private subscription: Subscription;
 
-  constructor(private dataService: DataService, private readonly http: HttpClient) { }
+  constructor(private router: Router, private dataService: DataService, private readonly http: HttpClient) { }
 
 
   ngOnInit() {

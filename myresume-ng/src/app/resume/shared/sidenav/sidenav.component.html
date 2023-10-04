@@ -2,7 +2,7 @@
 
   <div class="name-hero">
 
-    <div class="me-img"><img [routerLink]="['/resume']" class="me-img" style="cursor: pointer;"
+    <div class="me-img"><img [routerLink]="['/']" class="me-img" style="cursor: pointer;"
         src="../../assets/images/photo.jpg" alt=""></div>
 
     <div class="name-text" *ngIf="resume">
@@ -16,7 +16,7 @@
     <div style="text-align: center">
       <ul class="skill-set">
         <li *ngFor="let item of menuItems" role="button" [ngClass]="{'activated': post===item.key}"
-          (click)="changeToMenu(item.key)" [routerLink]="['/resume', item.key]">
+          (click)="changeToMenu(item.key)" [routerLink]="['/', item.key]">
           {{item.label}}
         </li>
       </ul>

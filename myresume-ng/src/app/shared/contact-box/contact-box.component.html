@@ -7,7 +7,7 @@
         <div class="modal-header">
           <i class="fa fa-window-close pull-right" aria-hidden="true" (click)="modalRef?.hide()"></i>
           <i class="fa fa-arrows-alt pull-right" aria-hidden="true" (click)="openFullChat()"
-            [routerLink]="['/resume/ask']"></i>
+            [routerLink]="['/ask']"></i>
           <h3 class="modal-title" id="contactModalLabel">
             Ask me:
           </h3>
@@ -15,8 +15,8 @@
 
         <div class="modal-body">
           <form class="contact-form" [formGroup]="messageForm" (submit)="message()">
-            <textarea name="recipentMessage" id="recipentMessage" class="form-control"
-              formControlName="recipentMessage"></textarea>
+            <textarea name="recipientMessage" id="recipientMessage" class="form-control"
+              formControlName="recipientMessage"></textarea>
             <br />
             <div class="modal-footer">
               <button type="button" class="skill-set" type="submit" value="Send" *ngIf="available"> Send
@@ -28,7 +28,7 @@
           </form>
           <br />
           <div class="frame-box">
-            <div class="card-body" *ngIf="available && !recipentMessage">
+            <div class="card-body" *ngIf="available && !recipientMessage">
               <h5 class="card-title">This bot will answer any question you have regarding the resume available on the
                 site
                 <a href="https://www.thaersaidi.com">www.thaersaidi.com</a> as if it was me, Thaer Saidi

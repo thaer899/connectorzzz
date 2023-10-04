@@ -14,7 +14,7 @@ import { catchError } from 'rxjs/operators';
 })
 export class ContactBoxComponent implements OnInit {
 
-  public recipentMessage: string;
+  public recipientMessage: string;
   public chatCompletion: any;
   public messageForm: FormGroup;
 
@@ -40,12 +40,12 @@ export class ContactBoxComponent implements OnInit {
     private fb: FormBuilder
   ) {
     this.messageForm = this.fb.group({
-      recipentMessage: ''
+      recipientMessage: ''
     });
 
     this.chatCompletion = [];
     this.chatConversation = [];
-    this.recipentMessage = '';
+    this.recipientMessage = '';
     this.info = {};
   }
 
@@ -64,7 +64,7 @@ export class ContactBoxComponent implements OnInit {
 
   message() {
     this.available = false;
-    this.recipentMessage = this.messageForm.get('recipentMessage')?.value;
+    this.recipientMessage = this.messageForm.get('recipientMessage')?.value;
 
     const headers = {
       'Content-Type': 'application/json',
@@ -77,10 +77,10 @@ export class ContactBoxComponent implements OnInit {
     };
 
     const body = {
-      recipentMessage: this.recipentMessage
+      recipientMessage: this.recipientMessage
     };
 
-    if (this.recipentMessage) {
+    if (this.recipientMessage) {
       const messageURL = environment.functionURL + 'message';
       this.http.post(messageURL, body, options).subscribe((response: any) => {
         if (response) {

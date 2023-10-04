@@ -75,25 +75,24 @@ h1.resume-app-name {
 
 }
 
-.marquee {
-    display: inline-block;
-    padding-left: 10%;
-    animation: marquee 30s linear infinite;
-
-}
-
-
-
 @keyframes marquee {
     from {
-        transform: translateX(90%);
+        -webkit-transform: translateX(100%);
+        transform: translateX(100%);
     }
 
     to {
-        transform: translateX(-100%);
+        -webkit-transform: translateX(-90%);
+        transform: translateX(-90%);
     }
 }
 
+.marquee {
+    display: inline-block;
+    padding-left: 10%;
+    -webkit-animation: marquee 30s linear infinite;
+    animation: marquee 30s linear infinite;
+}
 
 
 @media screen and (max-width: 30em) {

@@ -7,7 +7,7 @@
     <br />
     <div *ngIf="emp.technologies" class="tech-list">
       <ul>
-        <li *ngFor="let tech of emp.technologies"><a href="#">{{tech}}</a></li>
+        <li *ngFor="let tech of emp.technologies"><a [routerLink]="['/skills', tech]">{{tech}}</a></li>
       </ul>
     </div>
     <hr *ngIf="!isLast">

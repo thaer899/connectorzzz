@@ -1,118 +1,88 @@
 require('dotenv').config();
-const fs = require('fs').promises;
-const path = require('path');
-const OpenAI = require('openai');
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 const API_KEY = process.env.API_KEY;
-const openai = new OpenAI({ apiKey: OPENAI_API_KEY });
-const MAX_TOKENS = 20000;
-const admin = require('firebase-admin');
 
-const serviceAccountPath = process.env.FIREBASE_CREDENTIALS_PATH;
-const serviceAccount = require(serviceAccountPath);
 
 const axios = require('axios');
-
-admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    storageBucket: "site-generator-ng.appspot.com"
-});
-
-const storage = admin.storage().bucket();
-
-async function getDownloadUrl(email) {
-    email = email.replace(/"/g, '');
-    const file = storage.file(`${email}.json`);
-    const [url] = await file.getSignedUrl({
-        action: 'read',
-        expires: '03-09-2491'
-    });
-    return url;
-}
-
-async function getResume(email) {
-    const downloadURL = await getDownloadUrl(email);
-    const response = await axios.get(downloadURL);
-    if (response.status !== 200) {
-        throw new Error(`Unexpected response status: ${response.status}`);
-    }
-    return response.data;
-}
+const { getResume, optimizeData } = require('./data');
+const { createOpenAICompletion } = require('./openai');
+const MAX_TOKENS = 20000;
 
 
-async function getOpenAIMessage(email, recipentMessage = '') {
+async function getOpenAIMessage(email, recipientMessage = '') {
+    console.time('getOpenAIMessage'); // Start Function Timer
+
     const data = await getResume(email);
-    const messages = await optimizeData(data, 'message', recipentMessage);
+    console.log('Data Size:', Buffer.from(JSON.stringify(data)).length, 'bytes'); // Log Data Size
 
-    return openai.chat.completions.create({
-        messages: messages,
-        model: 'gpt-3.5-turbo',
-    });
+    console.log('Getting OpenAI message with recipient message:', recipientMessage);
+    const messages = await optimizeData(data, 'messages', recipientMessage);
+
+    const response = await createOpenAICompletion(messages);
+
+    console.timeEnd('getOpenAIMessage'); // End Function Timer
+    return response;
 }
 
-// Placeholder for the new quote function
-async function getOpenAIQuote(email) {
+async function getOpenAISkill(email, recipientMessage = '') {
+    console.time('getOpenAISkill'); // Start Function Timer
     const data = await getResume(email);
-    const messages = await optimizeData(data, 'quote');
-
-    return openai.chat.completions.create({
-        messages: messages,
+    console.log('Data Size:', Buffer.from(JSON.stringify(data)).length, 'bytes'); // Log Data Size
+    const messages = await optimizeData(data, 'skills', recipientMessage);
+    console.log("mappedData: ", JSON.stringify(messages, null, 2));
+    const customOptions = {
         model: 'gpt-3.5-turbo',
         temperature: 0.2,
-        max_tokens: 50
-    });
+        max_tokens: 150
+    };
+
+    const response = await createOpenAICompletion(messages, customOptions);
+
+
+    return response;
+}
+
+async function getOpenAIQuote(email) {
+    console.log('Getting OpenAI quote for:', email);
+    const data = await getResume(email);
+    const messages = await optimizeData(data, 'quotes');
+    const response = await createOpenAICompletion(messages);
+
+    return response;
 }
 
 
-
-
-async function optimizeData(data, templateType, recipentMessage = '') {
-    let templateData;
-    if (templateType === 'message') {
-        templateData = await getDataFromFile('../data/messages.json');
-        // Additional message-specific logic can be added here...
-    } else if (templateType === 'quote') {
-        templateData = await getDataFromFile('../data/quotes.json');
-        // Additional quote-specific logic can be added here...
-    } else {
-        throw new Error('Invalid template type specified.');
+async function getOpenAICompletion(recipientMessage, email = null) {
+    let response = null;
+    if (!recipientMessage) {
+        throw new Error('Missing required parameter: recipientMessage');
     }
 
-    const { education, employment, references, skills, interests, personal, resume, languages } = data;
-
-    let resumeSummary = templateData.summary
-        .replace('{education}', JSON.stringify(education))
-        .replace('{employment}', JSON.stringify(employment))
-        .replace('{references}', JSON.stringify(references))
-        .replace('{skills}', JSON.stringify(skills))
-        .replace('{interests}', JSON.stringify(interests))
-        .replace('{personal}', JSON.stringify(personal))
-        .replace('{resume}', JSON.stringify(resume))
-        .replace('{languages}', JSON.stringify(languages));
-
-    templateData.messages.forEach(message => {
-        message.content = message.content
-            .replace('{resumeSummary}', resumeSummary)
-            .replace('{recipentMessage}', recipentMessage);
-    });
-
-    // Check token count (simplified version)
-    let tokenCount = JSON.stringify(templateData).length;
-    console.log("Token count:", tokenCount);
-
-    if (tokenCount > MAX_TOKENS) {
-        const assistantMessage = templateData.messages.find(msg => msg.role === 'assistant');
-        assistantMessage.content = "My response is too long. Can you specify the area you're interested in?";
+    if (email) {
+        const data = await getResume(email);
+        response = await createOpenAICompletion(recipientMessage.messages, recipientMessage.options, data);
     }
-
-    return templateData.messages;
+    else {
+        response = await createOpenAICompletion(recipientMessage.messages, recipientMessage.options);
+    }
+    return response;
 }
 
 
+async function getOpenAIByTopic(recipientMessage, topic = null, email = null) {
+    let response = null;
+    if (!recipientMessage) {
+        throw new Error('Missing required parameter: recipientMessage');
+    }
 
-async function getDataFromFile(filePath) {
-    const data = await fs.readFile(path.join(__dirname, filePath), 'utf8');
-    return JSON.parse(data);
+    if (email) {
+        const data = await getResume(email);
+        const messages = await optimizeData(data, topic, recipientMessage, topic)
+        response = await createOpenAICompletion(messages, recipientMessage.options);
+    }
+    else {
+        response = await createOpenAICompletion(recipientMessage.messages, recipientMessage.options);
+    }
+    return response;
 }
 
 function validateApiKey(req, res, next) {
@@ -124,8 +94,10 @@ function validateApiKey(req, res, next) {
 }
 
 module.exports = {
-    getResume,
     getOpenAIMessage,
+    getOpenAIQuote,
+    getOpenAISkill,
     validateApiKey,
-    getOpenAIQuote
+    getOpenAICompletion,
+    getOpenAIByTopic
 };

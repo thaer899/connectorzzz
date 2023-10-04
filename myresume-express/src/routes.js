@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getOpenAIQuote, getOpenAIMessage } = require('./services');
+const { getOpenAIQuote, getOpenAIMessage, getOpenAISkill, getOpenAICompletion, getOpenAIByTopic } = require('./services');
 
 router.get('/', (req, res) => {
     res.send('thaer saidi resume chatbot');
@@ -8,17 +8,16 @@ router.get('/', (req, res) => {
 
 router.post('/message', async (req, res) => {
     try {
-        const recipentMessage = req.body.recipentMessage;
-        const email = req.query.email;  // Extract email from query parameter
+        const recipientMessage = req.body.recipientMessage;
+        const email = req.query.email;
 
-        if (!recipentMessage || !email) {
+        console.log("recipientMessage: ", recipientMessage);
+        console.log("email: ", email);
+        if (!recipientMessage || !email) {
             return res.status(400).send('Missing required parameters.');
         }
 
-        // You can now use the email as needed, for example:
-        // const resumeData = await getResumeData(email);
-
-        const result = await getOpenAIMessage(email, recipentMessage); // Modify this function if you want to pass the email to it
+        const result = await getOpenAIMessage(email, recipientMessage);
         res.send(result);
     } catch (error) {
         console.error("Error:", error);
@@ -28,17 +27,56 @@ router.post('/message', async (req, res) => {
 
 router.post('/quote', async (req, res) => {
     try {
-        const email = req.query.email;  // Extract email from query parameter
-
+        const email = req.query.email;
         if (!email) {
             return res.status(400).send('Missing required parameters.');
         }
 
-        // You can now use the email as needed, for example:
-        // const resumeData = await getResumeData(email);
-
-        const result = await getOpenAIQuote(email); // Modify this function if you want to pass the email to it
+        const result = await getOpenAIQuote(email);
         res.send(result);
+    } catch (error) {
+        console.error("Error:", error);
+        res.status(500).send('Error processing the request.');
+    }
+});
+
+
+router.post('/skill', async (req, res) => {
+    try {
+        const recipientMessage = req.body.recipientMessage;
+        const email = req.query.email;
+        if (!recipientMessage || !email) {
+            return res.status(400).send('Missing required parameters.');
+        }
+
+        const result = await getOpenAISkill(email, recipientMessage);
+        console.log(result.choices[0].message);
+        res.send(result);
+    } catch (error) {
+        console.error("Error:", error);
+        res.status(500).send('Error processing the request.');
+    }
+});
+
+router.post('/openai', async (req, res) => {
+    try {
+        const recipientMessage = req.body.recipientMessage;
+        const email = req.query.email;
+        const topic = req.query.topic;
+
+        if (!recipientMessage) {
+            return res.status(400).send('Missing required parameters.');
+        }
+
+        if (email && topic) {
+            const result = await getOpenAIByTopic(recipientMessage, topic, email, topic);
+            console.log(result.choices[0].message);
+            res.send(result);
+        } else {
+            const result = await getOpenAICompletion(recipientMessage);
+            console.log(result.choices[0].message);
+            res.send(result);
+        }
     } catch (error) {
         console.error("Error:", error);
         res.status(500).send('Error processing the request.');

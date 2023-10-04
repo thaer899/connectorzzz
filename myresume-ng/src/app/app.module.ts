@@ -54,11 +54,7 @@ import { SidenavComponent } from './resume/shared/sidenav/sidenav.component'
   exports: [
   ],
   providers: [
-    provideClientHydration(),
-    {
-      provide: LocationStrategy,
-      useClass: HashLocationStrategy
-    }],
+    provideClientHydration()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

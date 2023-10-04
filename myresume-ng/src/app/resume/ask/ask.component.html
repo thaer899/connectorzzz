@@ -3,8 +3,8 @@
 
     <div class="modal-body">
         <form class="contact-form" [formGroup]="messageForm" (submit)="message()">
-            <textarea name="recipentMessage" id="recipentMessage" class="form-control"
-                formControlName="recipentMessage"></textarea>
+            <textarea name="recipientMessage" id="recipientMessage" class="form-control"
+                formControlName="recipientMessage"></textarea>
             <br />
             <div class="modal-footer">
                 <button type="button" class="skill-set" type="submit" value="Send" *ngIf="available">
@@ -17,7 +17,7 @@
         </form>
         <br />
         <div class="frame-box">
-            <div class="card-body" *ngIf="available && !recipentMessage">
+            <div class="card-body" *ngIf="available && !recipientMessage">
                 <h5 class="card-title">This bot will answer any question you have regarding the resume
                     available on the
                     site

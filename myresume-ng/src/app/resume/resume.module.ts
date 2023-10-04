@@ -11,7 +11,8 @@ import { LanguagesComponent } from './languages/languages.component'
 import { ResumeRoutingModule } from './resume-routing.module'
 import { HomeComponent } from './home/home.component';
 import { AskComponent } from './ask/ask.component';
-import { SidenavComponent } from './shared/sidenav/sidenav.component'
+import { SidenavComponent } from './shared/sidenav/sidenav.component';
+import { SkillComponent } from './skills/skill/skill.component'
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { SidenavComponent } from './shared/sidenav/sidenav.component'
     LanguagesComponent,
     HomeComponent,
     AskComponent,
-    SidenavComponent],
+    SidenavComponent,
+    SkillComponent],
   exports: [SidenavComponent]
 
 }

@@ -1,0 +1,14 @@
+<section id="skill">
+  <h1> {{skillId}}</h1>
+
+  <ng-container>
+    <div *ngFor="let fact of facts; let isLast=last">
+      <p>{{fact}}</p>
+      <hr *ngIf="!isLast">
+    </div>
+  </ng-container>
+  <div class="ask">
+    <app-ask></app-ask>
+  </div>
+
+</section>
