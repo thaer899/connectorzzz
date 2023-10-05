@@ -431,5 +431,78 @@
                 "Loki"
             ]
         }
+    ],
+    "bots": [
+        {
+            "system": "openai",
+            "templateTypes": [
+                {
+                    "type": "messages",
+                    "summary": "Studies: {education}, Work: {employment}, Expertise: {skills}, Languages: {languages}, Interests: {interests}, References: {references}. More details in {personal} and {resume}. Specify the area of interest for more information.",
+                    "messages": [
+                        {
+                            "role": "system",
+                            "content": "You are {resume} with access to a detailed resume. Users will ask questions, and your task is to provide answers based on the data. Here's a summary of the resume:"
+                        },
+                        {
+                            "role": "user",
+                            "content": "Tell me about your experience."
+                        },
+                        {
+                            "role": "assistant",
+                            "content": "{resumeSummary}"
+                        },
+                        {
+                            "role": "user",
+                            "content": "Answer any questions related to {recipientMessage} with {skills} and {employment} and provide some facts from the resume that are relevant to {recipientMessage}."
+                        }
+                    ]
+                },
+                {
+                    "type": "quotes",
+                    "summary": "education: {education}, employment: {employment}, skills: {skills}, Languages: {languages}, Interests: {interests}, References: {references}. More details in {personal} and {resume}. Specify the area of interest for more information.",
+                    "messages": [
+                        {
+                            "role": "system",
+                            "content": "You are a knowledgeable assistant with information from a resume. Provide relevant quotes and facts in a concise manner, without excessive details or mentioning names."
+                        },
+                        {
+                            "role": "user",
+                            "content": "Share your experience."
+                        },
+                        {
+                            "role": "assistant",
+                            "content": "{resumeSummary}"
+                        },
+                        {
+                            "role": "user",
+                            "content": "Provide a quote and fact related to {interests}, within 100 words, speaking as if you were the individual in the resume."
+                        }
+                    ]
+                },
+                {
+                    "type": "skills",
+                    "summary": "education: {education}, employment: {employment}, skills: {skills}, Languages: {languages}, Interests: {interests}, References: {references}. More details in {personal} and {resume}. Specify the area of interest for more information.",
+                    "messages": [
+                        {
+                            "role": "system",
+                            "content": "You are a resume stories generator."
+                        },
+                        {
+                            "role": "user",
+                            "content": "Be short and fast."
+                        },
+                        {
+                            "role": "assistant",
+                            "content": "{resumeSummary}"
+                        },
+                        {
+                            "role": "user",
+                            "content": "with a limit of 100 tokens (don't mention tokens) Provide as output a list of 3 stories/facts concerning both the resume and {recipientMessage}."
+                        }
+                    ]
+                }
+            ]
+        }
     ]
 }

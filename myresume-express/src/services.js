@@ -3,13 +3,13 @@ const API_KEY = process.env.API_KEY;
 
 
 const axios = require('axios');
-const { getResume, optimizeData } = require('./data');
+const { getFile, optimizeData } = require('./data');
 const { createOpenAICompletion } = require('./openai');
 const MAX_TOKENS = 20000;
 
 
 async function getOpenAIMessage(email, recipientMessage = '') {
-    const data = await getResume(email);
+    const data = await getFile(email);
     const messages = await optimizeData(data, 'messages', recipientMessage, 'messages');
     console.log('Messages:', messages);
     const customOptions = {
@@ -26,7 +26,7 @@ async function getOpenAIMessage(email, recipientMessage = '') {
 
 async function getOpenAISkill(email, recipientMessage = '') {
     console.time('getOpenAISkill'); // Start Function Timer
-    const data = await getResume(email);
+    const data = await getFile(email);
     console.log('Data Size:', Buffer.from(JSON.stringify(data)).length, 'bytes'); // Log Data Size
     const messages = await optimizeData(data, 'skills', recipientMessage);
     const customOptions = {
@@ -34,15 +34,15 @@ async function getOpenAISkill(email, recipientMessage = '') {
         temperature: 0.2,
         max_tokens: 150
     };
-    const response = await createOpenAICompletion('quotes', messages, customOptions);
+    const response = await createOpenAICompletion(messages, customOptions);
     return response;
 }
 
 async function getOpenAIQuote(email) {
     console.log('Getting OpenAI quote for:', email);
-    const data = await getResume(email);
+    const data = await getFile(email);
     const messages = await optimizeData(data, 'quotes');
-    const response = await createOpenAICompletion('quotes', messages);
+    const response = await createOpenAICompletion(messages);
     return response;
 }
 
@@ -55,7 +55,7 @@ async function getOpenAICompletion(recipientMessage, templateType, email) {
     console.log("getOpenAICompletion:", recipientMessage, templateType, email);
     console.log("email:", email)
     if (email) {
-        const data = await getResume(email);
+        const data = await getFile(email);
         const messages = await optimizeData(data, templateType, recipientMessage)
         console.log("getOpenAICompletion Messages:", messages);
         response = await createOpenAICompletion(messages, recipientMessage.options);
@@ -76,7 +76,7 @@ async function getOpenAIByTopic(recipientMessage, templateType = null, email = n
     }
 
     if (email) {
-        const data = await getResume(email);
+        const data = await getFile(email);
         const messages = await optimizeData(data, templateType, recipientMessage)
         response = await createOpenAICompletion(templateType, messages, recipientMessage.options, data);
     }

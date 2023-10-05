@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { getOpenAIQuote, getOpenAIMessage, getOpenAISkill, getOpenAICompletion, getOpenAIByTopic } = require('./services');
+const { getFile } = require('./data');
+const { getOpenAIQuote, getOpenAIMessage, getOpenAISkill, getOpenAICompletion } = require('./services');
 
 router.get('/', (req, res) => {
     res.send('thaer saidi resume chatbot');
@@ -77,6 +78,20 @@ router.post('/openai', async (req, res) => {
             console.log(result.choices[0].message);
             res.send(result);
         }
+    } catch (error) {
+        console.error("Error:", error);
+        res.status(500).send('Error processing the request.');
+    }
+});
+
+router.get('/file', async (req, res) => {
+    try {
+        const name = req.query.name;
+        if (!name) {
+            return res.status(400).send('Missing required parameters.');
+        }
+        result = await getFile(name);
+        res.send(result);
     } catch (error) {
         console.error("Error:", error);
         res.status(500).send('Error processing the request.');

@@ -15,39 +15,39 @@ const storage = admin.storage().bucket();
 const MAX_TOKENS = 20000;
 
 
-async function optimizeData(data, templateType = 'messages', recipientMessage = '', topic = 'messages') {
-    console.log('Optimizing data for template type:', templateType, 'and topic:', topic);
+async function optimizeData(data, templateType = 'messages', recipientMessage = '') {
+    console.log('Optimizing data for template type:', templateType);
     if (templateType !== '' && templateType !== null) {
         templateType = templateType.replace(/"/g, '');
+
+        const templateData = data.bots[0].templateTypes[0]
+
+        const resumeSummary = createResumeSummaryForTemplate(data, templateData.summary);
+        console.log('Resume summary:', resumeSummary);
+        updateMessageContent(templateData, resumeSummary, recipientMessage);
+        handleTokenCount(templateData);
+
+        return templateData.messages;
     }
-    const filePath = path.join(__dirname, '..', 'data', `${templateType}.json`);
-    const templateData = await getDataFromFile(filePath);
-
-    const resumeSummary = createResumeSummaryForTemplate(data, templateData.summary);
-    console.log('Resume summary:', resumeSummary);
-    updateMessageContent(templateData, resumeSummary, recipientMessage);
-    handleTokenCount(templateData);
-
-    return templateData.messages;
 }
 
-function createResumeSummaryForTopic(data, topic) {
-    const mappedData = {};
+// function createResumeSummaryForTopic(data, topic) {
+//     const mappedData = {};
 
-    if (!data[topic]) return JSON.stringify(mappedData);
+//     if (!data[topic]) return JSON.stringify(mappedData);
 
-    data[topic].forEach(topicCategory => {
-        topicCategory.list.forEach(topicItem => {
-            mappedData[topicItem] = [];
-        });
-    });
+//     data[topic].forEach(topicCategory => {
+//         topicCategory.list.forEach(topicItem => {
+//             mappedData[topicItem] = [];
+//         });
+//     });
 
-    if (topic === 'skills') {
-    } else (topic === 'messages')
-    { }
-    addAttributes(mappedData, data.employment, 'technologies', 'title');
-    return JSON.stringify(mappedData);
-}
+//     if (topic === 'skills') {
+//     } else (topic === 'messages')
+//     { }
+//     addAttributes(mappedData, data.employment, 'technologies', 'title');
+//     return JSON.stringify(mappedData);
+// }
 
 
 function createResumeSummaryForTemplate(data, templateSummary) {
@@ -118,10 +118,10 @@ async function getDownloadUrl(email) {
         throw error;
     }
 }
-async function getResume(email) {
+async function getFile(name) {
     try {
-        console.log('Retrieving resume for:', email);
-        const downloadURL = await getDownloadUrl(email);
+        console.log('Retrieving resume for:', name);
+        const downloadURL = await getDownloadUrl(name);
         const response = await axios.get(downloadURL);
         console.log('HTTP response status for resume retrieval:', response.status);
         if (response.status !== 200) {
@@ -148,6 +148,6 @@ async function getDataFromFile(filePath) {
 module.exports = {
     getDataFromFile,
     optimizeData,
-    getResume,
+    getFile,
     getDownloadUrl
 };

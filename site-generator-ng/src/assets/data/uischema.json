@@ -17,6 +17,10 @@
                   "label": "Resume"
                 },
                 {
+                  "type": "Label",
+                  "text": "Languages"
+                },
+                {
                   "type": "Control",
                   "scope": "#/properties/languages",
                   "label": "Language"
@@ -151,6 +155,20 @@
               ]
             }
           }
+        }
+      ]
+    },
+    {
+      "type": "Category",
+      "label": "Bots",
+      "elements": [
+        {
+          "type": "Label",
+          "text": "Bots"
+        },
+        {
+          "type": "ListWithDetail",
+          "scope": "#/properties/bots"
         }
       ]
     },
