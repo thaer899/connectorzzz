@@ -7,9 +7,9 @@ const routes = require('./src/routes');
 const PORT = process.env.PORT || 4000;
 
 // Enable CORS for a specific domain
-app.use(cors({
-  origin: '*'
-}));
+// app.use(cors({
+//   origin: '*'
+// }));
 
 // Middleware to parse JSON requests
 app.use(express.json());
