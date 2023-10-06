@@ -20,7 +20,7 @@ async function optimizeData(data, recipientMessage, templateType = 'default') {
     if (templateType !== '' && templateType !== null) {
         templateType = templateType.replace(/"/g, '');
         console.log('recipientMessage: ', recipientMessage);
-        let templateData = data.bots[0].templateTypes.find(type => type.type === templateType);
+        let templateData = data.bots.find(type => type.type === templateType);
         console.log('templateData: ', templateData);
         let resumeSummaryUpdated = createResumeSummaryForTemplate(data, templateData.summary);
         console.log('resumeSummaryUpdated: ', resumeSummaryUpdated);

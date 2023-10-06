@@ -135,43 +135,28 @@
     "bots": {
       "type": "array",
       "items": {
-        "type": "object",
         "properties": {
-          "system": {
-            "type": "string",
-            "enum": [
-              "openai"
-            ]
+          "type": {
+            "type": "string"
           },
-          "templateTypes": {
+          "summary": {
+            "type": "string"
+          },
+          "messages": {
             "type": "array",
             "items": {
               "type": "object",
               "properties": {
-                "type": {
-                  "type": "string"
+                "role": {
+                  "type": "string",
+                  "enum": [
+                    "system",
+                    "user",
+                    "assistant"
+                  ]
                 },
-                "summary": {
+                "content": {
                   "type": "string"
-                },
-                "messages": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "role": {
-                        "type": "string",
-                        "enum": [
-                          "system",
-                          "user",
-                          "assistant"
-                        ]
-                      },
-                      "content": {
-                        "type": "string"
-                      }
-                    }
-                  }
                 }
               }
             }
