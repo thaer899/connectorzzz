@@ -70,12 +70,11 @@ router.post('/openai', async (req, res) => {
 
         if (email) {
             const result = await getOpenAICompletion(recipientMessage, templateType, email);
-            console.log("recipientMessage: ", recipientMessage);
-            console.log(result.choices[0].message);
+            console.log("getOpenAICompletion: recipientMessage | result: ", recipientMessage, result);
             res.send(result);
         } else {
             const result = await getOpenAICompletion(recipientMessage);
-            console.log(result.choices[0].message);
+            console.log("getOpenAICompletion: recipientMessage | result: ", recipientMessage, result);
             res.send(result);
         }
     } catch (error) {

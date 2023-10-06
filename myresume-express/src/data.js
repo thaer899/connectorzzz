@@ -15,42 +15,28 @@ const storage = admin.storage().bucket();
 const MAX_TOKENS = 20000;
 
 
-async function optimizeData(data, templateType = 'messages', recipientMessage = '') {
-    console.log('Optimizing data for template type:', templateType);
+async function optimizeData(data, recipientMessage, templateType = 'default') {
+    console.log('Optimizing data for template type:', templateType, 'Data Preview:', JSON.stringify(data).substring(0, 100));
     if (templateType !== '' && templateType !== null) {
         templateType = templateType.replace(/"/g, '');
+        console.log('recipientMessage: ', recipientMessage);
+        let templateData = data.bots[0].templateTypes.find(type => type.type === templateType);
+        console.log('templateData: ', templateData);
+        let resumeSummaryUpdated = createResumeSummaryForTemplate(data, templateData.summary);
+        console.log('resumeSummaryUpdated: ', resumeSummaryUpdated);
+        let replacements = { recipientMessage: recipientMessage, resumeSummary: resumeSummaryUpdated };
 
-        const templateData = data.bots[0].templateTypes[0]
+        let templateDataUpdated = replacePlaceholdersInMessages(templateData, replacements);
+        console.log('messages to send: ', templateDataUpdated);
 
-        const resumeSummary = createResumeSummaryForTemplate(data, templateData.summary);
-        console.log('Resume summary:', resumeSummary);
-        updateMessageContent(templateData, resumeSummary, recipientMessage);
-        handleTokenCount(templateData);
-
-        return templateData.messages;
+        return templateDataUpdated;
     }
 }
 
-// function createResumeSummaryForTopic(data, topic) {
-//     const mappedData = {};
-
-//     if (!data[topic]) return JSON.stringify(mappedData);
-
-//     data[topic].forEach(topicCategory => {
-//         topicCategory.list.forEach(topicItem => {
-//             mappedData[topicItem] = [];
-//         });
-//     });
-
-//     if (topic === 'skills') {
-//     } else (topic === 'messages')
-//     { }
-//     addAttributes(mappedData, data.employment, 'technologies', 'title');
-//     return JSON.stringify(mappedData);
-// }
 
 
 function createResumeSummaryForTemplate(data, templateSummary) {
+    console.log('Creating resume summary, Data Preview:', JSON.stringify(data).substring(0, 100));
 
     const summary = Object.keys(data).reduce((acc, key) => {
         const placeholder = `{${key}}`;
@@ -67,33 +53,65 @@ function createResumeSummaryForTemplate(data, templateSummary) {
 }
 
 
-
-
-function addAttributes(mappedData, items, attributeName, propertyToPush) {
-    items.forEach(item => {
-        item[attributeName].forEach(attribute => {
-            if (mappedData[attribute]) {
-                mappedData[attribute].push({
-                    [propertyToPush]: item[propertyToPush],
-                });
+function replacePlaceholdersInMessages(messages, replacements) {
+    console.log('Creating messages with replacements:', JSON.stringify(replacements).substring(0, 100));
+    console.log('replacePlaceholdersInMessages messages: ', messages.messages);
+    console.log('replacePlaceholdersInMessages replacements: ', replacements);
+    return messages.messages.map(message => {
+        let updatedContent = message.content;
+        Object.keys(replacements).forEach(key => {
+            const placeholder = `{${key}}`;
+            if (updatedContent.includes(placeholder)) {
+                updatedContent = updatedContent.replace(placeholder, JSON.stringify(replacements[key]));
             }
         });
+        return {
+            ...message,
+            content: updatedContent
+        };
     });
 }
 
 
-function updateMessageContent(templateData, resumeSummary, recipientMessage) {
+function replacePlaceholdersInData(data, replacements) {
+    console.log('Replacing placeholders in data:', JSON.stringify(replacements).substring(0, 100));
+    // if data is type object then iterate over keys
+    if (typeof data === 'object') {
+        const summary = Object.keys(data).reduce((acc, key) => {
+            const placeholder = `{${key}}`;
 
-    templateData.messages.forEach(message => {
-        message.content = message.content
-            .replace('{resumeSummary}', resumeSummary)
-            .replace('{recipientMessage}', JSON.stringify(recipientMessage));
-    });
+            if (!acc.includes(placeholder)) {
+                console.log(`Warning: placeholder ${placeholder} not found in templateSummary.`);
+                return acc;
+            }
+
+            return acc.replace(placeholder, JSON.stringify(data[key]));
+        }, JSON.stringify(replacements));
+
+        return summary;
+    }
+    else if (typeof data === 'array') {
+        return messages.map(message => {
+            let updatedContent = message.content;
+            Object.keys(replacements).forEach(key => {
+                const placeholder = `{${key}}`;
+                if (updatedContent.includes(placeholder)) {
+                    updatedContent = updatedContent.replace(placeholder, JSON.stringify(replacements[key]));
+                }
+            });
+            return {
+                ...message,
+                content: updatedContent
+            };
+        });
+    }
 }
+
+
 
 function handleTokenCount(templateData) {
     const tokenCount = JSON.stringify(templateData).length;
-    console.log("Token count:", tokenCount);
+    console.log("Token count:", tokenCount, 'Template Data Preview:', JSON.stringify(templateData).substring(0, 100));
 
     if (tokenCount > MAX_TOKENS) {
         const assistantMessage = templateData.messages.find(msg => msg.role === 'assistant');

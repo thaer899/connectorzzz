@@ -1,34 +1,33 @@
 require('dotenv').config();
 const API_KEY = process.env.API_KEY;
-
-
 const axios = require('axios');
 const { getFile, optimizeData } = require('./data');
 const { createOpenAICompletion } = require('./openai');
-const MAX_TOKENS = 20000;
 
-
-async function getOpenAIMessage(email, recipientMessage = '') {
+async function getOpenAIMessage(email, recipientMessage) {
+    console.log(
+        'getOpenAICompletion | RecipientMessage Preview:',
+        (typeof recipientMessage === 'string' ? recipientMessage : JSON.stringify(recipientMessage)).substring(0, 100),
+        '| Email:', email
+    );
+    console.log('getOpenAIMessage recipientMessage:', recipientMessage);
     const data = await getFile(email);
-    const messages = await optimizeData(data, 'messages', recipientMessage, 'messages');
-    console.log('Messages:', messages);
+    const messages = await optimizeData(data, recipientMessage, 'messages',);
+    console.log('getOpenAICompletion optimized Data Messages Preview:', typeof messages === 'string' ? messages.substring(0, 100) : JSON.stringify(messages).substring(0, 100));
     const customOptions = {
         model: 'gpt-3.5-turbo',
         temperature: 0.2,
         max_tokens: 150
     };
     const response = await createOpenAICompletion(messages, customOptions);
-    console.log('Response:', JSON.stringify(response.choices[0].message));
+    console.log('createOpenAICompletion Response Preview:', typeof response === 'string' ? response.substring(0, 100) : JSON.stringify(response).substring(0, 100));
     return response;
 }
 
-
-
 async function getOpenAISkill(email, recipientMessage = '') {
-    console.time('getOpenAISkill'); // Start Function Timer
     const data = await getFile(email);
-    console.log('Data Size:', Buffer.from(JSON.stringify(data)).length, 'bytes'); // Log Data Size
-    const messages = await optimizeData(data, 'skills', recipientMessage);
+    console.log('Data Size:', Buffer.from(JSON.stringify(data)).length, 'bytes');
+    const messages = await optimizeData(data, recipientMessage, 'skills');
     const customOptions = {
         model: 'gpt-3.5-turbo',
         temperature: 0.2,
@@ -39,52 +38,40 @@ async function getOpenAISkill(email, recipientMessage = '') {
 }
 
 async function getOpenAIQuote(email) {
-    console.log('Getting OpenAI quote for:', email);
+    console.log('getOpenAIQuote | Email:', email);
     const data = await getFile(email);
-    const messages = await optimizeData(data, 'quotes');
+    const messages = await optimizeData(data, recipientMessage = '', 'quotes');
     const response = await createOpenAICompletion(messages);
     return response;
 }
 
-
 async function getOpenAICompletion(recipientMessage, templateType, email) {
+    console.log(
+        'getOpenAICompletion | RecipientMessage Preview:',
+        (typeof recipientMessage === 'string' ? recipientMessage : JSON.stringify(recipientMessage)).substring(0, 100),
+        '| TemplateType:', templateType,
+        '| Email:', email
+    );
+
     let response = {};
     if (!recipientMessage) {
         throw new Error('Missing required parameter: recipientMessage');
     }
-    console.log("getOpenAICompletion:", recipientMessage, templateType, email);
-    console.log("email:", email)
+
     if (email) {
         const data = await getFile(email);
-        const messages = await optimizeData(data, templateType, recipientMessage)
-        console.log("getOpenAICompletion Messages:", messages);
+        console.log('recipientMessage before optimizeData: ', recipientMessage);
+        const messages = await optimizeData(data, recipientMessage, templateType)
+        console.log("getOpenAICompletion optimized Data Messages Preview | email:", messages, email);
         response = await createOpenAICompletion(messages, recipientMessage.options);
-        console.log("createOpenAICompletion Response:", email, response);
-    }
-    else {
+        console.log("created OpenAICompletion Response Preview:", JSON.stringify(response).substring(0, 100));
+    } else {
         response = await createOpenAICompletion(recipientMessage.messages, recipientMessage.options);
-        console.log("Response:", response);
+        console.log("created OpenAICompletion Response Preview:", JSON.stringify(response).substring(0, 100));
     }
     return response;
 }
 
-
-async function getOpenAIByTopic(recipientMessage, templateType = null, email = null) {
-    let response = null;
-    if (!recipientMessage) {
-        throw new Error('Missing required parameter: recipientMessage');
-    }
-
-    if (email) {
-        const data = await getFile(email);
-        const messages = await optimizeData(data, templateType, recipientMessage)
-        response = await createOpenAICompletion(templateType, messages, recipientMessage.options, data);
-    }
-    else {
-        response = await createOpenAICompletion(templateType, recipientMessage.messages, recipientMessage.options);
-    }
-    return response;
-}
 
 function validateApiKey(req, res, next) {
     const apiKeyHeader = req.header('API_KEY');
@@ -99,6 +86,5 @@ module.exports = {
     getOpenAIQuote,
     getOpenAISkill,
     validateApiKey,
-    getOpenAICompletion,
-    getOpenAIByTopic
+    getOpenAICompletion
 };
