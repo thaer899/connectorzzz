@@ -1,0 +1,2 @@
+pyautogen>=0.1.6
+docker>=6.1.3
