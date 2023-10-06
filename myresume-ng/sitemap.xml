@@ -1,27 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>htts://www.thaersaidi.com/#/resume</loc>
+        <loc>https://thaersaidi.net</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
     </url>
     <url>
-        <loc>htts://www.thaersaidi.com/#/resume/education</loc>
+        <loc>https://thaersaidi.net/education</loc>
     </url>
     <url>
-        <loc>htts://www.thaersaidi.com/#/resume/employment</loc>
+        <loc>https://thaersaidi.net/employment</loc>
     </url>
     <url>
-        <loc>htts://www.thaersaidi.com/#/resume/interests</loc>
+        <loc>https://thaersaidi.net/interests</loc>
     </url>
     <url>
-        <loc>htts://www.thaersaidi.com/#/resume/languages</loc>
+        <loc>https://thaersaidi.net/languages</loc>
     </url>
     <url>
-        <loc>htts://www.thaersaidi.com/#/resume/skills</loc>
+        <loc>https://thaersaidi.net/skills</loc>
     </url>
     <url>
-        <loc>htts://www.thaersaidi.com/#/resume/references</loc>
+        <loc>https://thaersaidi.net/references</loc>
     </url>
     <url>
-        <loc>htts://www.thaersaidi.com/#/resume/ask</loc>
+        <loc>https://thaersaidi.net/ask</loc>
     </url>
 </urlset>

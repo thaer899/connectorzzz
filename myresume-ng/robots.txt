@@ -1,0 +1,4 @@
+User-Agent: *
+Disallow: ... // SOME ROUTES
+
+Sitemap: https://thaersaidi.net/sitemap.xml
