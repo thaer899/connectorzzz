@@ -100,8 +100,14 @@
       "items": {
         "type": "object",
         "properties": {
-          "about": {
+          "key": {
             "type": "string"
+          },
+          "value": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       }
@@ -129,6 +135,12 @@
         },
         "phone": {
           "type": "string"
+        },
+        "about": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },

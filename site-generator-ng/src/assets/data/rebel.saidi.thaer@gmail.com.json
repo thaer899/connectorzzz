@@ -246,10 +246,10 @@
     ],
     "personal": [
         {
-            "about": "I am a technologist with a significant experience in many areas of software engineering. I have a background as architect, cyber security expert and DevOps engineer and I always leverage the best practices and various design patterns from different frameworks, to produce scalable and highly available cloud and edge applications and facilitate the user's experience on the web."
-        },
-        {
-            "about": "With my background in mathematics especially in data and statistical analysis from my years of studies in ESSAI for statistical engineering and data analysis, I am a data scientist with experience in artificial intelligence and more to always find a way through data to create better applications and solutions."
+            "key": "Random",
+            "value": [
+                "Married to a beautiful wife and expecting a child."
+            ]
         }
     ],
     "references": [
@@ -298,7 +298,14 @@
         "email": "thaer.saidi@outlook.com",
         "phone": "(+46) 708850901",
         "website": "https://www.thaersaidi.com",
-        "birthDate": "1989-03-05"
+        "birthDate": "1989-03-05",
+        "about": [
+            "I am a technologist with a significant experience in many areas of software engineering.",
+            "I have a background as architect, cyber security expert and DevOps engineer.",
+            "I always leverage the best practices and various design patterns from different frameworks, to produce scalable and highly available cloud and edge applications and facilitate the user's experience on the web.",
+            "With my background in mathematics especially in data and statistical analysis from my years of studies in ESSAI for statistical engineering and data analysis,",
+            "I am a data scientist with experience in artificial intelligence and more to always find a way through data to create better applications and solutions."
+        ]
     },
     "skills": [
         {
@@ -435,67 +442,69 @@
     "bots": [
         {
             "type": "messages",
-            "summary": "Studies: {education}, Work: {employment}, Expertise: {skills}, Languages: {languages}, Interests: {interests}, References: {references}. More details in {personal} and {resume}. Specify the area of interest for more information.",
+            "summary": "employment,skills,languages,interests,education,reference,personal,resume",
             "messages": [
                 {
                     "role": "system",
-                    "content": "You are {resume} with access to a detailed resume. Users will ask questions, and your task is to provide answers based on the data. Here's a summary of the resume:"
-                },
-                {
-                    "role": "user",
-                    "content": "Tell me about your experience."
+                    "content": "Users will ask questions, and your task is to provide answers based on the my personal information provided in the summary."
                 },
                 {
                     "role": "assistant",
-                    "content": "{resumeSummary}"
+                    "content": "Answer as if you were the You are a the person in the resume"
+                },
+                {
+                    "role": "assistant",
+                    "content": "Specify the area of interest for more information."
                 },
                 {
                     "role": "user",
-                    "content": "Answer any questions related to {recipientMessage} with {skills} and {employment} and provide some facts from the resume that are relevant to {recipientMessage}."
+                    "content": "Answer any questions related to the message"
                 }
             ]
         },
         {
             "type": "quotes",
-            "summary": "education: {education}, employment: {employment}, skills: {skills}, Languages: {languages}, Interests: {interests}, References: {references}. More details in {personal} and {resume}. Specify the area of interest for more information.",
+            "summary": "interests",
             "messages": [
                 {
                     "role": "system",
-                    "content": "You are a knowledgeable assistant with information from a resume. Provide relevant quotes and facts in a concise manner, without excessive details or mentioning names."
-                },
-                {
-                    "role": "user",
-                    "content": "Share your experience."
+                    "content": "You are a knowledgeable assistant with informationthe  provided"
                 },
                 {
                     "role": "assistant",
-                    "content": "{resumeSummary}"
+                    "content": "Speak as if you were the individual in the resume and  provide relevant quotes and facts in a concise manner, "
                 },
                 {
                     "role": "user",
-                    "content": "Provide a quote and fact related to {interests}, within 100 words, speaking as if you were the individual in the resume."
+                    "content": "Provide a quote , within 20 words without excessive details or mentioning names."
                 }
             ]
         },
         {
             "type": "skills",
-            "summary": "education: {education}, employment: {employment}, skills: {skills}, Languages: {languages}, Interests: {interests}, References: {references}. More details in {personal} and {resume}. Specify the area of interest for more information.",
+            "summary": "employment,skills,languages,interests",
             "messages": [
                 {
                     "role": "system",
-                    "content": "You are a resume stories generator."
-                },
-                {
-                    "role": "user",
-                    "content": "Be short and fast."
+                    "content": "Answer as if you were the You are a the person in the resume,"
                 },
                 {
                     "role": "assistant",
-                    "content": "{resumeSummary}"
+                    "content": "in 50 words Provide as output a list of 3 facts concerning the message"
+                }
+            ]
+        },
+        {
+            "summary": "employment,skills,languages,interests,education,references,personal,resume",
+            "type": "default",
+            "messages": [
+                {
+                    "role": "system",
+                    "content": "You are an assistant"
                 },
                 {
                     "role": "user",
-                    "content": "with a limit of 100 tokens (don't mention tokens) Provide as output a list of 3 stories/facts concerning both the resume and {recipientMessage}."
+                    "content": "Answer questions concerning the message"
                 }
             ]
         }

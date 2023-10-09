@@ -40,15 +40,6 @@
               "elements": [
                 {
                   "type": "Label",
-                  "text": "Personal"
-                },
-                {
-                  "type": "Control",
-                  "scope": "#/properties/personal",
-                  "label": "Personal"
-                },
-                {
-                  "type": "Label",
                   "text": "Interests"
                 },
                 {
@@ -59,6 +50,17 @@
               ]
             }
           ]
+        }
+      ]
+    },
+    {
+      "type": "Category",
+      "label": "Personal",
+      "elements": [
+        {
+          "type": "ListWithDetail",
+          "scope": "#/properties/personal",
+          "label": "Personal"
         }
       ]
     },

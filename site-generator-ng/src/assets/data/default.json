@@ -1,62 +1,65 @@
 {
     "education": [
         {
-            "title": "Dummy Degree",
-            "school": "Dummy University",
+            "title": "Degree",
+            "school": "University",
             "period": "Jan 2000 - Dec 2003",
-            "summary": "Dummy summary about the degree and the studies."
+            "summary": "summary about the degree and the studies."
         }
     ],
     "employment": [
         {
-            "title": "Dummy Job Title",
-            "description": "Dummy job description.",
+            "title": "Job Title",
+            "description": "job description.",
             "period": "Jan 2004 to Dec 2005",
             "technologies": [
-                "DummyTech1",
-                "DummyTech2"
+                "Tech1",
+                "Tech2"
             ]
         }
     ],
     "interests": [
-        "DummyInterest1",
-        "DummyInterest2"
+        "Interest1",
+        "Interest2"
     ],
     "languages": [
         {
-            "language": "DummyLanguage",
+            "language": "Language",
             "profeciency": "Intermediate"
         }
     ],
     "personal": [
         {
-            "about": "Dummy personal description."
+            "about": "personal description."
         }
     ],
     "references": [
         {
-            "platform": "dummyplatform",
-            "icon": "dummy/icon/path.svg",
-            "url": "https://www.dummyurl.com"
+            "platform": "platform",
+            "icon": "/icon/path.svg",
+            "url": "https://www.url.com"
         }
     ],
     "resume": {
-        "firstName": "DummyFirstName",
-        "lastName": "DummyLastName",
-        "address": "Dummy Address",
-        "city": "DummyCity",
-        "country": "DummyCountry",
-        "email": "dummy@email.com",
+        "firstName": "FirstName",
+        "lastName": "LastName",
+        "address": "Address",
+        "city": "City",
+        "country": "Country",
+        "email": "@email.com",
         "phone": "1234567890",
-        "website": "https://www.dummywebsite.com",
-        "birthDate": "2000-01-01"
+        "website": "https://www.website.com",
+        "birthDate": "2000-01-01",
+        "about": [
+            "about me."
+        ]
     },
     "skills": [
         {
-            "type": "DummySkillType",
+            "type": "SkillType",
             "list": [
-                "DummySkill1",
-                "DummySkill2"
+                "Skill1",
+                "Skill2"
             ]
         }
     ]
