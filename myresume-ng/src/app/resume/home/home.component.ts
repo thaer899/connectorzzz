@@ -9,7 +9,7 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  public personal: any
+  public resume: any
 
   dataFromParent: any;
   private subscription: Subscription;
@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.subscription = this.dataService.fetchData().subscribe(data => {
       this.dataFromParent = data;
-      this.personal = data.personal; // Populate the employment property
+      this.resume = data.resume.about;
     });
     const innerContent = document.getElementById('inner-content')
     if (innerContent) {
