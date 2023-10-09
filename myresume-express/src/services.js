@@ -10,23 +10,23 @@ async function getOpenAIMessage(email, recipientMessage) {
         (typeof recipientMessage === 'string' ? recipientMessage : JSON.stringify(recipientMessage)).substring(0, 100),
         '| Email:', email
     );
-    console.log('getOpenAIMessage recipientMessage:', recipientMessage);
+    console.log('########### getOpenAIMessage recipientMessage:', recipientMessage);
     const data = await getFile(email);
     const messages = await optimizeData(data, recipientMessage, 'messages',);
-    console.log('getOpenAICompletion optimized Data Messages Preview:', typeof messages === 'string' ? messages.substring(0, 100) : JSON.stringify(messages).substring(0, 100));
+    console.log('########### getOpenAICompletion optimized Data Messages Preview:', typeof messages === 'string' ? messages.substring(0, 100) : JSON.stringify(messages).substring(0, 100));
     const customOptions = {
         model: 'gpt-3.5-turbo',
         temperature: 0.2,
         max_tokens: 150
     };
     const response = await createOpenAICompletion(messages, customOptions);
-    console.log('createOpenAICompletion Response Preview:', typeof response === 'string' ? response.substring(0, 100) : JSON.stringify(response).substring(0, 100));
+    console.log('########### createOpenAICompletion Response Preview:', typeof response === 'string' ? response.substring(0, 100) : JSON.stringify(response).substring(0, 100));
     return response;
 }
 
 async function getOpenAISkill(email, recipientMessage = '') {
     const data = await getFile(email);
-    console.log('Data Size:', Buffer.from(JSON.stringify(data)).length, 'bytes');
+    console.log('########### Data Size:', Buffer.from(JSON.stringify(data)).length, 'bytes');
     const messages = await optimizeData(data, recipientMessage, 'skills');
     const customOptions = {
         model: 'gpt-3.5-turbo',
@@ -38,7 +38,7 @@ async function getOpenAISkill(email, recipientMessage = '') {
 }
 
 async function getOpenAIQuote(email) {
-    console.log('getOpenAIQuote | Email:', email);
+    console.log('########### getOpenAIQuote | Email:', email);
     const data = await getFile(email);
     const messages = await optimizeData(data, recipientMessage = '', 'quotes');
     const response = await createOpenAICompletion(messages);
@@ -60,14 +60,14 @@ async function getOpenAICompletion(recipientMessage, templateType, email) {
 
     if (email) {
         const data = await getFile(email);
-        console.log('recipientMessage before optimizeData: ', recipientMessage);
+        console.log('########### recipientMessage before optimizeData: ', recipientMessage);
         const messages = await optimizeData(data, recipientMessage, templateType)
-        console.log("getOpenAICompletion optimized Data Messages Preview | email:", messages, email);
+        console.log("########### ########### getOpenAICompletion optimized Data Messages Preview | email:", messages, email);
         response = await createOpenAICompletion(messages, recipientMessage.options);
-        console.log("created OpenAICompletion Response Preview:", JSON.stringify(response).substring(0, 100));
+        console.log("########### ########### created OpenAICompletion Response Preview:", JSON.stringify(response).substring(0, 100));
     } else {
         response = await createOpenAICompletion(recipientMessage.messages, recipientMessage.options);
-        console.log("created OpenAICompletion Response Preview:", JSON.stringify(response).substring(0, 100));
+        console.log("########### ########### created OpenAICompletion Response Preview:", JSON.stringify(response).substring(0, 100));
     }
     return response;
 }
