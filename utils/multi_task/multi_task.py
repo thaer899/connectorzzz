@@ -6,19 +6,23 @@ import os
 from autogen import AssistantAgent, UserProxyAgent
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup
 import requests
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
+driver = webdriver.Remote(
+    command_executor='http://localhost:4444/wd/hub',
+    desired_capabilities=DesiredCapabilities.CHROME,
+)
 # Initialize the WebDriver using WebDriver Manager
-# driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+# run driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
 
-def install(package):
-    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+# def install(package):
+#     subprocess.check_call([sys.executable, "-m", "pip", "install", package])
 
 
-install('selenium')
+# install('selenium')
 
 # Use Environment Variable for API Key
 
@@ -68,7 +72,10 @@ user_proxy = UserProxyAgent(
 user_proxy.initiate_chat(
     assistant,
     message="""
-Analyze this: https://thaersaidi.net , give me a summary of the site
-mention top skills and where they were used and how they were aquired.
+Analyze the site using: https://thaersaidi.net/sitemap.xml,
+give me a summary of the site,
+generate tests using pytest and selenium to test the pages
+and create files for all executables.
+use this remote selenium server: http://localhost:4444/wd/hub
 """,
 )

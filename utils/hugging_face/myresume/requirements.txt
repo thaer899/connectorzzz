@@ -1,0 +1,8 @@
+torch>=1.10.0
+transformers>=5.0.0
+requests
+torchvision 
+torchaudio 
+flask
+spacy
+en_core_web_sm

@@ -21,40 +21,20 @@ jobs:
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       API_KEY: ${{ secrets.API_KEY }}
     steps:
-    - uses: actions/checkout@v3
 
-    - name: Use Node.js 18.x
-      uses: actions/setup-node@v3
-      with:
-        node-version: 18.x
-        cache: 'npm'
-        cache-dependency-path: myresume-express/package-lock.json
-
-    - name: Install snapd
-      run: sudo apt install snapd
-
-    - name: Install yq using snap
-      run: sudo snap install yq
-
-    - name: Update serverless.yml with OPENAI_API_KEY
-      run: yq -i '.functions.message.environment.OPENAI_API_KEY =  "${{ env.OPENAI_API_KEY }}"' serverless.yml
-      working-directory: myresume-express
-
-    - name: Update server/serverless.yml with API_KEY
-      run: yq -i '.functions.message.environment.API_KEY =  "${{ env.API_KEY }}"' serverless.yml
-      working-directory: myresume-express
-
-    - name: Install serverless globally
-      run: npm install -g serverless
-
-    - name: Configure serverless AWS credentials
-      run: serverless config credentials --provider aws --key ${{ secrets.AWS_LAMDA_KEY }} --secret ${{ secrets.AWS_LAMDA_SECRET }}
-      working-directory: myresume-express
-
-    - name: Install npm dependencies
-      run: npm install
-      working-directory: myresume-express
-
-    - name: Deploy using serverless --
-      run: serverless deploy
-      working-directory: myresume-express
+      - name: Log in to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+    
+      - name: Build and deploy Container App
+        uses: azure/container-apps-deploy-action@v1
+        with:
+          appSourcePath: ${{ github.workspace }}/myresume-express
+          acrName: commonregistrythaer899
+          containerAppName: myresume-express-container
+          resourceGroup: myresume-ai
+          environmentVariables: |
+            SERVERLESS_ACCESS_KEY=${{ secrets.SERVERLESS_ACCESS_KEY }}
+            OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
+            API_KEY=${{ secrets.API_KEY }}
