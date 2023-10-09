@@ -21,4 +21,4 @@ functions:
     environment:
       OPENAI_API_KEY:
       API_KEY:
-      FIREBASE_CREDENTIALS_PATH: ../secret/site-generator-ng-firebase.json
+      FIREBASE_CREDENTIALS_PATH: ../../data/secret/site-generator-ng-firebase.json

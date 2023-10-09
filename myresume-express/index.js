@@ -2,8 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const serverless = require('serverless-http');
-const { validateApiKey } = require('./src/services');
-const routes = require('./src/routes');
+const { validateApiKey } = require('./src/controllers/apiController');
+const routes = require('./src/routes/routes');
 const PORT = process.env.PORT || 4000;
 
 // Enable CORS for a specific domain

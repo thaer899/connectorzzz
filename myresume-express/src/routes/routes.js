@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { getFile } = require('./data');
-const { getOpenAIQuote, getOpenAIMessage, getOpenAISkill, getOpenAICompletion } = require('./services');
+const { getFile } = require('../services/api/apiCommunications');
+const { getOpenAIQuote, getOpenAIMessage, getOpenAISkill, getOpenAICompletion } = require('../controllers/apiController');
 
 router.get('/', (req, res) => {
     res.send('thaer saidi resume chatbot');

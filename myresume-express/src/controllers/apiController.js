@@ -1,8 +1,9 @@
 require('dotenv').config();
 const API_KEY = process.env.API_KEY;
 const axios = require('axios');
-const { getFile, optimizeData } = require('./data');
-const { createOpenAICompletion } = require('./openai');
+const { getFile } = require('../services/api/apiCommunications');
+const { optimizeData } = require('../services/chatbot/chatbotLogic');
+const { createOpenAICompletion } = require('../services/chatbot/openai');
 
 async function getOpenAIMessage(email, recipientMessage) {
     console.log(
@@ -40,7 +41,7 @@ async function getOpenAISkill(email, recipientMessage = '') {
 async function getOpenAIQuote(email) {
     console.log('########### getOpenAIQuote | Email:', email);
     const data = await getFile(email);
-    const messages = await optimizeData(data, recipientMessage = '', 'quotes');
+    const messages = await optimizeData(data, '', 'quotes');
     const response = await createOpenAICompletion(messages);
     return response;
 }
@@ -62,12 +63,12 @@ async function getOpenAICompletion(recipientMessage, templateType, email) {
         const data = await getFile(email);
         console.log('########### recipientMessage before optimizeData: ', recipientMessage);
         const messages = await optimizeData(data, recipientMessage, templateType)
-        console.log("########### ########### getOpenAICompletion optimized Data Messages Preview | email:", messages, email);
+        console.log("########### optimized Data Messages Preview | email:", JSON.stringify(messages).substring(0, 100), email);
         response = await createOpenAICompletion(messages, recipientMessage.options);
-        console.log("########### ########### created OpenAICompletion Response Preview:", JSON.stringify(response).substring(0, 100));
+        console.log("########### created OpenAICompletion Response Preview:", JSON.stringify(response).substring(0, 100));
     } else {
         response = await createOpenAICompletion(recipientMessage.messages, recipientMessage.options);
-        console.log("########### ########### created OpenAICompletion Response Preview:", JSON.stringify(response).substring(0, 100));
+        console.log("########### created OpenAICompletion Response Preview:", JSON.stringify(response).substring(0, 100));
     }
     return response;
 }
@@ -80,6 +81,7 @@ function validateApiKey(req, res, next) {
     }
     next();
 }
+
 
 module.exports = {
     getOpenAIMessage,

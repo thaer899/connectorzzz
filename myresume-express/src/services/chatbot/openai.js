@@ -1,6 +1,6 @@
 require('dotenv').config();
 const OpenAI = require('openai');
-const { optimizeData } = require('./data');
+const { optimizeData } = require('./chatbotLogic');
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
 if (!OPENAI_API_KEY) {
