@@ -20,6 +20,6 @@ OPENAI_API_KEY=sk-1234567890
 docker run -p 6000:4000 -it -e FIREBASE_CREDENTIALS_PATH=$FIREBASE_CREDENTIALS_PATH -e OPENAI_API_KEY=$OPENAI_API_KEY myresume-express
 
 #### push to azure container registry
-docker build -t commonregistrythaer899.azurecr.io/myresume-express .
-docker push commonregistrythaer899.azurecr.io/myresume-express:latest
+docker build -t eu.gcr.io/thaersaidi-da79c/myresume-express:latest .
+docker push eu.gcr.io/thaersaidi-da79c/myresume-express:latest
 
