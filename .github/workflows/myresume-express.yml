@@ -2,6 +2,9 @@ name: myresume-express
 run-name: myresume-express:${{ github.run_number }}
 
 on:
+  push:
+    branches:
+      - master
   workflow_dispatch:
     inputs:
       job:
