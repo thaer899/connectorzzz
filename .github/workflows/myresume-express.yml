@@ -68,6 +68,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: 'Auth to Google Cloud SDK'
+        id: auth
+        uses: 'google-github-actions/auth@v1'
+        with:
+          workload_identity_provider: 'projects/250500941343/locations/global/workloadIdentityPools/github-actions/subject/SUBJECT_ATTRIBUTE_VALUE'
+          service_account: 'automation@thaersaidi-da79c.iam.gserviceaccount.com'
+
       - name: Setup Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v1
           
