@@ -74,13 +74,13 @@ jobs:
         with:
           workload_identity_provider: 'projects/250500941343/locations/global/workloadIdentityPools/github-actions/providers/github-actions-oidc'
           service_account: ${{ env.ACCOUNT }}
- 
+  
       - name: Setup Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v1
           
       - name: Authenticate to the cluster
         run: |
-          gcloud auth list --impersonate-service-account=${{ env.ACCOUNT }}
+          gcloud auth list
           gcloud config set project ${{ env.PROJECT_ID }}
           gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }} --region ${{ env.CLUSTER_REGION }} --project ${{ env.PROJECT_ID }} || gcloud feedback --verbosity=debug
       
