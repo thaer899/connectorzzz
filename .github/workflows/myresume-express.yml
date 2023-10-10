@@ -52,6 +52,7 @@ jobs:
 
       - name: 'Auth to Google Cloud SDK'
         uses: 'google-github-actions/auth@v1'
+        id: auth
         with:
           workload_identity_provider: 'projects/250500941343/locations/global/workloadIdentityPools/github-actions/subject/SUBJECT_ATTRIBUTE_VALUE'
           service_account: 'automation@thaersaidi-da79c.iam.gserviceaccount.com'
@@ -64,6 +65,14 @@ jobs:
         with:
           version: 'v3.5.2'
 
+      - name: Extract credentials path and use it
+        run: |
+          CREDS_PATH=$(echo "${{ steps.auth.outputs.stdout }}" | grep -Eo '/home/runner/work/[a-zA-Z0-9./_-]+.json')
+          echo "GOOGLE_APPLICATION_CREDENTIALS=${CREDS_PATH}" >> $GITHUB_ENV
+      
+      - name: Authenticate with GCP
+        run: gcloud auth activate-service-account --key-file=${{ env.GOOGLE_APPLICATION_CREDENTIALS }}
+      
       - name: Authenticate to the cluster
         run: |
           gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }} --region ${{ env.CLUSTER_REGION }} --project ${{ env.PROJECT_ID }}
