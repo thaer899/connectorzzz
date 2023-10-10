@@ -85,7 +85,11 @@ jobs:
           ls
           sudo apt-get install jq
           KEY_FILE=$(ls gha-creds-*.json | head -n 1)
-          jq . $KEY_FILE
+          if jq . "$KEY_FILE" >/dev/null 2>&1; then
+              echo "JSON is valid"
+          else
+              echo "Invalid JSON"
+          fi
           gcloud auth activate-service-account --key-file=$KEY_FILE
           gcloud config set project ${{ env.PROJECT_ID }}
           gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }} --region ${{ env.CLUSTER_REGION }} --project ${{ env.PROJECT_ID }} || gcloud feedback --verbosity=debug
