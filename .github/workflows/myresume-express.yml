@@ -87,6 +87,9 @@ jobs:
       - name: Authenticate to the cluster
         run: |
           gcloud info
+          cred_file_override=$(gcloud info --format='value(config.paths.credential_file_override)')
+          echo $cred_file_override
+          gcloud auth activate-service-account --key-file=$cred_file_override
           gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }} --region ${{ env.CLUSTER_REGION }} --project ${{ env.PROJECT_ID }} || gcloud feedback --verbosity=debug
 
       - name: Deploy to Kubernetes
