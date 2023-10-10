@@ -1,5 +1,5 @@
 name: myresume-ai
-run-name: myresume-ai-${{ github.run_number }}-${{ github.event.inputs.app }}:${{ github.run_number }}
+run-name: myresume-ai-${{ github.event.inputs.app }}:${{ github.run_number }}
 
 on:
   workflow_dispatch:
@@ -55,7 +55,7 @@ jobs:
       - name: Log in to Google Container Registry
         uses: docker/login-action@v1
         with:
-          registry: ${{ env.IMAGE_REGISTRY }}
+          registry: eu.gcr.io
           username: _json_key
           password: ${{ secrets.GCP_THAERSAIDI_SA }}
 
