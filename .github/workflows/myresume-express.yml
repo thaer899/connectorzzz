@@ -67,6 +67,8 @@ jobs:
       - name: Deploy to Kubernetes
         run: |
           echo ${{ env.CLOUDSDK_AUTH_ACCESS_TOKEN}} > creds.json
-          gcloud auth activate-service-account --key-file=creds.json
+          gcloud auth login --cred-file=./creds.json
+          gcloud config set account ${{ env.ACCOUNT }}
           gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }} --region ${{ env.CLUSTER_REGION }} --project ${{ env.PROJECT_ID }}
           helm upgrade --install ${{ env.RELEASE_NAME }} ${{ env.CHART_PATH }} --set image.tag=${{ env.IMAGE_TAG }}
+          rm creds.json
