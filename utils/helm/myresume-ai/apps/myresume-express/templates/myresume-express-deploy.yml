@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
         - name: "{{.Values.appName}}-container"
-          image: eu.gcr.io/thaersaidi-da79c/{{.Values.appName}}
+          image: "{{.Values.registry}}/{{.Values.projectName}}/{{.Values.appName}}"
           ports:
             - containerPort: 4000
           env:
