@@ -11,8 +11,8 @@ on:
         type: choice
         description: 'Task to run'
         required: true
-        default: build
         options:
+          - ''
           - build
           - deploy
 
