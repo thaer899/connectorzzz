@@ -33,7 +33,7 @@ jobs:
       APP_NAME: ${{ github.event.inputs.app }}
       IMAGE_REGISTRY: eu.gcr.io
       IMAGE_TAG: eu.gcr.io/thaersaidi-da79c/myresume-express:${{ github.run_number }}
-      APP_CHART_PATH: ./utils/helm/myresume-ai/apps/${{ env.APP_NAME }}
+      APP_CHART_PATH: ./utils/helm/myresume-ai/apps/${{ github.event.inputs.app }}
       COMMON_CHART_PATH: ./utils/helm/myresume-ai/common
       CLUSTER_REGION: europe-west1
       CLOUDSDK_AUTH_ACCESS_TOKEN: ${{ secrets.GCP_THAERSAIDI_SA }}
@@ -86,7 +86,7 @@ jobs:
           gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }} --region ${{ env.CLUSTER_REGION }} --project ${{ env.PROJECT_ID }}
           helm upgrade --install ${{ env.APP_NAME }}-${{ github.run_number }} ${{ env.APP_CHART_PATH }}
           rm creds.json
-          
+
       - name: Deploy Common Chart to Kubernetes
         if: github.event.inputs.common == 'true'
         run: |
