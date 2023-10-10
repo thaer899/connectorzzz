@@ -24,10 +24,6 @@ jobs:
       CLUSTER_REGION: europe-west1
       ACCOUNT: thaersaidi-da79c@appspot.gserviceaccount.com
 
-    permissions:
-      contents: 'read'
-      id-token: 'write'      
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
