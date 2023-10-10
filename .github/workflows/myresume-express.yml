@@ -76,7 +76,7 @@ jobs:
         with:
           workload_identity_provider: 'projects/250500941343/locations/global/workloadIdentityPools/github-actions/subject/SUBJECT_ATTRIBUTE_VALUE'
           service_account: 'automation@thaersaidi-da79c.iam.gserviceaccount.com'
-      
+
       - name: Extract credentials path and set as output
         id: extract_path
         run: |
@@ -93,10 +93,9 @@ jobs:
         uses: azure/setup-helm@v1
         with:
           version: 'v3.5.2'
-
   
       - name: Authenticate with GCP
-        run: gcloud auth activate-service-account --key-file=${{ steps.extract_path.outputs.creds_path }}
+        run: gcloud auth activate-service-account
       
       - name: Authenticate to the cluster
         run: |
