@@ -72,26 +72,31 @@ jobs:
           workload_identity_provider: ${{ env.WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ env.SERVICE_ACCOUNT_EMAIL }}
   
-      - name: Setup Google Cloud SDK
+      - name: Set up gcloud CLI
         uses: google-github-actions/setup-gcloud@v1
+        with:
+          project_id: ${{ env.PROJECT_ID }}
+          service_account_key: ${{ secrets.GCP_THAERSAIDI_SA }}
+          export_default_credentials: true
+          
+      - name: Install GKE Auth plugin
+        run: |
+          gcloud components install gke-gcloud-auth-plugin
 
+      - name: Authenticate to the cluster
+        run: |
+        gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }} --region ${{ env.CLUSTER_REGION }} --project ${{ env.PROJECT_ID }} || gcloud feedback --verbosity=debug
+    
       - name: Install Helm
         uses: azure/setup-helm@v1
         with:
           version: 'v3.5.2'
 
-      - name: Authenticate to the cluster
-        run: |
-        gcloud auth login ${{ env.SERVICE_ACCOUNT_EMAIL }}
-        gcloud auth print-access-token --impersonate-service-account=${{ env.SERVICE_ACCOUNT_EMAIL }}
-        gcloud config set project ${{ env.PROJECT_ID }}
-        gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }} --region ${{ env.CLUSTER_REGION }} --project ${{ env.PROJECT_ID }} || gcloud feedback --verbosity=debug
-    
-      - name: Deploy to Kubernetes
-        run: |
-          helm upgrade --install ${{ env.RELEASE_NAME }} ${{ env.CHART_PATH }} --set image.tag=${{ env.IMAGE_TAG }}
-
       - name: Deploy Common Chart to Kubernetes
         if: github.event.inputs.common == 'true'
         run: |
           helm upgrade --install ${{ env.APP_NAME }}-${{ github.run_number }} ${{ env.COMMON_CHART_PATH }}
+
+      - name: Deploy to Kubernetes
+        run: |
+          helm upgrade --install ${{ env.RELEASE_NAME }} ${{ env.CHART_PATH }} --set image.tag=${{ env.IMAGE_TAG }}
