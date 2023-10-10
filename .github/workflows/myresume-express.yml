@@ -89,7 +89,7 @@ jobs:
           echo ${{ secrets.GCP_THAERSAIDI_SA }} | jq '.' > cred.json
           cat cred.json
           jq . cred.json
-          gcloud auth activate-service-account --key-file=cred.json
+          gcloud auth activate-service-account --key-file="cred.json"
           gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }} --region ${{ env.CLUSTER_REGION }} --project ${{ env.PROJECT_ID }} || gcloud feedback --verbosity=debug
 
       - name: Deploy to Kubernetes
