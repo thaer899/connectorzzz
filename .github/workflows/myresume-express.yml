@@ -91,7 +91,7 @@ jobs:
           else
               echo "Invalid JSON"
           fi
-          gcloud auth activate-service-account --key-file=  
+          gcloud auth activate-service-account --key-file=$KEY_FILE 
           gcloud config set project ${{ env.PROJECT_ID }}
           gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }} --region ${{ env.CLUSTER_REGION }} --project ${{ env.PROJECT_ID }} || gcloud feedback --verbosity=debug
       
