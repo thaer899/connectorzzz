@@ -58,8 +58,10 @@ jobs:
       CHART_PATH: ./utils/helm/myresume-ai/apps/myresume-express
       PROJECT_ID: thaersaidi-da79c
       CLUSTER_REGION: europe-west1
-      ACCOUNT: 'thaersaidi-sa@thaersaidi-da79c.iam.gserviceaccount.com'
+      SERVICE_ACCOUNT_EMAIL: 'thaersaidi-sa@thaersaidi-da79c.iam.gserviceaccount.com'
+      SERVICE_ACCOUNT: 'thaersaidi-sa'
       WORKLOAD_IDENTITY_PROVIDER: 'projects/250500941343/locations/global/workloadIdentityPools/github-actions/providers/github-actions-oidc'
+
     permissions:
       contents: 'read'
       id-token: 'write'      
@@ -73,25 +75,15 @@ jobs:
         uses: 'google-github-actions/auth@v1'
         with:
           workload_identity_provider: ${{ env.WORKLOAD_IDENTITY_PROVIDER }}
-          service_account: ${{ env.ACCOUNT }}
+          service_account: ${{ env.SERVICE_ACCOUNT }}
   
       - name: Setup Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v1
           
       - name: Authenticate to the cluster
         run: |
-          gcloud auth list
-          ls
-          sudo apt-get install jq
-          KEY_FILE=$(ls gha-creds-*.json | head -n 1)
-          echo "Using key file $KEY_FILE"
-          cat $KEY_FILE
-          if jq . "$KEY_FILE" >/dev/null 2>&1; then
-              echo "JSON is valid"
-          else
-              echo "Invalid JSON"
-          fi
-          gcloud auth activate-service-account --key-file=$KEY_FILE 
+          gcloud auth login ${{ env.ACCOUNT }}
+          gcloud auth print-access-token --impersonate-service-account=${{ env.SERVICE_ACCOUNT_EMAIL }}
           gcloud config set project ${{ env.PROJECT_ID }}
           gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }} --region ${{ env.CLUSTER_REGION }} --project ${{ env.PROJECT_ID }} || gcloud feedback --verbosity=debug
       
