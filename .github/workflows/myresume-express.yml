@@ -11,22 +11,17 @@ on:
         type: choice
         description: 'Task to run'
         required: true
+        default: 'build'
         options:
+          - build
           - deploy
 
 jobs:
-  deploy:
-    if: github.event.inputs.job == 'deploy'
+  build:
+    if: github.event.inputs.job == 'build'
     runs-on: ubuntu-latest
     env:
-      CLUSTER_NAME: myresume-ai
       IMAGE_TAG: eu.gcr.io/thaersaidi-da79c/myresume-express:${{ github.run_number }}
-      RELEASE_NAME: myresume-express
-      CHART_PATH: ./utils/helm/myresume-ai/apps/myresume-express
-      PROJECT_ID: thaersaidi-da79c
-      CLUSTER_REGION: europe-west1
-      ACCOUNT: thaersaidi-da79c@appspot.gserviceaccount.com
-      CLOUDSDK_AUTH_ACCESS_TOKEN: ${{ secrets.GCP_THAERSAIDI_SA }}
 
     permissions:
       contents: 'read'
@@ -52,6 +47,27 @@ jobs:
           context: ./myresume-express
           push: true
           tags: ${{ env.IMAGE_TAG }}
+
+  deploy:
+    if: github.event.inputs.job == 'deploy'
+    runs-on: ubuntu-latest
+    env:
+      CLUSTER_NAME: myresume-ai
+      IMAGE_TAG: eu.gcr.io/thaersaidi-da79c/myresume-express:latest
+      RELEASE_NAME: myresume-express
+      CHART_PATH: ./utils/helm/myresume-ai/apps/myresume-express
+      PROJECT_ID: thaersaidi-da79c
+      CLUSTER_REGION: europe-west1
+      ACCOUNT: thaersaidi-da79c@appspot.gserviceaccount.com
+      CLOUDSDK_AUTH_ACCESS_TOKEN: ${{ secrets.GCP_THAERSAIDI_SA }}
+
+    permissions:
+      contents: 'read'
+      id-token: 'write'      
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
       - name: 'Auth to Google Cloud SDK'
         uses: 'google-github-actions/auth@v1'
