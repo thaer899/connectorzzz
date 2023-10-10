@@ -82,7 +82,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: 'Auth to Google Cloud SDK'
         uses: 'google-github-actions/auth@v1'
