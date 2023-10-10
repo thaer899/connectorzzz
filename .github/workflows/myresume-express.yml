@@ -19,7 +19,11 @@ jobs:
       RELEASE_NAME: myresume-express
       CHART_PATH: ./utils/helm/myresume-ai/apps/myresume-express
       PROJECT_ID: thaersaidi-da79c
-    
+
+    permissions:
+      contents: 'read'
+      id-token: 'write'      
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -41,6 +45,12 @@ jobs:
           push: true
           tags: ${{ env.IMAGE_TAG }}
 
+      - name: 'Auth to Google Cloud SDK'
+        uses: 'google-github-actions/auth@v1'
+        with:
+          workload_identity_provider: 'projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider'
+          service_account: 'thaersaidi-da79c@appspot.gserviceaccount.com'
+  
       - name: Setup Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v1
         with:
