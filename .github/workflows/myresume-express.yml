@@ -16,6 +16,7 @@ jobs:
     if: github.event.inputs.job == 'deploy'
     runs-on: ubuntu-latest
     env:
+      CLUSTER_NAME: myresume-ai
       IMAGE_TAG: eu.gcr.io/thaersaidi-da79c/myresume-express:${{ github.run_number }}
       RELEASE_NAME: myresume-express
       CHART_PATH: ./utils/helm/myresume-ai/apps/myresume-express
@@ -64,6 +65,5 @@ jobs:
 
       - name: Deploy to Kubernetes
         run: |
-          gcloud config set compute/zone your-compute-zone
-          gcloud container clusters get-credentials your-cluster-name
+          gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }}
           helm upgrade --install ${{ env.RELEASE_NAME }} ${{ env.CHART_PATH }} --set image.tag=${{ env.IMAGE_TAG }}

@@ -28,6 +28,7 @@ jobs:
     if: github.event.inputs.job == 'deploy'
     runs-on: ubuntu-latest
     env:
+      CLUSTER_NAME: myresume-ai
       PROJECT_ID: thaersaidi-da79c
       IMAGE_REGISTRY: eu.gcr.io
       IMAGE_TAG: ${{ env.IMAGE_REGISTRY }}/${{ env.PROJECT_ID }}/${{ github.event.inputs.app }}:${{ github.run_number}}
@@ -77,13 +78,12 @@ jobs:
 
       - name: Deploy to Kubernetes
         run: |
-          gcloud config set compute/zone your-compute-zone
-          gcloud container clusters get-credentials your-cluster-name
+          gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }}
           helm upgrade --install ${{ env.APP_NAME }}-${{ github.run_number }} ${{ env.APP_CHART_PATH }}
 
       - name: Deploy Common Chart to Kubernetes
         if: github.event.inputs.common == 'true'
         run: |
           gcloud config set compute/zone your-compute-zone
-          gcloud container clusters get-credentials your-cluster-name
+          gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }}
           helm upgrade --install ${{ env.APP_NAME }}-${{ github.run_number }} ${{ env.COMMON_CHART_PATH }}
