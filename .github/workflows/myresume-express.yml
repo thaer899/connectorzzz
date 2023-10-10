@@ -70,12 +70,21 @@ jobs:
         uses: actions/checkout@v3
 
       - name: 'Auth to Google Cloud SDK'
-        uses: 'google-github-actions/auth@v1'
         id: auth
+        uses: 'google-github-actions/auth@v1'
         with:
           workload_identity_provider: 'projects/250500941343/locations/global/workloadIdentityPools/github-actions/subject/SUBJECT_ATTRIBUTE_VALUE'
           service_account: 'automation@thaersaidi-da79c.iam.gserviceaccount.com'
-  
+      
+      - name: Extract credentials path and set as output
+        id: extract_path
+        run: |
+          # Extracting the dynamic path
+          CREDS_PATH=$(echo "${{ steps.auth.outputs.stdout }}" | grep -oP '"\K.*\.json(?=")')
+          # Setting the path as an environment variable and output
+          echo "CREDS_PATH=$CREDS_PATH" >> $GITHUB_ENV
+          echo "::set-output name=creds_path::$CREDS_PATH"
+      
       - name: Setup Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v1
           
@@ -84,18 +93,9 @@ jobs:
         with:
           version: 'v3.5.2'
 
-      - name: Extract and Debug Credentials Path
-        run: |
-          CREDS_PATH=$(echo "" | grep -Eo '/home/runner/work/[a-zA-Z0-9./_-]+.json')
-          echo "Extracted Path: ${CREDS_PATH}"
-          ls -l /home/runner/work/thaersaidi.net/thaersaidi.net/
-          echo "GOOGLE_APPLICATION_CREDENTIALS=${CREDS_PATH}" >> $GITHUB_ENV
-      
-      - name: Set GOOGLE_APPLICATION_CREDENTIALS
-        run: echo "GOOGLE_APPLICATION_CREDENTIALS=/home/runner/work/thaersaidi.net/thaersaidi.net/gha-creds-4e6e388087e85d9c.json" >> $GITHUB_ENV
-        
+  
       - name: Authenticate with GCP
-        run: gcloud auth activate-service-account --key-file=${{ env.GOOGLE_APPLICATION_CREDENTIALS }}
+        run: gcloud auth activate-service-account --key-file=${{ steps.extract_path.outputs.creds_path }}
       
       - name: Authenticate to the cluster
         run: |
