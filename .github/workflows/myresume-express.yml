@@ -87,7 +87,7 @@ jobs:
       - name: Authenticate to the cluster
         run: |
           sudo apt-get install jq
-          echo ${{ secrets.GCP_THAERSAIDI_SA }} > cred.json
+          echo "${{ secrets.GCP_THAERSAIDI_SA }}" > cred.json
           echo $KEY_FILE
           jq . $KEY_FILE
           gcloud auth activate-service-account --key-file="cred.json"
