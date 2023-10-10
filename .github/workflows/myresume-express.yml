@@ -50,7 +50,7 @@ jobs:
 
   deploy:
     if: (always() && github.event_name == 'workflow_dispatch' && github.event.inputs.job == 'deploy' ) || ( github.event_name == 'push' )
-    depends-on: build
+    depends: build
     runs-on: ubuntu-latest
     env:
       CLUSTER_NAME: myresume-ai
