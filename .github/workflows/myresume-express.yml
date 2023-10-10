@@ -84,9 +84,6 @@ jobs:
         with:
           version: 'v3.5.2'
   
-      - name: Authenticate with GCP
-        run: gcloud auth activate-service-account
-      
       - name: Authenticate to the cluster
         run: |
           gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }} --region ${{ env.CLUSTER_REGION }} --project ${{ env.PROJECT_ID }}
