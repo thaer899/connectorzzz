@@ -87,7 +87,7 @@ jobs:
       - name: Authenticate to the cluster
         run: |
           gcloud info
-          gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }} --region ${{ env.CLUSTER_REGION }} --project ${{ env.PROJECT_ID }}
+          gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }} --region ${{ env.CLUSTER_REGION }} --project ${{ env.PROJECT_ID }} || gcloud feedback --verbosity=debug
 
       - name: Deploy to Kubernetes
         run: |
