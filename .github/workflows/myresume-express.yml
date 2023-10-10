@@ -64,11 +64,8 @@ jobs:
         with:
           version: 'v3.5.2'
 
-      - name: Authenticate to Google Cloud
+      - name: Authenticate to the cluster
         run: |
-          echo ${{ env.CLOUDSDK_AUTH_ACCESS_TOKEN}} > creds.json
-          ls -la
-          gcloud activate-service-account  --key-file=/creds.json
           gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }} --region ${{ env.CLUSTER_REGION }} --project ${{ env.PROJECT_ID }}
 
       - name: Deploy to Kubernetes
