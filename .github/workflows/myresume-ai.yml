@@ -1,5 +1,5 @@
 name: myresume-ai
-run-name: myresume-ai-${{ github.run_number }}-${{ github.event.inputs.app }}-${{ (github.event.inputs.common == 'true') && '-common' || '' }}
+run-name: myresume-ai-${{ github.run_number }}-${{ github.event.inputs.app }}${{ (github.event.inputs.common == 'true') && '-common' || '' }}
 
 on:
   workflow_dispatch:
@@ -19,7 +19,7 @@ on:
           - deploy
       common:
         type: boolean
-        description: 'Common components'
+        description: 'Common'
         required: true
         default: false
 
