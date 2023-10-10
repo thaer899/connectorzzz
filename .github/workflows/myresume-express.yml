@@ -86,6 +86,7 @@ jobs:
           sudo apt-get install jq
           KEY_FILE=$(ls gha-creds-*.json | head -n 1)
           echo "Using key file $KEY_FILE"
+          cat $KEY_FILE
           if jq . "$KEY_FILE" >/dev/null 2>&1; then
               echo "JSON is valid"
           else
