@@ -1,5 +1,5 @@
 name: myresume-express
-run-name: myresume-express:${{ github.run_number }}
+run-name: myresume-express-${{github.event.inputs.job}}:${{ github.run_number }}
 
 on:
   push:
@@ -18,7 +18,7 @@ on:
 
 jobs:
   build:
-    if: github.event.inputs.job == 'build'
+    if: (github.event_name == 'workflow_dispatch' && github.event.inputs.job == 'build' ) || ( github.event_name == 'push' )
     runs-on: ubuntu-latest
     env:
       IMAGE_TAG: eu.gcr.io/thaersaidi-da79c/myresume-express:${{ github.run_number }}
@@ -49,7 +49,7 @@ jobs:
           tags: ${{ env.IMAGE_TAG }}
 
   deploy:
-    if: (always() && github.event.inputs.job == 'deploy')
+    if: (always() && github.event_name == 'workflow_dispatch' && github.event.inputs.job == 'deploy' ) || ( github.event_name == 'push' )
     runs-on: ubuntu-latest
     env:
       CLUSTER_NAME: myresume-ai
