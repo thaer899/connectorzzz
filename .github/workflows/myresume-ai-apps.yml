@@ -74,16 +74,15 @@ jobs:
         with:
           version: 'v3.5.2'
 
-        - name: Deploy to Kubernetes
-          run: |
-            gcloud config set compute/zone your-compute-zone
-            gcloud container clusters get-credentials your-cluster-name
-            helm upgrade --install ${{ env.APP_NAME }}-${{ github.run_number }} ${{ env.APP_CHART_PATH }}
-  
-        - name: Deploy Common Chart to Kubernetes
-          if: github.event.inputs.common == 'true'
-          run: |
-            gcloud config set compute/zone your-compute-zone
-            gcloud container clusters get-credentials your-cluster-name
-            helm upgrade --install ${{ env.APP_NAME }}-${{ github.run_number }} ${{ env.COMMON_CHART_PATH }}
-  
+      - name: Deploy to Kubernetes
+        run: |
+          gcloud config set compute/zone your-compute-zone
+          gcloud container clusters get-credentials your-cluster-name
+          helm upgrade --install ${{ env.APP_NAME }}-${{ github.run_number }} ${{ env.APP_CHART_PATH }}
+
+      - name: Deploy Common Chart to Kubernetes
+        if: github.event.inputs.common == 'true'
+        run: |
+          gcloud config set compute/zone your-compute-zone
+          gcloud container clusters get-credentials your-cluster-name
+          helm upgrade --install ${{ env.APP_NAME }}-${{ github.run_number }} ${{ env.COMMON_CHART_PATH }}
