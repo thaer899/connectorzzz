@@ -49,7 +49,7 @@ jobs:
           tags: ${{ env.IMAGE_TAG }}
 
   deploy:
-    if: github.event.inputs.job == 'deploy'
+    if: (always() && github.event.inputs.job == 'deploy')
     runs-on: ubuntu-latest
     env:
       CLUSTER_NAME: myresume-ai
@@ -88,7 +88,7 @@ jobs:
         run: echo "GOOGLE_APPLICATION_CREDENTIALS=/home/runner/work/thaersaidi.net/thaersaidi.net/gha-creds-4e6e388087e85d9c.json" >> $GITHUB_ENV
         
       - name: Authenticate with GCP
-        run: gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
+        run: gcloud auth activate-service-account --key-file=${{ env.GOOGLE_APPLICATION_CREDENTIALS }}
       
       - name: Authenticate to the cluster
         run: |
