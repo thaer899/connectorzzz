@@ -15,10 +15,10 @@ jobs:
     if: github.event.inputs.job == 'deploy'
     runs-on: ubuntu-latest
     env:
-      GCP_SA_KEY: ${{ secrets.FIREBASE_SECRET_MYRESUME }}
       IMAGE_TAG: eu.gcr.io/thaersaidi-da79c/myresume-express:${{ github.run_number }}
       RELEASE_NAME: myresume-express
       CHART_PATH: ./utils/helm/myresume-ai/apps/myresume-express
+      PROJECT_ID: thaersaidi-da79c
     
     steps:
       - name: Checkout code
@@ -42,9 +42,10 @@ jobs:
           tags: ${{ env.IMAGE_TAG }}
 
       - name: Setup Google Cloud SDK
-        uses: google-github-actions/setup-gcloud@master
+        uses: google-github-actions/setup-gcloud@v1
         with:
-          project_id: your-gcp-project-id
+          variant: '>= 363.0.0'
+          project_id: ${{ env.PROJECT_ID }}
           service_account_key: ${{ secrets.FIREBASE_SECRET_MYRESUME }}
           export_default_credentials: true
 
