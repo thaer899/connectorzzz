@@ -31,7 +31,7 @@ jobs:
       CLUSTER_NAME: myresume-ai
       PROJECT_ID: thaersaidi-da79c
       IMAGE_REGISTRY: eu.gcr.io
-      IMAGE_TAG: ${{ env.IMAGE_REGISTRY }}/${{ env.PROJECT_ID }}/${{ github.event.inputs.app }}:${{ github.run_number}}
+      IMAGE_TAG: ${{ env.IMAGE_REGISTRY }}/${{ env.PROJECT_ID }}/${{ github.event.inputs.app }}:latest
       APP_CHART_PATH: ./utils/helm/myresume-ai/apps/${{ env.APP_NAME }}
       COMMON_CHART_PATH: ./utils/helm/myresume-ai/common
       CLUSTER_REGION: europe-west1
@@ -69,8 +69,6 @@ jobs:
   
       - name: Setup Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v1
-        with:
-          variant: '>= 363.0.0'
 
       - name: Install Helm
         uses: azure/setup-helm@v1
