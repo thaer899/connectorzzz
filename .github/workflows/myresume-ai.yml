@@ -79,21 +79,18 @@ jobs:
         with:
           version: 'v3.5.2'
 
-      - name: Deploy to Kubernetes
+      - name: Authenticate to Google Cloud
         run: |
-          echo ${{env.CLOUDSDK_AUTH_ACCESS_TOKEN}} > creds.json
+          echo ${{ env.CLOUDSDK_AUTH_ACCESS_TOKEN}} > creds.json
           gcloud auth login --cred-file=./creds.json
           gcloud config set account ${{ env.ACCOUNT }}
           gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }} --region ${{ env.CLUSTER_REGION }} --project ${{ env.PROJECT_ID }}
-          helm upgrade --install ${{ env.APP_NAME }}-${{ github.run_number }} ${{ env.APP_CHART_PATH }}
-          rm creds.json
+
+      - name: Deploy to Kubernetes
+        run: |
+          helm upgrade --install ${{ env.RELEASE_NAME }} ${{ env.CHART_PATH }} --set image.tag=${{ env.IMAGE_TAG }}
 
       - name: Deploy Common Chart to Kubernetes
         if: github.event.inputs.common == 'true'
         run: |
-          echo ${{env.CLOUDSDK_AUTH_ACCESS_TOKEN}} > creds.json
-          gcloud auth login --cred-file=./creds.json
-          gcloud config set account ${{ env.ACCOUNT }}
-          gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }} --region ${{ env.CLUSTER_REGION }} --project ${{ env.PROJECT_ID }}
           helm upgrade --install ${{ env.APP_NAME }}-${{ github.run_number }} ${{ env.COMMON_CHART_PATH }}
-          rm creds.json
