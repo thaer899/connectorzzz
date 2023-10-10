@@ -62,3 +62,23 @@ spec:
       name: https
       port: 443
       targetPort: 4000
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: "{{ .Values.appName }}-ingress"
+  annotations:
+    kubernetes.io/ingress.spec.ingressClassName: "gce"
+spec:
+  rules:
+    - host: "{{ .Values.host }}"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: "{{.Values.appName}}-service"
+                port:
+                  number: 443

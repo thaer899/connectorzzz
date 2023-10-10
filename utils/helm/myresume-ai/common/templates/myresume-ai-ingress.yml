@@ -5,20 +5,11 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: "{{.Values.projectName}}-ingress"
+  name: "{{ .Values.certName }}-ingress"
   annotations:
-    kubernetes.io/ingress.global-static-ip-name: "{{.Values.ipName}}"
-    networking.gke.io/managed-certificates: "{{.Values.certName}}"
+    kubernetes.io/ingress.global-static-ip-name: "{{ .Values.ipName }}"
+    networking.gke.io/managed-certificates: "{{ .Values.certName }}"
     kubernetes.io/ingress.spec.ingressClassName: "gce"
 spec:
   rules:
-    - host: "{{.Values.host}}"
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: "{{.Values.appName }}-service"
-                port:
-                  number: 443
+    - host: "{{ .Values.host }}"
