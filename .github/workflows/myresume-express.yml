@@ -73,7 +73,7 @@ jobs:
         uses: 'google-github-actions/auth@v1'
         with:
           workload_identity_provider: 'projects/250500941343/locations/global/workloadIdentityPools/github-actions/providers/github-actions-oidc'
-          service_account: 'thaersaidi-da79c@appspot.gserviceaccount.com'
+          service_account: 'automation@thaersaidi.iam.gserviceaccount.com'
 
       - name: Setup Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v1
