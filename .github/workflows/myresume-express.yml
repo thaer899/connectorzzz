@@ -22,7 +22,7 @@ jobs:
       CHART_PATH: ./utils/helm/myresume-ai/apps/myresume-express
       PROJECT_ID: thaersaidi-da79c
       CLUSTER_REGION: europe-west1
-      ACCOUNT: rebel.saidi.thaer@gmail.com
+      ACCOUNT: thaersaidi-da79c@appspot.gserviceaccount.com
 
     permissions:
       contents: 'read'
@@ -58,7 +58,7 @@ jobs:
       - name: Setup Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v1
         with:
-          variant: '>= 363.0.0'
+          project_id:  ${{ env.PROJECT_ID }}
           
       - name: Install Helm
         uses: azure/setup-helm@v1
