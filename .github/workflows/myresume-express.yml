@@ -10,9 +10,8 @@ on:
       job:
         type: choice
         description: 'Task to run'
-        required: true
+        required: false
         options:
-          - ''
           - build
           - deploy
 
@@ -77,15 +76,6 @@ jobs:
           workload_identity_provider: 'projects/250500941343/locations/global/workloadIdentityPools/github-actions/subject/SUBJECT_ATTRIBUTE_VALUE'
           service_account: 'automation@thaersaidi-da79c.iam.gserviceaccount.com'
 
-      - name: Extract credentials path and set as output
-        id: extract_path
-        run: |
-          # Extracting the dynamic path
-          CREDS_PATH=$(echo "${{ steps.auth.outputs.stdout }}" | grep -oP '"\K.*\.json(?=")')
-          # Setting the path as an environment variable and output
-          echo "CREDS_PATH=$CREDS_PATH" >> $GITHUB_ENV
-          echo "::set-output name=creds_path::$CREDS_PATH"
-      
       - name: Setup Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v1
           
