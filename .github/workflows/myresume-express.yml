@@ -18,7 +18,7 @@ on:
 
 jobs:
   build:
-    if: (github.event_name == 'workflow_dispatch' && github.event.inputs.job == 'build' ) || ( github.event_name == 'push' )
+    if: (github.event_name == 'workflow_dispatch' && github.event.inputs.job == 'build' )
     runs-on: ubuntu-latest
     env:
       IMAGE_TAG: eu.gcr.io/thaersaidi-da79c/myresume-express:${{ github.run_number }}
