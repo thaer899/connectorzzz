@@ -66,7 +66,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: 'Auth to Google Cloud SDK'
         id: auth
@@ -78,16 +78,16 @@ jobs:
       - name: Setup Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v1
           
-      - name: Install Helm
-        uses: azure/setup-helm@v1
-        with:
-          version: 'v3.5.2'
-  
       - name: Authenticate to the cluster
         run: |
           gcloud config set project ${{ env.PROJECT_ID }}
           gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }} --region ${{ env.CLUSTER_REGION }} --project ${{ env.PROJECT_ID }} || gcloud feedback --verbosity=debug
-
+      
+      - name: Install Helm
+        uses: azure/setup-helm@v1
+        with:
+          version: 'v3.5.2'
+    
       - name: Deploy to Kubernetes
         run: |
           helm upgrade --install ${{ env.RELEASE_NAME }} ${{ env.CHART_PATH }} --set image.tag=${{ env.IMAGE_TAG }}
