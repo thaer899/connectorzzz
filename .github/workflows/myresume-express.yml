@@ -85,9 +85,8 @@ jobs:
           ls
           sudo apt-get install jq
           KEY_FILE=$(ls gha-creds-*.json | head -n 1)
-          echo $KEY_FILE
           jq . $KEY_FILE
-          gcloud auth activate-service-account --key-file="$KEY_FILE"
+          gcloud auth activate-service-account --key-file=$KEY_FILE
           gcloud config set project ${{ env.PROJECT_ID }}
           gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }} --region ${{ env.CLUSTER_REGION }} --project ${{ env.PROJECT_ID }} || gcloud feedback --verbosity=debug
       
