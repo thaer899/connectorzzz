@@ -4,10 +4,10 @@ on:
   workflow_dispatch:
     inputs:
       job:
+        type: choice
         description: 'Task to run'
         required: true
         options:
-          - test
           - deploy
 
 jobs:
