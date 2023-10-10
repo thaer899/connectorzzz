@@ -1,0 +1,59 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: "{{.Values.appName}}-secret"
+type: Opaque
+data:
+  OPENAI_API_KEY: "{{.Values.OPENAI_API_KEY}}"
+  FIREBASE_CREDENTIALS_PATH: "{{.Values.FIREBASE_CREDENTIALS_PATH}}"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{.Values.appName}}-deployment"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: "{{.Values.appName}}"
+  template:
+    metadata:
+      labels:
+        app: "{{.Values.appName}}"
+    spec:
+      containers:
+        - name: "{{.Values.appName}}-container"
+          image: eu.gcr.io/thaersaidi-da79c/{{.Values.appName}}
+          ports:
+            - containerPort: 4000
+          env:
+            - name: OPENAI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: "{{.Values.appName}}-secret"
+                  key: OPENAI_API_KEY
+            - name: FIREBASE_CREDENTIALS_PATH
+              valueFrom:
+                secretKeyRef:
+                  name: "{{.Values.appName}}-secret"
+                  key: FIREBASE_CREDENTIALS_PATH
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: "{{.Values.appName}}-service"
+spec:
+  selector:
+    app: "{{.Values.appName}}"
+  type: NodePort
+  ports:
+    - protocol: TCP
+      name: http
+      port: 80
+      targetPort: 4000
+    - protocol: TCP
+      name: https
+      port: 443
+      targetPort: 4000
