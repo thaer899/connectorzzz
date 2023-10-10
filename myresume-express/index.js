@@ -6,6 +6,14 @@ const { validateApiKey } = require('./src/controllers/apiController');
 const routes = require('./src/routes/routes');
 const PORT = process.env.PORT || 4000;
 
+
+// Middleware for logging incoming requests
+app.use((req, res, next) => {
+  console.log(`Received a ${req.method} request to: ${req.originalUrl}`);
+  next();
+});
+
+
 // Enable CORS for a specific domain
 // app.use(cors({
 //   origin: '*'
