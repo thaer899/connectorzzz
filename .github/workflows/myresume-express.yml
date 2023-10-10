@@ -17,19 +17,23 @@ jobs:
     runs-on: ubuntu-latest
     env:
       CLUSTER_NAME: myresume-ai
-      IMAGE_TAG: eu.gcr.io/thaersaidi-da79c/myresume-express:latest
+      IMAGE_TAG: eu.gcr.io/thaersaidi-da79c/myresume-express:${{ github.run_number }}
       RELEASE_NAME: myresume-express
       CHART_PATH: ./utils/helm/myresume-ai/apps/myresume-express
       PROJECT_ID: thaersaidi-da79c
       CLUSTER_REGION: europe-west1
       ACCOUNT: thaersaidi-da79c@appspot.gserviceaccount.com
 
+    permissions:
+      contents: 'read'
+      id-token: 'write'      
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
         
-      # - name: Set up Docker Buildx
-      #   uses: docker/setup-buildx-action@v1
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
       
       - name: Log in to Google Container Registry
         uses: docker/login-action@v1 
@@ -53,8 +57,6 @@ jobs:
   
       - name: Setup Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v1
-        with:
-          project_id:  ${{ env.PROJECT_ID }}
           
       - name: Install Helm
         uses: azure/setup-helm@v1
