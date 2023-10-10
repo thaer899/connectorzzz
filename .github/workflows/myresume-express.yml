@@ -86,7 +86,9 @@ jobs:
   
       - name: Authenticate to the cluster
         run: |
-          gcloud auth activate-service-account --key-file=gha-creds-*.json
+          KEY_FILE=$(ls gha-creds-*.json | head -n 1)
+          echo $KEY_FILE
+          gcloud auth activate-service-account --key-file="$KEY_FILE"
           gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }} --region ${{ env.CLUSTER_REGION }} --project ${{ env.PROJECT_ID }} || gcloud feedback --verbosity=debug
 
       - name: Deploy to Kubernetes
