@@ -79,6 +79,7 @@ jobs:
 
       - name: Deploy to Kubernetes
         run: |
+          gcloud config set account ${{ env.ACCOUNT }} 
           gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }} --region ${{ env.CLUSTER_REGION }} --project ${{ env.PROJECT_ID }}
           helm upgrade --install ${{ env.APP_NAME }}-${{ github.run_number }} ${{ env.APP_CHART_PATH }}
 
