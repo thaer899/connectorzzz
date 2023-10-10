@@ -1,5 +1,5 @@
 name: myresume-ai
-run-name: myresume-ai-${{ github.run_number }}-${{ github.event.inputs.app }}${{ (github.event.inputs.common == 'true') && '-common' || '' }}
+run-name: myresume-ai-${{ github.run_number }}-${{ github.event.inputs.app }}:${{ github.run_number }}
 
 on:
   workflow_dispatch:
@@ -84,6 +84,5 @@ jobs:
       - name: Deploy Common Chart to Kubernetes
         if: github.event.inputs.common == 'true'
         run: |
-          gcloud config set compute/zone your-compute-zone
           gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }}
           helm upgrade --install ${{ env.APP_NAME }}-${{ github.run_number }} ${{ env.COMMON_CHART_PATH }}

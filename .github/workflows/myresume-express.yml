@@ -1,5 +1,5 @@
 name: myresume-express
-run-name: myresume-express-${{ github.run_number }}
+run-name: myresume-express:${{ github.run_number }}
 
 on:
   workflow_dispatch:
