@@ -59,7 +59,7 @@ jobs:
       PROJECT_ID: thaersaidi-da79c
       CLUSTER_REGION: europe-west1
       ACCOUNT: 'thaersaidi-sa@thaersaidi-da79c.iam.gserviceaccount.com'
-      WORKLOAD_IDENTITY_PROVIDER: 'projects/250500941343/locations/global/workloadIdentityPools/github-actions/providers/github-actions-oidc'
+      WORKLOAD_IDENTITY_PROVIDER: 'iam.googleapis.com/projects/250500941343/locations/global/workloadIdentityPools/github-actions/subject/SUBJECT_ATTRIBUTE_VALUE'
 
     permissions:
       contents: 'read'
