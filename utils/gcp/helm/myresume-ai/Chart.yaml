@@ -1,6 +1,0 @@
-apiVersion: v2
-name: myresume-express
-description: Chat messages
-type: application
-version: 0.1.0
-icon: https://thaersaidi.net/assets/images/favicon/favicon.ico
