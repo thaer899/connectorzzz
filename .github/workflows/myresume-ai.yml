@@ -34,6 +34,7 @@ jobs:
       IMAGE_TAG: ${{ env.IMAGE_REGISTRY }}/${{ env.PROJECT_ID }}/${{ github.event.inputs.app }}:${{ github.run_number}}
       APP_CHART_PATH: ./utils/helm/myresume-ai/apps/${{ env.APP_NAME }}
       COMMON_CHART_PATH: ./utils/helm/myresume-ai/common
+      CLUSTER_REGION: europe-west1
 
     permissions:
       contents: 'read'
@@ -78,11 +79,11 @@ jobs:
 
       - name: Deploy to Kubernetes
         run: |
-          gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }}
+          gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }} --region ${{ env.CLUSTER_REGION }}
           helm upgrade --install ${{ env.APP_NAME }}-${{ github.run_number }} ${{ env.APP_CHART_PATH }}
 
       - name: Deploy Common Chart to Kubernetes
         if: github.event.inputs.common == 'true'
         run: |
-          gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }}
+          gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }} --region ${{ env.CLUSTER_REGION }}
           helm upgrade --install ${{ env.APP_NAME }}-${{ github.run_number }} ${{ env.COMMON_CHART_PATH }}

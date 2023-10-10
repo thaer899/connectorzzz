@@ -21,6 +21,7 @@ jobs:
       RELEASE_NAME: myresume-express
       CHART_PATH: ./utils/helm/myresume-ai/apps/myresume-express
       PROJECT_ID: thaersaidi-da79c
+      CLUSTER_REGION: europe-west1
 
     permissions:
       contents: 'read'
@@ -65,5 +66,5 @@ jobs:
 
       - name: Deploy to Kubernetes
         run: |
-          gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }}
+          gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }} --region ${{ env.CLUSTER_REGION }}
           helm upgrade --install ${{ env.RELEASE_NAME }} ${{ env.CHART_PATH }} --set image.tag=${{ env.IMAGE_TAG }}
