@@ -24,6 +24,7 @@ jobs:
       CLUSTER_REGION: europe-west1
       ACCOUNT: thaersaidi-da79c@appspot.gserviceaccount.com
       CLOUDSDK_AUTH_ACCESS_TOKEN: ${{ secrets.GCP_THAERSAIDI_SA }}
+
     permissions:
       contents: 'read'
       id-token: 'write'      
@@ -65,6 +66,7 @@ jobs:
 
       - name: Deploy to Kubernetes
         run: |
-          gcloud config set account ${{ env.ACCOUNT }} 
+          echo ${{CLOUDSDK_AUTH_ACCESS_TOKEN}} > creds.json
+          gcloud auth login --cred-file=creds.json
           gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }} --region ${{ env.CLUSTER_REGION }} --project ${{ env.PROJECT_ID }}
           helm upgrade --install ${{ env.RELEASE_NAME }} ${{ env.CHART_PATH }} --set image.tag=${{ env.IMAGE_TAG }}
