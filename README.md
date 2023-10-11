@@ -1,4 +1,4 @@
-<img src="./photo.svg" alt="Alt text" width="200" height="200">
+<img src="./photo.svg" alt="Alt text" width="100" height="100">
 
 ### MyResume Project (`thaersaidi.net`)
 
