@@ -105,7 +105,7 @@ jobs:
       - name: Deploy Common Chart to Kubernetes
         if: github.event.inputs.common == 'true'
         run: |
-          helm upgrade --install ${{ env.APP_NAME }} ${{ env.COMMON_CHART_PATH }}
+          helm upgrade --install ${{ env.CLUSTER_NAME }}-common ${{ env.COMMON_CHART_PATH }}
 
       - name: Deploy to Kubernetes
         run: |
