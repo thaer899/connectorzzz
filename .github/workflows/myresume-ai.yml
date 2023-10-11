@@ -87,6 +87,8 @@ jobs:
       COMMON_CHART_PATH: ./utils/helm/myresume-ai/common
       CLUSTER_REGION: europe-west1
       SERVICE_ACCOUNT: 'thaersaidi-sa'
+      WORKLOAD_IDENTITY_PROVIDER: 'projects/250500941343/locations/global/workloadIdentityPools/github-actions/providers/github-actions-oidc'
+      SERVICE_ACCOUNT_EMAIL: 'thaersaidi-sa@thaersaidi-da79c.iam.gserviceaccount.com'
 
     permissions:
       contents: 'read'
@@ -99,6 +101,7 @@ jobs:
       - name: 'Auth to Google Cloud SDK'
         uses: 'google-github-actions/auth@v1'
         with:
+          token_format: access_token
           workload_identity_provider: ${{ env.WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ env.SERVICE_ACCOUNT_EMAIL }}
 
