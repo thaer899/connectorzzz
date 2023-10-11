@@ -64,9 +64,9 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          context: ./myresume-express
+          context: ./${{ (github.event_name == 'push') && 'myresume-express' || '' }}${{ github.event.inputs.app }}
           push: true
-          tags: ${{ vars.IMAGE_REGISTRY }}/${{ vars.PROJECT_ID }}/${{ github.event.inputs.app }}:latest
+          tags: ${{ vars.IMAGE_REGISTRY }}/${{ vars.PROJECT_ID }}/${{ (github.event_name == 'push') && 'myresume-express' || '' }}${{ github.event.inputs.app }}:latest
 
   deploy:
     if: (always() && github.event_name == 'workflow_dispatch' && github.event.inputs.job == 'deploy' ) || ( github.event_name == 'push' )
