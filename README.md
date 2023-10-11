@@ -10,14 +10,21 @@ This repository is the epicenter of a suite of projects and utilities engineered
 <details>
 <summary>📂 Project Highlights</summary>
 
-- **Backend Mastery**: Tailored backend services ensuring robustness and scalability.
-- **Frontend Excellence**: Cutting-edge front-end applications delivering superior user experiences.
-- **Cloud Resources Optimization**: Prudent management and orchestration of cloud resources.
-  
+- **Backend**: Backend services using express for chatbot messaging.
+- **Frontend**: Front-end using angular applications for a resume exposure.
+- **Admin Console**: Administrative console using angular for UI and BOT management and orchestration.
+- **AI**: A suite of tools and components to interact with AI models.  
+- **Utils**: A suite of tools for automating and streamlining various aspects of the project.  
 </details>
 
+
 ---
-Apps:
+### Workflows:
+#### 🔄 [CI/CD Pipelines](https://github.com/thaer899/thaersaidi.net/tree/master/.github/workflows/)
+
+---
+
+### Apps:
 #### 🖥️ [myresume-ng](https://github.com/thaer899/thaersaidi.net/tree/master/myresume-ng)
 
 #### 🌐 [site-generator-ng](https://github.com/thaer899/thaersaidi.net/tree/master/site-generator-ng)
@@ -25,8 +32,7 @@ Apps:
 #### 🛠️ [myresume-express](https://github.com/thaer899/thaersaidi.net/tree/master/myresume-express)
 
 #### 🧰 [myresume-utils](https://github.com/thaer899/thaersaidi.net/tree/master/myresume-utils)
-
----
+#
 
 ### Project Structure
 
