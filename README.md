@@ -9,10 +9,9 @@ This repository is the epicenter of a suite of projects and utilities engineered
 
 <details>
 <summary>📂 Project Highlights</summary>
-
-- **Backend**: Backend services using express for chatbot messaging.
+- **Backend**: Backend services to interact with database and enhance UIs.
 - **Frontend**: Front-end using angular applications for a resume exposure.
-- **Admin Console**: Administrative console using angular for UI and BOT management and orchestration.
+- **Admin Console**: Administrative console configurable using angular for UI and BOT management and orchestration.
 - **AI**: A suite of tools and components to interact with AI models.  
 - **Utils**: A suite of tools for automating and streamlining various aspects of the project.  
 </details>
@@ -21,17 +20,28 @@ This repository is the epicenter of a suite of projects and utilities engineered
 ---
 ### Workflows:
 #### 🔄 [CI/CD Pipelines](https://github.com/thaer899/thaersaidi.net/tree/master/.github/workflows/)
+Automating and optimizing the development workflow through Continuous Integration and Continuous Deployment pipelines.
+
 
 ---
 
 ### Apps:
 #### 🖥️ [myresume-ng](https://github.com/thaer899/thaersaidi.net/tree/master/myresume-ng)
+Angular-based application showcasing my professional journey and skill set.
+
 
 #### 🌐 [site-generator-ng](https://github.com/thaer899/thaersaidi.net/tree/master/site-generator-ng)
+A dynamic site generator engineered with Angular, facilitating seamless site creation and management.
+
 
 #### 🛠️ [myresume-express](https://github.com/thaer899/thaersaidi.net/tree/master/myresume-express)
+ExpressJS powered backend service, designed to deliver robust support for my online resume portal.
+
 
 #### 🧰 [myresume-utils](https://github.com/thaer899/thaersaidi.net/tree/master/myresume-utils)
+A collection of utility tools and libraries enhancing development and operational efficiencies.
+
+
 #
 
 ### Project Structure
@@ -68,3 +78,4 @@ This repository is the epicenter of a suite of projects and utilities engineered
             +---t5
         \---misc
         \---multi_task
+
