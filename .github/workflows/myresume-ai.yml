@@ -1,5 +1,5 @@
 name: myresume-ai
-run-name: myresume-ai${{ github.event.inputs.app }}${{ (github.event_name == 'push') && '-auto' || '' }}-${{github.event.inputs.job}}${{ (github.event.inputs.common == 'true') && '-common' || '' }}:${{ github.run_number }}
+run-name: myresume-ai${{ (github.event_name == 'workflow_dispatch') && github.event.inputs.app || '' }}${{ (github.event_name == 'push') && '-auto' || '' }}-${{github.event.inputs.job}}${{ (github.event.inputs.common == 'true') && '-common' || '' }}:${{ github.run_number }}
 
 on:
   push:
@@ -131,6 +131,6 @@ jobs:
           helm upgrade --install ${{ env.CLUSTER_NAME }}-common ${{ env.COMMON_CHART_PATH }}
 
       - name: Deploy to Kubernetes
-      if: github.event.inputs.common == 'true'
+        if: github.event.inputs.common == 'true'
         run: |
           helm upgrade --install ${{ env.APP_NAME }} ${{ env.APP_CHART_PATH }} --set image.tag=${{ env.IMAGE_TAG }}
