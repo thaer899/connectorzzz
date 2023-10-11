@@ -1,7 +1,7 @@
 apiVersion: networking.gke.io/v1
 kind: ManagedCertificate
 metadata:
-  name: "{{.Values.certName}}"
+  name: "myresume-ai-managed-cert"
 spec:
   domains:
     - ai.thaersaidi.net
