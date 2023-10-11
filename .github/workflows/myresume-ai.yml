@@ -11,9 +11,10 @@ on:
         type: choice
         description: 'Application'
         required: true
+        default: myresume-express
         options:
           - myresume-express
-          - other-app
+          - myresume-ai
       job:
         type: choice
         description: 'Job'
