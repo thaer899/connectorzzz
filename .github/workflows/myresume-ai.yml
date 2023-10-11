@@ -1,5 +1,5 @@
 name: myresume-ai
-run-name: myresume-ai-${{ github.event.inputs.app }}-${{github.event.inputs.job}}:${{ github.run_number }}
+run-name: myresume-ai-${{ github.event.inputs.app }}-${{github.event.inputs.job}}-${{ (github.event.inputs.common == 'true') && '-common' || '' }}:${{ github.run_number }}
 
 on:
   push:
@@ -25,12 +25,12 @@ on:
         type: boolean
         description: 'Common'
         required: true
-        default: false
+        default: 'false'
 
 jobs:
 
   build:
-    if: (github.event_name == 'workflow_dispatch' && github.event.inputs.job == 'build' )
+    if: (github.event_name == 'workflow_dispatch' && github.event.inputs.job == 'build' ) || ( github.event_name == 'push' )
     runs-on: ubuntu-latest
     env:
       IMAGE_TAG: eu.gcr.io/thaersaidi-da79c/myresume-express:${{ github.run_number }}
