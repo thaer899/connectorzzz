@@ -68,7 +68,7 @@ jobs:
       PROJECT_ID: thaersaidi-da79c
       APP_NAME: ${{ github.event.inputs.app }}
       IMAGE_REGISTRY: eu.gcr.io
-      IMAGE_TAG: eu.gcr.io/thaersaidi-da79c/myresume-express:${{ github.run_number }}
+      IMAGE_TAG: eu.gcr.io/thaersaidi-da79c/myresume-express:latest
       APP_CHART_PATH: ./utils/helm/myresume-ai/apps/${{ github.event.inputs.app }}
       COMMON_CHART_PATH: ./utils/helm/myresume-ai/common
       CLUSTER_REGION: europe-west1
@@ -113,8 +113,8 @@ jobs:
       - name: Deploy Common Chart to Kubernetes
         if: github.event.inputs.common == 'true'
         run: |
-          helm upgrade --install ${{ env.APP_NAME }}-${{ github.run_number }} ${{ env.COMMON_CHART_PATH }}
+          helm upgrade --install ${{ env.APP_NAME }} ${{ env.COMMON_CHART_PATH }}
 
       - name: Deploy to Kubernetes
         run: |
-          helm upgrade --install ${{ env.RELEASE_NAME }} ${{ env.CHART_PATH }} --set image.tag=${{ env.IMAGE_TAG }}
+          helm upgrade --install ${{ env.APP_NAME }} ${{ env.APP_CHART_PATH }} --set image.tag=${{ env.IMAGE_TAG }}
