@@ -74,8 +74,8 @@ jobs:
     environment: myresume-ai
     runs-on: ubuntu-latest
     env:
-      APP_NAME: ${{ github.event.inputs.app }}
-      APP_CHART_PATH: ./utils/helm/myresume-ai/apps/${{ github.event.inputs.app }}
+      APP_NAME: ${{ (github.event_name == 'push') && 'myresume-express' || '' }}${{ github.event.inputs.app }}
+      APP_CHART_PATH: ./utils/helm/myresume-ai/apps/${{ (github.event_name == 'push') && 'myresume-express' || '' }}${{ github.event.inputs.app }}
       COMMON_CHART_PATH: ./utils/helm/myresume-ai/common
       
     permissions:
@@ -113,11 +113,10 @@ jobs:
           version: 'v3.5.2'
 
       - name: Deploy Common Chart to Kubernetes
-        if: github.event_name == 'workflow_dispatch'
+        if: ( github.event_name == 'workflow_dispatch' || github.event.inputs.common == 'true' )
         run: |
           helm upgrade --install ${{ vars.CLUSTER_NAME }}-common ${{ env.COMMON_CHART_PATH }}
 
       - name: Deploy to Kubernetes
-        if: github.event.inputs.common == 'true'
         run: |
           helm upgrade --install ${{ env.APP_NAME }} ${{ env.APP_CHART_PATH }} --set image.tag=${{ vars.IMAGE_REGISTRY }}/${{ vars.PROJECT_ID }}/${{ github.event.inputs.app }}:latest
