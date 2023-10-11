@@ -1,19 +1,30 @@
  ### MyResume Project    
 
- <sub>🌐 [thaersaidi.net](https://thaersaidi.net) , [admin.thaersaidi.net](https://admin.thaersaidi.net) , [ai.thaersaidi.net](https://ai.thaersaidi.net)</sub>
-#
+This repository serves as the nucleus of an ensemble of projects and utilities.
+Engineered with precision for crafting and deploying top-notch applications.
 
-This repository is the epicenter of a suite of projects and utilities engineered meticulously for developing and deploying stellar applications under the `thaersaidi.net` domain. The architecture is laid out in a structured fashion, providing a streamlined approach towards managing diverse facets of the projects — spanning backend services, front-end applications, and cloud resources with finesse.
+> The project is exposed across multiple domains:  
+> 🌎 Resume UI: [`thaersaidi.net`](https://thaersaidi.net)   
+> 🛠️ Dashboard: [`admin.thaersaidi.net`](https://admin.thaersaidi.net)  
+> 🧠 AI Utilities: [`ai.thaersaidi.net`](https://ai.thaersaidi.net)   
+
+The architecture is methodically structured.
+Facilitating a streamlined workflow for managing the diverse project facets.
+Encompassing backend services, front-end applications, and adept cloud resource orchestration.
+
 
 ---
 
 <details>
 <summary>📂 Project Highlights</summary>
+
+- **Summary**: Intelligent solutions.
 - **Backend**: Backend services to interact with database and enhance UIs.
 - **Frontend**: Front-end using angular applications for a resume exposure.
 - **Admin Console**: Administrative console configurable using angular for UI and BOT management and orchestration.
 - **AI**: A suite of tools and components to interact with AI models.  
 - **Utils**: A suite of tools for automating and streamlining various aspects of the project.  
+- **CI/CD**: Automation pipelines for all aspects of the project.
 </details>
 
 
