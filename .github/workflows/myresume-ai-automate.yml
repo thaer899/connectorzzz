@@ -77,7 +77,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       APP_NAME: ${{ (github.event_name == 'push') && 'myresume-express' || '' }}${{ github.event.inputs.app }}
-      APP_CHART_PATH: ./utils/helm/myresume-ai/apps/${{ env.APP_NAME }}
+      APP_CHART_PATH: ./utils/helm/myresume-ai/apps/${{ (github.event_name == 'push') && 'myresume-express' || '' }}${{ github.event.inputs.app }}
       COMMON_CHART_PATH: ./utils/helm/myresume-ai/common
       
     permissions:
