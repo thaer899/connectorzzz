@@ -1,5 +1,5 @@
 name: myresume-ai
-run-name: myresume-ai${{ (github.event_name == 'workflow_dispatch') && github.event.inputs.app || '' }}${{ (github.event_name == 'push') && '-auto' || '' }}-${{github.event.inputs.job}}${{ (github.event.inputs.common == 'true') && '-common' || '' }}:${{ github.run_number }}
+run-name: myresume-ai.${{ github.event.inputs.app }}${{ (github.event_name == 'push') && '-auto' || '' }}-${{github.event.inputs.job}}${{ (github.event.inputs.common == 'true') && '-common' || '' }}:${{ github.run_number }}
 
 on:
   push:
