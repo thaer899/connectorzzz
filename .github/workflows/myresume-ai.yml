@@ -72,8 +72,6 @@ jobs:
       APP_CHART_PATH: ./utils/helm/myresume-ai/apps/${{ github.event.inputs.app }}
       COMMON_CHART_PATH: ./utils/helm/myresume-ai/common
       CLUSTER_REGION: europe-west1
-      WORKLOAD_IDENTITY_PROVIDER: 'projects/250500941343/locations/global/workloadIdentityPools/github-actions/providers/github-actions-oidc'
-      SERVICE_ACCOUNT_EMAIL: 'thaersaidi-sa@thaersaidi-da79c.iam.gserviceaccount.com'
       SERVICE_ACCOUNT: 'thaersaidi-sa'
 
     permissions:
@@ -84,12 +82,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: 'Auth to Google Cloud SDK'
-        uses: 'google-github-actions/auth@v1'
-        with:
-          workload_identity_provider: ${{ env.WORKLOAD_IDENTITY_PROVIDER }}
-          service_account: ${{ env.SERVICE_ACCOUNT_EMAIL }}
-  
       - name: Set up gcloud CLI
         uses: google-github-actions/setup-gcloud@v1
         with:
