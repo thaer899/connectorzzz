@@ -1,9 +1,6 @@
 name: myresume-ai-automate
 run-name: ${{ (github.event_name == 'push') && 'auto' || '' }}${{ github.event.inputs.app }}${{ (github.event_name == 'workflow_dispatch') && '-' || '' }}${{github.event.inputs.job}}${{ (github.event.inputs.common == 'true') && '-with-common' || '' }}-${{ github.run_number }}
 
-env:
-  APP_NAME: ${{ (github.event_name == 'push') && 'myresume-express' || '' }}${{ github.event.inputs.app }}
-
 on:
   push:
     branches:
@@ -36,6 +33,8 @@ jobs:
     if: (github.event_name == 'workflow_dispatch' && github.event.inputs.job == 'build' ) || ( github.event_name == 'push' )
     environment: myresume-ai
     runs-on: ubuntu-latest
+    env:
+      APP_NAME: ${{ (github.event_name == 'push') && 'myresume-express' || '' }}${{ github.event.inputs.app }}
     permissions:
       contents: 'read'
       id-token: 'write'      
@@ -77,6 +76,7 @@ jobs:
     environment: myresume-ai
     runs-on: ubuntu-latest
     env:
+      APP_NAME: ${{ (github.event_name == 'push') && 'myresume-express' || '' }}${{ github.event.inputs.app }}
       APP_CHART_PATH: ./utils/helm/myresume-ai/apps/${{ env.APP_NAME }}
       COMMON_CHART_PATH: ./utils/helm/myresume-ai/common
       
