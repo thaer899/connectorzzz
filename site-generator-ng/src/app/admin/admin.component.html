@@ -1,26 +1,37 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div class="col-md-12 background" *ngIf="data">
-    <mat-icon class="material-symbols-outlined logout" matTooltip="Logout" (click)="logout()">logout</mat-icon>
-    <mat-icon class="material-symbols-outlined download" matTooltip="Download data"
-        (click)="download()">download</mat-icon>
-    <mat-icon class="material-symbols-outlined upload" matTooltip="Upload data"
-        (click)="upload()">file_upload</mat-icon>
+<mat-toolbar class="toolbar">
+    <mat-icon>dashboard</mat-icon>
 
-    <mat-form-field>
-        <mat-label>Profile</mat-label>
+    <span class="fill-toolbar"></span>
+
+
+    <mat-form-field style="font-size: medium;width: 35vh;">
+        <mat-label>{{fileName}}</mat-label>
         <mat-select>
             <div style="padding: 20px;color: aquamarine;">
-                <input matInput [(ngModel)]="fileName">...
+                <mat-form-field style="width: 25vh;">
+                    <mat-label>File Name</mat-label>
+                    <input matInput [(ngModel)]="fileName">
+                </mat-form-field>
             </div>
             <mat-option *ngFor="let user of users" [value]="user.value">
                 <a (click)="getUserDataByEmail(user)">{{user}}</a>
             </mat-option>
         </mat-select>
     </mat-form-field>
+    <span class="fill-toolbar"></span>
+
+    <mat-icon class="download" matTooltip="Download data" (click)="download()">download</mat-icon>
+    <mat-icon class="upload" matTooltip="Upload data" (click)="upload()">file_upload</mat-icon>
+
+
+</mat-toolbar>
+<div class="background" *ngIf="data">
+    <mat-icon class="logout material-symbols-outlined" matTooltip="Logout" (click)="logout()">logout</mat-icon>
 
 
     <jsonforms [data]="data" (dataChange)="onDataChange($event)" [schema]="schema" [uischema]="uischema"
         [renderers]="renderers">
     </jsonforms>
+
 
 </div>

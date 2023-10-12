@@ -23,6 +23,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     MatInputModule,
     MatFormFieldModule,
+    MatToolbarModule,
     FormsModule,
     BrowserModule,
     BrowserAnimationsModule,

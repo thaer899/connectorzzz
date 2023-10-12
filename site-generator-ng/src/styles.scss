@@ -45,6 +45,11 @@
         'opsz' 24;
 }
 
+.right {
+    position: absolute;
+    right: 0% !important;
+}
+
 .mat-drawer-content {
     position: relative;
     z-index: 1;
@@ -57,7 +62,6 @@
 .material-symbols-outlined {
     width: 50px !important;
     height: 50px !important;
-    bottom: 0;
     right: 0%;
 
     background-color: $primary-color;
@@ -87,11 +91,11 @@
 
 .logout {
     color: #807991 !important;
-
+    bottom: 10px;
 }
 
 .mat-tab-label-active {
-    font-size: x-large !important;
+    font-size: large !important;
     color: white !important;
     border-bottom: 1px solid white !important;
     z-index: 1000;
@@ -103,6 +107,6 @@
 }
 
 .mat-tooltip {
-    font-size: 16px;
+    font-size: 12px;
     /* Adjust this value as needed */
 }
