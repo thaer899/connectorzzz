@@ -20,6 +20,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AdminComponent } from './admin/admin.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,6 +35,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     DashboardComponent
   ],
   imports: [
+    MatInputModule,
+    MatFormFieldModule,
+    FormsModule,
     BrowserModule,
     BrowserAnimationsModule,
     JsonFormsModule,

@@ -7,17 +7,15 @@
         (click)="upload()">file_upload</mat-icon>
 
     <mat-form-field>
-        <mat-label>{{fileName}}</mat-label>
+        <mat-label>Profile</mat-label>
         <mat-select>
+            <div style="padding: 20px;color: aquamarine;">
+                <input matInput [(ngModel)]="fileName">...
+            </div>
             <mat-option *ngFor="let user of users" [value]="user.value">
                 <a (click)="getUserDataByEmail(user)">{{user}}</a>
             </mat-option>
         </mat-select>
-    </mat-form-field>
-
-    <mat-form-field>
-        <mat-label>{{fileName}}</mat-label>
-        <input matInput>
     </mat-form-field>
 
 

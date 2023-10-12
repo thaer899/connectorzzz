@@ -9,10 +9,11 @@ import { getStorage, ref, uploadString } from 'firebase/storage';
 import { AuthService } from '../services/auth.service'; // Update the path based on your project structure
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css']
+  styleUrls: ['./admin.component.css'],
 })
 export class AdminComponent {
   // Form-related properties
@@ -88,6 +89,7 @@ export class AdminComponent {
         if (data) {
           this.data = data;
           console.log("Data fetched:", this.data);
+          this.fileName = email
           this.cdRef.detectChanges();  // Trigger change detection
         }
       },
