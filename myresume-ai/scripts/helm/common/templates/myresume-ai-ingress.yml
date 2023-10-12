@@ -19,6 +19,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: "{{.Values.appName}}-service"
+                name: "{{.Values.MyResumeAppName}}-service"
                 port:
                   number: 443
