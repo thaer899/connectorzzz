@@ -1,0 +1,92 @@
+/* Styling for the main background container */
+.background {
+  background-color: #424242;
+
+}
+
+
+/* Styling for the toolbar */
+.toolbar {
+  background-color: #313131;
+  /* Darker shade for the toolbar */
+  color: #ECEFF1;
+  /* Light text color */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  /* Shadow for a lifted look */
+  padding: 10px 20px;
+  height: 80px;
+  font-size: 30px;
+  /* Padding to give some breathing room */
+}
+
+.toolbar {
+  background-color: #313131;
+  color: #ECEFF1;
+  border-bottom: 1px solid #565656;
+  height: 80px;
+  font-size: 30px;
+}
+
+/* Icon styling within the toolbar */
+.mat-icon {
+  margin-right: 10px;
+  /* Spacing between the icon and the text */
+  font-size: 24px;
+  /* Slightly bigger icon for prominence */
+}
+
+
+/* Styling for the card within the tile */
+.chart-card {
+  width: 90%;
+  height: 80vh;
+  background-color: #616161 !important;
+  /* Dark background color */
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  /* Increased shadow for contrast */
+}
+
+/* Styling for the card header */
+.chart-card mat-card-header {
+  background-color: #616161;
+  /* Blue accent color */
+  color: #ECEFF1;
+  /* Light text color */
+}
+
+/* Styling for the avatar in the card header */
+.chart-header-image {
+  background-color: #adadad;
+  /* Green accent color */
+  border-radius: 50%;
+}
+
+/* Styling for the google chart */
+google-chart {
+  flex-grow: 1;
+}
+
+/* Styling for the card actions */
+mat-card-actions {
+  background-color: #616161;
+  /* Slightly lighter dark background */
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Styling for the buttons in the card actions */
+mat-card-actions button {
+  color: #313131;
+  /* Blue accent color for text */
+}
+
+/* On hover effects for the buttons */
+mat-card-actions button:hover {
+  background-color: #313131;
+  /* Blue accent color for background */
+  color: #ECEFF1;
+  /* Light text color */
+}

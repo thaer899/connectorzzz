@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "vizualizer-ng"
+  },
+  "targets": {
+    "vizualizer-ng": {
+      "hosting": {
+        "vizualizer-ng": [
+          "vizualizer-ng"
+        ]
+      }
+    }
+  }
+}

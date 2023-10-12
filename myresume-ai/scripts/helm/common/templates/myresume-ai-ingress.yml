@@ -13,3 +13,12 @@ metadata:
 spec:
   rules:
     - host: "{{ .Values.host }}"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: "{{.Values.appName}}-service"
+                port:
+                  number: 443

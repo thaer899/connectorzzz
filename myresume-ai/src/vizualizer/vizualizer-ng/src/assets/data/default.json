@@ -1,0 +1,66 @@
+{
+    "education": [
+        {
+            "title": "Degree",
+            "school": "University",
+            "period": "Jan 2000 - Dec 2003",
+            "summary": "summary about the degree and the studies."
+        }
+    ],
+    "employment": [
+        {
+            "title": "Job Title",
+            "description": "job description.",
+            "period": "Jan 2004 to Dec 2005",
+            "technologies": [
+                "Tech1",
+                "Tech2"
+            ]
+        }
+    ],
+    "interests": [
+        "Interest1",
+        "Interest2"
+    ],
+    "languages": [
+        {
+            "language": "Language",
+            "profeciency": "Intermediate"
+        }
+    ],
+    "personal": [
+        {
+            "about": "personal description."
+        }
+    ],
+    "references": [
+        {
+            "platform": "platform",
+            "icon": "/icon/path.svg",
+            "url": "https://www.url.com"
+        }
+    ],
+    "resume": {
+        "firstName": "FirstName",
+        "lastName": "LastName",
+        "address": "Address",
+        "city": "City",
+        "country": "Country",
+        "email": "@email.com",
+        "phone": "1234567890",
+        "website": "https://www.website.com",
+        "birthDate": "2000-01-01",
+        "about": [
+            "about me."
+        ]
+    },
+    "skills": [
+        {
+            "type": "SkillType",
+            "list": [
+                "Skill1",
+                "Skill2"
+            ]
+        }
+    ]
+}

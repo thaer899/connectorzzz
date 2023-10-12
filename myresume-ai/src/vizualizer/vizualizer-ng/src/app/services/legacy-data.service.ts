@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, Observable, from, of } from "rxjs";
+import { BehaviorSubject, Observable, from } from "rxjs";
 import { catchError, switchMap, tap } from "rxjs/operators";
 import { initializeApp } from "firebase/app";
-import { getDownloadURL, getStorage, listAll, ref } from "firebase/storage";
+import { getDownloadURL, getStorage, ref } from "firebase/storage";
 import { HttpClient } from "@angular/common/http";
 import { environment } from 'src/environments/environment';
 
@@ -30,18 +30,6 @@ export class DataService {
         this.data.next(newData);
     }
 
-    public getListOfUsers(): Observable<any> {
-        // the list of files in the storage bucket
-        const listRef = ref(storage, '/');
-        return from(listAll(listRef)).pipe(
-            switchMap(listResult => {
-                const users = listResult.items.map(item => item.name);
-                return of(users);  // Wrap the array inside an Observable
-            })
-        );
-    }
-
-
     public fetchDataForUser(email: string): Observable<any> {
         return this.fetchDataFromFirebase(email).pipe(
             catchError(_ => this.fetchDefaultData()), // If there's an error, fetch default data
@@ -54,7 +42,7 @@ export class DataService {
             return this.fetchDefaultData();
         }
 
-        const fileRef = ref(storage, `${email}`);
+        const fileRef = ref(storage, `${email}.json`);
 
         return from(getDownloadURL(fileRef)).pipe(
             switchMap(downloadURL => this.http.get(downloadURL))

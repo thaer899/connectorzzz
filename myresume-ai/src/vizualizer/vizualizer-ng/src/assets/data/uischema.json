@@ -1,0 +1,192 @@
+{
+  "type": "Categorization",
+  "elements": [
+    {
+      "type": "Category",
+      "label": "Info",
+      "elements": [
+        {
+          "type": "HorizontalLayout",
+          "elements": [
+            {
+              "type": "VerticalLayout",
+              "elements": [
+                {
+                  "type": "Control",
+                  "scope": "#/properties/resume",
+                  "label": "Resume"
+                },
+                {
+                  "type": "Label",
+                  "text": "Languages"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/languages",
+                  "label": "Language"
+                },
+                {
+                  "type": "Label",
+                  "text": "References"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/references"
+                }
+              ]
+            },
+            {
+              "type": "VerticalLayout",
+              "elements": [
+                {
+                  "type": "Label",
+                  "text": "Interests"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/interests",
+                  "label": "Interests"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Category",
+      "label": "Personal",
+      "elements": [
+        {
+          "type": "ListWithDetail",
+          "scope": "#/properties/personal",
+          "label": "Personal"
+        }
+      ]
+    },
+    {
+      "type": "Category",
+      "label": "Skills",
+      "elements": [
+        {
+          "type": "ListWithDetail",
+          "scope": "#/properties/skills",
+          "options": {
+            "detail": {
+              "type": "VerticalLayout",
+              "elements": [
+                {
+                  "type": "Control",
+                  "scope": "#/properties/type",
+                  "label": "Type"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/list",
+                  "label": "List"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "Category",
+      "label": "Education",
+      "elements": [
+        {
+          "type": "ListWithDetail",
+          "scope": "#/properties/education",
+          "options": {
+            "detail": {
+              "type": "VerticalLayout",
+              "elements": [
+                {
+                  "type": "Control",
+                  "scope": "#/properties/title",
+                  "label": "Title"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/school",
+                  "label": "School"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/period",
+                  "label": "Period"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "Category",
+      "label": "Employment",
+      "elements": [
+        {
+          "type": "ListWithDetail",
+          "scope": "#/properties/employment",
+          "options": {
+            "detail": {
+              "type": "VerticalLayout",
+              "elements": [
+                {
+                  "type": "Control",
+                  "scope": "#/properties/title",
+                  "label": "Title"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/description",
+                  "label": "Description"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/period",
+                  "label": "Period"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/technologies",
+                  "label": "Technologies"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "Category",
+      "label": "Bots",
+      "elements": [
+        {
+          "type": "Label",
+          "text": "Bots"
+        },
+        {
+          "type": "ListWithDetail",
+          "scope": "#/properties/bots"
+        }
+      ]
+    },
+    {
+      "type": "Category",
+      "label": "Data",
+      "elements": [
+        {
+          "type": "Label",
+          "text": "Data"
+        },
+        {
+          "type": "Control",
+          "scope": "#/___data"
+        }
+      ]
+    }
+  ]
+}

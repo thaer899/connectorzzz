@@ -1,0 +1,28 @@
+{
+  "hosting": [
+    {
+      "public": "dist/vizualizer-ng",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ]
+    },
+    {
+      "target": "vizualizer-ng",
+      "public": "dist/vizualizer-ng",
+      "frameworksBackend": {},
+      "headers": [
+        {
+          "source": "/**",
+          "headers": [
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
