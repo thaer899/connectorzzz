@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
         - name: "{{.Values.appName}}-container"
-          image: "{{.Values.registry}}/{{.Values.projectName}}/{{.Values.appName}}":latest
+          image: "{{.Values.registry}}/{{.Values.projectName}}/{{.Values.appName}}:latest"
           ports:
             - containerPort: 4000
           env:
