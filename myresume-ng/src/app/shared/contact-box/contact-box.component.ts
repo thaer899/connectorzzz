@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { ChangeDetectorRef, Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm } from '@angular/forms';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import OpenAI from 'openai';
 import { environment } from 'src/environments/environment';
 import { throwError } from 'rxjs';
@@ -10,7 +9,7 @@ import { catchError } from 'rxjs/operators';
 @Component({
   selector: 'app-contact-box',
   templateUrl: './contact-box.component.html',
-  styleUrls: ['./contact-box.component.css']
+  styleUrls: ['./contact-box.component.scss']
 })
 export class ContactBoxComponent implements OnInit {
 
@@ -22,7 +21,6 @@ export class ContactBoxComponent implements OnInit {
   public chatConversation: any;
   public info: any;
   public available: boolean = true;
-  modalRef?: BsModalRef;
   config = {
     animated: true,
     keyboard: true,
@@ -35,7 +33,6 @@ export class ContactBoxComponent implements OnInit {
 
   constructor(
     private readonly http: HttpClient,
-    private modalService: BsModalService,
     private changeDetectorRef: ChangeDetectorRef,
     private fb: FormBuilder
   ) {
@@ -55,11 +52,9 @@ export class ContactBoxComponent implements OnInit {
 
 
   openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template, this.config);
   }
 
   openFullChat() {
-    this.modalService.hide();
   }
 
   message() {

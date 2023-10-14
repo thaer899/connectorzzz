@@ -1,13 +1,17 @@
 /* Import the custom theme to access the variables */
 @import 'assets/scss/custom-theme.scss';
 
+body {
+    background-color: $primary-color;
+    color: white;
+}
 
 .background {
     background-color: $primary-color;
-    max-width: 1200px;
     margin: 0 auto;
     color: white;
-    min-height: 1000px;
+    padding: 0 20px 0 20px;
+    min-height: 85vh;
 }
 
 .mat-drawer-content {
@@ -63,8 +67,6 @@
     width: 50px !important;
     height: 50px !important;
     right: 0%;
-
-    background-color: $primary-color;
     position: fixed;
     color: $accent-color !important;
     display: none;
@@ -80,18 +82,23 @@
 
 .upload {
     color: #3b9029 !important;
-    right: 50px;
-}
-
-.download {
-    color: #f96c6c !important;
     right: 100px;
 
 }
 
+.download {
+    color: #f96c6c !important;
+    right: 150px;
+
+
+}
+
+.separator {
+    color: $primary-color;
+}
+
 .logout {
-    color: #807991 !important;
-    bottom: 10px;
+    color: white !important;
 }
 
 .mat-tab-label-active {
@@ -103,7 +110,7 @@
 
 
 .container {
-    height: 100vh !important
+    height: 85vh !important
 }
 
 .mat-tooltip {

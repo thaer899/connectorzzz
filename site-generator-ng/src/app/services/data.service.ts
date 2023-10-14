@@ -62,7 +62,7 @@ export class DataService {
     }
 
     private fetchDefaultData(): Observable<any> {
-        const defaultFileRef = ref(storage, 'default.json');
+        const defaultFileRef = ref(storage, 'template.json');
 
         return from(getDownloadURL(defaultFileRef)).pipe(
             switchMap(defaultDownloadURL => this.http.get(defaultDownloadURL))

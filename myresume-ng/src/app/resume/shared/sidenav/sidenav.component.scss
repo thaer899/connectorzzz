@@ -1,3 +1,5 @@
+@import '../../../../assets/scss/variable.scss';
+
 .mdc-card__media:first-child {
   border-top-left-radius: 100%;
   border-top-right-radius: 100%;
@@ -20,4 +22,17 @@ h1.resume-app-name {
 
 .is-mobile .resume-sidenav-container {
   flex: 1 0 auto;
+}
+
+.nav-btn {
+  background-color: $primary;
+  color: $white;
+  box-shadow: 1px 1px 3px #222;
+  margin: 5px 20px 5px 20px;
+}
+
+.nav-btn:hover {
+  background-color: $sidebar;
+  box-shadow: none;
+  color: $white;
 }

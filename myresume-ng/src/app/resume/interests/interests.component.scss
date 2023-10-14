@@ -1,5 +1,7 @@
+@import '../../../assets/scss/variable.scss';
+
 .interest li {
-    background: #1D1D35;
+    background: $bodytext;
     border-radius: 5px;
     color: #fff;
     display: inline-block;

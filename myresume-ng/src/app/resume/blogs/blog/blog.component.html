@@ -1,0 +1,36 @@
+<section id="blog">
+  <ng-container *ngIf="blog">
+
+    <h1>{{blog.title}}</h1>
+    <div class="divider"></div>
+    <img
+      [src]="(blog.url ? blog.url.startsWith('https') : false) ? blog.url : '../../../assets/images/placeholder-card.jpg'"
+      class="card-img-top" [alt]="blog.title">
+    <br /><br />
+    <p>{{blog.description}}</p>
+    <div class="row">
+      <div class="col-md-6 col-sm-12" *ngFor="let post of blog.posts">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{post.title}}</h5>
+            <img
+              [src]="(post.url ? post.url.startsWith('https') : false) ? post.url : '../../../assets/images/placeholder-card-post.jpg'"
+              class="card-img-top" [alt]="post.title">
+            <br />
+            <p class="card-text">{{post.summary}}
+            </p>
+            <button type="button" class="btn skill-set" *ngFor="let tag of post.tags"
+              [routerLink]="['/skills', tag]">{{tag}}</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </ng-container>
+
+  <div class="ask">
+    <app-ask></app-ask>
+  </div>
+
+</section>

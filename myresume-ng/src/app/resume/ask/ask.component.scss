@@ -1,32 +1,16 @@
+@import '../../../assets/scss/variable.scss';
+
+
 .ask-modal {
     margin-top: 10%;
 }
 
 .modal-content {
-    background-color: #e5e5e5;
+    background-color: $bodycolor;
     opacity: 0.95;
     top: 100px;
     /* opacity: 0.8; */
     padding: 20px;
-}
-
-.skill-set {
-    background: #1D1D35;
-    border-radius: 5px;
-    color: #fff;
-    display: inline-block;
-    list-style: none;
-    margin: 15px 15px 0 0;
-    padding: 16px;
-    text-align: justify;
-    font-size: medium;
-}
-
-.skill-set:hover {
-    transform: scale(1.15);
-    transition: transform .2s;
-    cursor: pointer;
-    background: #2F5C00;
 }
 
 .modal-center {
@@ -79,9 +63,9 @@
 
 
 .btn-primary {
-    background-color: #1D1D35 !important;
-    color: white;
-    border: #1c1d1d;
+    background-color: $bodytext !important;
+    color: $bodycolor;
+    border: $themecolor-dark;
 }
 
 
@@ -99,7 +83,7 @@
 
 
 .btn-message i {
-    color: #1D1D35 !important;
+    color: $bodytext !important;
     font-size: xx-large;
     display: block;
     -webkit-filter: drop-shadow(5px 5px 5px #222);
@@ -115,7 +99,7 @@
 }
 
 .contact-form textarea.form-control {
-    width: 90%;
+    width: 100%;
     box-sizing: border-box;
     /* This ensures padding and border are included in the width */
     resize: vertical;
@@ -133,7 +117,7 @@
 
     .btn-message i {
         display: inline-block;
-        color: #1D1D35 !important;
+        color: $bodytext !important;
         -webkit-transform: translateX(0%) translateY(0%);
         transform: translateX(0%) translateY(0%);
         width: 30px;
@@ -156,7 +140,7 @@
 
     .btn-message i {
         display: inline-block;
-        color: #1D1D35 !important;
+        color: $bodytext !important;
         -webkit-transform: translateX(0%) translateY(0%);
         transform: translateX(0%) translateY(0%);
         width: 30px;
@@ -173,7 +157,7 @@
 
     .btn-message i {
         display: inline-block;
-        color: #1D1D35 !important;
+        color: $bodytext !important;
         -webkit-transform: translateX(0%) translateY(0%);
         transform: translateX(0%) translateY(0%);
         width: 30px;

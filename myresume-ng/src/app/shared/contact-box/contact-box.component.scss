@@ -1,6 +1,8 @@
+@import '../../../assets/scss/variable.scss';
+
 .modal-content {
-  background-color: #e5e5e5;
-  opacity: 0.95;
+  background-color: $bodycolor !important;
+  opacity: 0.99;
   top: 100px;
   /* opacity: 0.8; */
   padding: 20px;
@@ -10,27 +12,8 @@
   font-weight: bold;
 }
 
-.skill-set {
-  background: #1D1D35;
-  border-radius: 5px;
-  color: #fff;
-  display: inline-block;
-  list-style: none;
-  margin: 15px 15px 0 0;
-  padding: 16px;
-  text-align: justify;
-  font-size: medium;
-}
-
-.skill-set:hover {
-  transform: scale(1.15);
-  transition: transform .2s;
-  cursor: pointer;
-  background: #2F5C00;
-}
-
 .fa {
-  color: #1D1D35;
+  color: $bodytext;
   background-color: transparent;
   border: 0;
   font-size: medium;
@@ -40,7 +23,7 @@
   transform: scale(1.15);
   transition: transform .2s;
   cursor: pointer;
-  color: #2F5C00;
+  color: $sidebar;
 }
 
 .fa-window-close:hover {
@@ -48,18 +31,17 @@
 }
 
 .commenting {
-  width: 40px;
-  height: 40px;
-  top: 7%;
-  right: 1%;
+  margin-left: 25vh;
+  margin-top: 15vh;
   position: fixed;
   display: none;
   display: inline-flex;
-  font-size: xx-large;
+  font-size: xxx-large;
   cursor: pointer;
   filter: drop-shadow(5px 5px 5px #222);
   transition: transform .2s;
   z-index: 1000;
+  color: $bodycolor;
 
 }
 
@@ -67,7 +49,46 @@
 .commenting:hover {
   transform: scale(1.15);
   transition: transform .2s;
+  color: $white;
 }
+
+.modal-header-right {
+  position: absolute;
+  right: 30px;
+}
+
+.fa-window-close {
+  display: none;
+  display: inline-flex;
+  font-size: xx-large;
+  cursor: pointer;
+  filter: drop-shadow(5px 5px 5px #222);
+  transition: transform .2s;
+  z-index: 1000;
+}
+
+.fa-window-close:hover {
+  transform: scale(1.15);
+  transition: transform .2s;
+}
+
+.fa-arrows-alt {
+  right: 40px;
+  position: absolute;
+  display: none;
+  display: inline-flex;
+  font-size: xx-large;
+  cursor: pointer;
+  filter: drop-shadow(5px 5px 5px #222);
+  transition: transform .2s;
+  z-index: 1000;
+}
+
+.fa-arrows-alt:hover {
+  transform: scale(1.15);
+  transition: transform .2s;
+}
+
 
 .modal-center {
   display: flex;
@@ -78,17 +99,14 @@
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 1050;
   /* Ensure it's on top of everything */
-  background-color: rgba(0, 0, 0, 0.5);
   /* Optional: semi-transparent background */
 }
 
-.modal-center .modal-dialog {
+.modal-dialog {
   width: 60vw;
-  /* 60% of the viewport width */
-  height: 60vh;
-  /* 60% of the viewport height */
+  z-index: 1050;
+  left: 20vw;
   max-width: 100%;
   /* Override Bootstrap's max-width */
   margin: 0;
@@ -118,7 +136,7 @@
 
 
 .btn-primary {
-  background-color: #1D1D35 !important;
+  background-color: $bodytext !important;
   color: white;
   border: #1c1d1d;
 }
@@ -138,7 +156,7 @@
 
 
 .btn-message i {
-  color: #1D1D35 !important;
+  color: $bodytext !important;
   font-size: xx-large;
   display: block;
   -webkit-filter: drop-shadow(5px 5px 5px #222);
@@ -174,7 +192,7 @@
 
   .btn-message i {
     display: inline-block;
-    color: #1D1D35 !important;
+    color: $bodytext !important;
     -webkit-transform: translateX(0%) translateY(0%);
     transform: translateX(0%) translateY(0%);
     width: 30px;
@@ -194,12 +212,6 @@
     margin-left: -10%;
   }
 
-  .commenting {
-
-    top: 10%;
-    right: 2%;
-
-  }
 
 }
 
@@ -207,7 +219,7 @@
 
   .btn-message i {
     display: inline-block;
-    color: #1D1D35 !important;
+    color: $bodytext !important;
     -webkit-transform: translateX(0%) translateY(0%);
     transform: translateX(0%) translateY(0%);
     width: 30px;
@@ -224,7 +236,7 @@
 
   .btn-message i {
     display: inline-block;
-    color: #1D1D35 !important;
+    color: $bodytext !important;
     -webkit-transform: translateX(0%) translateY(0%);
     transform: translateX(0%) translateY(0%);
     width: 30px;

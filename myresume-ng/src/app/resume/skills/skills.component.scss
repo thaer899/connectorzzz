@@ -1,0 +1,20 @@
+@import '../../../assets/scss/variable.scss';
+
+
+.skill-set {
+  background: $primary;
+  border-radius: 5px;
+  color: $bodycolor;
+  display: inline-block;
+  list-style: none;
+  margin: 15px 15px 0 0;
+  padding: 10px;
+  text-align: justify;
+  box-shadow: 3px 0 6px rgba(0, 0, 0, 0.16);
+}
+
+.skill-set:hover {
+  background: $bodycolor;
+  box-shadow: none;
+  color: $primary;
+}

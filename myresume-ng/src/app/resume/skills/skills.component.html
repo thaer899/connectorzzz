@@ -2,9 +2,8 @@
   <h1>Technical Skills</h1>
   <div *ngFor="let skill of skills; let isLast=last">
     <h3>{{skill.type}}</h3>
-    <ul class="skill-set ">
-      <li *ngFor="let sk of skill.list" [routerLink]="['/skills', sk]">{{sk}}</li>
-    </ul>
+    <button type="button" class="btn skill-set" *ngFor="let sk of skill.list"
+      [routerLink]="['/skills', sk]">{{sk}}</button>
     <hr *ngIf="!isLast">
   </div>
 </section>

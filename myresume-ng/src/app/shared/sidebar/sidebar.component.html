@@ -2,7 +2,7 @@
   <div *ngFor="let ref of references">
     <div class="column" *ngIf="ref.icon !=''">
       <a href={{ref.url}} target="_blank">
-        <img src={{ref.icon}} alt={{ref.platform}} class="ref-img">
+        <img [src]="'assets/images/svg/' + ref.platform + '.svg'" alt={{ref.platform}} class="ref-img">
       </a>
     </div>
   </div>

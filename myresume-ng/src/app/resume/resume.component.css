@@ -90,6 +90,7 @@ h1.resume-app-name {
 .marquee {
     display: inline-block;
     padding-left: 10%;
+    padding-top: 10px;
     -webkit-animation: marquee 30s linear infinite;
     animation: marquee 30s linear infinite;
 }

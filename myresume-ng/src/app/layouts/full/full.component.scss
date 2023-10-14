@@ -1,4 +1,6 @@
-.main-container{
+@import '../../../assets/scss/variable.scss';
+
+.main-container {
     margin-top: 60px;
     margin-left: 235px;
     padding: 15px;
@@ -9,16 +11,20 @@
     overflow: hidden;
 
 }
+
 .activated {
     background-color: #78792f;
 }
+
 footer {
     background-color: #1b2650;
     padding: 20px;
 }
-    footer > p {
-        color: white;
-    }
+
+footer>p {
+    color: $bodycolor;
+}
+
 @media screen and (max-width: 992px) {
     .main-container {
         margin-left: 0px !important;

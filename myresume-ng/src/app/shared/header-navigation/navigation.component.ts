@@ -1,5 +1,5 @@
 import { Component, AfterViewInit } from '@angular/core'
-import { ModalModule } from 'ngx-bootstrap/modal'
+
 declare let $: any
 
 @Component({
@@ -8,7 +8,7 @@ declare let $: any
 })
 export class NavigationComponent implements AfterViewInit {
   name: string
-  constructor(private readonly modalService: ModalModule) {
+  constructor() {
 
   }
 

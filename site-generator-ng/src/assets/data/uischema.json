@@ -12,9 +12,50 @@
               "type": "VerticalLayout",
               "elements": [
                 {
+                  "type": "Group",
+                  "label": "Resume",
+                  "elements": [
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/resume/properties/firstName",
+                      "label": "First Name"
+                    },
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/resume/properties/lastName",
+                      "label": "Last Name"
+                    },
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/resume/properties/email",
+                      "label": "Email"
+                    },
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/resume/properties/phone",
+                      "label": "Phone"
+                    },
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/resume/properties/website",
+                      "label": "Website"
+                    }
+                  ]
+                },
+                {
+                  "type": "Group",
+                  "label": "Picture",
+                  "elements": [
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/resume/picture"
+                    }
+                  ]
+                },
+                {
                   "type": "Control",
-                  "scope": "#/properties/resume",
-                  "label": "Resume"
+                  "scope": "#/properties/resume/properties/about",
+                  "label": "About"
                 },
                 {
                   "type": "Label",
@@ -39,10 +80,6 @@
               "type": "VerticalLayout",
               "elements": [
                 {
-                  "type": "Label",
-                  "text": "Interests"
-                },
-                {
                   "type": "Control",
                   "scope": "#/properties/interests",
                   "label": "Interests"
@@ -61,6 +98,20 @@
           "type": "ListWithDetail",
           "scope": "#/properties/personal",
           "label": "Personal"
+        }
+      ]
+    },
+    {
+      "type": "Category",
+      "label": "Blog",
+      "elements": [
+        {
+          "label": "Blog",
+          "type": "ListWithDetail",
+          "scope": "#/properties/blog",
+          "options": {
+            "showSortButtons": true
+          }
         }
       ]
     },

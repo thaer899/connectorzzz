@@ -10,6 +10,12 @@
 
     </div>
   </ng-container>
+
+  <div *ngIf="facts.length==0">
+    <p>Do you need more information ? </p>
+  </div>
+  <div class="divider"></div>
+
   <div class="ask">
     <app-ask></app-ask>
   </div>

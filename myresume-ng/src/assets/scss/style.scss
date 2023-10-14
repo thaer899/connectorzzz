@@ -3,7 +3,7 @@ Template Name: Connectorzzz
 Author: thaer899
 Email: thaer.saidi@electrolux.com
 File: scss
-*/ 
+*/
 /**
  * Table Of Content
  *
@@ -16,20 +16,12 @@ File: scss
  *	7. Widgets
  *	8. Custom Templates
  */
- 
-@import 'variable'; 
-@import 'app';
-@import 'pages';
-@import 'sidebar';
+
+@import 'variable';
 @import '../scss/icons/font-awesome/css/font-awesome.min.css';
 @import '../scss/icons/simple-line-icons/css/simple-line-icons.css';
-@import '../scss/icons/themify-icons/themify-icons.css'; 
+@import '../scss/icons/themify-icons/themify-icons.css';
 @import "../scss/icons/material-design-iconic-font/css/materialdesignicons.min.css";
-@import 'widgets';
-@import 'grid';
-@import 'responsive';  
-@import 'spinners.scss'; 
-@import 'animate.css';
 @import 'theme-settings.scss';
 
 

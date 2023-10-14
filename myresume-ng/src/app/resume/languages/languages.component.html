@@ -2,7 +2,7 @@
   <h1>Languages</h1>
   <div class="row" *ngFor="let lang of languages; let isLast=last">
     <h3>{{lang.language}}</h3>
-    <div class="center-vertical col-md-10">
+    <div class="center-vertical col-10">
       <ng-container *ngFor="let dot of getDots(lang.profeciency)">
         <span class="dot" [ngClass]="dot"></span>
       </ng-container>

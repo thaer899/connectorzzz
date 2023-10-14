@@ -8,6 +8,7 @@ import { DataService } from '.././services/data.service';
 import { getStorage, ref, uploadString } from 'firebase/storage';
 import { AuthService } from '../services/auth.service'; // Update the path based on your project structure
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -30,11 +31,17 @@ export class AdminComponent {
         )
       )
     }
+    // ,
+    // {
+    //   renderer: FileUploadComponent,
+    //   tester: rankWith(3, and(isControl, scopeEndsWith('#/properties/resume/picture')))
+    // }
   ];
   uischema = uischemaAsset;
   public schema = schemaAsset;
   public data = {};
   showContent: boolean = false;
+  isAdmin: boolean = false;
   private user: any;
   public users: any;
   public fileName: string;
@@ -50,6 +57,7 @@ export class AdminComponent {
     this.fileName = `${this.user.email}.json`;
     if (this.user) {
       this.showContent = true;
+      this.isAdmin = this.user.email === environment.mainEmail;
       // Fetch data on component initialization
       console.log("Fetching data for user:", this.user.email);
       this.dataService.fetchDataForUser(this.fileName).subscribe(
@@ -165,6 +173,13 @@ export class AdminComponent {
       return false;
     }
   }
+
+  onFileUploaded(fileContent: string) {
+    this.formData.picture = fileContent;
+  }
+
 }
+
+
 
 

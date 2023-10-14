@@ -12,7 +12,10 @@ import { ResumeRoutingModule } from './resume-routing.module'
 import { HomeComponent } from './home/home.component';
 import { AskComponent } from './ask/ask.component';
 import { SidenavComponent } from './shared/sidenav/sidenav.component';
-import { SkillComponent } from './skills/skill/skill.component'
+import { SkillComponent } from './skills/skill/skill.component';
+import { BlogComponent } from './blogs/blog/blog.component';
+import { BlogsComponent } from './blogs/blogs.component'
+import { ContactBoxComponent } from '../shared/contact-box/contact-box.component'
 
 @NgModule({
   imports: [
@@ -28,9 +31,12 @@ import { SkillComponent } from './skills/skill/skill.component'
     InterestsComponent,
     LanguagesComponent,
     HomeComponent,
+    ContactBoxComponent,
     AskComponent,
     SidenavComponent,
-    SkillComponent],
+    SkillComponent,
+    BlogComponent,
+    BlogsComponent],
   exports: [SidenavComponent]
 
 }

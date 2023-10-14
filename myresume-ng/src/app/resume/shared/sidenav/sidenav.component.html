@@ -1,25 +1,27 @@
+<app-contact-box></app-contact-box>
 <div class="left" *ngIf="resume">
 
   <div class="name-hero">
 
     <div class="me-img"><img [routerLink]="['/']" class="me-img" style="cursor: pointer;"
-        src="../../assets/images/photo.jpg" alt=""></div>
+        src="../../assets/images/photo.jpg" alt="">
 
+    </div>
+    <br />
     <div class="name-text" *ngIf="resume">
-      <h1>{{resume.firstName}} <em>{{resume.lastName}}</em></h1>
+      <h1>
+        {{resume.firstName}} <em>{{resume.lastName}}</em>
+      </h1>
       <p>{{resume.address}}</p>
       <p>{{resume.city}}, {{resume.country}}</p>
       <p>{{resume.email}}</p>
       <p>{{resume.phone}}</p>
     </div>
-    <br /><br />
-    <div style="text-align: center">
-      <ul class="skill-set">
-        <li *ngFor="let item of menuItems" role="button" [ngClass]="{'activated': post===item.key}"
-          (click)="changeToMenu(item.key)" [routerLink]="['/', item.key]">
-          {{item.label}}
-        </li>
-      </ul>
+    <div class="divider"></div>
+    <div class="d-grid gap-2">
+      <button type="button" class="btn nav-btn" *ngFor="let item of menuItems" (click)="changeToMenu(item.key)"
+        [routerLink]="['/', item.key]">{{item.label}}</button>
     </div>
+
   </div>
 </div>

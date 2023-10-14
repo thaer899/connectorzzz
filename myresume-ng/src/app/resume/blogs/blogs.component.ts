@@ -1,15 +1,18 @@
-import { HttpClient } from '@angular/common/http'
-import { Component, OnInit } from '@angular/core'
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
-  selector: 'app-sidebar',
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css']
+  // eslint-disable-next-line @angular-eslint/component-selector
+  selector: 'app-blogs',
+  templateUrl: './blogs.component.html',
+  styleUrls: ['./blogs.component.scss']
 })
-export class SidebarComponent implements OnInit {
-  public references: any
+export class BlogsComponent {
+
+  public blogs: any
+  public isDetail = true;
 
   dataFromParent: any;
   private subscription: Subscription;
@@ -20,7 +23,8 @@ export class SidebarComponent implements OnInit {
   ngOnInit() {
     this.subscription = this.dataService.fetchData().subscribe(data => {
       this.dataFromParent = data;
-      this.references = data.references;
+      this.blogs = data.blog;
+      console.log(this.blogs)
     });
     const innerContent = document.getElementById('inner-content')
     if (innerContent) {
@@ -33,4 +37,9 @@ export class SidebarComponent implements OnInit {
     this.subscription.unsubscribe();
 
   }
+
+  detailedView() {
+    this.isDetail = !this.isDetail;
+  }
+
 }

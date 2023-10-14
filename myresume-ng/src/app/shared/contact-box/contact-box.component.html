@@ -1,48 +1,45 @@
-<i class="fa fa-commenting commenting" aria-hidden="true" (click)="openModal(template)"></i>
+<i class="fa fa-commenting commenting" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
 
-<ng-template #template>
-  <div class="modal fade modal-center" id="contactModal" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <i class="fa fa-window-close pull-right" aria-hidden="true" (click)="modalRef?.hide()"></i>
-          <i class="fa fa-arrows-alt pull-right" aria-hidden="true" (click)="openFullChat()"
-            [routerLink]="['/ask']"></i>
-          <h3 class="modal-title" id="contactModalLabel">
-            Ask me:
-          </h3>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-header-right">
+          <i class="fa fa-arrows-alt" aria-hidden="true" data-bs-dismiss="modal" aria-label="Close"
+            (click)="openFullChat()" [routerLink]="['/ask']"></i>
+          <i class="fa fa-window-close" aria-hidden="true" data-bs-dismiss="modal"></i>
+
         </div>
-
-        <div class="modal-body">
-          <form class="contact-form" [formGroup]="messageForm" (submit)="message()">
-            <textarea name="recipientMessage" id="recipientMessage" class="form-control"
-              formControlName="recipientMessage"></textarea>
-            <br />
-            <div class="modal-footer">
-              <button type="button" class="skill-set" type="submit" value="Send" *ngIf="available"> Send
-                message</button>
-              <i class="fas fa-spinner fa-spin" *ngIf="!available"></i>
-
-            </div>
-
-          </form>
+      </div>
+      <div class="modal-body">
+        <form class="contact-form" [formGroup]="messageForm" (submit)="message()">
+          <textarea name="recipientMessage" id="recipientMessage" class="form-control"
+            formControlName="recipientMessage"></textarea>
           <br />
-          <div class="frame-box">
-            <div class="card-body" *ngIf="available && !recipientMessage">
-              <h5 class="card-title">This bot will answer any question you have regarding the resume available on the
-                site
-                <a href="https://www.thaersaidi.com">www.thaersaidi.com</a> as if it was me, Thaer Saidi
-              </h5>
-            </div>
-            <ng-container *ngIf="available">
-              <div *ngFor="let item of chatConversation">
-                <div innerHTML="{{item.message.content}}" class="card-text padding" [ngClass]="item.cssClass">
-                </div>
+          <div class="modal-footer">
+            <button type="button" class="skill-set" type="submit" value="Send" *ngIf="available"> Send
+              message</button>
+            <i class="fas fa-spinner fa-spin" *ngIf="!available"></i>
 
+          </div>
+
+        </form>
+        <br />
+        <div class="frame-box">
+          <div class="card-body" *ngIf="available && !recipientMessage">
+            <h5 class="card-title">This bot will answer any question you have regarding the resume available on the
+              site
+              <a href="https://www.thaersaidi.com">www.thaersaidi.com</a> as if it was me, Thaer Saidi
+            </h5>
+          </div>
+          <ng-container *ngIf="available">
+            <div *ngFor="let item of chatConversation">
+              <div innerHTML="{{item.message.content}}" class="card-text padding" [ngClass]="item.cssClass">
               </div>
-            </ng-container>
-            <div>
+
             </div>
+          </ng-container>
+          <div>
           </div>
         </div>
         <div class="modal-footer">
@@ -50,4 +47,3 @@
       </div>
     </div>
   </div>
-</ng-template>

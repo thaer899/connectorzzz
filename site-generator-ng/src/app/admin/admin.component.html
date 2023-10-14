@@ -1,11 +1,13 @@
 <mat-toolbar class="toolbar">
-    <mat-icon>dashboard</mat-icon>
+    <span>
+        <mat-icon [routerLink]="['/admin']">dashboard</mat-icon>
+    </span>
 
     <span class="fill-toolbar"></span>
 
 
-    <mat-form-field style="font-size: medium;width: 35vh;">
-        <mat-label>{{fileName}}</mat-label>
+    <mat-form-field style="font-size: medium;width: 25vh;" matTooltip="Select or create a new profile" *ngIf="isAdmin">
+        <mat-label>Profile</mat-label>
         <mat-select>
             <div style="padding: 20px;color: aquamarine;">
                 <mat-form-field style="width: 25vh;">
@@ -19,15 +21,16 @@
         </mat-select>
     </mat-form-field>
     <span class="fill-toolbar"></span>
+    <span>
+        <mat-icon class="download" matTooltip="Download data" (click)="download()">download</mat-icon>
+        <mat-icon class="upload" matTooltip="Upload data" (click)="upload()">file_upload</mat-icon>
+        <mat-icon class="separator">more_vert</mat-icon>
+        <mat-icon class="logout" matTooltip="Logout" (click)="logout()">logout</mat-icon>
 
-    <mat-icon class="download" matTooltip="Download data" (click)="download()">download</mat-icon>
-    <mat-icon class="upload" matTooltip="Upload data" (click)="upload()">file_upload</mat-icon>
-
+    </span>
 
 </mat-toolbar>
 <div class="background" *ngIf="data">
-    <mat-icon class="logout material-symbols-outlined" matTooltip="Logout" (click)="logout()">logout</mat-icon>
-
 
     <jsonforms [data]="data" (dataChange)="onDataChange($event)" [schema]="schema" [uischema]="uischema"
         [renderers]="renderers">

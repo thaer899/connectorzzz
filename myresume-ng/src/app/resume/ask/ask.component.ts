@@ -1,14 +1,13 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { ChangeDetectorRef, Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm } from '@angular/forms';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import OpenAI from 'openai';
 import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-ask',
   templateUrl: './ask.component.html',
-  styleUrls: ['./ask.component.css']
+  styleUrls: ['./ask.component.scss']
 })
 export class AskComponent implements OnInit {
 
@@ -20,7 +19,6 @@ export class AskComponent implements OnInit {
   public chatConversation: any;
   public info: any;
   public available: boolean = true;
-  modalRef?: BsModalRef;
   config = {
     animated: true,
     keyboard: true,
@@ -31,7 +29,6 @@ export class AskComponent implements OnInit {
 
   constructor(
     private readonly http: HttpClient,
-    private modalService: BsModalService,
     private changeDetectorRef: ChangeDetectorRef,
     private fb: FormBuilder
   ) {
@@ -49,7 +46,6 @@ export class AskComponent implements OnInit {
 
 
   openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template, this.config);
   }
 
   message() {
@@ -69,6 +65,10 @@ export class AskComponent implements OnInit {
     const body = {
       recipientMessage: this.recipientMessage
     };
+
+    // const emailParam = encodeURIComponent(environment.mainEmail);
+    // const templateTypeParam = encodeURIComponent('message');
+    // const messageURL = `${environment.functionURL}openai?email=${emailParam}&templateType=${templateTypeParam}`;
 
     if (this.recipientMessage) {
       const messageURL = environment.functionURL + 'message';

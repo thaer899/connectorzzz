@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
-  styleUrls: ['./sidenav.component.css']
+  styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent implements OnInit {
   public post: any;
@@ -17,6 +17,7 @@ export class SidenavComponent implements OnInit {
     { key: 'education', label: 'Education' },
     { key: 'interests', label: 'Interests' },
     { key: 'languages', label: 'Languages' },
+    { key: 'blogs', label: 'Blog' }
   ];
 
   constructor(

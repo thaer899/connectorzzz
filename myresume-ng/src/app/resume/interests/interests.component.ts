@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-interests',
   templateUrl: './interests.component.html',
-  styleUrls: ['./interests.component.css']
+  styleUrls: ['./interests.component.scss']
 })
 export class InterestsComponent implements OnInit {
   public interests: any

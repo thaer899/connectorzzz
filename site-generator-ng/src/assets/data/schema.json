@@ -86,9 +86,6 @@
           "platform": {
             "type": "string"
           },
-          "icon": {
-            "type": "string"
-          },
           "url": {
             "type": "string"
           }
@@ -115,6 +112,10 @@
     "resume": {
       "type": "object",
       "properties": {
+        "picture": {
+          "type": "string",
+          "format": "uri"
+        },
         "firstName": {
           "type": "string"
         },
@@ -136,10 +137,62 @@
         "phone": {
           "type": "string"
         },
+        "birthDate": {
+          "type": "string"
+        },
+        "website": {
+          "type": "string"
+        },
         "about": {
           "type": "array",
           "items": {
             "type": "string"
+          }
+        }
+      }
+    },
+    "blog": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "description": {
+            "type": "string"
+          },
+          "posts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "date": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "summary": {
+                  "type": "string"
+                },
+                "tags": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
           }
         }
       }
