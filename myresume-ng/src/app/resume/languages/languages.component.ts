@@ -6,7 +6,7 @@ import { DataService } from 'src/app/services/data.service';
 @Component({
   selector: 'app-languages',
   templateUrl: './languages.component.html',
-  styleUrls: ['./languages.component.css']
+  styleUrls: ['./languages.component.scss']
 })
 export class LanguagesComponent implements OnInit {
   public languages: any
@@ -49,6 +49,7 @@ export class LanguagesComponent implements OnInit {
         blackDotsCount = 0;
     }
     const dots = Array(blackDotsCount).fill('black').concat(Array(totalDots - blackDotsCount).fill(''));
+    console.log(dots);
     return dots;
   }
 

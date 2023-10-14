@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
+  mainEmail: "rebel.saidi.thaer@gmail.com",
   firebaseConfig: {
     apiKey: "AIzaSyA2wXas1gdmAzamuvI2gFM_spA28ASUzLA",
     authDomain: "site-generator-ng.firebaseapp.com",

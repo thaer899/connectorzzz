@@ -24,17 +24,15 @@ html {
 
 body {
     -webkit-font-smoothing: antialiased;
+    background-color: $bodycolor !important;
     color: $bodytext;
-    font-family: raleway, sans-serif;
+    font-family: $bodyfont;
     font-size: 18px;
     font-weight: 400;
     line-height: 1.4;
     text-rendering: optimizeLegibility;
 }
 
-.skill-set li:hover {
-    background: #2F5C00;
-}
 
 h1 {
     color: $bodytext;
@@ -45,7 +43,7 @@ a {
 }
 
 a:hover {
-    color: #84998b !important;
+    color: $themecolor !important;
 }
 
 .wrapper {
@@ -155,7 +153,7 @@ ul {
 
 
 .skill-set {
-    background: $primary;
+    background: $themecolor-dark;
     border-radius: 5px;
     color: $bodycolor;
     display: inline-block;
@@ -169,7 +167,7 @@ ul {
 .skill-set:hover {
     background: $bodycolor;
     box-shadow: none;
-    color: $primary;
+    color: $themecolor-dark;
 }
 
 
@@ -226,15 +224,6 @@ ul {
 }
 
 
-.black {
-    background: #2F5C00;
-}
-
-.black:hover {
-    background: $bodytext;
-
-}
-
 .dashed {
     border-bottom: dashed 1px;
     padding: 15px;
@@ -270,7 +259,7 @@ ul {
     left: 50%;
     margin-left: -15px;
     top: 50%;
-    background: #fff;
+    background: $bodycolor;
     margin-top: -15px;
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
@@ -355,7 +344,7 @@ ul {
 
     .scroll-top i {
         display: inline-block;
-        color: #84998b;
+        color: $bodytext !important;
         -webkit-transform: translateX(-30%) translateY(-30%);
         transform: translateX(-30%) translateY(-30%);
     }

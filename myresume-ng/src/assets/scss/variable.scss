@@ -7,18 +7,20 @@ File: scss
 // Variables
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700');
 
-$bodyfont: 'Montserrat', sans-serif;
-$headingfont: 'Montserrat', sans-serif;
+$bodyfont: 'raleway', sans-serif;
+$headingfont: 'raleway', sans-serif;
 
 /*Theme Colors*/
-
+$themecolor: #697683;
+$themecolor-dark: #1D1D35;
 $topbar: grey;
 $sidebar: #697683;
 $bodycolor: #f3f4f3;
-$headingtext: #455a64;
 $bodytext: #1D1D35;
-$themecolor: #697683;
-$themecolor-dark: #1D1D35;
+
+
+
+
 
 /*bootstrap Color*/
 $danger: #ef5350;

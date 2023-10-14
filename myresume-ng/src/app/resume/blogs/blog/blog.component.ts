@@ -8,7 +8,7 @@ import { DataService } from 'src/app/services/data.service';
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'app-blog',
   templateUrl: './blog.component.html',
-  styleUrls: ['./blog.component.css']
+  styleUrls: ['./blog.component.scss']
 })
 export class BlogComponent {
 

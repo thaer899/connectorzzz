@@ -1,0 +1,19 @@
+@import '../../../assets/scss/variable.scss';
+
+
+em {
+    font-style: normal;
+    font-size: medium;
+    color: $sidebar;
+    font-weight: 400;
+}
+
+
+.black {
+    background: $themecolor-dark;
+}
+
+.black:hover {
+    background: $bodytext;
+
+}
