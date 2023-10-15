@@ -309,22 +309,22 @@ export default
                 },
                 {
                     "key": "themecolordark",
-                    "value": "#1D1D35"
-                },
-                {
-                    "key": "topbar",
-                    "value": "#c3c3c3"
-                },
-                {
-                    "key": "sidebar",
-                    "value": "#84998b"
-                },
-                {
-                    "key": "bodycolor",
                     "value": "#f3f4f3"
                 },
                 {
-                    "key": "bodytext",
+                    "key": "topbar",
+                    "value": "#adb2b7"
+                },
+                {
+                    "key": "sidebar",
+                    "value": "#f3f4f3"
+                },
+                {
+                    "key": "bodycolor",
+                    "value": "#fff"
+                },
+                {
+                    "key": "themecolor",
                     "value": "#1D1D35"
                 }
             ]
