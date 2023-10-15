@@ -305,7 +305,7 @@ export default
             "colors": [
                 {
                     "key": "themecolor",
-                    "value": "#697683"
+                    "value": "#84998b"
                 },
                 {
                     "key": "themecolordark",
@@ -317,7 +317,7 @@ export default
                 },
                 {
                     "key": "sidebar",
-                    "value": "#697683"
+                    "value": "#84998b"
                 },
                 {
                     "key": "bodycolor",
