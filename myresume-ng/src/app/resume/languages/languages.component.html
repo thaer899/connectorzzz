@@ -1,14 +1,16 @@
 <section id="languages">
   <h1>Languages</h1>
-  <div class="row" *ngFor="let lang of languages; let isLast=last">
-    <h3>{{lang.language}}</h3>
-    <div class="center-vertical col-10">
-      <ng-container *ngFor="let dot of getDots(lang.profeciency)">
-        <span class="dot" [ngClass]="dot"></span>
-      </ng-container>
+  <br />
+  <div class="margin-top">
+    <div class="row" *ngFor="let lang of languages; let isLast=last">
+      <h3>{{lang.language}}</h3>
+      <div class="center-vertical col-10" style="margin-bottom: 20px;">
+        <ng-container *ngFor="let dot of getDots(lang.profeciency)">
+          <span class="dot" [ngClass]="dot"></span>
+        </ng-container>
+      </div>
+      <br />
+      <hr *ngIf="!isLast">
     </div>
-    <br />
-    <br />
-    <hr *ngIf="!isLast">
   </div>
 </section>

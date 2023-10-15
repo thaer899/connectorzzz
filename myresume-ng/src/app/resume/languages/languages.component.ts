@@ -49,7 +49,6 @@ export class LanguagesComponent implements OnInit {
         blackDotsCount = 0;
     }
     const dots = Array(blackDotsCount).fill('black').concat(Array(totalDots - blackDotsCount).fill(''));
-    console.log(dots);
     return dots;
   }
 

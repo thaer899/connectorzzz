@@ -43,16 +43,6 @@
                   ]
                 },
                 {
-                  "type": "Group",
-                  "label": "Picture",
-                  "elements": [
-                    {
-                      "type": "Control",
-                      "scope": "#/properties/resume/picture"
-                    }
-                  ]
-                },
-                {
                   "type": "Control",
                   "scope": "#/properties/resume/properties/about",
                   "label": "About"
@@ -79,6 +69,25 @@
             {
               "type": "VerticalLayout",
               "elements": [
+                {
+                  "type": "Group",
+                  "label": "Picture",
+                  "elements": [
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/resume/picture"
+                    }
+                  ]
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/theme",
+                  "label": "Theme"
+                },
+                {
+                  "type": "Label",
+                  "text": "Interests"
+                },
                 {
                   "type": "Control",
                   "scope": "#/properties/interests",

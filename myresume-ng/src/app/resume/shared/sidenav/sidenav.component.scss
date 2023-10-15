@@ -25,14 +25,14 @@ h1.resume-app-name {
 }
 
 .nav-btn {
-  background-color: $themecolor-dark;
+  background-color: var(--themecolordark);
   color: $white;
   box-shadow: 1px 1px 3px #222;
   margin: 5px 20px 5px 20px;
 }
 
 .nav-btn:hover {
-  background-color: $sidebar;
+  background-color: var(--sidebar);
   box-shadow: none;
   color: $white;
 }

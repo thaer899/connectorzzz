@@ -301,6 +301,34 @@ export default
             "website": "https://www.thaersaidi.com",
             "birthDate": "1989-03-05"
         },
+        "theme": {
+            "colors": [
+                {
+                    "key": "themecolor",
+                    "value": "#697683"
+                },
+                {
+                    "key": "themecolordark",
+                    "value": "#1D1D35"
+                },
+                {
+                    "key": "topbar",
+                    "value": "#c3c3c3"
+                },
+                {
+                    "key": "sidebar",
+                    "value": "#697683"
+                },
+                {
+                    "key": "bodycolor",
+                    "value": "#f3f4f3"
+                },
+                {
+                    "key": "bodytext",
+                    "value": "#1D1D35"
+                }
+            ]
+        },
         "skills": [
             {
                 "type": "Cloud Platforms",

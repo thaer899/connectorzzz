@@ -63,9 +63,9 @@
 
 
 .btn-primary {
-    background-color: $bodytext !important;
-    color: $bodycolor;
-    border: $themecolor-dark;
+    background-color: var(--bodytext) !important;
+    color: var(--bodycolor);
+    border: var(--themecolordark);
 }
 
 

@@ -1,3 +1,6 @@
+@import '../../../assets/scss/variable.scss';
+
+
 .tech-list {
     margin-top: 30px;
     margin-bottom: 30px;
@@ -22,17 +25,17 @@
     padding: 5px;
     transition: background-color 0.3s;
     font-size: smaller;
-    color: #05080c !important;
+    color: var(--themecolordark) !important;
     font-weight: 500;
 }
 
 .tech-list a:hover {
-    /* Changes background color on hover */
+    color: var(--themecolor) !important;
 }
 
 em {
     font-style: normal;
     font-size: medium;
-    color: #696565;
+    color: var(--themecolor);
     font-weight: 400;
 }

@@ -5,12 +5,34 @@
 .ps .ps__scrollbar-y-rail {
     left: 3px;
     right: auto;
-} */
+} 
+
+:root {
+    --themecolor: #697683;
+    --themecolordark: #1D1D35;
+    --topbar: #c3c3c3;
+    --sidebar: #697683;
+    --bodycolor: #f3f4f3;
+    --bodytext: #1D1D35;
+
+}
+*/
 
 @import './assets/scss/variable.scss';
 
+:root {
+    --themecolor: ;
+    --themecolordark: ;
+    --topbar: ;
+    --sidebar: ;
+    --bodycolor: ;
+    --bodytext: ;
+
+}
+
 *,
 *:before,
+
 *:after {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -19,13 +41,15 @@
 
 html {
     font-size: 100%;
-    background-color: $bodycolor !important;
+    background-color: var(--bodycolor) !important;
+    color: var(--bodytext) !important;
+
 }
 
 body {
     -webkit-font-smoothing: antialiased;
-    background-color: $bodycolor !important;
-    color: $bodytext;
+    background-color: var(--bodycolor) !important;
+    color: var(--bodytext) !important;
     font-family: $bodyfont;
     font-size: 18px;
     font-weight: 400;
@@ -33,17 +57,40 @@ body {
     text-rendering: optimizeLegibility;
 }
 
-
 h1 {
-    color: $bodytext;
+    font-size: 2.5em !important;
+    color: var(--themecolordark) !important;
+    margin-bottom: 0.5em;
+    font-weight: bold;
 }
 
+h2 {
+    font-size: 2em !important;
+    color: var(--themecolor) !important;
+    margin-bottom: 0.4em;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 1.5em !important;
+    color: var(--themecolor) !important;
+    margin-bottom: 0.4em;
+    font-weight: normal;
+}
+
+p {
+    font-size: 1em !important;
+    color: var(--bodytext) !important;
+}
+
+
 a {
-    color: $bodytext !important;
+    font-size: 1em !important;
+    color: var(--bodytext) !important;
 }
 
 a:hover {
-    color: $themecolor !important;
+    color: var(--themecolor) !important;
 }
 
 .wrapper {
@@ -51,7 +98,7 @@ a:hover {
 }
 
 .left {
-    background-color: $sidebar !important;
+    background-color: var(--sidebar) !important;
     float: right;
     height: 100%;
     margin-left: -1px;
@@ -59,7 +106,7 @@ a:hover {
     position: fixed;
     width: 25%;
     overflow-y: auto;
-    z-index: 10;
+    z-index: 100;
     box-shadow: 3px 0 6px rgba(0, 0, 0, 0.16);
 }
 
@@ -68,7 +115,7 @@ a:hover {
     height: 100%;
     position: relative;
     width: 75%;
-    background-color: $bodycolor;
+    background-color: var(--bodycolor);
     margin-right: 10px;
     padding-top: 60px;
 }
@@ -153,7 +200,7 @@ ul {
 
 
 .skill-set {
-    background: $themecolor-dark;
+    background: var(--themecolordark);
     border-radius: 5px;
     color: $bodycolor;
     display: inline-block;
@@ -167,7 +214,7 @@ ul {
 .skill-set:hover {
     background: $bodycolor;
     box-shadow: none;
-    color: $themecolor-dark;
+    color: var(--themecolordark);
 }
 
 
@@ -273,7 +320,6 @@ ul {
     width: 20px;
     height: 20px;
     border: 1px solid $bodytext;
-    ;
     left: 50%;
     margin-left: -10px;
     top: 50%;
@@ -283,6 +329,10 @@ ul {
     -moz-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+}
+
+.margin-top {
+    margin-top: 5vh;
 }
 
 @media screen and (min-width: 30em) and (max-width: 48em) {

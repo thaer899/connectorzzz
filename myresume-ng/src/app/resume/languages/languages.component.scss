@@ -4,16 +4,22 @@
 em {
     font-style: normal;
     font-size: medium;
-    color: $sidebar;
+    color: var(--themecolordark);
     font-weight: 400;
 }
 
+.dot {
+
+    background-color: var(--themecolordark);
+    display: inline-block;
+    margin-bottom: 5px;
+}
 
 .black {
-    background: $themecolor-dark;
+    background: var(--themecolor);
 }
 
 .black:hover {
-    background: $bodytext;
+    background: var(--bodytext);
 
 }

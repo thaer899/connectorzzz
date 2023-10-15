@@ -8,9 +8,6 @@
     "test": "ng test",
     "lint": "eslint . --ext .ts",
     "e2e": "npx playwright test",
-    "dev:ssr": "ng run angular-basic:serve-ssr",
-    "serve:ssr": "node dist/angular-basic/server/main.js",
-    "build:ssr": "ng build && ng run angular-basic:server",
     "prerender": "ng run angular-basic:prerender"
   },
   "private": true,

@@ -2,9 +2,9 @@
 
 
 .skill-set {
-  background: $themecolor-dark;
+  background: var(--themecolordark);
   border-radius: 5px;
-  color: $bodycolor;
+  color: var(--bodycolor);
   display: inline-block;
   list-style: none;
   margin: 15px 15px 0 0;
@@ -14,7 +14,7 @@
 }
 
 .skill-set:hover {
-  background: $bodycolor;
+  background: var(--bodycolor);
   box-shadow: none;
-  color: $themecolor-dark;
+  color: var(--themecolordark);
 }

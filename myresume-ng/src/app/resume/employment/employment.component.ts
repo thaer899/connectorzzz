@@ -6,7 +6,7 @@ import { DataService } from 'src/app/services/data.service';
 @Component({
   selector: 'app-employment',
   templateUrl: './employment.component.html',
-  styleUrls: ['./employment.component.css']
+  styleUrls: ['./employment.component.scss']
 })
 export class EmploymentComponent implements OnInit {
   public employment: any
