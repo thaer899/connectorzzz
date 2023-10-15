@@ -225,7 +225,14 @@
       "items": {
         "properties": {
           "type": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "messages",
+              "quotes",
+              "skills",
+              "default",
+              "perso"
+            ]
           },
           "summary": {
             "type": "string"

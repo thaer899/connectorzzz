@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { ChangeDetectorRef, Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import OpenAI from 'openai';
 import { environment } from 'src/environments/environment';
 
@@ -11,6 +12,7 @@ import { environment } from 'src/environments/environment';
 })
 export class AskComponent implements OnInit {
 
+  public email: string;
   public recipientMessage: string;
   public chatCompletion: any;
   public messageForm: FormGroup;
@@ -30,7 +32,8 @@ export class AskComponent implements OnInit {
   constructor(
     private readonly http: HttpClient,
     private changeDetectorRef: ChangeDetectorRef,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private route: ActivatedRoute
   ) {
     this.messageForm = this.fb.group({
       recipientMessage: ''
@@ -42,7 +45,17 @@ export class AskComponent implements OnInit {
     this.info = {};
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.route.paramMap.subscribe(params => {
+      const email = params.get('email');
+
+      if (email) {
+        this.email = email;
+      } else {
+        this.email = environment.mainEmail;
+      }
+    });
+  }
 
 
   openModal(template: TemplateRef<any>) {
@@ -59,7 +72,7 @@ export class AskComponent implements OnInit {
 
     const options = {
       headers: new HttpHeaders(headers),
-      params: new HttpParams().set('email', environment.mainEmail)
+      params: new HttpParams().set('email', this.email)
     };
 
     const body = {

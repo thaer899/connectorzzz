@@ -1,12 +1,13 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit, OnChanges, Renderer2, Inject, ElementRef, AfterViewInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 import { FormBuilder } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { ThemeService } from '../services/theme.service';
 import { DOCUMENT } from '@angular/common';
 import { Subscription } from 'rxjs';
+import e = require('express');
 
 @Component({
   selector: 'app-resume',
@@ -19,11 +20,12 @@ export class ResumeComponent implements OnInit, OnChanges, AfterViewInit {
   private subscription: Subscription;
   @ViewChild('body') yourElementRef: ElementRef;
 
+  public email: any;
   public post: any;
   public data: any;
   public resume: any;
   public quote: string;
-
+  public mainEmail: any;
   public theme: any;
 
   public menuItems = [
@@ -35,6 +37,7 @@ export class ResumeComponent implements OnInit, OnChanges, AfterViewInit {
   ];
 
   constructor(
+    private route: ActivatedRoute,
     private _formBuilder: FormBuilder,
     private readonly dataService: DataService,
     private readonly router: Router,
@@ -59,6 +62,21 @@ export class ResumeComponent implements OnInit, OnChanges, AfterViewInit {
       console.log("Resume: Theme Data from DataService:", this.theme);
       this.applyTheme();
 
+    });
+
+    // Get email parameter from the route and fetch data
+    this.route.paramMap.subscribe(params => {
+      const email = params.get('email');
+
+      if (email) {
+        this.email = email;
+        this.dataService.fetchDataByEmail(this.email);
+        console.log("Resume: Data fetched for:", this.email);
+      } else {
+        this.mainEmail = environment.mainEmail
+        this.dataService.fetchData();
+        console.log("Resume: Data fetched for main Account");
+      }
     });
 
   }

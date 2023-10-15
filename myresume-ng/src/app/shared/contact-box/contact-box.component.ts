@@ -5,6 +5,7 @@ import OpenAI from 'openai';
 import { environment } from 'src/environments/environment';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-contact-box',
@@ -16,6 +17,7 @@ export class ContactBoxComponent implements OnInit {
   public recipientMessage: string;
   public chatCompletion: any;
   public messageForm: FormGroup;
+  public email: string;
 
   public response: any;
   public chatConversation: any;
@@ -34,7 +36,8 @@ export class ContactBoxComponent implements OnInit {
   constructor(
     private readonly http: HttpClient,
     private changeDetectorRef: ChangeDetectorRef,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private route: ActivatedRoute
   ) {
     this.messageForm = this.fb.group({
       recipientMessage: ''
@@ -47,7 +50,18 @@ export class ContactBoxComponent implements OnInit {
   }
 
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.route.paramMap.subscribe(params => {
+      const email = params.get('email');
+
+      if (email) {
+        this.email = email;
+      } else {
+        this.email = environment.mainEmail;
+      }
+    });
+
+  }
 
 
 
@@ -68,7 +82,7 @@ export class ContactBoxComponent implements OnInit {
 
     const options = {
       headers: new HttpHeaders(headers),
-      params: new HttpParams().set('email', environment.mainEmail)
+      params: new HttpParams().set('email', this.email)
     };
 
     const body = {

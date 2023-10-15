@@ -1,23 +1,22 @@
 <section id="skill">
   <h1> {{skillId}}</h1>
-
   <ng-container>
     <div *ngFor="let fact of facts; let isLast=last">
       <ng-container *ngIf="fact !=''">
-        <p>{{fact}}</p>
+        <blockquote class="blockquote">
+          <p>{{fact}}</p>
+        </blockquote>
         <hr *ngIf="!isLast">
       </ng-container>
-
     </div>
   </ng-container>
-
   <div *ngIf="facts.length==0">
-    <p>Do you need more information ? </p>
+    <blockquote class="blockquote">
+      <p>Do you need more information ? </p>
+    </blockquote>
   </div>
   <div class="divider"></div>
-
   <div class="ask">
     <app-ask></app-ask>
   </div>
-
 </section>

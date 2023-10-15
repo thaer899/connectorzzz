@@ -1,11 +1,32 @@
 <app-contact-box></app-contact-box>
 <div class="left" *ngIf="resume">
 
-  <div class="name-hero">
+  <div class="name-hero" *ngIf="!email">
 
     <div class="me-img"><img [routerLink]="['/']" class="me-img" style="cursor: pointer;"
-        src="../../assets/images/photo.jpg" alt="">
+        [src]="'../../assets/images/'+mainEmail+'.jpg'" alt="">
+    </div>
+    <br />
+    <div class="name-text" *ngIf="resume">
+      <h1>
+        {{resume.firstName}} <em>{{resume.lastName}}</em>
+      </h1>
+      <p>{{resume.address}}</p>
+      <p>{{resume.city}}, {{resume.country}}</p>
+      <p>{{resume.email}}</p>
+      <p>{{resume.phone}}</p>
+    </div>
+    <div class="divider"></div>
+    <div class="d-grid gap-2" *ngIf="mainEmail != email">
+      <button type="button" class="btn nav-btn" *ngFor="let item of menuItems" (click)="changeToMenu(item.key)"
+        [routerLink]="['/', item.key]">{{item.label}}</button>
+    </div>
+  </div>
 
+  <div class="name-hero" *ngIf="email">
+
+    <div class="me-img"><img [routerLink]="['/',email]" class="me-img" style="cursor: pointer;"
+        [src]="'../../assets/images/'+email+'.jpg'" alt="">
     </div>
     <br />
     <div class="name-text" *ngIf="resume">
@@ -20,8 +41,7 @@
     <div class="divider"></div>
     <div class="d-grid gap-2">
       <button type="button" class="btn nav-btn" *ngFor="let item of menuItems" (click)="changeToMenu(item.key)"
-        [routerLink]="['/', item.key]">{{item.label}}</button>
+        [routerLink]="['/',email, item.key]">{{item.label}}</button>
     </div>
-
   </div>
 </div>

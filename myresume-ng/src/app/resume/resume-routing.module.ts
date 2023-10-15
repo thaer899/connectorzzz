@@ -32,6 +32,24 @@ const routes: Routes = [
 
       // { path: '**', component: PageNotFoundComponent }, // handle no match routes
     ]
+  },
+  {
+    path: ':email',
+    component: ResumeComponent,
+    children: [
+      { path: '', component: HomeComponent, data: { title: 'Home Page' } },
+      { path: 'employment', component: EmploymentComponent, data: { title: 'Employment List' } },
+      { path: 'skills', component: SkillsComponent, data: { title: 'Skill List' } },
+      { path: 'skills/:id', component: SkillComponent, data: { title: 'Skill Details' } }, // New route for skill detail
+      { path: 'education', component: EducationComponent, data: { title: 'Education List' } },
+      { path: 'interests', component: InterestsComponent, data: { title: 'Interests List' } },
+      { path: 'languages', component: LanguagesComponent, data: { title: 'Languages List' } },
+      { path: 'blogs', component: BlogsComponent, data: { title: 'Blogs topics' } },
+      { path: 'blogs/:id', component: BlogComponent, data: { title: 'Blog posts' } },
+      { path: 'ask', component: AskComponent, data: { title: 'Ask me' } },
+
+      // { path: '**', component: PageNotFoundComponent }, // handle no match routes
+    ]
   }
 ];
 
