@@ -80,9 +80,18 @@
                   ]
                 },
                 {
-                  "type": "Control",
-                  "scope": "#/properties/theme",
-                  "label": "Theme"
+                  "type": "Group",
+                  "label": "Theme",
+                  "elements": [
+                    {
+                      "type": "Label",
+                      "text": "colors"
+                    },
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/theme/properties/colors"
+                    }
+                  ]
                 },
                 {
                   "type": "Label",
