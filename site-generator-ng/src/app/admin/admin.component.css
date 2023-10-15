@@ -24,3 +24,33 @@
 .fill-toolbar {
   flex: 1 1 auto;
 }
+
+
+@media screen and (max-width: 30em) {
+
+  .mat-icon {
+    font-size: x-large;
+    font-weight: normal;
+    margin-right: 0px;
+
+  }
+
+  .material-symbols-outlined {
+    width: 40px;
+    height: 40px;
+  }
+
+  .upload {
+    color: #3b9029 !important;
+    right: 80px;
+
+  }
+
+  .download {
+    color: #f96c6c !important;
+    right: 120px;
+
+
+  }
+
+}

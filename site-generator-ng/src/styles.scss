@@ -26,6 +26,7 @@ body {
     color: transparent;
 }
 
+
 .add-button {
     background-color: transparent !important;
     box-shadow: none !important;
@@ -64,8 +65,8 @@ body {
 }
 
 .material-symbols-outlined {
-    width: 50px !important;
-    height: 50px !important;
+    width: 50px;
+    height: 50px;
     right: 0%;
     position: fixed;
     color: $accent-color !important;
@@ -116,4 +117,12 @@ body {
 .mat-tooltip {
     font-size: 12px;
     /* Adjust this value as needed */
+}
+
+@media screen and (max-width: 30em) {
+    .mat-card {
+        width: 50vh;
+        margin-left: 10vh;
+    }
+
 }

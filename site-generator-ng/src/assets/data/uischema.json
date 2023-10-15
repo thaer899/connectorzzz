@@ -39,46 +39,49 @@
                       "type": "Control",
                       "scope": "#/properties/resume/properties/website",
                       "label": "Website"
+                    },
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/resume/picture",
+                      "label": "Picture"
                     }
                   ]
                 },
                 {
-                  "type": "Control",
-                  "scope": "#/properties/resume/properties/about",
-                  "label": "About"
+                  "type": "Group",
+                  "label": "About",
+                  "elements": [
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/resume/properties/about"
+                    }
+                  ]
                 },
                 {
-                  "type": "Label",
-                  "text": "Languages"
+                  "type": "Group",
+                  "label": "Languages",
+                  "elements": [
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/languages"
+                    }
+                  ]
                 },
                 {
-                  "type": "Control",
-                  "scope": "#/properties/languages",
-                  "label": "Language"
-                },
-                {
-                  "type": "Label",
-                  "text": "References"
-                },
-                {
-                  "type": "Control",
-                  "scope": "#/properties/references"
+                  "type": "Group",
+                  "label": "Social",
+                  "elements": [
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/references"
+                    }
+                  ]
                 }
               ]
             },
             {
               "type": "VerticalLayout",
               "elements": [
-                {
-                  "type": "Group",
-                  "label": "Picture",
-                  "elements": [
-                    {
-                      "type": "Control",
-                      "scope": "#/properties/resume/picture"
-                    }
-                  ]
-                },
                 {
                   "type": "Group",
                   "label": "Theme",
@@ -94,13 +97,14 @@
                   ]
                 },
                 {
-                  "type": "Label",
-                  "text": "Interests"
-                },
-                {
-                  "type": "Control",
-                  "scope": "#/properties/interests",
-                  "label": "Interests"
+                  "type": "Group",
+                  "label": "Interests",
+                  "elements": [
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/interests"
+                    }
+                  ]
                 }
               ]
             }
