@@ -13,11 +13,13 @@
 
         </div>
         <br /><br />
+        <blockquote class="blockquote">
 
-        <p>{{page.description}}</p>
+          <p>{{page.description}}</p>
+        </blockquote>
       </div>
       <div class="row">
-        <div class="col-md-4 col-sm-12" *ngFor="let post of page.posts">
+        <div class="col-lg-4 col-md" *ngFor="let post of page.posts">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">{{post.title}}</h5>
@@ -37,7 +39,7 @@
     <div class="row">
       <ng-container *ngIf="blogs">
         <!-- Divide blogs into three arrays for three columns -->
-        <div class="col-md-4 col-sm-12"
+        <div class="col-lg-4 col-md-6 col-sm-12"
           *ngFor="let columnBlogs of [blogs.slice(0, blogs.length/3), blogs.slice(blogs.length/3, 2*blogs.length/3), blogs.slice(2*blogs.length/3)]">
           <div *ngFor="let page of columnBlogs">
             <div class="card mb-3">

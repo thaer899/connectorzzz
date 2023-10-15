@@ -240,14 +240,7 @@ ul {
     font-size: 2em;
 }
 
-.dot {
-    height: 40px;
-    width: 40px;
-    margin: 4px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-}
+
 
 .pull-right {
     float: right;
@@ -335,18 +328,46 @@ ul {
     margin-top: 5vh;
 }
 
-@media screen and (min-width: 30em) and (max-width: 48em) {
-    .scroll-top {
-        width: 30px;
-        height: 30px;
-        position: fixed;
-        bottom: 2%;
-        left: 96%;
-        display: none;
-        opacity: 0.9;
-    }
+
+/* Common styles for all screen sizes */
+.handmade {
+    text-align: center;
+    margin-top: 0;
 }
 
+.scroll-top {
+    width: 30px;
+    height: 30px;
+    position: fixed;
+    bottom: 2%;
+    left: 96%;
+    display: none;
+    opacity: 0.9;
+}
+
+.commenting {
+    margin-left: 25vh;
+    margin-top: 15vh;
+    position: fixed;
+    display: none;
+    display: inline-flex;
+    font-size: xxx-large;
+    cursor: pointer;
+    filter: drop-shadow(5px 5px 5px #222);
+    transition: transform .2s;
+    z-index: 1000;
+    color: var(--bodycolor);
+
+}
+
+
+.commenting:hover {
+    transform: scale(1.15);
+    transition: transform .2s;
+    color: $white;
+}
+
+/* Styles for screens with a maximum width of 48em (up to 768px) */
 @media screen and (max-width: 48em) {
 
     .right,
@@ -357,19 +378,9 @@ ul {
         min-height: 700px;
     }
 
-    .handmade {
-        text-align: center !important;
-        margin-top: 0px !important;
-    }
-
-    .name-hero {
-        height: 75%;
-    }
-
     .me-img {
-
         background-size: 100%;
-        background-position: 0px;
+        background-position: 0;
         border-radius: 100%;
         height: 100px;
         margin: 0 auto;
@@ -378,50 +389,48 @@ ul {
     }
 
     .name-hero {
+        height: 75%;
         margin-top: 10vh;
     }
 
     .scroll-top {
         width: 40px;
         height: 40px;
-        position: fixed;
-        bottom: 2%;
-        left: 96;
-        display: none;
-        opacity: 0.9;
+        left: 96%;
         background-color: transparent;
     }
 
     .scroll-top i {
         display: inline-block;
         color: $bodytext !important;
-        -webkit-transform: translateX(-30%) translateY(-30%);
         transform: translateX(-30%) translateY(-30%);
-    }
-
-    .dot {
-        height: 15px;
-        width: 15px;
     }
 }
 
+/* (up to 1200px) */
 @media screen and (max-width: 75em) {
     body {
         font-size: 16px;
     }
 }
 
+/* (up to 960px) */
 @media screen and (max-width: 60em) {
     body {
         font-size: 14px;
     }
+}
 
-    .dot {
-        height: 15px;
-        width: 15px;
+@media screen and (max-width: 30em) {}
+
+/* iPad-sized screens (approximately) */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .right {
+        width: 65%;
     }
 }
 
+/* Clearfix styles */
 .clearfix:after {
     visibility: hidden;
     display: block;
@@ -429,12 +438,20 @@ ul {
     clear: both;
 }
 
-.handmade {
-    text-align: right;
-    margin-top: 100px;
+/* Styles for larger screens (min-width: 30em) */
+@media screen and (min-width: 30em) {
+    /* Add any specific styles for larger screens here */
 }
 
-.handmade em {
-    font-family: 'Shadows Into Light', cursive;
-    font-size: 1.2em;
+/* Additional styles for .handmade on larger screens */
+@media screen and (min-width: 30em) {
+    .handmade {
+        text-align: right;
+        margin-top: 100px;
+    }
+
+    .handmade em {
+        font-family: 'Shadows Into Light', cursive;
+        font-size: 1.2em;
+    }
 }

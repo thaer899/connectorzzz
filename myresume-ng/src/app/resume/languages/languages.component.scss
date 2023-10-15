@@ -9,17 +9,20 @@ em {
 }
 
 .dot {
-
-    background-color: var(--themecolordark);
+    height: 40px;
+    width: 40px;
+    margin: 4px;
+    border-radius: 50%;
+    background-color: transparent;
     display: inline-block;
     margin-bottom: 5px;
 }
 
 .black {
-    background: var(--themecolor);
+    background: var(--bodytext);
 }
 
 .black:hover {
-    background: var(--bodytext);
+    background: var(--themecolor);
 
 }

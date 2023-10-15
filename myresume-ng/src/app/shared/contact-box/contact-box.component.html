@@ -27,10 +27,10 @@
         <br />
         <div class="frame-box">
           <div class="card-body" *ngIf="available && !recipientMessage">
-            <h5 class="card-title">This bot will answer any question you have regarding the resume available on the
+            <p>This bot will answer any question you have regarding the resume available on the
               site
               <a href="https://www.thaersaidi.com">www.thaersaidi.com</a> as if it was me, Thaer Saidi
-            </h5>
+            </p>
           </div>
           <ng-container *ngIf="available">
             <div *ngFor="let item of chatConversation">

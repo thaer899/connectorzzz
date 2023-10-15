@@ -3,8 +3,11 @@
   <div class="margin-top" *ngFor="let ed of education; let isLast=last">
     <h3>{{ed.title}}</h3>
     <h4>{{ed.school}} <em> ({{ed.period}})</em></h4>
-    {{ed.summary}}
-    <br />
+    <blockquote class="blockquote">
+      <p>
+        {{ed.summary}}
+      </p>
+    </blockquote>
     <br />
     <hr *ngIf="!isLast">
   </div>
