@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "eslint . --ext .ts",
     "e2e": "npx playwright test",
-    "prerender": "ng run angular-basic:prerender"
+    "prerender": "ng run myresume-ng:prerender"
   },
   "private": true,
   "dependencies": {

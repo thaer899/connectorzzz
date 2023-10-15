@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-basic": {
+    "myresume-ng": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-basic/browser",
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -82,21 +82,21 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-basic:build"
+            "browserTarget": "myresume-ng:build"
           },
           "configurations": {
             "development": {
-              "browserTarget": "angular-basic:build:development"
+              "browserTarget": "myresume-ng:build:development"
             },
             "production": {
-              "browserTarget": "angular-basic:build:production"
+              "browserTarget": "myresume-ng:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-basic:build"
+            "browserTarget": "myresume-ng:build"
           }
         },
         "lint": {
@@ -116,66 +116,13 @@
           "builder": "@angular-builders/build-angular:dev-server",
           "options": {
             "command": "npx playwright test",
-            "devServerTarget": "angular-basic:serve"
+            "devServerTarget": "myresume-ng:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "angular-basic:serve:production"
+              "devServerTarget": "myresume-ng:serve:production"
             }
           }
-        },
-        "server": {
-          "builder": "@angular-devkit/build-angular:server",
-          "options": {
-            "outputPath": "dist/angular-basic/server",
-            "main": "server.ts",
-            "tsConfig": "tsconfig.server.json"
-          },
-          "configurations": {
-            "development": {
-              "buildOptimizer": false,
-              "outputHashing": "media",
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.dev.ts"
-                }
-              ],
-              "optimization": false,
-              "sourceMap": true,
-              "extractLicenses": false,
-              "vendorChunk": true
-            },
-            "production": {
-              "buildOptimizer": true,
-              "outputHashing": "media",
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "sourceMap": false,
-              "extractLicenses": true,
-              "vendorChunk": false
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "serve-ssr": {
-          "builder": "@nguniversal/builders:ssr-dev-server",
-          "configurations": {
-            "development": {
-              "browserTarget": "angular-basic:build:development",
-              "serverTarget": "angular-basic:server:development"
-            },
-            "production": {
-              "browserTarget": "angular-basic:build:production",
-              "serverTarget": "angular-basic:server:production"
-            }
-          },
-          "defaultConfiguration": "development"
         },
         "prerender": {
           "builder": "@nguniversal/builders:prerender",
@@ -186,12 +133,12 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-basic:build:production",
-              "serverTarget": "angular-basic:server:production"
+              "browserTarget": "myresume-ng:build:production",
+              "serverTarget": "myresume-ng:server:production"
             },
             "development": {
-              "browserTarget": "angular-basic:build:development",
-              "serverTarget": "angular-basic:server:development"
+              "browserTarget": "myresume-ng:build:development",
+              "serverTarget": "myresume-ng:server:development"
             }
           },
           "defaultConfiguration": "production"
