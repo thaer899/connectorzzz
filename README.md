@@ -58,14 +58,14 @@ A collection of utility tools and libraries enhancing development and operationa
 ### Diagrams:
 
 ```bash
-       +-------------+     +-----+      +----------------+
-       | myresume-ng |---->|  DB  |<----| site-generator |
-       +-------------+     +-----+      +----------------+
-             |               ^               |
-             |               |               |
-             |               |               |
-             |  +-------------------------+  |
-             +->|     myresume-express    |<-+
+       +-------------+     +-----+      +-------------------+
+       | myresume-ng |---->|  DB  |<----| site-generator-ng |
+       +-------------+     +-----+      +-------------------+
+             |               ^                   |
+             |               |                   |
+             |               |                   |
+             |  +-------------------------+      |
+             +->|     myresume-express    |<-----+
                 +-------------------------+
                             |
                             v
