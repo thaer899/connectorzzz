@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
 
@@ -7,12 +7,14 @@ import { DataService } from 'src/app/services/data.service';
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'app-blogs',
   templateUrl: './blogs.component.html',
-  styleUrls: ['./blogs.component.scss']
+  styleUrls: ['./blogs.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 export class BlogsComponent {
 
   public blogs: any
-  public isDetail = true;
+  public isDetail = false;
 
   dataFromParent: any;
   private subscription: Subscription;
@@ -31,6 +33,7 @@ export class BlogsComponent {
       innerContent.scrollIntoView()
     }
   }
+
 
   ngOnDestroy() {
     // Unsubscribe to prevent memory leaks

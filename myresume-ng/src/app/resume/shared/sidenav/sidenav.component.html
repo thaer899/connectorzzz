@@ -11,10 +11,12 @@
       <h1>
         {{resume.firstName}} <em>{{resume.lastName}}</em>
       </h1>
-      <p>{{resume.address}}</p>
-      <p>{{resume.city}}, {{resume.country}}</p>
-      <p>{{resume.email}}</p>
-      <p>{{resume.phone}}</p>
+      <blockquote class="blockquote">
+        <p>{{resume.address}}</p>
+        <p>{{resume.city}}, {{resume.country}}</p>
+        <p>{{resume.email}}</p>
+        <p>{{resume.phone}}</p>
+      </blockquote>
     </div>
     <div class="divider"></div>
     <div class="d-grid gap-2" *ngIf="mainEmail != email">

@@ -7,19 +7,20 @@
       [src]="(blog.url ? blog.url.startsWith('https') : false) ? blog.url : '../../../assets/images/placeholder-card.jpg'"
       class="card-img-top" [alt]="blog.title">
     <br />
+    <br />
     <blockquote class="blockquote">
 
       <p>{{blog.description}}</p>
     </blockquote>
     <div class="row">
       <div class="col-md-6 col-sm-12" *ngFor="let post of blog.posts">
-        <div class="card">
+        <div class="card post-card">
           <div class="card-body">
             <h5 class="card-title">{{post.title}}</h5>
             <img
               [src]="(post.url ? post.url.startsWith('https') : false) ? post.url : '../../../assets/images/placeholder-card-post.jpg'"
               class="card-img-top" [alt]="post.title">
-
+            <br />
             <blockquote class="blockquote">
 
               <p class="card-text">{{post.summary}}

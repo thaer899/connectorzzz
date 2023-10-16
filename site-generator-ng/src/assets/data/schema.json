@@ -84,7 +84,16 @@
         "type": "object",
         "properties": {
           "platform": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "github",
+              "linkedin",
+              "facebook",
+              "instagram",
+              "spotify",
+              "youtube",
+              "twitter"
+            ]
           },
           "url": {
             "type": "string"

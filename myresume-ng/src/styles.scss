@@ -124,7 +124,7 @@ a:hover {
 .name-hero {
     background: rgba(0, 0, 0, .001);
     bottom: 0;
-    height: 70%;
+    height: 80%;
     left: 0;
     margin: auto;
     position: absolute;
@@ -200,9 +200,9 @@ ul {
 
 
 .skill-set {
-    background: var(--themecolordark);
+    background: var(--themecolordark) !important;
     border-radius: 5px;
-    color: $bodycolor;
+    color: var(--bodycolor) !important;
     display: inline-block;
     list-style: none;
     margin: 15px 15px 0 0;
@@ -212,10 +212,12 @@ ul {
 }
 
 .skill-set:hover {
-    background: $bodycolor;
+    background: var(--bodycolor) !important;
     box-shadow: none;
-    color: var(--themecolordark);
+    color: var(--themecolordark) !important;
 }
+
+
 
 
 .activated {
@@ -244,23 +246,6 @@ ul {
 
 .pull-right {
     float: right;
-}
-
-.eye {
-    width: 40px;
-    height: 40px;
-    font-size: xx-large;
-    cursor: pointer;
-    filter: drop-shadow(5px 5px 5px #222);
-    transition: transform .2s;
-    z-index: 1000;
-
-}
-
-
-.eye:hover {
-    transform: scale(1.15);
-    transition: transform .2s;
 }
 
 
@@ -353,7 +338,7 @@ ul {
         float: none;
         position: relative !important;
         width: 100%;
-        min-height: 700px;
+        min-height: 100vh;
     }
 
     .me-img {

@@ -17,6 +17,7 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ResumeModule } from './resume/resume.module'
 import { SidenavComponent } from './resume/shared/sidenav/sidenav.component'
+import { MatIconModule } from '@angular/material/icon';
 
 // const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 //   suppressScrollX: true,
@@ -32,12 +33,14 @@ import { SidenavComponent } from './resume/shared/sidenav/sidenav.component'
     NavigationComponent,
     ResumeComponent,
     SidebarComponent,
+
   ],
   imports: [
     CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    MatIconModule,
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(Approutes, { useHash: false, initialNavigation: 'enabledBlocking' }),

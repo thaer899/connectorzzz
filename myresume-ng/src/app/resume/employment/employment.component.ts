@@ -20,7 +20,11 @@ export class EmploymentComponent implements OnInit {
   ngOnInit() {
     this.subscription = this.dataService.fetchData().subscribe(data => {
       this.dataFromParent = data;
-      this.employment = data.employment; // Populate the employment property
+      this.employment = data.employment;
+      const innerContent = document.getElementById('inner-content')
+      if (innerContent) {
+        innerContent.scrollIntoView()
+      }
     });
   }
 

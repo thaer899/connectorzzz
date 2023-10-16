@@ -16,7 +16,7 @@
   filter: drop-shadow($shadow-icon);
   transition: transform .2s;
   z-index: 1000;
-  position: fixed;
+  position: absolute;
   right: 10vh;
   top: 10vh;
 }

@@ -46,6 +46,11 @@ h1.resume-app-name {
 
 }
 
+.quote {
+    width: 80%;
+    right: 10%;
+}
+
 @keyframes marquee {
     from {
         -webkit-transform: translateX(100%);

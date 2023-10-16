@@ -26,3 +26,13 @@ em {
     background: var(--themecolor);
 
 }
+
+
+@media screen and (max-width: 30em) {
+
+    .dot {
+        height: 20px;
+        width: 20px;
+        margin-bottom: 10px;
+    }
+}

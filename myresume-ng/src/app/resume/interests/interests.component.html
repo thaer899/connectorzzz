@@ -1,9 +1,10 @@
 <section id="interests">
   <h1>Personal Interests</h1>
   <div class="margin-top">
-    <ul class="interest">
-      <li *ngFor="let interest of interests">{{interest}}</li>
-    </ul>
+
+    <button type="button" class="btn skill-set" *ngFor="let interest of interests"
+      [routerLink]="['/skills', interest]">{{interest}}</button>
+
   </div>
 
 </section>
