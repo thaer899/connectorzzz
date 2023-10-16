@@ -33,8 +33,16 @@ export class BlogPostComponent extends JsonFormsControl {
 
   aiBlogPost(email = this.email, recipientMessage: string) {
     this.snackBar.open('Blog Post generation Initiated...', 'Close', {
-      duration: 2000,  // The snackbar will auto-dismiss after 2 seconds
+      duration: 5000,
     });
+
+
+    const intervalId = setInterval(() => {
+      this.snackBar.open('In progress...', 'Close', {
+        duration: 5000,
+      });
+    }, 15000);
+
     const url = `${environment.functionURL}blog?email=${email}`;
     const data = {
       recipientMessage
@@ -47,16 +55,21 @@ export class BlogPostComponent extends JsonFormsControl {
     axios.post(url, data, { headers })
       .then((response) => {
         console.log(response.data);
-        this.snackBar.open('AI bots are working on it..', 'Close', {
-          duration: 2000,  // The snackbar will auto-dismiss after 2 seconds
+
+        clearInterval(intervalId);
+        this.snackBar.open('AI bots are finishing off..', 'Close', {
+          duration: 5000,
         });
-        // this.data = response.data;
       })
       .catch((error) => {
         console.log(error);
+
+        clearInterval(intervalId);
+        this.snackBar.open('Error generating blog post', 'Close', {
+          duration: 5000,
+        });
       });
-
-
   }
+
 
 }
