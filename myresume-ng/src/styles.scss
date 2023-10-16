@@ -207,6 +207,8 @@ ul {
     list-style: none;
     margin: 15px 15px 0 0;
     padding: 10px;
+    font-size: large !important;
+    font-weight: 450 !important;
     text-align: justify;
     box-shadow: 3px 0 6px rgba(0, 0, 0, 0.16);
 }
@@ -353,7 +355,7 @@ ul {
 
     .name-hero {
         height: 75%;
-        margin-top: 10vh;
+        margin-top: 5vh;
     }
 
     .scroll-top {

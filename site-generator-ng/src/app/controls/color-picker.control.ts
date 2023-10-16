@@ -11,14 +11,14 @@ import { ControlProps } from '@jsonforms/core';
 export class ColorPickerComponent extends JsonFormsControl {
 
   dataAsString: string;
-  color: string = '#ffffff';  // initialize with a default color
+  color: string = '#3b9029';
 
   constructor(service: JsonFormsAngularService) {
     super(service);
   }
 
   public mapAdditionalProps(props: ControlProps) {
-    this.color = props.data.color || this.color;  // Assuming 'color' is the relevant property from your data
+    this.color = props.data.color || this.color;
 
   }
 

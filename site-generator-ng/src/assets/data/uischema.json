@@ -84,6 +84,16 @@
               "elements": [
                 {
                   "type": "Group",
+                  "label": "Blog Post",
+                  "elements": [
+                    {
+                      "type": "Control",
+                      "scope": "#/___blog"
+                    }
+                  ]
+                },
+                {
+                  "type": "Group",
                   "label": "Theme",
                   "elements": [
                     {
@@ -131,16 +141,6 @@
       "type": "Category",
       "label": "Blog",
       "elements": [
-        {
-          "type": "Group",
-          "label": "Blog",
-          "elements": [
-            {
-              "type": "Control",
-              "scope": "#/___blog"
-            }
-          ]
-        },
         {
           "label": "Blog",
           "type": "ListWithDetail",

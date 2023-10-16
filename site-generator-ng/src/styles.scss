@@ -117,7 +117,8 @@ body {
 
 
 .container {
-    height: 85vh !important
+    min-height: 65vh !important;
+    max-height: 85vh !important
 }
 
 .mat-tooltip {
