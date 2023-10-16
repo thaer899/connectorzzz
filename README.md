@@ -59,11 +59,11 @@ A collection of utility tools and libraries enhancing development and operationa
 
 ```bash
        +-------------+     +-----+      +----------------+
-       | myresume-ng |<--->|  DB  |<----| site-generator |
+       | myresume-ng |---->|  DB  |<----| site-generator |
        +-------------+     +-----+      +----------------+
+             |               ^               |
              |               |               |
              |               |               |
-             |               v               |
              |  +-------------------------+  |
              +->|     myresume-express    |<-+
                 +-------------------------+
