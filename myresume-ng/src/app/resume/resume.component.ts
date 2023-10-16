@@ -52,7 +52,6 @@ export class ResumeComponent implements OnInit, OnChanges, AfterViewInit {
 
   ngOnInit() {
 
-    this.getQuote();
 
   }
 
@@ -72,12 +71,16 @@ export class ResumeComponent implements OnInit, OnChanges, AfterViewInit {
         this.email = email;
         this.dataService.fetchDataByEmail(this.email);
         console.log("Resume: Data fetched for:", this.email);
+        this.getQuote(this.email);
       } else {
         this.mainEmail = environment.mainEmail
         this.dataService.fetchData();
         console.log("Resume: Data fetched for main Account");
+        this.getQuote(this.mainEmail);
+
       }
     });
+
 
   }
 
@@ -89,14 +92,15 @@ export class ResumeComponent implements OnInit, OnChanges, AfterViewInit {
     this.post = menu;
   }
 
-  getQuote() {
+  getQuote(email: string) {
     const headers = {
       'Content-Type': 'application/json',
       'API_KEY': environment.message_api_key
     };
+
     const options = {
       headers: new HttpHeaders(headers),
-      params: new HttpParams().set('email', environment.mainEmail)
+      params: new HttpParams().set('email', email)
     };
 
     const quoteURL = environment.functionURL + 'quote';

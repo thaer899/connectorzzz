@@ -12,6 +12,7 @@ export class SidenavComponent implements OnInit {
   public post: any;
   public resume: any;
   public email: any;
+  public name_abr: string;
   public mainEmail: string = environment.mainEmail;
 
   public menuItems = [
@@ -38,6 +39,8 @@ export class SidenavComponent implements OnInit {
         this.email = email;
         this.dataService.fetchDataByEmail(email).subscribe(data => {
           this.resume = data.resume;
+          this.name_abr = this.resume.firstName.charAt(0) + this.resume.lastName.charAt(0);
+
           console.log("Sidenav: Resume Data from DataService:", this.resume);
         });
       } else {

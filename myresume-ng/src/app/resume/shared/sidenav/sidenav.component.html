@@ -25,8 +25,10 @@
 
   <div class="name-hero" *ngIf="email">
 
-    <div class="me-img"><img [routerLink]="['/',email]" class="me-img" style="cursor: pointer;"
-        [src]="'../../assets/images/'+email+'.jpg'" alt="">
+    <div class="me-img">
+      <div class="circle" [routerLink]="['/', email]" style="cursor: pointer;">
+        <span class="centered-text">{{ name_abr }}</span>
+      </div>
     </div>
     <br />
     <div class="name-text" *ngIf="resume">
