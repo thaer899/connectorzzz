@@ -55,6 +55,27 @@ A collection of utility tools and libraries enhancing development and operationa
 
 #
 
+### Diagrams:
+
+```bash
+       +-------------+     +-----+      +----------------+
+       | myresume-ng |<--->|  DB  |<----| site-generator |
+       +-------------+     +-----+      +----------------+
+             |               |               |
+             |               |               |
+             |               v               |
+             |  +-------------------------+  |
+             +->|     myresume-express    |<-+
+                +-------------------------+
+                            |
+                            v
+                       +--------+
+                       | OpenAI |
+                       +--------+
+
+```
+#
+
 ### Project Structure
 
 ```plaintext
