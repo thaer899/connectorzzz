@@ -47,8 +47,42 @@ async function getFile(name) {
   }
 }
 
+async function uploadFile(name, data) {
+
+  try {
+    console.log('########### Uploading resume for:', name);
+    const file = storage.file(`${name}.json`);
+    await file.save(JSON.stringify(data));
+    console.log('########### Resume uploaded successfully.');
+  } catch (error) {
+    console.error("Error uploading resume:", error.message);
+    throw error;
+  }
+
+}
+
+async function searchImages(query, limit = 5) {
+  const endpoint = 'https://api.bing.microsoft.com/v7.0/images/search';
+  const apiKey = process.env.BING_API_KEY;
+  try {
+    const response = await axios.get(endpoint, {
+      headers: { 'Ocp-Apim-Subscription-Key': apiKey },
+      params: {
+        q: query,
+        count: limit
+      }
+    });
+    const imageUrls = response.data.value.map(item => item.contentUrl);
+    return imageUrls;
+  } catch (error) {
+    console.error('Image search failed:', error);
+    throw error;
+  }
+}
 
 module.exports = {
   getFile,
-  getDownloadUrl
+  getDownloadUrl,
+  searchImages,
+  uploadFile
 };

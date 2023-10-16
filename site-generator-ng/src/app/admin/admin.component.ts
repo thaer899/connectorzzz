@@ -1,7 +1,7 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
 import { angularMaterialRenderers } from '@jsonforms/angular-material';
 import { and, createAjv, isControl, rankWith, scopeEndsWith } from '@jsonforms/core';
-import { DataDisplayComponent } from '.././data.control';
+import { DataDisplayComponent } from '../controls/data.control';
 import uischemaAsset from '../../assets/data/uischema.json';
 import schemaAsset from '../../assets/data/schema.json';
 import { DataService } from '.././services/data.service';
@@ -9,6 +9,8 @@ import { getStorage, ref, uploadString } from 'firebase/storage';
 import { AuthService } from '../services/auth.service'; // Update the path based on your project structure
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment';
+import { BlogPostComponent } from '../controls/blog-post.control';
+import { ColorPickerComponent } from '../controls/color-picker.control';
 
 
 @Component({
@@ -21,6 +23,26 @@ export class AdminComponent {
   formData: any = {};
   renderers = [
     ...angularMaterialRenderers,
+    {
+      renderer: BlogPostComponent,
+      tester: rankWith(
+        6,
+        and(
+          isControl,
+          scopeEndsWith('___blog')
+        )
+      )
+    },
+    {
+      renderer: ColorPickerComponent,
+      tester: rankWith(
+        6,
+        and(
+          isControl,
+          scopeEndsWith('___color')
+        )
+      )
+    },
     {
       renderer: DataDisplayComponent,
       tester: rankWith(

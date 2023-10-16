@@ -179,6 +179,10 @@
       "items": {
         "type": "object",
         "properties": {
+          "draft": {
+            "type": "boolean",
+            "default": false
+          },
           "title": {
             "type": "string"
           },
@@ -227,10 +231,11 @@
           "type": {
             "type": "string",
             "enum": [
-              "messages",
-              "quotes",
-              "skills",
               "default",
+              "messages",
+              "skills",
+              "quotes",
+              "blog",
               "perso"
             ]
           },

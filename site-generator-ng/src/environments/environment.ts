@@ -6,6 +6,8 @@
 export const environment = {
   production: false,
   mainEmail: "rebel.saidi.thaer@gmail.com",
+  functionURL: 'http://localhost:4000/',
+  functionApiKey: 'FJxJ2MRv4vtAH0Js81Q390',
   firebaseConfig: {
     apiKey: "AIzaSyA2wXas1gdmAzamuvI2gFM_spA28ASUzLA",
     authDomain: "site-generator-ng.firebaseapp.com",

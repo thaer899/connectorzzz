@@ -460,6 +460,132 @@ export default
                     "Loki"
                 ]
             }
+        ],
+        "blog": [
+            {
+                "title": "Exploring Quantum Computing",
+                "url": "https://www.rheagroup.com/wp-content/uploads/2022/01/quantum-computer-gold-blue-420x381.jpg",
+                "description": "Dive into the realm of quantum computing where we unravel the shift from qubit records to practical hardware, emphasizing long-term objectives. Discover the essence of qubits, the core of quantum computers, and how they're steering us towards a new era of computing technology.",
+                "posts": [
+                    {
+                        "title": "Understanding Qubits",
+                        "url": "https://miro.medium.com/v2/resize:fit:612/1*0G2D-jdym2E347urKfFMeQ.jpeg",
+                        "date": "2023-10-09",
+                        "summary": "An exploration of qubits, the fundamental building blocks of quantum computers.",
+                        "tags": [
+                            "Quantum Computing",
+                            "Qubits",
+                            "Technology"
+                        ]
+                    },
+                    {
+                        "url": "https://futurice.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fpqts2v0qq7kz%2F1IF2dIZEtIJbPU0DzJUELc%2F6d31db3e88c5a7f4a209dc15c74aa37b%2Ffuturice-quantum-workshops.jpeg&w=1440&q=75",
+                        "title": "Cloud Quantum computers",
+                        "date": "2023-10-08",
+                        "summary": "Employing quantum phenomena, quantum computers have the potential to solve the most complex computational challenges of humanity. Those are the problems that require calculating many possible combinations. Multiple industries and areas of our society are based on solving such problems – chemistry, material science, biology, climate, aerospace, financial sector, energy sector, cryptography, logistics and so on.",
+                        "tags": [
+                            "Quantum Computing",
+                            "Cloud"
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "The Rise of Augmented Reality",
+                "url": "https://miro.medium.com/v2/resize:fit:1000/1*Sq_je3HhCuEKEPOJyBQiUg.jpeg",
+                "description": "Examining the growth and impact of augmented reality technology in various industries.",
+                "posts": [
+                    {
+                        "title": "AR in Healthcare",
+                        "url": "https://www.fusionvr.in/blog/wp-content/uploads/2022/04/AR-in-Healthcare.jpg",
+                        "date": "2023-10-11",
+                        "summary": "How augmented reality is revolutionizing the healthcare industry.",
+                        "tags": [
+                            "Augmented Reality",
+                            "Healthcare",
+                            "Technology"
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Venturing into Cloud Native Technologies",
+                "description": "Embarking on a journey to explore Cloud Native technologies and their impact on modern software development and deployment.",
+                "posts": [
+                    {
+                        "title": "Embracing Kubernetes",
+                        "date": "2023-11-10",
+                        "summary": "Delving into Kubernetes, a pivotal Cloud Native technology, and how it is reshaping container orchestration.",
+                        "tags": [
+                            "Cloud Native",
+                            "Kubernetes",
+                            "Technology"
+                        ]
+                    },
+                    {
+                        "title": "OpenShift: Enterprise Kubernetes",
+                        "date": "2023-11-09",
+                        "summary": "A look at OpenShift as an enterprise-grade Kubernetes platform, facilitating developer and operational efficiency.",
+                        "tags": [
+                            "Cloud Native",
+                            "OpenShift",
+                            "Kubernetes"
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Delving into DevOps Practices",
+                "description": "Exploring the principles and practices of DevOps, and its influence on software delivery and operation.",
+                "posts": [
+                    {
+                        "title": "Infrastructure as Code: Terraform",
+                        "date": "2023-11-08",
+                        "summary": "Discovering Infrastructure as Code with Terraform and how it accelerates provisioning of cloud resources.",
+                        "tags": [
+                            "DevOps",
+                            "Terraform",
+                            "IaC"
+                        ]
+                    },
+                    {
+                        "title": "GitHub Actions: Automate, Build, Test",
+                        "date": "2023-11-07",
+                        "summary": "Exploring GitHub Actions as a tool for automating software workflows, ensuring consistency in build and test processes.",
+                        "tags": [
+                            "DevOps",
+                            "GitHub Actions",
+                            "CI/CD"
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "AI: Bridging Real and Virtual Worlds",
+                "description": "Diving into the fascinating world of artificial intelligence and its applications in various domains.",
+                "posts": [
+                    {
+                        "title": "AI in Cloud Computing",
+                        "date": "2023-11-06",
+                        "summary": "Exploring the synergy between AI and cloud computing, and how it's revolutionizing data processing and analysis.",
+                        "tags": [
+                            "AI",
+                            "Cloud Computing",
+                            "Technology"
+                        ]
+                    },
+                    {
+                        "title": "AI-Powered Cybersecurity",
+                        "date": "2023-11-05",
+                        "summary": "Examining how AI technologies are bolstering cybersecurity measures and protecting digital assets.",
+                        "tags": [
+                            "AI",
+                            "Cybersecurity",
+                            "Technology"
+                        ]
+                    }
+                ]
+            }
         ]
 
     }; 

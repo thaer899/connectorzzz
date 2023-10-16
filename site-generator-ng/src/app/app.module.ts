@@ -7,9 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JsonFormsModule } from '@jsonforms/angular';
 import { JsonFormsAngularMaterialModule } from '@jsonforms/angular-material';
 import { AppComponent } from './app.component';
-import { CustomAutocompleteControlRenderer } from './custom.autocomplete';
-import { DataDisplayComponent } from './data.control';
-import { LangComponent } from './lang.control';
+import { CustomAutocompleteControlRenderer } from './controls/custom.autocomplete';
+import { DataDisplayComponent } from './controls/data.control';
+import { LangComponent } from './controls/lang.control';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { environment } from '../environments/environment';
@@ -25,6 +25,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { JsonFormsState, Actions } from '@jsonforms/core';
+import { BlogPostComponent } from './controls/blog-post.control';
+import { ColorPickerComponent } from './controls/color-picker.control';
+import { ColorPickerInputComponent } from './admin/color-picker/color-picker-input.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +35,9 @@ import { JsonFormsState, Actions } from '@jsonforms/core';
     CustomAutocompleteControlRenderer,
     LangComponent,
     DataDisplayComponent,
+    BlogPostComponent,
+    ColorPickerComponent,
+    ColorPickerInputComponent,
     LoginComponent,
     AdminComponent,
     DashboardComponent

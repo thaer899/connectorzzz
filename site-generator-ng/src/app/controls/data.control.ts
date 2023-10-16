@@ -4,7 +4,11 @@ import { ControlProps } from '@jsonforms/core';
 
 @Component({
   selector: 'app-data-component',
-  template: '<pre>{{dataAsString}}</pre>'
+  template: `
+  <mat-form-field  style="width: 100%">
+    <textarea  style="width: 100%;height: 75vh;" matInput [(ngModel)]="dataAsString"></textarea>
+  </mat-form-field>
+`
 })
 export class DataDisplayComponent extends JsonFormsControl {
 

@@ -92,6 +92,10 @@
                     },
                     {
                       "type": "Control",
+                      "scope": "#/___color"
+                    },
+                    {
+                      "type": "Control",
                       "scope": "#/properties/theme/properties/colors"
                     }
                   ]
@@ -127,6 +131,16 @@
       "type": "Category",
       "label": "Blog",
       "elements": [
+        {
+          "type": "Group",
+          "label": "Blog",
+          "elements": [
+            {
+              "type": "Control",
+              "scope": "#/___blog"
+            }
+          ]
+        },
         {
           "label": "Blog",
           "type": "ListWithDetail",
