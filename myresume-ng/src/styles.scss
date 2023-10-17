@@ -9,7 +9,7 @@
 
 :root {
     --themecolor: #697683;
-    --themecolordark: #1D1D35;
+    --themecoloralt: #1D1D35;
     --topbar: #c3c3c3;
     --sidebar: #697683;
     --bodycolor: #f3f4f3;
@@ -22,7 +22,7 @@
 
 :root {
     --themecolor: ;
-    --themecolordark: ;
+    --themecoloralt: ;
     --topbar: ;
     --sidebar: ;
     --bodycolor: ;
@@ -58,28 +58,35 @@ body {
 }
 
 h1 {
-    font-size: 2.5em !important;
-    color: var(--themecolordark) !important;
-    margin-bottom: 0.5em;
+    font-size: 1.75em !important;
+    color: var(--themecoloralt) !important;
+    margin-bottom: 0.3em;
     font-weight: bold;
 }
 
 h2 {
-    font-size: 2em !important;
-    color: var(--themecolor) !important;
-    margin-bottom: 0.4em;
+    font-size: 1.5em !important;
+    color: var(--themecoloralt) !important;
+    margin-bottom: 0.3em;
     font-weight: bold;
 }
 
 h3 {
-    font-size: 1.5em !important;
-    color: var(--themecolor) !important;
-    margin-bottom: 0.4em;
+    font-size: 1.25em !important;
+    color: var(--themecoloralt) !important;
+    margin-bottom: 0.3em;
+    font-weight: normal;
+}
+
+h5 {
+    font-size: 1.1em !important;
+    color: var(--themecoloralt) !important;
+    margin-bottom: 0.3em;
     font-weight: normal;
 }
 
 p {
-    font-size: 1em !important;
+    font-size: 0.9em !important;
     color: var(--bodytext) !important;
 }
 
@@ -107,7 +114,7 @@ a:hover {
     width: 25%;
     overflow-y: auto;
     z-index: 100;
-    box-shadow: 3px 0 6px rgba(0, 0, 0, 0.16);
+    box-shadow: 1px 1px 3px var(--themecolor);
 }
 
 .right {
@@ -200,23 +207,25 @@ ul {
 
 
 .skill-set {
-    background: var(--themecolordark) !important;
-    border-radius: 5px;
+    background-color: var(--themecolor) !important;
     color: var(--bodycolor) !important;
+    border-radius: 5px;
     display: inline-block;
+    border: none !important;
     list-style: none;
     margin: 15px 15px 0 0;
     padding: 10px !important;
     font-size: large !important;
     font-weight: 450 !important;
     text-align: justify;
-    box-shadow: 3px 0 6px rgba(0, 0, 0, 0.16);
+    box-shadow: 1px 1px 3px var(--themecolor);
+    transition: all .2s ease-in-out;
 }
 
 .skill-set:hover {
     background: var(--bodycolor) !important;
+    color: var(--themecolor) !important;
     box-shadow: none;
-    color: var(--themecolordark) !important;
 }
 
 

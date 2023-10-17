@@ -37,10 +37,10 @@ h1.resume-app-name {
     position: fixed;
     left: 0;
     width: 100%;
-    background-color: var(--topbar);
+    background-color: var(--topbar) !important;
     z-index: 999;
     text-align: center;
-    box-shadow: 3px 0 6px rgba(0, 0, 0, 0.16);
+    box-shadow: 1px 1px 3px var(--themecolor);
     overflow: hidden;
 
 
@@ -69,6 +69,7 @@ h1.resume-app-name {
     padding-top: 10px;
     -webkit-animation: marquee 30s linear infinite;
     animation: marquee 30s linear infinite;
+    color: var(--bodycolor) !important;
 }
 
 

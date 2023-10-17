@@ -308,7 +308,7 @@ export default
                     "value": "#84998b"
                 },
                 {
-                    "key": "themecolordark",
+                    "key": "themecoloralt",
                     "value": "#f3f4f3"
                 },
                 {

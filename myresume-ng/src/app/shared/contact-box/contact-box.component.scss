@@ -48,7 +48,7 @@
 .commenting:hover {
   transform: scale(1.15);
   transition: transform .2s;
-  color: var(--themecolordark);
+  color: var(--themecoloralt);
 }
 
 .modal-header-right {
@@ -134,7 +134,7 @@
 
 .btn-primary {
   background-color: $bodytext !important;
-  color: white;
+  color: $bodycolor !important;
   border: #1c1d1d;
 }
 
@@ -185,7 +185,7 @@
     margin-top: 10vh;
     right: 5%;
     font-size: xx-large;
-    color: var(--themecolordark);
+    color: var(--themecoloralt);
   }
 
 }

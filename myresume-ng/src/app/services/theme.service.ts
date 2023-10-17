@@ -11,7 +11,7 @@ export class ThemeService {
 
   getTheme() {
     return {
-      "themecolordark": "#fff",
+      "themecoloralt": "#fff",
       "themecolor": "#1D1D35",
       "topbar": "#fff",
       "sidebar": "#000",
@@ -22,7 +22,7 @@ export class ThemeService {
 }
 
 interface Theme {
-  themecolordark: string;
+  themecoloralt: string;
   themecolor: string;
   topbar: string;
   sidebar: string;
