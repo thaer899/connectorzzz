@@ -1,0 +1,438 @@
+{
+  "info": {
+    "_postman_id": "1bba1579-4916-49a7-8a61-21ef6ba23738",
+    "name": "myresume-aws-api-gw",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "25970983"
+  },
+  "item": [
+    {
+      "name": "quotes",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "x-api-key",
+            "value": "{{apiKey}}",
+            "type": "text"
+          },
+          {
+            "key": "API_KEY",
+            "value": "FJxJ2MRv4vtAH0Js81Q390",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{url}}/quote?email=\"rebel.saidi.thaer@gmail.com\"",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "quote"
+          ],
+          "query": [
+            {
+              "key": "email",
+              "value": "\"rebel.saidi.thaer@gmail.com\""
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "file",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "apiKey",
+            "value": "cLosEb92B22kJzdF45TTDKs7a7q49ny99wsbsgkh",
+            "type": "text",
+            "disabled": true
+          },
+          {
+            "key": "API_KEY",
+            "value": "FJxJ2MRv4vtAH0Js81Q390",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "url": {
+          "raw": "{{url}}/",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            ""
+          ],
+          "query": [
+            {
+              "key": "x-api-key",
+              "value": "{{apiKey}}",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "messages",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "apiKey",
+            "value": "cLosEb92B22kJzdF45TTDKs7a7q49ny99wsbsgkh",
+            "type": "text",
+            "disabled": true
+          },
+          {
+            "key": "API_KEY",
+            "value": "FJxJ2MRv4vtAH0Js81Q390",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"recipientMessage\": \"cloud\"\r\n}"
+        },
+        "url": {
+          "raw": "{{url}}/message?email=\"rebel.saidi.thaer@gmail.com\"",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "message"
+          ],
+          "query": [
+            {
+              "key": "email",
+              "value": "\"rebel.saidi.thaer@gmail.com\""
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "skills",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "apiKey",
+            "value": "cLosEb92B22kJzdF45TTDKs7a7q49ny99wsbsgkh",
+            "type": "text",
+            "disabled": true
+          },
+          {
+            "key": "API_KEY",
+            "value": "FJxJ2MRv4vtAH0Js81Q390",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"recipientMessage\": \"akamai\"\r\n}"
+        },
+        "url": {
+          "raw": "35.195.226.107:443/skill?email=\"rebel.saidi.thaer@gmail.com\"",
+          "host": [
+            "35",
+            "195",
+            "226",
+            "107"
+          ],
+          "port": "443",
+          "path": [
+            "skill"
+          ],
+          "query": [
+            {
+              "key": "email",
+              "value": "\"rebel.saidi.thaer@gmail.com\""
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "blog",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "apiKey",
+            "value": "cLosEb92B22kJzdF45TTDKs7a7q49ny99wsbsgkh",
+            "type": "text",
+            "disabled": true
+          },
+          {
+            "key": "API_KEY",
+            "value": "FJxJ2MRv4vtAH0Js81Q390",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"recipientMessage\": \"azure\"\r\n}"
+        },
+        "url": {
+          "raw": "{{url}}/blog?email=\"rebel.saidi.thaer@gmail.com\"",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "blog"
+          ],
+          "query": [
+            {
+              "key": "email",
+              "value": "\"rebel.saidi.thaer@gmail.com\""
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "openai",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "apiKey",
+            "value": "cLosEb92B22kJzdF45TTDKs7a7q49ny99wsbsgkh",
+            "type": "text",
+            "disabled": true
+          },
+          {
+            "key": "API_KEY",
+            "value": "FJxJ2MRv4vtAH0Js81Q390",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"recipientMessage\": {\r\n    \"messages\": [\r\n        {\r\n            \"role\": \"system\",\r\n            \"content\": \"You are a reknown blogger and technologist.\"\r\n        },\r\n        {\r\n            \"role\": \"user\",\r\n            \"content\": \"Write blog posts for me in this format {\\\"title\\\":\\\"string\\\",\\\"url\\\":\\\"string\\\",\\\"description\\\":\\\"string\\\",\\\"posts\\\":[{\\\"title\\\":\\\"string\\\",\\\"url\\\":\\\"string\\\",\\\"date\\\":\\\"string\\\",\\\"summary\\\":\\\"string\\\",\\\"tags\\\":[\\\"string\\\",\\\"string\\\",\\\"string\\\"]},{\\\"title\\\":\\\"string\\\",\\\"url\\\":\\\"string\\\",\\\"date\\\":\\\"string\\\",\\\"summary\\\":\\\"string\\\",\\\"tags\\\":[\\\"string\\\",\\\"string\\\"]}]}\\r\\n ..in 200 words I want the images to be real urls and the topic to be related to technology and automation\"\r\n        }\r\n    ],\r\n    \"options\": {\r\n        \"model\": \"gpt-3.5-turbo\",\r\n        \"temperature\": 0.2,\r\n        \"max_tokens\": 300\r\n    }\r\n}\r\n}"
+        },
+        "url": {
+          "raw": "{{url}}/openai",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "openai"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "openai?email",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "apiKey",
+            "value": "cLosEb92B22kJzdF45TTDKs7a7q49ny99wsbsgkh",
+            "type": "text",
+            "disabled": true
+          },
+          {
+            "key": "API_KEY",
+            "value": "FJxJ2MRv4vtAH0Js81Q390",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"recipientMessage\": \"birthday\"\r\n}"
+        },
+        "url": {
+          "raw": "{{url}}/openai?email=\"rebel.saidi.thaer@gmail.com\"",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "openai"
+          ],
+          "query": [
+            {
+              "key": "email",
+              "value": "\"rebel.saidi.thaer@gmail.com\""
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "openai?email&templateType",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "apiKey",
+            "value": "cLosEb92B22kJzdF45TTDKs7a7q49ny99wsbsgkh",
+            "type": "text",
+            "disabled": true
+          },
+          {
+            "key": "API_KEY",
+            "value": "FJxJ2MRv4vtAH0Js81Q390",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"recipientMessage\": \"birthday\"\r\n}"
+        },
+        "url": {
+          "raw": "{{url}}/openai?email=\"rebel.saidi.thaer@gmail.com\"&templateType=\"messages\"",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "openai"
+          ],
+          "query": [
+            {
+              "key": "email",
+              "value": "\"rebel.saidi.thaer@gmail.com\""
+            },
+            {
+              "key": "templateType",
+              "value": "\"messages\""
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "openai?email&templateType Copy",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "apiKey",
+            "value": "cLosEb92B22kJzdF45TTDKs7a7q49ny99wsbsgkh",
+            "type": "text",
+            "disabled": true
+          },
+          {
+            "key": "API_KEY",
+            "value": "FJxJ2MRv4vtAH0Js81Q390",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"recipientMessage\": \"Azure\"\r\n}"
+        },
+        "url": {
+          "raw": "{{url}}/openai?email=\"rebel.saidi.thaer@gmail.com\"&templateType=\"quotes\"",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "openai"
+          ],
+          "query": [
+            {
+              "key": "email",
+              "value": "\"rebel.saidi.thaer@gmail.com\""
+            },
+            {
+              "key": "templateType",
+              "value": "\"quotes\""
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "url",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "apiKey",
+      "value": "",
+      "type": "string",
+      "disabled": true
+    }
+  ]
+}

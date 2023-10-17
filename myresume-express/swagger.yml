@@ -1,0 +1,117 @@
+openapi: 3.0.0
+info:
+  title: myresume-express-api
+  version: 1.0.0
+paths:
+  /quote:
+    post:
+      summary: Generate a quotes
+      parameters:
+        - name: email
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful operation
+  /:
+    get:
+      summary: file
+      responses:
+        "200":
+          description: Successful operation
+  /message:
+    post:
+      summary: Send Messages
+      parameters:
+        - name: email
+          in: query
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                recipientMessage:
+                  type: string
+      responses:
+        "200":
+          description: Successful operation
+  /skill:
+    post:
+      summary: Get Skill
+      parameters:
+        - name: email
+          in: query
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                recipientMessage:
+                  type: string
+      responses:
+        "200":
+          description: Successful operation
+  /blog:
+    post:
+      summary: Create a blog post
+      parameters:
+        - name: email
+          in: query
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                recipientMessage:
+                  type: string
+      responses:
+        "200":
+          description: Successful operation
+  /openai:
+    post:
+      summary: Execute OpenAI operation
+      parameters:
+        - name: email
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: templateType
+          in: query
+          required: false
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        "200":
+          description: Successful operation
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: API_KEY
+security:
+  - ApiKeyAuth: []
