@@ -20,6 +20,7 @@ on:
         required: true
         options:
           - deploy
+          - test
           - build
       common:
         type: boolean
