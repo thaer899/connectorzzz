@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, Observable } from "rxjs";
+import { BehaviorSubject, Observable, from, of } from "rxjs";
+import { catchError, switchMap, tap } from 'rxjs/operators';
 import { initializeApp } from "firebase/app";
 import { getDownloadURL, getStorage, ref } from "firebase/storage";
 import { HttpClient } from "@angular/common/http";
@@ -14,13 +15,14 @@ const storage = getStorage(app);
     providedIn: 'root'
 })
 export class DataService {
-    private data = new BehaviorSubject<any>(data);
+    private data = new BehaviorSubject<any>(null);
     public mainEmail = environment.mainEmail;
     constructor(
         private readonly http: HttpClient
     ) {
-        this.fetchDataFromFirebase(""); // Fetch data when service is instantiated
+        this.fetchDataFromFirebase("").subscribe(); // Fetch data when service is instantiated
     }
+
 
     public getData(): Observable<any> {
         return this.data.asObservable();
@@ -30,24 +32,41 @@ export class DataService {
         this.data.next(newData);
     }
 
-    private fetchDataFromFirebase(email: string): void {
-        if (email === "") {
-            email = this.mainEmail
+    private fetchDataFromFirebase(email: string): Observable<any> {
+        if (email === "" || email === null || email === undefined) {
+            email = this.mainEmail;
         }
         const fileRef = ref(storage, `${email}.json`);
-        getDownloadURL(fileRef).then(downloadURL => {
-            this.http.get(downloadURL).subscribe(data => {
-                console.log("DataService: Data from Firebase Storage:", data);
-                this.data.next(data); // Update the BehaviorSubject with the fetched data
-            });
-        }).catch(error => {
-            console.error("Error getting download URL:", error);
-        });
+        return from(getDownloadURL(fileRef)).pipe(
+            switchMap(downloadURL => {
+                if (typeof downloadURL === 'string') {
+                    return this.http.get<any>(downloadURL).pipe(
+                        tap(fetchedData => {
+                            console.log("DataService: Data from Firebase Storage:", fetchedData);
+                            this.data.next(fetchedData);
+                            // Update the BehaviorSubject with the fetched data
+                        })
+                    );
+                } else {
+                    // Handle the case where downloadURL is not a string
+                    console.error('downloadURL is not a string:', downloadURL);
+                    return of(null);
+                }
+            }),
+            catchError(error => {
+                console.error("Error getting download URL:", error);
+                return of(null);  // Return a null observable in case of error
+            })
+        );
     }
 
+
     public fetchDataByEmail(email: string): Observable<any> {
-        this.fetchDataFromFirebase(email);
-        return this.getData();
+        return this.fetchDataFromFirebase(email).pipe(
+            tap(() => {
+                return this.getData();
+            })
+        );
     }
 
     public fetchData(): Observable<any> {

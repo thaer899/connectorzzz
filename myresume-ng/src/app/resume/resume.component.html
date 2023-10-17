@@ -7,9 +7,9 @@
         </div>
     </div>
 
-    <app-sidenav></app-sidenav>
+    <app-sidenav *ngIf="theme"></app-sidenav>
 
-    <div class="right">
+    <div class="right" *ngIf="theme">
 
         <div class="inner" id="inner-content">
             <app-sidebar></app-sidebar>

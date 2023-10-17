@@ -1,7 +1,7 @@
 <i class="fa fa-eye eye" aria-hidden="true" (click)="detailedView()" *ngIf="blogs"></i>
 
-<ng-container *ngIf="isDetail">
-  <ng-container *ngIf="blogs">
+<ng-container *ngIf="blogs">
+  <ng-container *ngIf="isDetail">
     <div class="section-title" *ngFor="let page of blogs">
       <div class="col-12">
         <h1><a [routerLink]="['/blogs', page.title]">{{page.title}}</a></h1>
@@ -32,32 +32,28 @@
       </div>
     </div>
   </ng-container>
-</ng-container>
 
-<ng-container *ngIf="!isDetail">
-  <ng-container *ngIf="blogs">
+  <ng-container *ngIf="!isDetail">
 
     <div class="section-title">
-      <div class="row">
-        <!-- Divide blogs into three arrays for three columns -->
-        <div class="col-lg-4 col-md-6 col-sm-12"
-          *ngFor="let columnBlogs of [blogs.slice(0, blogs.length/3), blogs.slice(blogs.length/3, 2*blogs.length/3), blogs.slice(2*blogs.length/3)]">
-          <div *ngFor="let page of columnBlogs">
-            <div class="card mb-3">
-              <div class="card-body">
-                <h5 class="card-title"><a [routerLink]="['/blogs', page.title]">{{page.title}}</a></h5>
-                <img
-                  [src]="(page.url ? page.url.startsWith('https') : false) ? page.url : '../../../assets/images/placeholder-card.jpg'"
-                  class="card-img-top" [alt]="page.title">
-              </div>
+      <div class="grid-container">
+        <div *ngFor="let page of blogs">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h5 class="card-title">
+                <a [routerLink]="['/blogs', page.title]">{{page.title}}</a>
+              </h5>
+              <img
+                [src]="(page.url ? page.url.startsWith('https') : false) ? page.url : '../../../assets/images/placeholder-card.jpg'"
+                class="card-img-top" [alt]="page.title">
             </div>
           </div>
         </div>
       </div>
+
     </div>
   </ng-container>
-</ng-container>
 
-<div class="ask">
-  <app-ask></app-ask>
-</div>
+  <div class="ask">
+    <app-ask></app-ask>
+  </div>

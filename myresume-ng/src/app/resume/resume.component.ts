@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Component, OnInit, OnChanges, Renderer2, Inject, ElementRef, AfterViewInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, OnChanges, Renderer2, Inject, ElementRef, AfterViewInit, ViewChild, ViewEncapsulation, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 import { FormBuilder } from '@angular/forms';
@@ -38,55 +38,36 @@ export class ResumeComponent implements OnInit, OnChanges, AfterViewInit {
 
   constructor(
     private route: ActivatedRoute,
-    private _formBuilder: FormBuilder,
     private readonly dataService: DataService,
     private readonly router: Router,
     private readonly http: HttpClient,
-    private themeService: ThemeService,
-    private renderer: Renderer2,
-    private elRef: ElementRef,
-    @Inject(DOCUMENT) private document: Document
+    @Inject(DOCUMENT) private document: Document,
+    private cdRef: ChangeDetectorRef
   ) {
     this.post = router.url.replace('/resume/', '');
   }
 
   ngOnInit() {
-
-
-  }
-
-  ngAfterViewInit() {
-    this.subscription = this.dataService.fetchData().subscribe(data => {
-      this.theme = data.theme.colors;
-      console.log("Resume: Theme Data from DataService:", this.theme);
-      this.applyTheme();
-
-    });
-
-    // Get email parameter from the route and fetch data
+    // Subscribe to route parameters
     this.route.paramMap.subscribe(params => {
       const email = params.get('email');
 
-      if (email) {
-        this.email = email;
-        this.dataService.fetchDataByEmail(this.email);
-        console.log("Resume: Data fetched for:", this.email);
-        this.getQuote(this.email);
-      } else {
-        this.mainEmail = environment.mainEmail
-        this.dataService.fetchData();
-        console.log("Resume: Data fetched for main Account");
-        this.getQuote(this.mainEmail);
-
-      }
+      // Determine which email to use and fetch data accordingly
+      const emailToUse = email ? email : environment.mainEmail;
+      this.dataService.fetchDataByEmail(emailToUse).subscribe(data => {
+        this.data = data;
+        this.theme = this.data.theme.colors;  // assuming theme data is part of the fetched data
+        this.applyTheme();
+        this.getQuote(emailToUse);
+        this.cdRef.detectChanges();
+      });
     });
-
-
   }
 
-  ngOnChanges() {
-    // Add code here if needed
-  }
+
+  ngAfterViewInit() { }
+
+  ngOnChanges() { }
 
   changeToMenu(menu: string) {
     this.post = menu;

@@ -48,3 +48,10 @@
   width: 100%;
   /* or adjust as needed to maintain aspect ratio */
 }
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  grid-auto-rows: max-content;
+}
