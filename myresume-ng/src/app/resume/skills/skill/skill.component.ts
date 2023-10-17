@@ -51,7 +51,6 @@ export class SkillComponent implements OnInit {
       (response) => {
         try {
           this.facts = response.choices[0].message.content.split('\n')
-          console.log("Skill Facts Response:", this.facts);
         } catch (error) {
           console.error("Parsing error:", error);
         }

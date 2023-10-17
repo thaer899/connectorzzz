@@ -4,7 +4,13 @@
   <ng-container *ngIf="isDetail">
     <div class="section-title" *ngFor="let page of blogs">
       <div class="col-12">
-        <h1><a [routerLink]="['/blogs', page.title]">{{page.title}}</a></h1>
+        <ng-container *ngIf="!email">
+          <a [routerLink]="['/blogs', page.title]">{{page.title}}</a>
+        </ng-container>
+        <ng-container *ngIf="email">
+          <a [routerLink]="['/p',email,'blogs', page.title]">{{page.title}}</a>
+        </ng-container>
+
         <div class="divider"></div>
         <div class="image-crop-container">
           <img
@@ -41,7 +47,12 @@
           <div class="card mb-3">
             <div class="card-body">
               <h5 class="card-title">
-                <a [routerLink]="['/blogs', page.title]">{{page.title}}</a>
+                <ng-container *ngIf="!email">
+                  <a [routerLink]="['/blogs', page.title]">{{page.title}}</a>
+                </ng-container>
+                <ng-container *ngIf="email">
+                  <a [routerLink]="['/p',email,'blogs', page.title]">{{page.title}}</a>
+                </ng-container>
               </h5>
               <img
                 [src]="(page.url ? page.url.startsWith('https') : false) ? page.url : '../../../assets/images/placeholder-card.jpg'"

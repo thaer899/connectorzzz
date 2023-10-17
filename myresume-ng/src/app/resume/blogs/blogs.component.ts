@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
 
@@ -7,39 +8,44 @@ import { DataService } from 'src/app/services/data.service';
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'app-blogs',
   templateUrl: './blogs.component.html',
-  styleUrls: ['./blogs.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./blogs.component.scss']
 
 })
 export class BlogsComponent {
 
-  public blogs: any
+  public blogs: any = [];
   public isDetail = false;
+  public email: any;
 
   dataFromParent: any;
   private subscription: Subscription;
 
-  constructor(private dataService: DataService, private readonly http: HttpClient) { }
+  constructor(private route: ActivatedRoute, private dataService: DataService, private readonly http: HttpClient) { }
 
 
   ngOnInit() {
-    this.subscription = this.dataService.fetchData().subscribe(data => {
-      this.dataFromParent = data;
-      this.blogs = data.blog;
-      console.log(this.blogs)
+
+    this.route.parent!.paramMap.subscribe(params => {
+      this.email = params.get('email');
+
+      this.dataService.fetchData().subscribe(data => {
+        this.blogs = data.blog;
+      });
+
     });
+
     const innerContent = document.getElementById('inner-content')
     if (innerContent) {
       innerContent.scrollIntoView()
     }
   }
 
-
-  ngOnDestroy() {
-    // Unsubscribe to prevent memory leaks
-    this.subscription.unsubscribe();
+  ngAfterViewInit(): void {
+    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    //Add 'implements AfterViewInit' to the class.
 
   }
+
 
   detailedView() {
     this.isDetail = !this.isDetail;

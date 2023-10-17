@@ -34,7 +34,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: ':email',
+    path: 'p/:email',
     component: ResumeComponent,
     children: [
       { path: '', component: HomeComponent, data: { title: 'Home Page' } },

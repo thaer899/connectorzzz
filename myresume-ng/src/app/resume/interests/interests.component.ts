@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http'
 import { Component, OnInit } from '@angular/core'
 import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-interests',
@@ -11,26 +11,28 @@ import { Router } from '@angular/router';
 })
 export class InterestsComponent implements OnInit {
   public interests: any
+  public email: any;
 
   dataFromParent: any;
-  private subscription: Subscription;
 
-  constructor(private router: Router, private dataService: DataService, private readonly http: HttpClient) { }
+  constructor(private route: ActivatedRoute, private router: Router, private dataService: DataService, private readonly http: HttpClient) { }
 
 
   ngOnInit() {
-    this.subscription = this.dataService.fetchData().subscribe(data => {
-      this.dataFromParent = data;
-      this.interests = data.interests;
+
+    this.route.parent!.paramMap.subscribe(params => {
+      this.email = params.get('email');
+
+      this.dataService.fetchData().subscribe(data => {
+        this.interests = data.interests;
+      });
+
     });
+
     const innerContent = document.getElementById('inner-content')
     if (innerContent) {
       innerContent.scrollIntoView()
     }
   }
 
-  ngOnDestroy() {
-    // Unsubscribe to prevent memory leaks
-    this.subscription.unsubscribe();
-  }
 }

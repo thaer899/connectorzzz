@@ -28,7 +28,7 @@
   <div class="name-hero" *ngIf="email">
 
     <div class="me-img">
-      <div class="circle" [routerLink]="['/', email]" style="cursor: pointer;">
+      <div class="circle" [routerLink]="['/p', email]" style="cursor: pointer;">
         <span class="centered-text">{{ name_abr }}</span>
       </div>
     </div>
@@ -45,7 +45,7 @@
     <div class="divider"></div>
     <div class="d-grid gap-2">
       <button type="button" class="btn nav-btn" *ngFor="let item of menuItems" (click)="changeToMenu(item.key)"
-        [routerLink]="['/',email, item.key]">{{item.label}}</button>
+        [routerLink]="['/p',email, item.key]">{{item.label}}</button>
     </div>
   </div>
 </div>

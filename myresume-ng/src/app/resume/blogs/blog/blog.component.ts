@@ -15,6 +15,7 @@ export class BlogComponent {
   public blog: any
   public blogs: any
   public blogId: string | null = null;
+  public email: any;
 
   dataFromParent: any;
   private subscription: Subscription;
@@ -29,9 +30,26 @@ export class BlogComponent {
       this.dataFromParent = data;
       this.blogs = data.blog;
       this.blog = this.getBlogByTitle(this.blogId);
-      console.log(this.blogs)
 
     });
+
+
+
+    this.route.parent!.paramMap.subscribe(params => {
+      this.email = params.get('email');
+
+      this.subscription = this.dataService.fetchData().subscribe(data => {
+        this.dataFromParent = data;
+        this.blogs = data.blog;
+        this.blog = this.getBlogByTitle(this.blogId);
+
+      });
+
+    });
+
+
+
+
     const innerContent = document.getElementById('inner-content')
     if (innerContent) {
       innerContent.scrollIntoView()
@@ -53,7 +71,6 @@ export class BlogComponent {
         return;
       }
 
-      console.log(blog);
       return blog;
     } else {
       return null;

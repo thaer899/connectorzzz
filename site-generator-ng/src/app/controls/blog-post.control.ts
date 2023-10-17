@@ -39,7 +39,7 @@ export class BlogPostComponent extends JsonFormsControl {
 
     const intervalId = setInterval(() => {
       this.snackBar.open('In progress...', 'Close', {
-        duration: 5000,
+        duration: 10000,
       });
     }, 15000);
 

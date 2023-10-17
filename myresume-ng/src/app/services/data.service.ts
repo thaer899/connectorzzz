@@ -42,7 +42,6 @@ export class DataService {
                 if (typeof downloadURL === 'string') {
                     return this.http.get<any>(downloadURL).pipe(
                         tap(fetchedData => {
-                            console.log("DataService: Data from Firebase Storage:", fetchedData);
                             this.data.next(fetchedData);
                             // Update the BehaviorSubject with the fetched data
                         })

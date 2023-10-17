@@ -40,19 +40,12 @@ export class SidenavComponent implements OnInit {
         this.dataService.fetchDataByEmail(email).subscribe(data => {
           this.resume = data.resume;
           this.name_abr = this.resume.firstName.charAt(0) + this.resume.lastName.charAt(0);
-
-          console.log("Sidenav: Resume Data from DataService:", this.resume);
         });
       } else {
         this.dataService.fetchData().subscribe(data => {
           this.resume = data.resume;
-          console.log("Sidenav: Resume Data from DataService:", this.resume);
-
         });
       }
-      console.log('email', email);
-      console.log('this.email', this.email);
-      console.log('this.mainEmail', this.mainEmail);
     });
 
 

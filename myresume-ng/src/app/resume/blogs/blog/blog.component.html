@@ -26,9 +26,15 @@
               <p class="card-text">{{post.summary}}
               </p>
             </blockquote>
-            <button type="button" class="btn skill-set" *ngFor="let tag of post.tags"
-              [routerLink]="['/skills', tag]">{{tag}}</button>
 
+            <ng-container *ngIf="!email">
+              <button type="button" class="btn skill-set" *ngFor="let tag of post.tags"
+                [routerLink]="['/skills', tag]">{{tag}}</button>
+            </ng-container>
+            <ng-container *ngIf="email">
+              <button type="button" class="btn skill-set" *ngFor="let tag of post.tags"
+                [routerLink]="['/p',email,'skills', tag]">{{tag}}</button>
+            </ng-container>
           </div>
         </div>
       </div>

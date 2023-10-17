@@ -54,9 +54,10 @@ export class ResumeComponent implements OnInit, OnChanges, AfterViewInit {
 
       // Determine which email to use and fetch data accordingly
       const emailToUse = email ? email : environment.mainEmail;
+      console.log('Email Used', emailToUse);
       this.dataService.fetchDataByEmail(emailToUse).subscribe(data => {
         this.data = data;
-        this.theme = this.data.theme.colors;  // assuming theme data is part of the fetched data
+        this.theme = this.data.theme.colors;
         this.applyTheme();
         this.getQuote(emailToUse);
         this.cdRef.detectChanges();
@@ -104,10 +105,9 @@ export class ResumeComponent implements OnInit, OnChanges, AfterViewInit {
   applyTheme() {
     if (this.theme && this.theme) {
       this.theme.forEach(color => {
-        console.log(`Applying: --${color.key}: ${color.value}`);
         this.document.documentElement.style.setProperty(`--${color.key}`, color.value);
       });
-      console.log('Root Style after applying theme:', document.documentElement.style);
+      console.log(`Applying: --${JSON.stringify(this.theme)}`);
     } else {
       console.error('Theme or colors is undefined:', this.theme);
     }
