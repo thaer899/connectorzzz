@@ -19,9 +19,10 @@ on:
         description: 'Job'
         required: true
         options:
+          - all
           - deploy
-          - test
           - build
+          - test
       common:
         type: boolean
         description: 'Common'
@@ -31,7 +32,7 @@ on:
 jobs:
 
   build:
-    if: (github.event_name == 'workflow_dispatch' && github.event.inputs.job == 'build' ) || ( github.event_name == 'push' )
+    if: (github.event_name == 'workflow_dispatch' && github.event.inputs.job == 'build' ) || ( github.event_name == 'push' ) || (github.event_name == 'workflow_dispatch' && github.event.inputs.job == 'all' )
     environment: myresume-ai
     runs-on: ubuntu-latest
     env:
@@ -72,7 +73,7 @@ jobs:
           tags: ${{ vars.IMAGE_REGISTRY }}/${{ vars.PROJECT_ID }}/${{ env.APP_NAME }}:latest
 
   deploy:
-    if: (always() && github.event_name == 'workflow_dispatch' && github.event.inputs.job == 'deploy' ) || ( github.event_name == 'push' )
+    if: (always() && github.event_name == 'workflow_dispatch' && github.event.inputs.job == 'deploy' ) || ( github.event_name == 'push' ) || (github.event_name == 'workflow_dispatch' && github.event.inputs.job == 'all' )
     needs: build
     environment: myresume-ai
     runs-on: ubuntu-latest
@@ -125,7 +126,7 @@ jobs:
           helm upgrade --install ${{ env.APP_NAME }} ${{ env.APP_CHART_PATH }} --set image.tag=${{ vars.IMAGE_REGISTRY }}/${{ vars.PROJECT_ID }}/${{ github.event.inputs.app }}:latest
 
   test:
-    if: (always() && github.event_name == 'workflow_dispatch' && github.event.inputs.job == 'test' ) || ( github.event_name == 'push' )
+    if: (always() && github.event_name == 'workflow_dispatch' && github.event.inputs.job == 'test' ) || ( github.event_name == 'push' ) || (github.event_name == 'workflow_dispatch' && github.event.inputs.job == 'all' )
     needs: deploy
     environment: myresume-ai
     runs-on: ubuntu-latest

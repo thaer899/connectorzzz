@@ -23,7 +23,7 @@ app.use(cors({
 app.use(express.json());
 
 // Middleware to validate API key
-//app.use(validateApiKey);
+app.use(validateApiKey);
 
 // Use your routes
 app.use('/', routes);

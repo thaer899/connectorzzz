@@ -3,27 +3,39 @@ info:
   title: myresume-express-api
   version: 1.0.0
 paths:
-  /quote:
-    post:
-      summary: Generate a quotes
-      parameters:
-        - name: email
-          in: query
-          required: true
-          schema:
-            type: string
-      responses:
-        "200":
-          description: Successful operation
   /:
     get:
-      summary: file
+      summary: Retrieve LogBook profile details
       responses:
         "200":
           description: Successful operation
+        "401":
+          description: Unauthorized
+        "404":
+          description: Not Found
+        "500":
+          description: Internal Server Error
+  /quote:
+    post:
+      summary: Generate a personalized quote based on a LogBook profile
+      parameters:
+        - name: email
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful operation
+        "401":
+          description: Unauthorized
+        "404":
+          description: Not Found
+        "500":
+          description: Internal Server Error
   /message:
     post:
-      summary: Send Messages
+      summary: Respond to a user's message using the LogBook profile
       parameters:
         - name: email
           in: query
@@ -42,9 +54,15 @@ paths:
       responses:
         "200":
           description: Successful operation
+        "401":
+          description: Unauthorized
+        "404":
+          description: Not Found
+        "500":
+          description: Internal Server Error
   /skill:
     post:
-      summary: Get Skill
+      summary: Retrieve information about a specified skill
       parameters:
         - name: email
           in: query
@@ -63,9 +81,15 @@ paths:
       responses:
         "200":
           description: Successful operation
+        "401":
+          description: Unauthorized
+        "404":
+          description: Not Found
+        "500":
+          description: Internal Server Error
   /blog:
     post:
-      summary: Create a blog post
+      summary: Generate a blog post using LogBook profile
       parameters:
         - name: email
           in: query
@@ -84,9 +108,15 @@ paths:
       responses:
         "200":
           description: Successful operation
+        "401":
+          description: Unauthorized
+        "404":
+          description: Not Found
+        "500":
+          description: Internal Server Error
   /openai:
     post:
-      summary: Execute OpenAI operation
+      summary: Execute a specific OpenAI operation
       parameters:
         - name: email
           in: query
@@ -107,11 +137,17 @@ paths:
       responses:
         "200":
           description: Successful operation
+        "401":
+          description: Unauthorized
+        "404":
+          description: Not Found
+        "500":
+          description: Internal Server Error
 components:
   securitySchemes:
-    ApiKeyAuth:
+    Authorization:
       type: apiKey
       in: header
-      name: API_KEY
+      name: apiKey
 security:
-  - ApiKeyAuth: []
+  - Authorization: []
