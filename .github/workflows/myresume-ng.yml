@@ -59,7 +59,8 @@ jobs:
        working-directory: ./myresume-ng
      # Move the necessary files/folders to the root (or specific paths the action expects)
      - run: mv ./myresume-ng/* ./
-     - run: cp sitemap.xml robots.txt ./dist/
+     - run: cp robots.txt ./dist/
+     - run: cp sitemap.xml ./dist/
      - uses: FirebaseExtended/action-hosting-deploy@v0
        with:
          repoToken: "${{ secrets.GITHUB_TOKEN }}"
