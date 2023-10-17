@@ -28,6 +28,8 @@ import { JsonFormsState, Actions } from '@jsonforms/core';
 import { BlogPostComponent } from './controls/blog-post.control';
 import { ColorPickerComponent } from './controls/color-picker.control';
 import { ColorPickerInputComponent } from './admin/color-picker/color-picker-input.component';
+import { VisualComponent } from './controls/visual.control';
+import { SiteVisualComponent } from './admin/site-visual/site-visual.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { ColorPickerInputComponent } from './admin/color-picker/color-picker-inp
     ColorPickerInputComponent,
     LoginComponent,
     AdminComponent,
-    DashboardComponent
+    DashboardComponent,
+    SiteVisualComponent,
+    VisualComponent
   ],
   imports: [
     MatInputModule,

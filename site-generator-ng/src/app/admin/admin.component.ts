@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { angularMaterialRenderers } from '@jsonforms/angular-material';
 import { and, createAjv, isControl, rankWith, scopeEndsWith } from '@jsonforms/core';
 import { DataDisplayComponent } from '../controls/data.control';
@@ -11,6 +11,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment';
 import { BlogPostComponent } from '../controls/blog-post.control';
 import { ColorPickerComponent } from '../controls/color-picker.control';
+import { NgZone } from '@angular/core';
+import { VisualComponent } from '../controls/visual.control';
 
 
 @Component({
@@ -19,7 +21,8 @@ import { ColorPickerComponent } from '../controls/color-picker.control';
   styleUrls: ['./admin.component.css'],
 })
 export class AdminComponent {
-  // Form-related properties
+  @ViewChild(VisualComponent) visualComponent: VisualComponent;
+
   formData: any = {};
   renderers = [
     ...angularMaterialRenderers,
@@ -40,6 +43,16 @@ export class AdminComponent {
         and(
           isControl,
           scopeEndsWith('___color')
+        )
+      )
+    },
+    {
+      renderer: VisualComponent,
+      tester: rankWith(
+        6,
+        and(
+          isControl,
+          scopeEndsWith('___visual')
         )
       )
     },
@@ -71,7 +84,8 @@ export class AdminComponent {
     private cdRef: ChangeDetectorRef,
     private dataService: DataService,
     private authService: AuthService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private ngZone: NgZone
   ) { }
 
   ngOnInit() {
@@ -82,19 +96,21 @@ export class AdminComponent {
       this.isAdmin = this.user.email === environment.mainEmail;
       // Fetch data on component initialization
       console.log("Fetching data for user:", this.user.email);
-      this.dataService.fetchDataForUser(this.fileName).subscribe(
-        data => {
-          if (data) {
-            this.data = data;
-            console.log("Data fetched:", this.data);
-            this.cdRef.detectChanges();  // Trigger change detection
+      this.ngZone.run(() => {
+        this.dataService.fetchDataForUser(this.fileName).subscribe(
+          data => {
+            if (data) {
+              this.data = data;
+              console.log("Data fetched:", this.data);
+              this.cdRef.detectChanges();  // Trigger change detection
+            }
+          },
+          error => {
+            console.error("Error fetching data for user:", this.user.email, error);
+            // Handle the error, e.g., show a notification to the user
           }
-        },
-        error => {
-          console.error("Error fetching data for user:", this.user.email, error);
-          // Handle the error, e.g., show a notification to the user
-        }
-      );
+        );
+      })
     }
     this.getUsers();
   }
@@ -120,7 +136,7 @@ export class AdminComponent {
           this.data = data;
           console.log("Data fetched:", this.data);
           this.fileName = email
-          this.cdRef.detectChanges();  // Trigger change detection
+          this.cdRef.detectChanges();
         }
       },
       error => {
@@ -134,8 +150,10 @@ export class AdminComponent {
   // Handle form data changes
   onDataChange(event) {
     this.formData = event;
-    console.log("Form Data on Change:", this.formData);
     this.dataService.updateData(this.formData);
+    if (this.visualComponent) {
+      this.visualComponent.data = this.formData;
+    }
   }
 
   // Upload the form data to Firebase Storage

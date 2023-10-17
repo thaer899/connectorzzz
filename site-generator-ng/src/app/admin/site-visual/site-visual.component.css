@@ -1,0 +1,99 @@
+.border {
+  margin-bottom: 20px;
+  box-shadow: 2px 7px 4px 2px rgba(0, 0, 0, 0.2)
+}
+
+
+.topbar {
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  width: 100%;
+}
+
+.visibility {
+  color: white;
+  width: 10%;
+  margin-top: 5px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.visibility:hover {
+  color: #f96c6c;
+}
+
+.quote {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: small;
+  font-weight: 500;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 300px;
+}
+
+.profile-card {
+  width: 33%;
+  padding-top: 4%;
+  box-sizing: border-box;
+}
+
+.profile-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1px;
+}
+
+.content-card {
+  width: 67%;
+  padding: 4% 8%;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.circle-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  margin: 0 auto;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+button {
+  padding: 6px 12px;
+  margin: 6px;
+  border: none;
+  min-width: 100px;
+
+}
+
+.input {
+  background-color: white;
+  width: 100%;
+  padding: 6px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+h1 {
+  margin: 1px;
+  font-size: 24px;
+}
+
+p {
+  font-size: 12px;
+}

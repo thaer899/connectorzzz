@@ -73,7 +73,10 @@
                   "elements": [
                     {
                       "type": "Control",
-                      "scope": "#/properties/references"
+                      "scope": "#/properties/references",
+                      "options": {
+                        "showSortButtons": true
+                      }
                     }
                   ]
                 }
@@ -96,6 +99,10 @@
                   "type": "Group",
                   "label": "Theme",
                   "elements": [
+                    {
+                      "type": "Control",
+                      "scope": "#/___visual"
+                    },
                     {
                       "type": "Label",
                       "text": "colors"

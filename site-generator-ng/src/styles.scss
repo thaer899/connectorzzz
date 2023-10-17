@@ -36,10 +36,17 @@ body {
     color: $accent-color !important;
 }
 
+.mat-button {
+
+    min-width: 5px !important;
+    line-height: 36px;
+    padding: 0 2px !important;
+}
+
 .mat-button-wrapper .mat-icon {
     display: none;
     display: inline-flex;
-    font-size: xx-large;
+    font-size: large;
     cursor: pointer;
     z-index: 1000;
     color: $accent-color !important;
