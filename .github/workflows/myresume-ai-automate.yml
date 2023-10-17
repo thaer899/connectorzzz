@@ -126,7 +126,7 @@ jobs:
 
   test:
     if: (always() && github.event_name == 'workflow_dispatch' && github.event.inputs.job == 'test' ) || ( github.event_name == 'push' )
-    needs: build
+    needs: deploy
     environment: myresume-ai
     runs-on: ubuntu-latest
     env:
@@ -145,4 +145,4 @@ jobs:
         run: npm install -g newman
 
       - name: Run Postman Collection
-        run: newman run ./${{ github.event.inputs.app }}/tests/colection.json --env-var url=${{ vars.HOST }} --env-var apiKey=${{ secrets.API_KEY }} --verbose
+        run: newman run ${{ github.event.inputs.app }}/tests/colection.json --env-var url=${{ vars.HOST }} --env-var apiKey=${{ secrets.API_KEY }} --verbose
