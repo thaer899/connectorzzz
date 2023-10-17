@@ -122,3 +122,26 @@ jobs:
       - name: Deploy to Kubernetes
         run: |
           helm upgrade --install ${{ env.APP_NAME }} ${{ env.APP_CHART_PATH }} --set image.tag=${{ vars.IMAGE_REGISTRY }}/${{ vars.PROJECT_ID }}/${{ github.event.inputs.app }}:latest
+
+  test:
+    if: (always() && github.event_name == 'workflow_dispatch' && github.event.inputs.job == 'test' ) || ( github.event_name == 'push' )
+    needs: build
+    environment: myresume-ai
+    runs-on: ubuntu-latest
+    env:
+      APP_NAME: ${{ (github.event_name == 'push') && 'myresume-express' || '' }}${{ github.event.inputs.app }}    
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+
+      - name: Install Newman
+        run: npm install -g newman
+
+      - name: Run Postman Collection
+        run: newman run ./${{ github.event.inputs.app }}/tests/colection.json --env-var url=${{ vars.HOST }} --env-var apiKey=${{ secrets.API_KEY }} --verbose
