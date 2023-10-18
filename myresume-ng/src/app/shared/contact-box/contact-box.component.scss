@@ -1,7 +1,7 @@
 @import '../../../assets/scss/variable.scss';
 
 .modal-content {
-  background-color: $bodycolor !important;
+  background-color: var(--bodycolor) !important;
   opacity: 0.99;
   top: 100px;
   /* opacity: 0.8; */
@@ -133,8 +133,8 @@
 
 
 .btn-primary {
-  background-color: $bodytext !important;
-  color: $bodycolor !important;
+  background-color: var(--bodytext) !important;
+  color: var(--bodycolor) !important;
   border: #1c1d1d;
 }
 
@@ -160,7 +160,7 @@
 
   .btn-message i {
     display: inline-block;
-    color: $bodytext !important;
+    color: var(--bodytext) !important;
     -webkit-transform: translateX(0%) translateY(0%);
     transform: translateX(0%) translateY(0%);
     width: 30px;
@@ -194,7 +194,7 @@
 
   .btn-message i {
     display: inline-block;
-    color: $bodytext !important;
+    color: var(--bodytext) !important;
     -webkit-transform: translateX(0%) translateY(0%);
     transform: translateX(0%) translateY(0%);
     width: 30px;
@@ -211,7 +211,7 @@
 
   .btn-message i {
     display: inline-block;
-    color: $bodytext !important;
+    color: var(--bodytext) !important;
     -webkit-transform: translateX(0%) translateY(0%);
     transform: translateX(0%) translateY(0%);
     width: 30px;

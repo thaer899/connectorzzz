@@ -10,4 +10,8 @@
 
 .post-card {
   margin-top: 20px !important;
+  background-color: rgba($bodycolor, 0.9);
+  color: var(--themecoloralt) !important;
+  filter: drop-shadow($shadow-card);
+
 }

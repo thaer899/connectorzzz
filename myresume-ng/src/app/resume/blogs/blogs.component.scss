@@ -31,6 +31,13 @@
 .card {
   margin-bottom: 20px;
   filter: drop-shadow($shadow-card);
+  color: var(--themecoloralt) !important;
+  background-color: lighten($bodycolor, 10%) !important;
+}
+
+.card-body {
+  color: var(--themecolor) !important;
+  background-color: rgba($bodycolor, 0.9);
 }
 
 .image-crop-container {

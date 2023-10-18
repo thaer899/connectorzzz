@@ -93,11 +93,25 @@ p {
 
 a {
     font-size: 1em !important;
-    color: var(--bodytext) !important;
+    color: var(--themecoloralt) !important;
 }
 
 a:hover {
     color: var(--themecolor) !important;
+}
+
+textarea {
+    background-color: rgba($bodycolor, 0.6) !important;
+    border: 1px solid rgba($bodycolor, 0.2) !important;
+    box-shadow: inset 1px 1px 3px var(--themecolor);
+
+}
+
+textarea:focus {
+    background-color: rgba($bodycolor, 0.2) !important;
+    border: 1px solid rgba($bodycolor, 0.2) !important;
+    box-shadow: inset 1px 1px 3px var(--themecolor) !important;
+
 }
 
 .wrapper {
@@ -158,7 +172,7 @@ a:hover {
 }
 
 .name-hero h1 em {
-    color: $bodytext;
+    color: var(--bodytext);
     font-style: normal;
     font-weight: 700;
 }
@@ -208,7 +222,7 @@ ul {
 
 .skill-set {
     background-color: var(--themecolor) !important;
-    color: var(--bodycolor) !important;
+    color: rgba($bodycolor, 0.8) !important;
     border-radius: 5px;
     display: inline-block;
     border: none !important;
@@ -224,7 +238,7 @@ ul {
 
 .skill-set:hover {
     background: var(--bodycolor) !important;
-    color: var(--themecolor) !important;
+    color: invert($color: var(--themecolor)) !important;
     box-shadow: none;
 }
 
@@ -243,14 +257,19 @@ ul {
     bottom: 2%;
     left: 94%;
     display: none;
-    opacity: 0.9;
-    border: 0;
+    font-size: xxx-large;
+    cursor: pointer;
+    filter: drop-shadow(2px 2px 3px #222);
+    transition: transform .2s;
+    z-index: 1000;
+    color: rgba($bodytext, 0.8);
 }
 
-.scroll-top i {
-    display: inline-block;
-    color: $bodytext !important;
-    font-size: 2em;
+
+.scroll-top:hover {
+    transform: scale(1.15);
+    transition: transform .2s;
+    color: var(--bodytext);
 }
 
 
@@ -291,7 +310,7 @@ ul {
     content: '';
     width: 30px;
     height: 30px;
-    border: 1px solid #f0f0f0;
+    border: 1px solid rgba($bodycolor, 0.8);
     left: 50%;
     margin-left: -15px;
     top: 50%;

@@ -1,44 +1,5 @@
 @import '../../../../assets/scss/variable.scss';
 
-.mdc-card__media:first-child {
-  border-top-left-radius: 100%;
-  border-top-right-radius: 100%;
-
-}
-
-
-.is-mobile .resume-toolbar {
-  position: fixed;
-  z-index: 2;
-}
-
-h1.resume-app-name {
-  margin-left: 8px;
-}
-
-.resume-sidenav-container {
-  flex: 1;
-}
-
-.is-mobile .resume-sidenav-container {
-  flex: 1 0 auto;
-}
-
-.nav-btn {
-  background-color: var(--themecolor);
-  color: var(--bodycolor);
-  box-shadow: 1px 1px 3px var(--themecolor);
-  margin: 5px 60px;
-  font-weight: 500;
-  font-size: 18px;
-}
-
-.nav-btn:hover {
-  background-color: var(--sidebar);
-  box-shadow: none;
-  color: var(--bodytext);
-}
-
 
 .circle {
   width: 100%;
@@ -51,4 +12,53 @@ h1.resume-app-name {
   color: var(--themecoloralt);
   font-size: 60px;
   font-weight: bold;
+}
+
+
+h1 {
+  color: invert($color: var(--sidebar)) !important;
+}
+
+.profile-text {
+  color: invert($color: var(--sidebar));
+}
+
+
+h1.resume-app-name {
+  margin-left: 8px;
+}
+
+.resume-sidenav-container {
+  flex: 1;
+}
+
+.nav-btn {
+  background-color: var(--themecolor);
+  color: rgba($bodycolor, 0.8) !important;
+  box-shadow: 1px 1px 3px var(--themecolor);
+  margin: 5px 60px;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.nav-btn:hover {
+  background-color: var(--sidebar);
+  box-shadow: none;
+  color: var(--bodytext);
+}
+
+.mdc-card__media:first-child {
+  border-top-left-radius: 100%;
+  border-top-right-radius: 100%;
+
+}
+
+
+.is-mobile .resume-toolbar {
+  position: fixed;
+  z-index: 2;
+}
+
+.is-mobile .resume-sidenav-container {
+  flex: 1 0 auto;
 }
