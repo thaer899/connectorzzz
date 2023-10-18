@@ -1,5 +1,5 @@
 name: myresume-ng
-run-name: myresume-ng-${{ github.run_number }}${{ (github.event.inputs.test == 'true') && '-test' || '' }}
+run-name: myresume-ng-${{ github.run_number }}
 
 on:
   workflow_dispatch:
