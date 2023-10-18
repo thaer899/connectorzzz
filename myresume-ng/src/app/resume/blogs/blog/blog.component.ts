@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -20,10 +22,19 @@ export class BlogComponent {
   dataFromParent: any;
   private subscription: Subscription;
 
-  constructor(private dataService: DataService, private route: ActivatedRoute, private readonly http: HttpClient) { }
+  constructor(private route: ActivatedRoute,
+    private dataService: DataService,
+    private readonly http: HttpClient,
+    private titleService: Title) { }
 
 
   ngOnInit() {
+
+    this.route.data.subscribe(data => {
+      if (data && data.title) {
+        this.titleService.setTitle(environment.title + " - " + data.title);;
+      }
+    });
     this.blogId = this.route.snapshot.paramMap.get('id');
 
     this.route.parent!.paramMap.subscribe(params => {

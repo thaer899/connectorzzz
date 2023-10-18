@@ -13,6 +13,8 @@ import { BlogPostComponent } from '../controls/blog-post.control';
 import { ColorPickerComponent } from '../controls/color-picker.control';
 import { NgZone } from '@angular/core';
 import { VisualComponent } from '../controls/visual.control';
+import { ActivatedRoute } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -85,10 +87,18 @@ export class AdminComponent {
     private dataService: DataService,
     private authService: AuthService,
     private snackBar: MatSnackBar,
-    private ngZone: NgZone
-  ) { }
+    private ngZone: NgZone,
+    private route: ActivatedRoute,
+    private titleService: Title) { }
+
 
   ngOnInit() {
+
+    this.route.data.subscribe(data => {
+      if (data && data.title) {
+        this.titleService.setTitle(environment.title + " - " + data.title);;
+      }
+    });
     this.user = this.authService.auth.currentUser;
     this.fileName = `${this.user.email}.json`;
     if (this.user) {
