@@ -5,6 +5,7 @@ import { DataService } from 'src/app/services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
+import { GAService } from 'src/app/services/ga.service';
 
 @Component({
   selector: 'app-interests',
@@ -17,17 +18,20 @@ export class InterestsComponent implements OnInit {
 
   dataFromParent: any;
 
-  constructor(private route: ActivatedRoute,
-    private titleService: Title,
-    private router: Router,
+  constructor(
     private dataService: DataService,
-    private readonly http: HttpClient) { }
+    private readonly http: HttpClient,
+    private titleService: Title,
+    private route: ActivatedRoute,
+    private gaService: GAService
+  ) { }
 
 
   ngOnInit() {
     this.route.data.subscribe(data => {
       if (data && data.title) {
-        this.titleService.setTitle(environment.title + " - " + data.title);;
+        this.titleService.setTitle(environment.title + " - " + data.title);
+        this.gaService.trackPageView(data.title);
       }
     });
     this.route.parent!.paramMap.subscribe(params => {

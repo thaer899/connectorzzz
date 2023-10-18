@@ -18,12 +18,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ResumeModule } from './resume/resume.module'
 import { SidenavComponent } from './resume/shared/sidenav/sidenav.component'
 import { MatIconModule } from '@angular/material/icon';
+import { environment } from 'src/environments/environment'
+import { initializeApp } from 'firebase/app'
+const firebaseConfig = environment.firebaseConfig;
+const app = initializeApp(firebaseConfig);
 
-// const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
-//   suppressScrollX: true,
-//   wheelSpeed: 2,
-//   wheelPropagation: true,
-// };
 
 @NgModule({
   declarations: [

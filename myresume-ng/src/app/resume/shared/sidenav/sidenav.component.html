@@ -1,4 +1,4 @@
-<app-contact-box></app-contact-box>
+<app-contact-box *ngIf="isBotMessage"></app-contact-box>
 <div class="left" *ngIf="resume">
 
   <div class="name-hero" *ngIf="!email">

@@ -1,11 +1,4 @@
 import { Component, HostListener } from '@angular/core'
-import { initializeApp } from 'firebase/app';
-import { environment } from 'src/environments/environment';
-import { getAnalytics } from "firebase/analytics";
-
-const firebaseConfig = environment.firebaseConfig;
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 
 @Component({
   selector: 'app-root',

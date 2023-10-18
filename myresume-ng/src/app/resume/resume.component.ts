@@ -7,7 +7,8 @@ import { environment } from 'src/environments/environment';
 import { ThemeService } from '../services/theme.service';
 import { DOCUMENT } from '@angular/common';
 import { Subscription } from 'rxjs';
-import e = require('express');
+import { GAService } from '../services/ga.service';
+
 
 @Component({
   selector: 'app-resume',
@@ -27,6 +28,7 @@ export class ResumeComponent implements OnInit, OnChanges, AfterViewInit {
   public quote: string;
   public mainEmail: any;
   public theme: any;
+  public isBotQuotes: boolean = false;
 
   public menuItems = [
     { key: 'employment', label: 'Employment' },
@@ -42,7 +44,8 @@ export class ResumeComponent implements OnInit, OnChanges, AfterViewInit {
     private readonly router: Router,
     private readonly http: HttpClient,
     @Inject(DOCUMENT) private document: Document,
-    private cdRef: ChangeDetectorRef
+    private cdRef: ChangeDetectorRef,
+    private gaService: GAService
   ) {
     this.post = router.url.replace('/resume/', '');
   }
@@ -58,6 +61,11 @@ export class ResumeComponent implements OnInit, OnChanges, AfterViewInit {
       this.dataService.fetchDataByEmail(emailToUse).subscribe(data => {
         this.data = data;
         this.theme = this.data.theme.colors;
+
+        if (data.bots && data.bots.some(bot => bot.type === 'quotes')) {
+          this.isBotQuotes = true;
+        }
+
         this.applyTheme();
         this.getQuote(emailToUse);
         this.cdRef.detectChanges();
@@ -66,7 +74,8 @@ export class ResumeComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
 
-  ngAfterViewInit() { }
+  ngAfterViewInit() {
+  }
 
   ngOnChanges() { }
 

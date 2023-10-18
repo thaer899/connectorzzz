@@ -5,6 +5,7 @@ import { DataService } from 'src/app/services/data.service';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { GAService } from 'src/app/services/ga.service';
 
 @Component({
   selector: 'app-employment',
@@ -17,13 +18,20 @@ export class EmploymentComponent implements OnInit {
   dataFromParent: any;
   private subscription: Subscription;
 
-  constructor(private titleService: Title, private route: ActivatedRoute, private dataService: DataService, private readonly http: HttpClient) { }
+  constructor(
+    private dataService: DataService,
+    private readonly http: HttpClient,
+    private titleService: Title,
+    private route: ActivatedRoute,
+    private gaService: GAService
+  ) { }
 
 
   ngOnInit() {
     this.route.data.subscribe(data => {
       if (data && data.title) {
-        this.titleService.setTitle(environment.title + " - " + data.title);;
+        this.titleService.setTitle(environment.title + " - " + data.title);
+        this.gaService.trackPageView(data.title);
       }
     });
     this.subscription = this.dataService.fetchData().subscribe(data => {

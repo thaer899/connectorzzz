@@ -18,7 +18,7 @@ export class ContactBoxComponent implements OnInit {
   public chatCompletion: any;
   public messageForm: FormGroup;
   public email: string;
-
+  public mainEmail: string = environment.mainEmail;
   public response: any;
   public chatConversation: any;
   public info: any;
@@ -57,7 +57,7 @@ export class ContactBoxComponent implements OnInit {
       if (email) {
         this.email = email;
       } else {
-        this.email = environment.mainEmail;
+        this.email = this.mainEmail;
       }
     });
 

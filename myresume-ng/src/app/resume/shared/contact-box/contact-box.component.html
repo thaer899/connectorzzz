@@ -5,8 +5,16 @@
     <div class="modal-content">
       <div class="modal-header">
         <div class="modal-header-right">
-          <i class="fa fa-arrows-alt" aria-hidden="true" data-bs-dismiss="modal" aria-label="Close"
-            (click)="openFullChat()" [routerLink]="['/ask']"></i>
+          <ng-container *ngIf="email==mainEmail">
+            <i class="fa fa-arrows-alt" aria-hidden="true" data-bs-dismiss="modal" aria-label="Close"
+              (click)="openFullChat()" [routerLink]="['/ask']"></i>
+          </ng-container>
+          <ng-container *ngIf="email!=mainEmail">
+            <i class="fa fa-arrows-alt" aria-hidden="true" data-bs-dismiss="modal" aria-label="Close"
+              (click)="openFullChat()" [routerLink]="['/p',email,'ask']"></i>
+          </ng-container>
+
+
           <i class="fa fa-window-close" aria-hidden="true" data-bs-dismiss="modal"></i>
 
         </div>

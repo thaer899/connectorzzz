@@ -4,6 +4,7 @@ import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
+import { GAService } from 'src/app/services/ga.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -22,13 +23,16 @@ export class LanguagesComponent implements OnInit {
     private dataService: DataService,
     private readonly http: HttpClient,
     private titleService: Title,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private gaService: GAService
   ) { }
+
 
   ngOnInit() {
     this.route.data.subscribe(data => {
       if (data && data.title) {
-        this.titleService.setTitle(environment.title + " - " + data.title);;
+        this.titleService.setTitle(environment.title + " - " + data.title);
+        this.gaService.trackPageView(data.title);
       }
     });
     this.subscription = this.dataService.fetchData().subscribe(data => {

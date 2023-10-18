@@ -14,6 +14,7 @@ export class SidenavComponent implements OnInit {
   public email: any;
   public name_abr: string;
   public mainEmail: string = environment.mainEmail;
+  public isBotMessage: boolean = false;
 
   public menuItems = [
     { key: 'employment', label: 'Employment' },
@@ -39,6 +40,9 @@ export class SidenavComponent implements OnInit {
         this.email = email;
         this.dataService.fetchDataByEmail(email).subscribe(data => {
           this.resume = data.resume;
+          if (data.bots && data.bots.some(bot => bot.type === 'messages')) {
+            this.isBotMessage = true;
+          }
           this.name_abr = this.resume.firstName.charAt(0) + this.resume.lastName.charAt(0);
         });
       } else {

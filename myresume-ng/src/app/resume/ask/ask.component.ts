@@ -4,6 +4,8 @@ import { FormBuilder, FormControl, FormGroup, NgForm } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import OpenAI from 'openai';
+import { DataService } from 'src/app/services/data.service';
+import { GAService } from 'src/app/services/ga.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -22,6 +24,8 @@ export class AskComponent implements OnInit {
   public chatConversation: any;
   public info: any;
   public available: boolean = true;
+  public isBotMessage: boolean = false;
+
   config = {
     animated: true,
     keyboard: true,
@@ -35,7 +39,9 @@ export class AskComponent implements OnInit {
     private changeDetectorRef: ChangeDetectorRef,
     private fb: FormBuilder,
     private route: ActivatedRoute,
-    private titleService: Title
+    private titleService: Title,
+    private gaService: GAService,
+    private dataService: DataService
   ) {
     this.messageForm = this.fb.group({
       recipientMessage: ''
@@ -47,10 +53,12 @@ export class AskComponent implements OnInit {
     this.info = {};
   }
 
+
   ngOnInit() {
     this.route.data.subscribe(data => {
       if (data && data.title) {
-        this.titleService.setTitle(environment.title + " - " + data.title);;
+        this.titleService.setTitle(environment.title + " - " + data.title);
+        this.gaService.trackPageView(data.title);
       }
     });
     this.route.paramMap.subscribe(params => {
@@ -61,6 +69,12 @@ export class AskComponent implements OnInit {
       } else {
         this.email = environment.mainEmail;
       }
+
+      this.dataService.fetchData().subscribe(data => {
+        if (data.bots && data.bots.some(bot => bot.type === 'skills')) {
+          this.isBotMessage = true;
+        }
+      });
     });
   }
 

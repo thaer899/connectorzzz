@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
+import { GAService } from 'src/app/services/ga.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -19,17 +20,22 @@ export class SkillComponent implements OnInit {
     private dataService: DataService,
     private router: Router,
     private http: HttpClient,
-    private titleService: Title
+    private titleService: Title,
+    private gaService: GAService
   ) { }
 
-  ngOnInit(): void {
+
+
+  ngOnInit() {
     this.route.data.subscribe(data => {
       if (data && data.title) {
-        this.titleService.setTitle(environment.title + " - " + data.title);;
+        this.titleService.setTitle(environment.title + " - " + data.title);
+        this.gaService.trackPageView(data.title);
       }
     });
     this.skillId = this.route.snapshot.paramMap.get('id');
     this.getFacts(this.skillId);
+
   }
 
   getFacts(topic: string | null): void {
