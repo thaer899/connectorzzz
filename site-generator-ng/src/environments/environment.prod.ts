@@ -3,6 +3,7 @@ export const environment = {
   mainEmail: "rebel.saidi.thaer@gmail.com",
   functionURL: 'https://ai.thaersaidi.net/',
   functionApiKey: 'FJxJ2MRv4vtAH0Js81Q390',
+  title: "Site Generator",
   firebaseConfig: {
     apiKey: "AIzaSyA2wXas1gdmAzamuvI2gFM_spA28ASUzLA",
     authDomain: "site-generator-ng.firebaseapp.com",
