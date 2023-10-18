@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 import data from './backup-data';
 
 const firebaseConfig = environment.firebaseConfig;
-const app = initializeApp(firebaseConfig); // Initialize Firebase app once
+const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 
 @Injectable({
