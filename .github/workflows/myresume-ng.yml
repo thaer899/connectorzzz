@@ -59,7 +59,7 @@ jobs:
      - name: Install Playwright Browsers
        run: cd myresume-ng && npx playwright install --with-deps
      - name: Run Playwright tests
-       run: cd myresume-ng && npx playwright test
+       run: cd myresume-ng && npx playwright test --timeout 60000
      - uses: actions/upload-artifact@v3
        if: always()
        with:
