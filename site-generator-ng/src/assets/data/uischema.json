@@ -100,12 +100,16 @@
                   "label": "Theme",
                   "elements": [
                     {
+                      "type": "Label",
+                      "text": "Colors"
+                    },
+                    {
                       "type": "Control",
-                      "scope": "#/___visual"
+                      "scope": "#/properties/theme/properties/colors"
                     },
                     {
                       "type": "Label",
-                      "text": "colors"
+                      "text": "Visual"
                     },
                     {
                       "type": "Control",
@@ -113,7 +117,7 @@
                     },
                     {
                       "type": "Control",
-                      "scope": "#/properties/theme/properties/colors"
+                      "scope": "#/___visual"
                     }
                   ]
                 },
