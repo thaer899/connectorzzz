@@ -10,11 +10,7 @@ on:
         required: false
         options:
           - deploy
-      test:
-        type: boolean
-        description: Test
-        required: false
-        default: false
+          - test
 
 jobs:
 
@@ -42,7 +38,7 @@ jobs:
 
   test:
    needs: deploy
-   if: (always() && github.event_name == 'workflow_dispatch' && github.event.inputs.test == 'true')
+   if: (always() && github.event_name == 'workflow_dispatch' && github.event.inputs.env == 'test')
    runs-on: ubuntu-latest
    name: Test Job
    steps:
