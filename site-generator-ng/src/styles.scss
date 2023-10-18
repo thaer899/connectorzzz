@@ -1,4 +1,3 @@
-/* Import the custom theme to access the variables */
 @import 'assets/scss/custom-theme.scss';
 
 body {
@@ -16,6 +15,12 @@ body {
 
 .mat-drawer-content {
     background-color: $primary-color !important;
+    position: relative;
+    z-index: 1;
+    display: block;
+    height: 100%;
+    overflow: auto;
+    margin-left: 20%;
 }
 
 .mat-title {
@@ -25,7 +30,6 @@ body {
 .mat-error {
     color: transparent;
 }
-
 
 .add-button {
     background-color: transparent !important;
@@ -37,24 +41,17 @@ body {
 }
 
 .mat-button {
-
     min-width: 5px !important;
     line-height: 36px;
     padding: 0 2px !important;
 }
 
 .mat-button-wrapper .mat-icon {
-    display: none;
-    display: inline-flex;
     font-size: large;
     cursor: pointer;
     z-index: 1000;
     color: $accent-color !important;
     font-weight: bold;
-    font-variation-settings: 'FILL' 1,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 24;
 }
 
 .right {
@@ -62,43 +59,25 @@ body {
     right: 0% !important;
 }
 
-.mat-drawer-content {
-    position: relative;
-    z-index: 1;
-    display: block;
-    height: 100%;
-    overflow: auto;
-    margin-left: 20%;
-}
-
 .material-symbols-outlined {
     width: 50px;
     height: 50px;
-    right: 0%;
     position: fixed;
     color: $accent-color !important;
-    display: none;
     display: inline-flex;
     font-size: xxx-large;
     cursor: pointer;
     z-index: 1000;
-    font-variation-settings: 'FILL' 1,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 24;
 }
 
 .upload {
     color: #3b9029 !important;
     right: 100px;
-
 }
 
 .download {
     color: #f96c6c !important;
     right: 150px;
-
-
 }
 
 .create-post {
@@ -122,21 +101,36 @@ body {
     z-index: 1000;
 }
 
-
 .container {
     min-height: 65vh !important;
-    max-height: 85vh !important
+    max-height: 85vh !important;
 }
 
 .mat-tooltip {
     font-size: 12px;
-    /* Adjust this value as needed */
 }
 
 @media screen and (max-width: 30em) {
     .mat-card {
-        width: 50vh;
-        margin-left: 10vh;
+        width: 70% !important;
+        left: 10vh !important;
     }
 
+    .background {
+        padding: 0 10px 0 10px;
+    }
+
+    .mat-button-wrapper .mat-icon {
+        font-size: medium;
+    }
+
+    .material-symbols-outlined {
+        width: 40px;
+        height: 40px;
+        font-size: x-large;
+    }
+
+    .mat-drawer-content {
+        padding: 1px !important;
+    }
 }
