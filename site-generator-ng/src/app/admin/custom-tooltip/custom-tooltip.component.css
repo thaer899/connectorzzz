@@ -1,0 +1,40 @@
+.custom-tooltip {
+  background-color: #333;
+  color: #f96c6c;
+  z-index: 1000;
+  font-size: 14;
+  padding: 20px 25px;
+  white-space: pre-line;
+}
+
+
+.custom-tooltip h3 {
+  font-size: 14px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.custom-tooltip ol {
+  padding-left: 20px;
+}
+
+.custom-tooltip li {
+  margin-bottom: 8px;
+}
+
+.tips-section {
+  margin-top: 12px;
+  border-top: 1px solid #ffffff40;
+  padding-top: 10px;
+}
+
+.tips-section p {
+  font-weight: bold;
+}
+
+.tips-section ul {
+  padding-left: 20px;
+  font-style: italic;
+  margin-top: 12px;
+  font-size: 12px;
+}

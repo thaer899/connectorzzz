@@ -5,7 +5,7 @@ import { ControlProps } from '@jsonforms/core';
 @Component({
   selector: 'app-color-picker-component',
   template: `
-     <app-color-picker [(color)]="color"></app-color-picker>
+     <app-color-picker-input [(color)]="color"></app-color-picker-input>
      `
 })
 export class ColorPickerComponent extends JsonFormsControl {

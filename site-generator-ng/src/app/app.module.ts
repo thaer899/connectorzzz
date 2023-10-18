@@ -30,6 +30,7 @@ import { ColorPickerComponent } from './controls/color-picker.control';
 import { ColorPickerInputComponent } from './admin/color-picker/color-picker-input.component';
 import { VisualComponent } from './controls/visual.control';
 import { SiteVisualComponent } from './admin/site-visual/site-visual.component';
+import { CustomTooltipComponent } from './admin/custom-tooltip/custom-tooltip.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { SiteVisualComponent } from './admin/site-visual/site-visual.component';
     BlogPostComponent,
     ColorPickerComponent,
     ColorPickerInputComponent,
+    CustomTooltipComponent,
     LoginComponent,
     AdminComponent,
     DashboardComponent,

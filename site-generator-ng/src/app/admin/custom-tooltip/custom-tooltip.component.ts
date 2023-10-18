@@ -2,15 +2,16 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-color-picker-input',
-  templateUrl: './color-picker-input.component.html',
-  styleUrls: ['./color-picker-input.component.css']
+  selector: 'app-custom-tooltip',
+  templateUrl: './custom-tooltip.component.html',
+  styleUrls: ['./custom-tooltip.component.css']
 
 })
-export class ColorPickerInputComponent {
+export class CustomTooltipComponent {
+  @Input() show: boolean = false;
   @Input() color: string;
   @Output() colorChange = new EventEmitter<string>();
-  showTooltip: boolean = false;
+
   constructor(private snackBar: MatSnackBar) {
 
   }

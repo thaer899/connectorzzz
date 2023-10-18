@@ -169,7 +169,15 @@
             "type": "object",
             "properties": {
               "key": {
-                "type": "string"
+                "type": "string",
+                "enum": [
+                  "themecolor",
+                  "themecoloralt",
+                  "topbar",
+                  "sidebar",
+                  "bodycolor",
+                  "bodytext"
+                ]
               },
               "value": {
                 "type": "string"

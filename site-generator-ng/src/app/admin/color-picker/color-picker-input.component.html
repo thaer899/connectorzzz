@@ -1,0 +1,5 @@
+<div (mouseover)="showTooltip = true" (mouseout)="showTooltip = false">
+  <input type="color" [value]="color" (input)="onColorChange($event)"
+    style="margin-left: 10vh;bottom: 4vh;position: relative;">
+  <app-custom-tooltip [show]="showTooltip"></app-custom-tooltip>
+</div>
