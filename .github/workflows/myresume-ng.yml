@@ -8,10 +8,8 @@ on:
         type: choice
         description: environment
         required: false
-        default: no
         options:
-          - net
-          - com
+          - deploy
       test:
         type: boolean
         description: Test
@@ -19,7 +17,31 @@ on:
         default: false
 
 jobs:
+
+  deploy:
+   if: (always() && github.event_name == 'workflow_dispatch' && github.event.inputs.env == 'deploy')
+   runs-on: ubuntu-latest
+   name: thaersaidi.net Job
+   steps:
+     - uses: actions/checkout@v3
+     # Build in the specific directory
+     - run: npm ci && npm run build
+       env:
+         NODE_OPTIONS: --openssl-legacy-provider
+       working-directory: ./myresume-ng
+     # Move the necessary files/folders to the root (or specific paths the action expects)
+     - run: mv ./myresume-ng/* ./
+     - run: cp robots.txt ./dist/
+     - run: cp sitemap.xml ./dist/
+     - uses: FirebaseExtended/action-hosting-deploy@v0
+       with:
+         repoToken: "${{ secrets.GITHUB_TOKEN }}"
+         firebaseServiceAccount: "${{ secrets.FIREBASE_SECRET_SITE_GENERATOR }}"
+         projectId: site-generator-ng
+         channelId: live
+
   test:
+   needs: deploy
    if: (always() && github.event_name == 'workflow_dispatch' && github.event.inputs.test == 'true')
    runs-on: ubuntu-latest
    name: Test Job
@@ -44,45 +66,3 @@ jobs:
          name: playwright-report
          path: playwright-report/
          retention-days: 30
-
-  net:
-   needs: test
-   if: (always() && github.event_name == 'workflow_dispatch' && github.event.inputs.env == 'net')
-   runs-on: ubuntu-latest
-   name: thaersaidi.net Job
-   steps:
-     - uses: actions/checkout@v3
-     # Build in the specific directory
-     - run: npm ci && npm run build
-       env:
-         NODE_OPTIONS: --openssl-legacy-provider
-       working-directory: ./myresume-ng
-     # Move the necessary files/folders to the root (or specific paths the action expects)
-     - run: mv ./myresume-ng/* ./
-     - run: cp robots.txt ./dist/
-     - run: cp sitemap.xml ./dist/
-     - uses: FirebaseExtended/action-hosting-deploy@v0
-       with:
-         repoToken: "${{ secrets.GITHUB_TOKEN }}"
-         firebaseServiceAccount: "${{ secrets.FIREBASE_SECRET_SITE_GENERATOR }}"
-         projectId: site-generator-ng
-         channelId: live
-
-
-  com:
-    needs: test
-    if: (always() && github.event_name == 'workflow_dispatch' && github.event.inputs.env == 'com')
-    runs-on: ubuntu-latest
-    name: thaersaidi.com Job
-    steps:
-    - uses: actions/checkout@v3
-    - name: Build And Deploy
-      id: builddeploy
-      uses: Azure/static-web-apps-deploy@v0.0.1-preview
-      with:
-        azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_JOLLY_WAVE_04CA68203 }}
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        action: 'upload'
-        app_location: 'myresume-ng/'
-        api_location: 'myresume-ng/api'
-        app_artifact_location: 'myresume-ng/dist/angular-basic/browser'

@@ -4,7 +4,7 @@ import { test, expect } from '@playwright/test';
 test('has title', async ({ page }) => {
   console.log('Before navigating to the page');
 
-  await page.goto('http://localhost:4200');
+  await page.goto('https://thaersaidi.net');
   console.log('After navigating to the page');
 
   // await page.waitForSelector('app-home');
@@ -13,11 +13,11 @@ test('has title', async ({ page }) => {
 });
 
 test('go to employment page', async ({ page }) => {
-  await page.goto('http://localhost:4200');
+  await page.goto('https://thaersaidi.net');
 
   await page.click('text=Employment');
   // await page.getByRole('link', { name: 'Employment' }).click();
 
-  await expect(page).toHaveURL('http://localhost:4200/#/resume/employment');
+  await expect(page).toHaveURL('https://thaersaidi.net/employment');
 }
 );
