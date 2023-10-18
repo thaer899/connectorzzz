@@ -16,7 +16,7 @@
       <div class="profile-content">
         <h1 [style.color]="getColor('themecolor')">{{profile.firstName}}</h1>
         <p [style.color]="getColor('bodytext')">{{profile.location}}
-          {{profile.email}}</p>
+        </p>
 
 
         <button [style.background]="getColor('themecolor')" [style.color]="getColor('bodycolor')">Blog</button>
@@ -26,8 +26,8 @@
 
     <div class="content-card" [style.background]="getColor('bodycolor')" [style.color]="getColor('bodytext')">
       <h1 [style.color]="getColor('themecoloralt')">Hi</h1>
-      <h3 [style.color]="getColor('themecolor')">{{profile.website}}</h3>
-      <p>{{profile.about[0] | slice:0:100 }}</p>
+      <h3 [style.color]="getColor('themecolor')">Lorem Epsum Sub Title</h3>
+      <p>Lorem Epsum Sub Long Description</p>
       <h1 [style.color]="getColor('themecoloralt')">Ask me: </h1>
       <input matInput type="text" class="input">
       <br />

@@ -64,17 +64,21 @@ export class AskComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       const email = params.get('email');
 
-      if (email) {
-        this.email = email;
-      } else {
+      if (!email) {
         this.email = environment.mainEmail;
+        this.dataService.fetchData().subscribe(data => {
+          if (data.bots && data.bots.some(bot => bot.type === 'messages')) {
+            this.isBotMessage = true;
+          }
+        });
+      } else {
+        this.email = email;
+        this.dataService.fetchDataByEmail(email).subscribe(data => {
+          if (data.bots && data.bots.some(bot => bot.type === 'messages')) {
+            this.isBotMessage = true;
+          }
+        });
       }
-
-      this.dataService.fetchData().subscribe(data => {
-        if (data.bots && data.bots.some(bot => bot.type === 'skills')) {
-          this.isBotMessage = true;
-        }
-      });
     });
   }
 

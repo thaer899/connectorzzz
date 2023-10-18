@@ -35,16 +35,24 @@ export class SidenavComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const email = params.get('email');
-      this.dataService.fetchData().subscribe(data => {
-        this.resume = data.resume;
-        if (data.bots && data.bots.some(bot => bot.type === 'messages')) {
-          this.isBotMessage = true;
-        }
-      });
 
-      if (email) {
+
+      if (!email) {
+        this.dataService.fetchData().subscribe(data => {
+          this.resume = data.resume;
+          if (data.bots && data.bots.some(bot => bot.type === 'messages')) {
+            this.isBotMessage = true;
+          }
+        });
+      } else {
         this.email = email;
-        this.name_abr = this.resume.firstName.charAt(0) + this.resume.lastName.charAt(0);
+        this.dataService.fetchDataByEmail(email).subscribe(data => {
+          this.resume = data.resume;
+          this.name_abr = this.resume.firstName.charAt(0) + this.resume.lastName.charAt(0);
+          if (data.bots && data.bots.some(bot => bot.type === 'messages')) {
+            this.isBotMessage = true;
+          }
+        });
       }
     });
 

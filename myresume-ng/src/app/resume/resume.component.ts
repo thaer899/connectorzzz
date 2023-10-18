@@ -55,22 +55,38 @@ export class ResumeComponent implements OnInit, OnChanges, AfterViewInit {
     this.route.paramMap.subscribe(params => {
       const email = params.get('email');
 
-      // Determine which email to use and fetch data accordingly
-      const emailToUse = email ? email : environment.mainEmail;
-      console.log('Email Used', emailToUse);
-      this.dataService.fetchDataByEmail(emailToUse).subscribe(data => {
-        this.data = data;
-        this.theme = this.data.theme.colors;
+      if (!email) {
+        this.dataService.fetchData().subscribe(data => {
+          this.data = data;
+          this.theme = this.data.theme.colors;
 
-        if (data.bots && data.bots.some(bot => bot.type === 'quotes')) {
-          this.isBotQuotes = true;
-        }
+          this.applyTheme();
+          this.cdRef.detectChanges();
+          if (data.bots && data.bots.some(bot => bot.type === 'quotes')) {
+            this.isBotQuotes = true;
+            this.getQuote(environment.mainEmail);
 
-        this.applyTheme();
-        this.getQuote(emailToUse);
-        this.cdRef.detectChanges();
-      });
+          }
+        });
+      } else {
+        this.dataService.fetchDataByEmail(email).subscribe(data => {
+          this.data = data;
+          this.theme = this.data.theme.colors;
+
+          this.applyTheme();
+          this.cdRef.detectChanges();
+
+          if (data.bots && data.bots.some(bot => bot.type === 'quotes')) {
+            this.isBotQuotes = true;
+            this.getQuote(email);
+
+          }
+        });
+      }
+
+
     });
+
   }
 
 
