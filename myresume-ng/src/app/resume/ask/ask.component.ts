@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { ChangeDetectorRef, Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import OpenAI from 'openai';
 import { environment } from 'src/environments/environment';
@@ -33,7 +34,8 @@ export class AskComponent implements OnInit {
     private readonly http: HttpClient,
     private changeDetectorRef: ChangeDetectorRef,
     private fb: FormBuilder,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private titleService: Title
   ) {
     this.messageForm = this.fb.group({
       recipientMessage: ''
@@ -46,6 +48,11 @@ export class AskComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.route.data.subscribe(data => {
+      if (data && data.title) {
+        this.titleService.setTitle(environment.title + " - " + data.title);;
+      }
+    });
     this.route.paramMap.subscribe(params => {
       const email = params.get('email');
 

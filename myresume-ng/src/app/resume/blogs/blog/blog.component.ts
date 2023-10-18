@@ -26,18 +26,8 @@ export class BlogComponent {
   ngOnInit() {
     this.blogId = this.route.snapshot.paramMap.get('id');
 
-    this.subscription = this.dataService.fetchData().subscribe(data => {
-      this.dataFromParent = data;
-      this.blogs = data.blog;
-      this.blog = this.getBlogByTitle(this.blogId);
-
-    });
-
-
-
     this.route.parent!.paramMap.subscribe(params => {
       this.email = params.get('email');
-
       this.subscription = this.dataService.fetchData().subscribe(data => {
         this.dataFromParent = data;
         this.blogs = data.blog;
@@ -46,9 +36,6 @@ export class BlogComponent {
       });
 
     });
-
-
-
 
     const innerContent = document.getElementById('inner-content')
     if (innerContent) {

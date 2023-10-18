@@ -19,14 +19,14 @@ const routes: Routes = [
     path: '',
     component: ResumeComponent,
     children: [
-      { path: '', component: HomeComponent, data: { title: 'Home Page' } },
-      { path: 'employment', component: EmploymentComponent, data: { title: 'Employment List' } },
-      { path: 'skills', component: SkillsComponent, data: { title: 'Skill List' } },
+      { path: '', component: HomeComponent, data: { title: 'Home' } },
+      { path: 'employment', component: EmploymentComponent, data: { title: 'Employment' } },
+      { path: 'skills', component: SkillsComponent, data: { title: 'Skills' } },
       { path: 'skills/:id', component: SkillComponent, data: { title: 'Skill Details' } }, // New route for skill detail
-      { path: 'education', component: EducationComponent, data: { title: 'Education List' } },
-      { path: 'interests', component: InterestsComponent, data: { title: 'Interests List' } },
-      { path: 'languages', component: LanguagesComponent, data: { title: 'Languages List' } },
-      { path: 'blogs', component: BlogsComponent, data: { title: 'Blogs topics' } },
+      { path: 'education', component: EducationComponent, data: { title: 'Education' } },
+      { path: 'interests', component: InterestsComponent, data: { title: 'Interests' } },
+      { path: 'languages', component: LanguagesComponent, data: { title: 'Languages' } },
+      { path: 'blogs', component: BlogsComponent, data: { title: 'Blog' } },
       { path: 'blogs/:id', component: BlogComponent, data: { title: 'Blog posts' } },
       { path: 'ask', component: AskComponent, data: { title: 'Ask me' } },
 
@@ -37,16 +37,16 @@ const routes: Routes = [
     path: 'p/:email',
     component: ResumeComponent,
     children: [
-      { path: '', component: HomeComponent, data: { title: 'Home Page' } },
-      { path: 'employment', component: EmploymentComponent, data: { title: 'Employment List' } },
-      { path: 'skills', component: SkillsComponent, data: { title: 'Skill List' } },
-      { path: 'skills/:id', component: SkillComponent, data: { title: 'Skill Details' } }, // New route for skill detail
-      { path: 'education', component: EducationComponent, data: { title: 'Education List' } },
-      { path: 'interests', component: InterestsComponent, data: { title: 'Interests List' } },
-      { path: 'languages', component: LanguagesComponent, data: { title: 'Languages List' } },
-      { path: 'blogs', component: BlogsComponent, data: { title: 'Blogs topics' } },
-      { path: 'blogs/:id', component: BlogComponent, data: { title: 'Blog posts' } },
-      { path: 'ask', component: AskComponent, data: { title: 'Ask me' } },
+      { path: '', component: HomeComponent, data: { title: 'p/Home' } },
+      { path: 'employment', component: EmploymentComponent, data: { title: 'p/Employment' } },
+      { path: 'skills', component: SkillsComponent, data: { title: 'p/Skills' } },
+      { path: 'skills/:id', component: SkillComponent, data: { title: 'p/Skill Details' } }, // New route for skill detail
+      { path: 'education', component: EducationComponent, data: { title: 'p/Education' } },
+      { path: 'interests', component: InterestsComponent, data: { title: 'p/Interests' } },
+      { path: 'languages', component: LanguagesComponent, data: { title: 'p/Languages' } },
+      { path: 'blogs', component: BlogsComponent, data: { title: 'p/Blog' } },
+      { path: 'blogs/:id', component: BlogComponent, data: { title: 'p/Blog posts' } },
+      { path: 'ask', component: AskComponent, data: { title: 'p/Ask me' } },
 
       // { path: '**', component: PageNotFoundComponent }, // handle no match routes
     ]

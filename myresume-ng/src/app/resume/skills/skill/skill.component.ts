@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 import { environment } from 'src/environments/environment';
@@ -17,10 +18,16 @@ export class SkillComponent implements OnInit {
     private route: ActivatedRoute,
     private dataService: DataService,
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    private titleService: Title
   ) { }
 
   ngOnInit(): void {
+    this.route.data.subscribe(data => {
+      if (data && data.title) {
+        this.titleService.setTitle(environment.title + " - " + data.title);;
+      }
+    });
     this.skillId = this.route.snapshot.paramMap.get('id');
     this.getFacts(this.skillId);
   }
