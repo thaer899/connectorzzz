@@ -1,5 +1,3 @@
-<img src="./photo.svg" alt="Alt text" width="100" height="100">
-
 ### MyResume Project
 
 This repository serves as the nucleus of an ensemble of projects and utilities.
