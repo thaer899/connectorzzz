@@ -14,6 +14,7 @@ import { environment } from 'src/environments/environment';
 export class SkillComponent implements OnInit {
   skillId: string | null = null;
   facts: string[] = [];
+  public isBotSkills: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -36,6 +37,11 @@ export class SkillComponent implements OnInit {
     this.skillId = this.route.snapshot.paramMap.get('id');
     this.getFacts(this.skillId);
 
+    this.dataService.fetchData().subscribe(data => {
+      if (data.bots && data.bots.some(bot => bot.type === 'skills')) {
+        this.isBotSkills = true;
+      }
+    });
   }
 
   getFacts(topic: string | null): void {
