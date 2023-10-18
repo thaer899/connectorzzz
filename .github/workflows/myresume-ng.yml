@@ -54,6 +54,10 @@ jobs:
        run: cd myresume-ng && npm ci
      - name: Install Playwright Browsers
        run: cd myresume-ng && npx playwright install --with-deps
+     - name: Check port usage
+       run: |
+         sudo apt-get install -y net-tools
+         netstat -tuln
      - name: Run Playwright tests
        run: cd myresume-ng && npx playwright test --timeout 60000
      - uses: actions/upload-artifact@v3
