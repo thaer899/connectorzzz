@@ -111,7 +111,6 @@ export class AdminComponent {
           data => {
             if (data) {
               this.data = data;
-              console.log("Data fetched:", this.data);
               this.cdRef.detectChanges();  // Trigger change detection
             }
           },
@@ -129,7 +128,6 @@ export class AdminComponent {
     this.dataService.getListOfUsers().subscribe(
       users => {
         this.users = users;
-        console.log("Users fetched:", this.users);
       },
       error => {
         console.error("Error fetching users:", error);
