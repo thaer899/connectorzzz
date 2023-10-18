@@ -1,8 +1,9 @@
 <section id="blog">
 
   <h1>Blog</h1>
-
-  <i class="fa fa-eye eye" aria-hidden="true" (click)="detailedView()" *ngIf="blogs"></i>
+  <a (click)="detailedView()" *ngIf="blogs">
+    <i class="fa fa-eye eye" aria-hidden="true"></i>
+  </a>
 
   <ng-container *ngIf="blogs">
     <ng-container *ngIf="isDetail">
