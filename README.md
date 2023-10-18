@@ -7,7 +7,7 @@ The project is exposed across multiple domains  and subdomains:
 
 
 - 🌎 Resume UI: [`thaersaidi.net`](https://thaersaidi.net)   
- - 🛠️ Dashboard: [`admin.thaersaidi.net`](https://admin.thaersaidi.net)
+ - 🛠️ Dashboard: [`console.thaersaidi.net`](https://console.thaersaidi.net)
 - 🧠 AI Utilities: [`ai.thaersaidi.net`](https://ai.thaersaidi.net) 
 
 The architecture is methodically structured.
