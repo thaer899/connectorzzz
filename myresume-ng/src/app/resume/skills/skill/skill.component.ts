@@ -75,7 +75,7 @@ export class SkillComponent implements OnInit {
       recipientMessage: topic
     };
 
-    const skillURL = environment.functionURL + 'skill';
+    const skillURL = environment.functionURL + '/skill';
 
     this.http.post<any>(skillURL, body, options).subscribe(
       (response) => {

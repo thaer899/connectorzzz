@@ -90,7 +90,7 @@ export class ContactBoxComponent implements OnInit {
     };
 
     if (this.recipientMessage) {
-      const messageURL = environment.functionURL + 'message';
+      const messageURL = environment.functionURL + '/message';
       this.http.post(messageURL, body, options).subscribe((response: any) => {
         if (response) {
           this.available = true;

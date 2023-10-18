@@ -23,7 +23,7 @@
                 </p>
 
             </div>
-            <ng-container *ngIf="available">
+            <ng-container *ngIf="available" id="messageResponse">
                 <div *ngFor="let item of chatConversation">
                     <div innerHTML="{{item.message.content}}" class="card-text padding" [ngClass]="item.cssClass">
                     </div>

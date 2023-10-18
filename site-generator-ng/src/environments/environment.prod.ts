@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   mainEmail: "rebel.saidi.thaer@gmail.com",
-  functionURL: 'https://ai.thaersaidi.net/',
+  functionURL: 'https://ai.thaersaidi.net',
   functionApiKey: 'FJxJ2MRv4vtAH0Js81Q390',
   title: "Site Generator",
   firebaseConfig: {

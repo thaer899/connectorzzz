@@ -1,5 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
-
+import { environment } from 'src/environments/environment';
 
 export default defineConfig({
   testDir: './tests',
@@ -9,13 +9,13 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   reporter: 'html',
   use: {
-    baseURL: 'http://localhost:4200',
+    baseURL: environment.host,
     trace: 'on-first-retry',
   },
 
   webServer: {
     command: 'npm run start',
-    url: 'http://localhost:4200',
+    url: environment.host,
     reuseExistingServer: !process.env.CI,
   },
 
@@ -24,17 +24,10 @@ export default defineConfig({
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
-
     {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+      name: 'Mobile Chrome',
+      use: { ...devices['iPhone 12'] },
     },
-
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
-
     /* Test against mobile viewports. */
     // {
     //   name: 'Mobile Chrome',

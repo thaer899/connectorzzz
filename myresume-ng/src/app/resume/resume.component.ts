@@ -93,7 +93,7 @@ export class ResumeComponent implements OnInit, OnChanges, AfterViewInit {
       params: new HttpParams().set('email', email)
     };
 
-    const quoteURL = environment.functionURL + 'quote';
+    const quoteURL = environment.functionURL + '/quote';
     this.http.post(quoteURL, {}, options).subscribe((response: any) => {
       if (response) {
         this.quote = response.choices[0].message.content;

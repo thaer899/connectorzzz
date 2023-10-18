@@ -115,7 +115,7 @@ export class AskComponent implements OnInit {
     // const messageURL = `${environment.functionURL}openai?email=${emailParam}&templateType=${templateTypeParam}`;
 
     if (this.recipientMessage) {
-      const messageURL = environment.functionURL + 'message';
+      const messageURL = environment.functionURL + '/message';
       this.http.post(messageURL, body, options).subscribe((response: any) => {
         if (response) {
           this.available = true;
