@@ -26,12 +26,15 @@
             "styles": [
               "src/styles.scss",
               "src/assets/scss/style.scss",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/assets/fonts/font-awesome/css/all.css",
+              "src/assets/fonts/fonts-material-icons.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/pace-js/pace.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "src/assets/fonts/font-awesome/js/all.js"
             ]
           },
           "configurations": {

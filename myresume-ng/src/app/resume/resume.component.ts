@@ -51,43 +51,26 @@ export class ResumeComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   ngOnInit() {
-    // Subscribe to route parameters
     this.route.paramMap.subscribe(params => {
-      const email = params.get('email');
-
-      if (!email) {
-        this.dataService.fetchData().subscribe(data => {
-          this.data = data;
-          this.theme = this.data.theme.colors;
-
-          this.applyTheme();
-          this.cdRef.detectChanges();
-          if (data.bots && data.bots.some(bot => bot.type === 'quotes')) {
-            this.isBotQuotes = true;
-            this.getQuote(environment.mainEmail);
-
-          }
-        });
-      } else {
-        this.dataService.fetchDataByEmail(email).subscribe(data => {
-          this.data = data;
-          this.theme = this.data.theme.colors;
-
-          this.applyTheme();
-          this.cdRef.detectChanges();
-
-          if (data.bots && data.bots.some(bot => bot.type === 'quotes')) {
-            this.isBotQuotes = true;
-            this.getQuote(email);
-
-          }
-        });
-      }
-
-
+      const email = params.get('email') || environment.mainEmail;
+      this.fetchDataByEmailAndApply(email);
     });
-
   }
+
+  fetchDataByEmailAndApply(email: string) {
+    this.dataService.fetchDataByEmail(email).subscribe(data => {
+      this.data = data;
+      this.theme = this.data.theme.colors;
+      this.applyTheme();
+      this.cdRef.detectChanges();
+
+      if (data.bots && data.bots.some(bot => bot.type === 'quotes')) {
+        this.isBotQuotes = true;
+        this.getQuote(email);
+      }
+    });
+  }
+
 
 
   ngAfterViewInit() {
@@ -132,7 +115,7 @@ export class ResumeComponent implements OnInit, OnChanges, AfterViewInit {
       this.theme.forEach(color => {
         this.document.documentElement.style.setProperty(`--${color.key}`, color.value);
       });
-      console.log(`Applying: --${JSON.stringify(this.theme)}`);
+      console.log('Applied Theme');
     } else {
       console.error('Theme or colors is undefined:', this.theme);
     }

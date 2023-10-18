@@ -54,33 +54,39 @@ export class AskComponent implements OnInit {
   }
 
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.subscribeToRouteData();
+    this.subscribeToRouteParamMap();
+  }
+
+  private subscribeToRouteData(): void {
     this.route.data.subscribe(data => {
       if (data && data.title) {
         this.titleService.setTitle(environment.title + " - " + data.title);
         this.gaService.trackPageView(data.title);
       }
     });
+  }
+
+  private subscribeToRouteParamMap(): void {
     this.route.paramMap.subscribe(params => {
       const email = params.get('email');
 
-      if (!email) {
-        this.email = environment.mainEmail;
-        this.dataService.fetchData().subscribe(data => {
-          if (data.bots && data.bots.some(bot => bot.type === 'messages')) {
-            this.isBotMessage = true;
-          }
-        });
-      } else {
-        this.email = email;
-        this.dataService.fetchDataByEmail(email).subscribe(data => {
-          if (data.bots && data.bots.some(bot => bot.type === 'messages')) {
-            this.isBotMessage = true;
-          }
-        });
-      }
+      this.email = email ? email : environment.mainEmail;
+      const dataServiceObservable = email ? this.dataService.fetchDataByEmail(email) : this.dataService.fetchData();
+
+      dataServiceObservable.subscribe(data => {
+        this.setBotMessageFlag(data);
+      });
     });
   }
+
+  private setBotMessageFlag(data: any): void {
+    if (data.bots && data.bots.some(bot => bot.type === 'messages')) {
+      this.isBotMessage = true;
+    }
+  }
+
 
 
   openModal(template: TemplateRef<any>) {

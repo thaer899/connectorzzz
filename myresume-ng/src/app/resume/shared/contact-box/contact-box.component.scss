@@ -12,23 +12,13 @@
   font-weight: bold;
 }
 
-.fa {
-  color: var(--bodytext);
+.svg-inline--fa {
   background-color: transparent;
   border: 0;
-  font-size: medium;
-}
-
-.fa:hover {
-  transform: scale(1.15);
-  transition: transform .2s;
   cursor: pointer;
-  color: var(--themecolor);
+  transition: transform .2s;
 }
 
-.fa-window-close:hover {
-  color: #461609
-}
 
 .commenting {
   margin-left: 30vh;
@@ -36,54 +26,42 @@
   position: fixed;
   display: none;
   display: inline-flex;
-  font-size: xxx-large;
-  cursor: pointer;
-  filter: drop-shadow(2px 2px 3px #222);
-  transition: transform .2s;
-  z-index: 1000;
+  font-size: xxx-large !important;
   color: var(--bodycolor);
-}
+  filter: drop-shadow(2px 2px 3px #222);
+  z-index: 1000;
 
+
+}
 
 .commenting:hover {
   transform: scale(1.15);
   transition: transform .2s;
-  color: var(--themecoloralt);
+  color: var(--themecoloralt) !important;
+}
+
+.closing {
+  color: var(--themecoloralt) !important;
+  font-size: 40px !important;
+}
+
+.closing:hover {
+  color: #461609 !important;
+}
+
+.open {
+  color: var(--themecoloralt) !important;
+  font-size: 40px !important;
+  padding: 4px;
+}
+
+.open:hover {
+  color: #385545;
 }
 
 .modal-header-right {
   position: absolute;
   right: 30px;
-}
-
-.fa-window-close {
-  display: none;
-  display: inline-flex;
-  font-size: xx-large;
-  cursor: pointer;
-  transition: transform .2s;
-  z-index: 1000;
-}
-
-.fa-window-close:hover {
-  transform: scale(1.15);
-  transition: transform .2s;
-}
-
-.fa-arrows-alt {
-  right: 40px;
-  position: absolute;
-  display: none;
-  display: inline-flex;
-  font-size: xx-large;
-  cursor: pointer;
-  transition: transform .2s;
-  z-index: 1000;
-}
-
-.fa-arrows-alt:hover {
-  transform: scale(1.15);
-  transition: transform .2s;
 }
 
 

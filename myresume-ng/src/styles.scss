@@ -239,7 +239,7 @@ ul {
 .skill-set:hover {
     background: var(--bodycolor) !important;
     color: invert($color: var(--themecolor)) !important;
-    box-shadow: none;
+    box-shadow: inset 1px 1px 3px var(--themecolor) !important;
 }
 
 

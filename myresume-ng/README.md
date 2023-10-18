@@ -19,3 +19,6 @@ gh api \
 
 
   $ gh secret set -f .env --repo target-owner/target-repo
+
+$ npm install -g source-map-explorer
+$ ng build --source-map

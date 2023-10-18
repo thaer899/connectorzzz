@@ -27,16 +27,27 @@ export class SkillComponent implements OnInit {
 
 
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.subscribeToRouteData();
+    this.fetchSkillId();
+    this.fetchBotSkills();
+  }
+
+  private subscribeToRouteData(): void {
     this.route.data.subscribe(data => {
       if (data && data.title) {
         this.titleService.setTitle(environment.title + " - " + data.title);
         this.gaService.trackPageView(data.title);
       }
     });
+  }
+
+  private fetchSkillId(): void {
     this.skillId = this.route.snapshot.paramMap.get('id');
     this.getFacts(this.skillId);
+  }
 
+  private fetchBotSkills(): void {
     this.dataService.fetchData().subscribe(data => {
       if (data.bots && data.bots.some(bot => bot.type === 'skills')) {
         this.isBotSkills = true;
