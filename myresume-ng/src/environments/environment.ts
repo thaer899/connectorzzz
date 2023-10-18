@@ -5,7 +5,7 @@
 
 export const environment = {
   production: false,
-  host: 'http://localhost:7000',
+  host: 'https://thaersaidi.net',
   mainEmail: "rebel.saidi.thaer@gmail.com",
   functionURL: 'https://ai.thaersaidi.net',
   message_api_key: 'FJxJ2MRv4vtAH0Js81Q390',
