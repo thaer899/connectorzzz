@@ -5,3 +5,6 @@ projectName: "thaersaidi-da79c"
 certName: "myresume-ai-managed-cert"
 ipName: "myresume-ai-ip"
 host: "ai.thaersaidi.net"
+
+volumeSize: 30Gi
+nodeName: gk3-myresume-ai-pool-1-10aac3f5-mkrn
