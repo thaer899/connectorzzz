@@ -1,21 +1,24 @@
 name: myresume-ng
-run-name: myresume-ng-${{ github.run_number }}
+run-name: myresume-ng-${{ secrets.github.event.inputs.job }}-${{ github.run_number }}
 
 on:
   workflow_dispatch:
     inputs:
-      env:
+      job:
         type: choice
         description: environment
         required: false
         options:
           - deploy
-          - test
+      test:
+        type: boolean
+        description: Run UI tests
+        required: false
 
 jobs:
 
   deploy:
-   if: (always() && github.event_name == 'workflow_dispatch' && github.event.inputs.env == 'deploy')
+   if: (always() && github.event_name == 'workflow_dispatch' && github.event.inputs.job == 'deploy')
    runs-on: ubuntu-latest
    name: thaersaidi.net Job
    steps:
@@ -38,7 +41,7 @@ jobs:
 
   test:
    needs: deploy
-   if: (always() && github.event_name == 'workflow_dispatch' && github.event.inputs.env == 'test')
+   if: (always() && github.event_name == 'workflow_dispatch' && github.event.inputs.test == 'true')
    runs-on: ubuntu-latest
    name: Test Job
    steps:
@@ -54,10 +57,6 @@ jobs:
        run: cd myresume-ng && npm ci
      - name: Install Playwright Browsers
        run: cd myresume-ng && npx playwright install --with-deps
-     - name: Check port usage
-       run: |
-         sudo apt-get install -y net-tools
-         netstat -tuln
      - name: Run Playwright tests
        run: cd myresume-ng && npx playwright test --timeout 60000
      - uses: actions/upload-artifact@v3
