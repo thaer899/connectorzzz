@@ -7,7 +7,7 @@ Engineered with precision for crafting and deploying top-notch applications.
 
 [![myresume-ng](https://github.com/thaer899/thaersaidi.net/actions/workflows/myresume-ng.yml/badge.svg?branch=master)](https://github.com/thaer899/thaersaidi.net/actions/workflows/myresume-ng.yml)
 
-[![site-generator-ng](https://github.com/thaer899/thaersaidi.net/actions/workflows/site-generator-ng.yml/badge.svg?branch=master&event=status)](https://github.com/thaer899/thaersaidi.net/actions/workflows/site-generator-ng.yml)
+[![site-generator-ng](https://github.com/thaer899/thaersaidi.net/actions/workflows/site-generator-ng.yml/badge.svg?branch=master)](https://github.com/thaer899/thaersaidi.net/actions/workflows/site-generator-ng.yml)
 
 The project is exposed across multiple domains  and subdomains:  
 
