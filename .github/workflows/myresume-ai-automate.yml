@@ -13,7 +13,8 @@ on:
         required: true
         options:
           - myresume-express
-          - myresume-x
+          - llama-flask
+          - x
       job:
         type: choice
         description: 'Job'
