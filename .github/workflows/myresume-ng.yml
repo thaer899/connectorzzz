@@ -1,5 +1,5 @@
 name: myresume-ng
-run-name: myresume-ng${{ (github.event.inputs.job != '') && '-' || '' }}${{ github.event.inputs.job }}${{ (github.event.inputs.test == 'true') && '-test' || '' }}-${{ github.run_number }}
+run-name: myresume-ng-${{ github.event.inputs.job }}${{ (github.event.inputs.test == 'true') && '-ui-test' || '' }}-${{ github.run_number }}
 
 on:
   workflow_dispatch:
@@ -43,7 +43,7 @@ jobs:
 
   test:
    needs: deploy
-   if: (always() && github.event_name == 'workflow_dispatch' && github.event.inputs.test == 'true' && github.event.inputs.job == 'test')
+   if: (always() && github.event_name == 'workflow_dispatch' && github.event.inputs.test == 'true'  && github.event.inputs.job == 'test')
    runs-on: ubuntu-latest
    name: Test Job
    steps:
