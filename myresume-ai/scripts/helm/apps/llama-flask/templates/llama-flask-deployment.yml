@@ -29,6 +29,8 @@ spec:
           volumeMounts:
             - name: "{{ .Values.appName }}-pv"
               mountPath: /app
+      nodeSelector:
+        cloud.google.com/gke-accelerator: nvidia-tesla-t4
       volumes:
         - name: "{{ .Values.appName }}-pv"
           persistentVolumeClaim:
