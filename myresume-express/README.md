@@ -23,3 +23,14 @@ docker run -p 6000:4000 -it -e FIREBASE_CREDENTIALS_PATH=$FIREBASE_CREDENTIALS_P
 docker build -t eu.gcr.io/thaersaidi-da79c/myresume-express:latest .
 docker push eu.gcr.io/thaersaidi-da79c/myresume-express:latest
 
+
+
+### llama
+npx ipull https://huggingface.co/TheBloke/Llama-2-7b-Chat-GGUF/resolve/main/llama-2-7b-chat.Q5_K_S.gguf
+npx --no node-llama-cpp chat --model llama-2-7b-chat.Q4_K_M.gguf
+
+wget https://huggingface.co/Llama-2-7b-Chat-GGUF/resolve/main/pytorch_model.bin
+
+npm i @xenova/transformers
+
+pip install transformers torch

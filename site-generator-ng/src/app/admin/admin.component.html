@@ -22,8 +22,15 @@
     </mat-form-field>
     <span class="fill-toolbar"></span>
     <span>
-        <mat-icon class="download" matTooltip="Download data" (click)="download()">download</mat-icon>
-        <mat-icon class="upload" matTooltip="Upload data" (click)="upload()">file_upload</mat-icon>
+        <mat-icon class="download" matTooltip="Download Profile data" (click)="download()">download</mat-icon>
+        <mat-icon class="upload" matTooltip="Upload Profile" (click)="upload()">file_upload</mat-icon>
+
+
+        <mat-icon class="separator">more_vert</mat-icon>
+        <a [href]="'https://log-book-ng.web.app/p/' + (fileName | slice:0:-5)" *ngIf="fileName" target="_blank">
+            <mat-icon class="profile" matTooltip="Visit Profile">account_circle</mat-icon>
+        </a>
+
         <mat-icon class="separator">more_vert</mat-icon>
         <mat-icon class="logout" matTooltip="Logout" (click)="logout()">logout</mat-icon>
 

@@ -4,19 +4,16 @@
   border-bottom: 1px solid #565656;
   position: sticky;
   position: -webkit-sticky;
-  /* For macOS/iOS Safari */
   top: 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 
-  /* Sets the sticky toolbar to be on top */
   z-index: 1000;
-  /* Ensure that your app's content doesn't overlap the toolbar */
 }
 
 
-/* Icon styling within the toolbar */
 .mat-icon {
   margin-right: 10px;
+  padding: 2px;
   text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
   font-size: 40px;
 }

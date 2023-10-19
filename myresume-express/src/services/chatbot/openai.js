@@ -16,7 +16,7 @@ async function createOpenAICompletion(messages, options = {}) {
         max_tokens: 50,
         ...options,
     };
-
+    console.log("Sending to OpenAI:", messages);
     return await openai.chat.completions.create({
         messages,
         ...defaultOptions,

@@ -79,7 +79,7 @@ export class AdminComponent {
   public data = {};
   showContent: boolean = false;
   isAdmin: boolean = false;
-  private user: any;
+  public user: any;
   public users: any;
   public fileName: string;
   constructor(

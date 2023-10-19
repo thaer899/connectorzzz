@@ -70,14 +70,19 @@ body {
     z-index: 1000;
 }
 
+.profile {
+    color: #fff;
+    right: 70px !important;
+}
+
 .upload {
     color: #3b9029 !important;
-    right: 100px;
+    right: 150px;
 }
 
 .download {
     color: #f96c6c !important;
-    right: 150px;
+    right: 200px;
 }
 
 .create-post {

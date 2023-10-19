@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { getFile } = require('../services/api/apiCommunications');
-const { getOpenAIQuote, getOpenAIMessage, getOpenAISkill, getOpenAICompletion, createBlogPost } = require('../controllers/apiController');
+const { getOpenAIQuote, getOpenAIMessage, getOpenAISkill, getOpenAICompletion, createBlogPost, getLlamaResponse } = require('../controllers/apiController');
 
 router.get('/', (req, res) => {
     res.send('thaer saidi resume chatbot');
@@ -74,6 +74,21 @@ router.post('/blog', async (req, res) => {
     }
 });
 
+
+router.post('/llama', async (req, res) => {
+    try {
+        const recipientMessage = req.body.recipientMessage;
+        if (!recipientMessage) {
+            return res.status(400).send('Missing required parameters.');
+        }
+
+        const result = await getLlamaResponse(recipientMessage);
+        res.send(result);
+    } catch (error) {
+        console.error("Error:", error);
+        res.status(500).send('Error processing the request.');
+    }
+});
 
 router.post('/openai', async (req, res) => {
     try {

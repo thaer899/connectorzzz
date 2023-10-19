@@ -1,7 +1,7 @@
 from .filters import filter_data_with_keywords
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
-MODEL_NAME = "NousResearch/Llama-2-13b-hf"
+MODEL_NAME = "gpt2"
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 model = AutoModelForCausalLM.from_pretrained(MODEL_NAME)
 

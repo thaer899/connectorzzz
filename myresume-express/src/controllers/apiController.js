@@ -4,6 +4,7 @@ const axios = require('axios');
 const { getFile, searchImages, uploadFile } = require('../services/api/apiCommunications');
 const { optimizeData } = require('../services/chatbot/chatbotLogic');
 const { createOpenAICompletion } = require('../services/chatbot/openai');
+const { createLlamaCompletion } = require('../services/chatbot/llamaLogic');
 
 async function getOpenAIMessage(email, recipientMessage) {
     console.log(
@@ -146,6 +147,9 @@ async function createBlogPost(email, recipientMessage) {
 }
 
 
+function getLlamaResponse(input) {
+    return createLlamaCompletion(input);
+}
 
 
 function parseTags(input) {
@@ -168,5 +172,6 @@ module.exports = {
     getOpenAISkill,
     validateApiKey,
     getOpenAICompletion,
-    createBlogPost
+    createBlogPost,
+    getLlamaResponse
 };

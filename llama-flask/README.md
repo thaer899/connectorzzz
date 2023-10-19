@@ -19,8 +19,18 @@ source venv/bin/activate
 python3 -m pip install -r requirements.txt -v
 
 
+gcloud config set project thaersaidi-da79c
+
+gcloud container node-pools create myresume-ai-gpu \
+  --cluster=myresume-ai \
+  --accelerator type=nvidia-tesla-t4,count=1 \
+  --num-nodes=1 \
+  --region=europe-west1
+
+
 
 
 
 uvicorn app:app --host 0.0.0.0 --port 3000 --reload
 
+w
