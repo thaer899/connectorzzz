@@ -1,0 +1,5 @@
+protobuf==4.24.4
+sentencepiece==0.1.99
+torch==2.1.0
+torchvision==0.16.0
+transformers==4.34.1

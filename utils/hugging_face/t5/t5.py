@@ -1,22 +1,29 @@
-# Use a pipeline as a high-level helper
 import time
-from transformers import AutoTokenizer, AutoModelForCausalLM
-from transformers import pipeline
 import requests
 import json
 
 API_URL = "https://api-inference.huggingface.co/models/google/flan-t5-base"
 
 
-def query(payload, max_retries=3, retry_delay=10):
-    data = json.dumps(payload)
+def query(max_retries=3, retry_delay=10):
+    # Get user input from the console
+    user_input = input("Please enter your text (or type 'exit' to quit): ")
+
+    # Exit the loop if user types 'exit'
+    if user_input.lower() == 'exit':
+        print("Exiting the chat. Goodbye!")
+        return
+
+    data = {"inputs": user_input}
+
     headers = {
-        "Authorization": "Bearer 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",
+        "Authorization": "Bearer ",
         "Content-Type": "application/json"
     }
 
     for attempt in range(max_retries):
-        response = requests.post(API_URL, headers=headers, data=data)
+        response = requests.post(
+            API_URL, headers=headers, data=json.dumps(data))
         print(f"Status Code: {response.status_code}")
 
         try:
@@ -41,14 +48,7 @@ def query(payload, max_retries=3, retry_delay=10):
     return None
 
 
-def get_user_input():
-    # Get user input from the console
-    user_input = input("Please enter your text: ")
-    return user_input
-
-
-data = query(
-    {
-        "inputs": get_user_input()
-    }
-)
+while True:
+    response = query()
+    if not response:
+        break

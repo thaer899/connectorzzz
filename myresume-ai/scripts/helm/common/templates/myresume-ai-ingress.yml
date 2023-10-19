@@ -22,3 +22,13 @@ spec:
                 name: "{{.Values.MyResumeAppName}}-service"
                 port:
                   number: 443
+    - host: "{{ .Values.host }}"
+      http:
+        paths:
+          - path: /llama
+            pathType: Prefix
+            backend:
+              service:
+                name: "{{.Values.LlamaAppName}}-service"
+                port:
+                  number: 443

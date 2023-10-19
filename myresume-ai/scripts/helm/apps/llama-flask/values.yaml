@@ -1,0 +1,7 @@
+appName: "llama-flask"
+registry: "eu.gcr.io"
+FIREBASE_CREDENTIALS_PATH: "Li4vLi4vZGF0YS9zZWNyZXQvc2l0ZS1nZW5lcmF0b3ItbmctZmlyZWJhc2UuanNvbg=="
+projectName: "thaersaidi-da79c"
+certName: "myresume-ai-managed-cert"
+ipName: "myresume-ai-ip"
+host: "ai.thaersaidi.net"
