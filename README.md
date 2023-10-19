@@ -3,18 +3,18 @@
 This repository serves as the nucleus of an ensemble of projects and utilities.
 Engineered with precision for crafting and deploying top-notch applications.
 
-[![myresume-ai-automate](https://github.com/thaer899/thaersaidi.net/actions/workflows/myresume-ai-automate.yml/badge.svg?branch=master)](https://github.com/thaer899/thaersaidi.net/actions/workflows/myresume-ai-automate.yml)
-
-[![myresume-ng](https://github.com/thaer899/thaersaidi.net/actions/workflows/myresume-ng.yml/badge.svg?branch=master)](https://github.com/thaer899/thaersaidi.net/actions/workflows/myresume-ng.yml)
-
-[![site-generator-ng](https://github.com/thaer899/thaersaidi.net/actions/workflows/site-generator-ng.yml/badge.svg?branch=master)](https://github.com/thaer899/thaersaidi.net/actions/workflows/site-generator-ng.yml)
-
 The project is exposed across multiple domains  and subdomains:  
 
 
-- 🌎 Resume UI: [`thaersaidi.net`](https://thaersaidi.net)   
- - 🛠️ Dashboard: [`console.thaersaidi.net`](https://console.thaersaidi.net)
-- 🧠 AI Utilities: [`ai.thaersaidi.net`](https://ai.thaersaidi.net) 
+- 🌎 Resume UI: [`thaersaidi.net`](https://thaersaidi.net) - [![myresume-ng](https://github.com/thaer899/thaersaidi.net/actions/workflows/myresume-ng.yml/badge.svg?branch=master)](https://github.com/thaer899/thaersaidi.net/actions/workflows/myresume-ng.yml)
+
+
+ - 🛠️ Dashboard: [`console.thaersaidi.net`](https://console.thaersaidi.net) - 
+ [![site-generator-ng](https://github.com/thaer899/thaersaidi.net/actions/workflows/site-generator-ng.yml/badge.svg?branch=master)](https://github.com/thaer899/thaersaidi.net/actions/workflows/site-generator-ng.yml)
+
+- 🧠 AI Utilities: [`ai.thaersaidi.net`](https://ai.thaersaidi.net) - 
+[![myresume-ai-automate](https://github.com/thaer899/thaersaidi.net/actions/workflows/myresume-ai-automate.yml/badge.svg?branch=master)](https://github.com/thaer899/thaersaidi.net/actions/workflows/myresume-ai-automate.yml)
+
 
 The architecture is methodically structured.
 Facilitating a streamlined workflow for managing the diverse project facets.
