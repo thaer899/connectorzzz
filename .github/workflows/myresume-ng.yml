@@ -11,7 +11,7 @@ on:
         default: deploy
         options:
           - deploy
-          - test
+          - misc
       test:
         type: boolean
         description: Run UI tests
@@ -22,7 +22,7 @@ jobs:
   deploy:
    if: (always() && github.event_name == 'workflow_dispatch' && github.event.inputs.job == 'deploy')
    runs-on: ubuntu-latest
-   name: thaersaidi.net Job
+   name: Deploy to Firebase Hosting
    steps:
      - uses: actions/checkout@v3
      # Build in the specific directory
@@ -43,7 +43,7 @@ jobs:
 
   test:
    needs: deploy
-   if: (always() && github.event_name == 'workflow_dispatch' && github.event.inputs.test == 'true'  && github.event.inputs.job == 'test')
+   if: (always() && github.event_name == 'workflow_dispatch' && github.event.inputs.test == 'true'  && github.event.inputs.job == 'misc')
    runs-on: ubuntu-latest
    name: Test Job
    steps:
