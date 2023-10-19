@@ -1,5 +1,5 @@
 name: myresume-ng
-run-name: myresume-ng-${{ github.event.inputs.job }}${{ (github.event.inputs.test == 'true') && '-test' || '' }}-${{ github.run_number }}
+run-name: myresume-ng${{ (github.event.inputs.job != '') && '-' || '' }}${{ github.event.inputs.job }}${{ (github.event.inputs.test == 'true') && '-test' || '' }}-${{ github.run_number }}
 
 on:
   workflow_dispatch:
@@ -11,7 +11,7 @@ on:
         default: deploy
         options:
           - deploy
-          - 
+          - ''
       test:
         type: boolean
         description: Run UI tests
