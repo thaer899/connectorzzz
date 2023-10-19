@@ -12,13 +12,6 @@ export default defineConfig({
     baseURL: environment.host,
     trace: 'on-first-retry',
   },
-
-  webServer: {
-    command: 'npm run start',
-    url: environment.host,
-    reuseExistingServer: !process.env.CI,
-  },
-
   projects: [
     {
       name: 'chromium',
