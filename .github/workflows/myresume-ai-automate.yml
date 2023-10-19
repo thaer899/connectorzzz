@@ -66,12 +66,22 @@ jobs:
           username: oauth2accesstoken
           password: ${{ steps.auth.outputs.access_token }}
           
+      - name: Cache Docker layers
+        uses: actions/cache@v3
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
+
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
           context: ./${{ env.APP_NAME }}
           push: true
           tags: ${{ vars.IMAGE_REGISTRY }}/${{ vars.PROJECT_ID }}/${{ env.APP_NAME }}:latest
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache
 
   deploy:
     if: (always() && github.event_name == 'workflow_dispatch' && github.event.inputs.job == 'deploy' ) || ( github.event_name == 'push' ) || (github.event_name == 'workflow_dispatch' && github.event.inputs.job == 'all' )
@@ -149,4 +159,3 @@ jobs:
       - name: Run Postman Collection
         run: newman run ./${{ github.event.inputs.app }}/tests/collection.json --env-var url=${{ vars.HOST }} --env-var apiKey=${{ secrets.API_KEY }} --verbose
         continue-on-error: true
-        

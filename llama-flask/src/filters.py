@@ -20,41 +20,48 @@ def filter_data_with_keywords(data, keywords_text):
 
         # Education section
         filtered_data['education'] = [
-            item for item in data['education'] if contains_keyword(item, keywords_list)]
+            item for item in data['education'] 
+            if contains_keyword(item, keywords_list)]
         print('########### Filtered Education Data:',
               filtered_data['education'])
 
         # Employment section
         filtered_data['employment'] = [
-            item for item in data['employment'] if contains_keyword(item, keywords_list)]
+            item for item in data['employment'] 
+            if contains_keyword(item, keywords_list)]
         print('########### Filtered Employment Data:',
               filtered_data['employment'])
 
         # Interests section
         filtered_data['interests'] = [
-            item for item in data['interests'] if contains_keyword(item, keywords_list)]
+            item for item in data['interests'] 
+            if contains_keyword(item, keywords_list)]
         print('########### Filtered Interests Data:',
               filtered_data['interests'])
 
         # Languages section
         filtered_data['languages'] = [
-            item for item in data['languages'] if contains_keyword(item, keywords_list)]
+            item for item in data['languages'] 
+            if contains_keyword(item, keywords_list)]
         print('########### Filtered Languages Data:',
               filtered_data['languages'])
 
         # Personal section
         filtered_data['personal'] = [
-            item for item in data['personal'] if contains_keyword(item, keywords_list)]
+            item for item in data['personal'] 
+            if contains_keyword(item, keywords_list)]
         print('########### Filtered Personal Data:', filtered_data['personal'])
 
         # References section
         filtered_data['references'] = [
-            item for item in data['references'] if contains_keyword(item, keywords_list)]
+            item for item in data['references'] 
+            if contains_keyword(item, keywords_list)]
         print('########### Filtered References Data:',
               filtered_data['references'])
 
         # Resume section
-        filtered_data['resume'] = {key: value for key, value in data['resume'].items(
+        filtered_data['resume'] = {key: value for key, value in data['resume']
+                                   .items(
         ) if contains_keyword(value, keywords_list)}
         print('########### Filtered Resume Data:', filtered_data['resume'])
 

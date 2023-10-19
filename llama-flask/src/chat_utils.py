@@ -22,7 +22,7 @@ def generate_response(user_input: str, keywords: dict) -> str:
                         for k, v in keywords.items()]
         filtered_response = filter_data_with_keywords(
             {'text': response_text}, keyword_list)
-        # if filtered response doesn't have 'text' key, return original response
+        # if filtered response doesn't have 'text' key, return original
         return filtered_response.get('text', response_text)
 
     return response_text
