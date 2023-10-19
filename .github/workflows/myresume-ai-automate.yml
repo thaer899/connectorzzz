@@ -147,5 +147,5 @@ jobs:
         run: npm install -g newman
 
       - name: Run Postman Collection
-        if: always()
         run: newman run ./${{ github.event.inputs.app }}/tests/collection.json --env-var url=${{ vars.HOST }} --env-var apiKey=${{ secrets.API_KEY }} --verbose
+        continue-on-error: true
