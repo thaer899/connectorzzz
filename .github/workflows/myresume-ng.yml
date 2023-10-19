@@ -11,7 +11,7 @@ on:
         default: deploy
         options:
           - deploy
-          - ''
+          - test
       test:
         type: boolean
         description: Run UI tests
@@ -43,7 +43,7 @@ jobs:
 
   test:
    needs: deploy
-   if: (always() && github.event_name == 'workflow_dispatch' && github.event.inputs.test == 'true')
+   if: (always() && github.event_name == 'workflow_dispatch' && github.event.inputs.test == 'true' && github.event.inputs.job == 'test')
    runs-on: ubuntu-latest
    name: Test Job
    steps:
