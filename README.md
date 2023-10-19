@@ -3,6 +3,12 @@
 This repository serves as the nucleus of an ensemble of projects and utilities.
 Engineered with precision for crafting and deploying top-notch applications.
 
+[![myresume-ai-automate](https://github.com/thaer899/thaersaidi.net/actions/workflows/myresume-ai-automate.yml/badge.svg?branch=master)](https://github.com/thaer899/thaersaidi.net/actions/workflows/myresume-ai-automate.yml)
+
+[![myresume-ng](https://github.com/thaer899/thaersaidi.net/actions/workflows/myresume-ng.yml/badge.svg?branch=master)](https://github.com/thaer899/thaersaidi.net/actions/workflows/myresume-ng.yml)
+
+[![site-generator-ng](https://github.com/thaer899/thaersaidi.net/actions/workflows/site-generator-ng.yml/badge.svg?branch=master&event=status)](https://github.com/thaer899/thaersaidi.net/actions/workflows/site-generator-ng.yml)
+
 The project is exposed across multiple domains  and subdomains:  
 
 
