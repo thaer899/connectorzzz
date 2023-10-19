@@ -8,6 +8,7 @@ on:
         type: choice
         description: environment
         required: false
+        default: deploy
         options:
           - deploy
           - 
