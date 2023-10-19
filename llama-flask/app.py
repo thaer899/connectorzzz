@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, Depends
+from fastapi import FastAPI
 from src.chat_utils import generate_response
 from pydantic import BaseModel
 

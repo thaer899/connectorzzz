@@ -31,7 +31,7 @@ spec:
         - name: "{{.Values.appName}}-container"
           image: "{{.Values.registry}}/{{.Values.projectName}}/{{.Values.appName}}:latest"
           ports:
-            - containerPort: 4000
+            - containerPort: 3000
           env:
             - name: OPENAI_API_KEY
               valueFrom:
@@ -57,8 +57,8 @@ spec:
     - protocol: TCP
       name: http
       port: 80
-      targetPort: 4000
+      targetPort: 3000
     - protocol: TCP
       name: https
       port: 443
-      targetPort: 4000
+      targetPort: 3000

@@ -1,4 +1,4 @@
-from filters import filter_data_with_keywords
+from .filters import filter_data_with_keywords
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
 MODEL_NAME = "NousResearch/Llama-2-13b-hf"
