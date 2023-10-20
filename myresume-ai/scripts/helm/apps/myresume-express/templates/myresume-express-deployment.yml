@@ -35,13 +35,13 @@ spec:
                   key: API_KEY
           livenessProbe:
             httpGet:
-              path: /health
+              path: /
               port: 4000
             initialDelaySeconds: 15
             timeoutSeconds: 5
           readinessProbe:
             httpGet:
-              path: /ready
+              path: /
               port: 4000
             initialDelaySeconds: 15
             timeoutSeconds: 5
