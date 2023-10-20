@@ -26,7 +26,7 @@ app.use(express.json());
 app.use(validateApiKey);
 
 // Use your routes
-app.use('/myresume', routes);
+app.use('/myresume/', routes);
 
 // Handle not found errors
 app.use((req, res, next) => {
