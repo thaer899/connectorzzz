@@ -28,3 +28,8 @@ spec:
                 secretKeyRef:
                   name: "{{.Values.appName}}-secret"
                   key: FIREBASE_CREDENTIALS_PATH
+            - name: API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: "{{.Values.appName}}-secret"
+                  key: API_KEY
