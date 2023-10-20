@@ -15,9 +15,10 @@ npm i --save spacy-nlp
 docker build -t myresume-express . 
 
 FIREBASE_CREDENTIALS_PATH="../../data/secret/site-generator-ng-firebase.json"
-OPENAI_API_KEY=sk-1234567890
+OPENAI_API_KEY=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
+API_KEY=FJxJ2MRv4vtAH0Js81Q390
 
-docker run -p 6000:4000 -it -e FIREBASE_CREDENTIALS_PATH=$FIREBASE_CREDENTIALS_PATH -e OPENAI_API_KEY=$OPENAI_API_KEY myresume-express
+docker run -p 6000:4000 -it -e FIREBASE_CREDENTIALS_PATH=$FIREBASE_CREDENTIALS_PATH -e OPENAI_API_KEY=$OPENAI_API_KEY myresume-express -e API_KEY=$API_KEY
 
 #### push to azure container registry
 docker build -t eu.gcr.io/thaersaidi-da79c/myresume-express:latest .
