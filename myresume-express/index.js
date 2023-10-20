@@ -22,6 +22,14 @@ app.use(cors({
 // Middleware to parse JSON requests
 app.use(express.json());
 
+// Health probe endpoint
+app.get('/', (req, res, next) => {
+  if (req.path === '/') {
+    return res.status(200).json({ message: 'OK' });
+  }
+  next();
+});
+
 // Middleware to validate API key
 app.use(validateApiKey);
 

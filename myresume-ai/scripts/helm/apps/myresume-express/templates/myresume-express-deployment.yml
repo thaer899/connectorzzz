@@ -33,3 +33,15 @@ spec:
                 secretKeyRef:
                   name: "{{.Values.appName}}-secret"
                   key: API_KEY
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 4000
+            initialDelaySeconds: 15
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 4000
+            initialDelaySeconds: 15
+            timeoutSeconds: 5
