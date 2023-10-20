@@ -37,11 +37,11 @@ spec:
             httpGet:
               path: /
               port: 4000
-            initialDelaySeconds: 15
+            initialDelaySeconds: 60
             timeoutSeconds: 5
           readinessProbe:
             httpGet:
               path: /
               port: 4000
-            initialDelaySeconds: 15
-            timeoutSeconds: 5
+            initialDelaySeconds: 60
+            timeoutSeconds: 10
