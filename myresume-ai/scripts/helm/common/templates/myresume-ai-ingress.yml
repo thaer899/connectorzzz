@@ -15,8 +15,8 @@ spec:
     - host: "{{ .Values.host }}"
       http:
         paths:
-          - path: /myresume
-            pathType: Prefix
+          - path: /myresume/*
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: "{{.Values.MyResumeAppName}}-service"
