@@ -63,7 +63,7 @@ export class SkillComponent implements OnInit {
 
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'API_KEY': environment.message_api_key
+      'apiKey': environment.message_api_key
     });
 
     const options = {

@@ -158,7 +158,7 @@ function parseTags(input) {
 
 
 function validateApiKey(req, res, next) {
-    const apiKeyHeader = req.header('API_KEY');
+    const apiKeyHeader = req.header('apiKey');
     if (!apiKeyHeader || apiKeyHeader !== API_KEY) {
         return res.status(401).send('Invalid API Key');
     }

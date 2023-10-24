@@ -77,7 +77,7 @@ export class ContactBoxComponent implements OnInit {
 
     const headers = {
       'Content-Type': 'application/json',
-      'API_KEY': environment.message_api_key
+      'apiKey': environment.message_api_key
     };
 
     const options = {

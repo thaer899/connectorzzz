@@ -1,0 +1,64 @@
+============================= test session starts ==============================
+platform linux -- Python 3.9.18, pytest-7.4.2, pluggy-1.3.0
+rootdir: /app/web
+collected 1 item
+
+test_website.py E                                                        [100%]
+
+==================================== ERRORS ====================================
+____________________ ERROR at setup of test_home_page_loads ____________________
+
+    @pytest.fixture
+    def browser():
+        # Setup
+        options = webdriver.ChromeOptions()
+        options.add_argument('--headless')  # run in headless mode
+>       driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+
+test_website.py:13: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/local/lib/python3.9/site-packages/selenium/webdriver/chrome/webdriver.py:70: in __init__
+    super(WebDriver, self).__init__(DesiredCapabilities.CHROME['browserName'], "goog",
+/usr/local/lib/python3.9/site-packages/selenium/webdriver/chromium/webdriver.py:90: in __init__
+    self.service.start()
+/usr/local/lib/python3.9/site-packages/selenium/webdriver/common/service.py:98: in start
+    self.assert_process_still_running()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <selenium.webdriver.chrome.service.Service object at 0x7fd550736190>
+
+    def assert_process_still_running(self):
+        return_code = self.process.poll()
+        if return_code:
+>           raise WebDriverException(
+                'Service %s unexpectedly exited. Status code was: %s'
+                % (self.path, return_code)
+            )
+E           selenium.common.exceptions.WebDriverException: Message: Service /root/.wdm/drivers/chromedriver/linux64/114.0.5735.90/chromedriver unexpectedly exited. Status code was: 127
+
+/usr/local/lib/python3.9/site-packages/selenium/webdriver/common/service.py:110: WebDriverException
+---------------------------- Captured stderr setup -----------------------------
+
+
+====== WebDriver manager ======
+Could not get version for google-chrome with the any command: google-chrome --version || google-chrome-stable --version
+Current google-chrome version is UNKNOWN
+Get LATEST chromedriver version for UNKNOWN google-chrome
+Driver [/root/.wdm/drivers/chromedriver/linux64/114.0.5735.90/chromedriver] found in cache
+------------------------------ Captured log setup ------------------------------
+INFO     WDM:logger.py:26 
+
+INFO     WDM:logger.py:26 ====== WebDriver manager ======
+INFO     WDM:logger.py:26 Could not get version for google-chrome with the any command: google-chrome --version || google-chrome-stable --version
+INFO     WDM:logger.py:26 Current google-chrome version is UNKNOWN
+INFO     WDM:logger.py:26 Get LATEST chromedriver version for UNKNOWN google-chrome
+INFO     WDM:logger.py:26 Driver [/root/.wdm/drivers/chromedriver/linux64/114.0.5735.90/chromedriver] found in cache
+=============================== warnings summary ===============================
+../../usr/local/lib/python3.9/site-packages/selenium/webdriver/remote/remote_connection.py:24
+  /usr/local/lib/python3.9/site-packages/selenium/webdriver/remote/remote_connection.py:24: DeprecationWarning: 'urllib3[secure]' extra is deprecated and will be removed in a future release of urllib3 2.x. Read more in this issue: https://github.com/urllib3/urllib3/issues/2680
+    import urllib3
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+ERROR test_website.py::test_home_page_loads - selenium.common.exceptions.WebD...
+========================= 1 warning, 1 error in 0.81s ==========================

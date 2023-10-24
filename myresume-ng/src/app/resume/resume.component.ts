@@ -85,7 +85,7 @@ export class ResumeComponent implements OnInit, OnChanges, AfterViewInit {
   getQuote(email: string) {
     const headers = {
       'Content-Type': 'application/json',
-      'API_KEY': environment.message_api_key
+      'apiKey': environment.message_api_key
     };
 
     const options = {

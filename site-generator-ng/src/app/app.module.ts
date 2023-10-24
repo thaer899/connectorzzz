@@ -31,6 +31,7 @@ import { ColorPickerInputComponent } from './admin/color-picker/color-picker-inp
 import { VisualComponent } from './controls/visual.control';
 import { SiteVisualComponent } from './admin/site-visual/site-visual.component';
 import { CustomTooltipComponent } from './admin/custom-tooltip/custom-tooltip.component';
+import { AutogenComponent } from './autogen/autogen.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { CustomTooltipComponent } from './admin/custom-tooltip/custom-tooltip.co
     AdminComponent,
     DashboardComponent,
     SiteVisualComponent,
-    VisualComponent
+    VisualComponent,
+    AutogenComponent
   ],
   imports: [
     MatInputModule,
