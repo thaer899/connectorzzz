@@ -7,7 +7,7 @@ export const environment = {
   production: false,
   host: 'https://thaersaidi.net',
   mainEmail: "rebel.saidi.thaer@gmail.com",
-  functionURL: 'http://localhost:4000/myresume',
+  functionURL: 'https://ai.thaersaidi.net/myresume',
   message_api_key: 'FJxJ2MRv4vtAH0Js81Q390',
   title: 'Log Book',
   firebaseConfig: {

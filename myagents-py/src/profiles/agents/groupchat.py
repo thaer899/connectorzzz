@@ -163,65 +163,74 @@ class GroupChatManager(ConversableAgent):
         groupchat.messages.append(
             {"name": speaker.name, "content": message["content"], "role": "user"})
 
-        # broadcast the message to all agents except the speaker
-        for agent in groupchat.agents:
-            if agent != speaker:
-                self.send({"name": speaker.name, "content": message.get('content'), "role": "user"}, agent,
-                          request_reply=False, silent=True)
-
-        # select the next speaker
-        speaker = groupchat.select_speaker(speaker, self)
-        # let the speaker speak
-        reply = speaker.generate_reply(sender=self)
-
-        # The speaker sends the message without requesting a reply
-        speaker.send(reply, self, request_reply=False)
-        message = self.last_message(speaker)
-
-        # # Add the speaker's reply to the client_receive_queue
-        # if self.client_receive_queue:
-        #     self.add_to_receive_queue(
-        #         {"name": speaker.name, "content": message["content"], "role": "user"})
-        #     self.new_reply_event.set()
-
+        for i in range(groupchat.max_round):
+            # set the name to speaker's name if the role is not function
+            if message["role"] != "function":
+                message["name"] = speaker.name
+            groupchat.messages.append(message)
+            # broadcast the message to all agents except the speaker
+            for agent in groupchat.agents:
+                if agent != speaker:
+                    self.send(message, agent, request_reply=False, silent=True)
+            if i == groupchat.max_round - 1:
+                # the last round
+                break
+            try:
+                # select the next speaker
+                speaker = groupchat.select_speaker(speaker, self)
+                # let the speaker speak
+                reply = speaker.generate_reply(sender=self)
+            except KeyboardInterrupt:
+                # let the admin agent speak if interrupted
+                if groupchat.admin_name in groupchat.agent_names:
+                    # admin agent is one of the participants
+                    speaker = groupchat.agent_by_name(groupchat.admin_name)
+                    reply = speaker.generate_reply(sender=self)
+                else:
+                    # admin agent is not found in the participants
+                    raise
+            if reply is None:
+                break
+            # The speaker sends the message without requesting a reply
+            speaker.send(reply, self, request_reply=False)
+            message = self.last_message(speaker)
         return True, None
 
-    def send(
-        self,
-        message: Union[Dict, str],
-        recipient: Agent,
-        request_reply: Optional[bool] = None,
-        silent: Optional[bool] = False,
-    ) -> bool:
-        """Override the send method to add messages to client_receive_queue."""
-        # Call the parent class's send method
-        super().send(message, recipient, request_reply, silent)
-        logger.info(
-            f"Send method called with message: {message} to recipient: {recipient.name}")
+    # def send(
+    #     self,
+    #     message: Union[Dict, str],
+    #     recipient: Agent,
+    #     request_reply: Optional[bool] = None,
+    #     silent: Optional[bool] = False,
+    # ) -> bool:
+    #     """Override the send method to add messages to client_receive_queue."""
+    #     # Call the parent class's send method
+    #     super().send(message, recipient, request_reply, silent)
+    #     logger.info(
+    #         f"Send method called with message: {message} to recipient: {recipient.name}")
 
-        if isinstance(message, dict):
-            content = message.get("content")
-        else:
-            content = message
-        # Add the message to the receive queue
-        self.add_to_receive_queue(
-            {"name": self.name, "content": content, "role": "user"})
+    #     if isinstance(message, dict):
+    #         content = message.get("content")
+    #         name = message.get("name")
+    #         print(f"content: {content}, name: {name}")
+    #         self.add_to_receive_queue(
+    #             {"name": name, "content": content, "role": "user"})
 
-        # Signal that a new reply has been added
-        self.new_reply_event.set()
+    #     # Signal that a new reply has been added
+    #     self.new_reply_event.set()
 
-    def add_to_receive_queue(self, msg):
+    # def add_to_receive_queue(self, msg):
 
-        if self.client_receive_queue:
-            # Check if the message is already in the queue
-            if msg not in list(self.client_receive_queue.queue):
-                self.client_receive_queue.put(msg)
+    #     if self.client_receive_queue:
+    #         # Check if the message is already in the queue
+    #         if msg not in list(self.client_receive_queue.queue):
+    #             self.client_receive_queue.put(msg)
 
-    def initiate_chat(self, recipient, clear_history=True, silent=False, **context):
-        if self._chat_initialized:
-            logger.warning(
-                "Chat is already initialized. Skipping duplicate initialization.")
-            return
-        logger.info("Initiating chat...")
-        self._chat_initialized = True
-        super().initiate_chat(recipient, clear_history=clear_history, silent=silent, **context)
+    # def initiate_chat(self, recipient, clear_history=True, silent=False, **context):
+    #     if self._chat_initialized:
+    #         logger.warning(
+    #             "Chat is already initialized. Skipping duplicate initialization.")
+    #         return
+    #     logger.info("Initiating chat...")
+    #     self._chat_initialized = True
+    #     super().initiate_chat(recipient, clear_history=clear_history, silent=silent, **context)
