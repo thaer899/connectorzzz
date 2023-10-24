@@ -2,7 +2,8 @@ export const environment = {
   production: true,
   mainEmail: "rebel.saidi.thaer@gmail.com",
   myResumeURL: 'https://ai.thaersaidi.net/myresume',
-  myAgentsHost: 'ai.thaersaidi.net/autogen',
+  myAgentsURL: 'https://ai.thaersaidi.net/autogen',
+  myAgentsWS: 'ws://ai.thaersaidi.net',
   functionApiKey: 'FJxJ2MRv4vtAH0Js81Q390',
   title: "Site Generator",
   firebaseConfig: {
