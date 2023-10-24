@@ -129,6 +129,11 @@ class TeamProfiles:
             message=prompt,
         )
 
+        for msg in groupchat.messages:
+            self.client_receive_queue.put(msg)
+            print(f"Added message to client_receive_queue...{msg}")
+
         self.new_reply_event.set()
 
+        # return response
         return {"status": True, "message": "Chat initiated successfully."}

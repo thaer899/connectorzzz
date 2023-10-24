@@ -33,8 +33,8 @@ class UserProxyWebAgent(UserProxyAgent):
         """Handle the incoming message and add it to the queue."""
         self.client_sent_queue.put(message)
 
-    def send(self, message, recipient, request_reply: bool | None = None, silent: bool | None = False) -> bool:
-        msg = {"content": message, "role": "user", "name": self.name}
-        self.client_receive_queue.put(msg)
-        self.new_reply_event.set()
-        return super().send(message, recipient, request_reply, silent)
+    # def send(self, message, recipient, request_reply: bool | None = None, silent: bool | None = False) -> bool:
+    #     msg = {"content": message, "role": "user", "name": self.name}
+    #     self.client_receive_queue.put(msg)
+    #     self.new_reply_event.set()
+    #     return super().send(message, recipient, request_reply, silent)

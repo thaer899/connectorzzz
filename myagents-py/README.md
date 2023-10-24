@@ -20,6 +20,8 @@ uvicorn app:app --host 0.0.0.0 --port 33000 --reload
 
 docker build -t autogen . 
 
+docker tag autogen eu.gcr.io/thaersaidi-da79c/myagents-py:latest
+
 docker run -p 33000:33000 -it -e OPENAI_API_KEY=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 autogen
 
 docker ps

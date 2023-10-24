@@ -1,15 +1,22 @@
-import asyncio
-import json
+import os
 import traceback
 import uuid
 import logging
 from src.models.datamodel import GenerateWebRequest
 from src.profiles.team_profiles import TeamProfiles
 from src.connection_manager import ConnectionManager
-from fastapi import FastAPI, WebSocket, WebSocketDisconnect
+from fastapi import FastAPI, HTTPException
+from fastapi import Header, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 import threading
-from starlette.websockets import WebSocketState
+from dotenv import load_dotenv
+from src.websocket_logic import handle_chat, process_websocket_data
+
+
+# Load environment variables
+load_dotenv()
+
+API_KEY = os.getenv('API_KEY')
 
 app = FastAPI()
 active_chats = {}
@@ -30,25 +37,18 @@ SENTINEL = "TERMINATE"
 logging.basicConfig(level=logging.INFO)
 
 
-def handle_chat(team_profiles, chat_id):
-    logging.info("Inside handle_chat method...")
-    while True:
-        # Wait for the main loop to signal that new data is available
-        team_profiles.new_data_event.wait()
-        team_profiles.new_data_event.clear()
+@app.get("/")
+async def probe():
+    return {"status": "OK", "message": "Service is running"}
 
-        data = team_profiles.client_sent_queue.get(block=True)
 
-        # Check for termination signal
-        if data == SENTINEL:
-            logging.info("Termination signal received. Exiting handle_chat.")
-            break
+@app.get("/get_chat_id")
+async def get_chat_id(apiKey: str = Header(None)):
+    if apiKey != API_KEY:
+        raise HTTPException(status_code=403, detail="Invalid API key")
 
-        logging.info(f"Received data: {data}")
-        team_profiles.initiate_team_chat(data, chat_id)
-
-        # Signal the main loop that data has been processed
-        team_profiles.processing_done_event.set()
+    chat_id = str(uuid.uuid1())
+    return {"chat_id": chat_id}
 
 
 @app.websocket("/ws/{chat_id}")
@@ -61,50 +61,7 @@ async def websocket_endpoint(websocket: WebSocket, chat_id: str):
     t.start()
 
     try:
-        while True:
-            data = await websocket.receive_text()
-            if not data:
-                logging.warning("Received empty data. Skipping...")
-                continue
-
-            if data.startswith("{") or data.startswith("["):
-                try:
-                    deserialized_data = json.loads(data)
-                except json.JSONDecodeError:
-                    logging.error(f"Failed to decode JSON from data: {data}")
-                    continue
-            else:
-                deserialized_data = data
-
-            logging.info(f"Received message: {deserialized_data}")
-            team_profiles.client_sent_queue.put(deserialized_data)
-
-            # Signal that new data has been added to the queue
-            team_profiles.new_data_event.set()
-
-            # Wait for the handle_chat thread to process the data
-            team_profiles.processing_done_event.wait()
-            team_profiles.processing_done_event.clear()
-
-            # Wait for new_reply_event before processing client_receive_queue
-            while not team_profiles.new_reply_event.is_set():
-                await asyncio.sleep(0.1)
-
-            # Process messages from the client_receive_queue
-            while not team_profiles.client_receive_queue.empty():
-                reply = team_profiles.client_receive_queue.get(block=False)
-                serialized_reply = json.dumps(reply)
-                logging.info(f"Sending reply to client: {serialized_reply}")
-                if websocket.client_state == WebSocketState.CONNECTED:
-                    await websocket.send_text(serialized_reply)
-                else:
-                    logging.warning("WebSocket is not connected.")
-                if serialized_reply == "exit":
-                    logging.info("####FINISHED")
-                    break
-
-            team_profiles.new_reply_event.clear()
-
+        await process_websocket_data(websocket, team_profiles)
     except WebSocketDisconnect:
         logging.warning("WebSocket disconnected.")
         # Signal the handle_chat thread to terminate
@@ -119,12 +76,6 @@ async def websocket_endpoint(websocket: WebSocket, chat_id: str):
         if t.is_alive():
             t.join(timeout=1)
         await manager.disconnect(websocket)
-
-
-@app.get("/get_chat_id")
-async def get_chat_id():
-    chat_id = str(uuid.uuid1())
-    return {"chat_id": chat_id}
 
 
 @app.post("/team")

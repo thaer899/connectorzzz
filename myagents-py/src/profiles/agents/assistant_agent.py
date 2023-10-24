@@ -71,8 +71,8 @@ Reply "TERMINATE" in the end when everything is done.
         self.client_receive_queue = client_receive_queue
         self.new_reply_event = threading.Event()
 
-    def send(self, message, recipient, request_reply: bool | None = None, silent: bool | None = False) -> bool:
-        msg = {"content": message, "role": "user", "name": self.name}
-        self.client_receive_queue.put(msg)
-        self.new_reply_event.set()
-        return super().send(message, recipient, request_reply, silent)
+    # def send(self, message, recipient, request_reply: bool | None = None, silent: bool | None = False) -> bool:
+    #     msg = {"content": message, "role": "user", "name": self.name}
+    #     self.client_receive_queue.put(msg)
+    #     self.new_reply_event.set()
+    #     return super().send(message, recipient, request_reply, silent)
