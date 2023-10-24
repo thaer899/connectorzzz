@@ -49,7 +49,7 @@ export class BlogPostComponent extends JsonFormsControl {
     };
     const headers = {
       'Content-Type': 'application/json',
-      'API_KEY': environment.functionApiKey
+      'apiKey': environment.functionApiKey
     };
 
     axios.post(url, data, { headers })

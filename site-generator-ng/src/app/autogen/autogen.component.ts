@@ -23,7 +23,11 @@ export class AutogenComponent implements OnInit, OnDestroy {
   }
 
   connectToWebSocket(): void {
-    this.http.get(`${environment.myAgentsURL}/get_chat_id`).subscribe((response: any) => {
+    const headers = {
+      'Content-Type': 'application/json',
+      'apiKey': environment.functionApiKey
+    };
+    this.http.get(`${environment.myAgentsURL}/get_chat_id`, { headers }).subscribe((response: any) => {
       this.chatId = response.chat_id;
       const wsUrl = `${environment.myAgentsWS}/ws/${this.chatId}`;
       this.wsService.connect(wsUrl);
