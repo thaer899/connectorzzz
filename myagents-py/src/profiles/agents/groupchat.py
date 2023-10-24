@@ -160,8 +160,6 @@ class GroupChatManager(ConversableAgent):
         # set the name to speaker's name if the role is not function
         if message["role"] != "function":
             message["name"] = speaker.name
-        groupchat.messages.append(
-            {"name": speaker.name, "content": message["content"], "role": "user"})
 
         for i in range(groupchat.max_round):
             # set the name to speaker's name if the role is not function
@@ -225,12 +223,3 @@ class GroupChatManager(ConversableAgent):
     #         # Check if the message is already in the queue
     #         if msg not in list(self.client_receive_queue.queue):
     #             self.client_receive_queue.put(msg)
-
-    # def initiate_chat(self, recipient, clear_history=True, silent=False, **context):
-    #     if self._chat_initialized:
-    #         logger.warning(
-    #             "Chat is already initialized. Skipping duplicate initialization.")
-    #         return
-    #     logger.info("Initiating chat...")
-    #     self._chat_initialized = True
-    #     super().initiate_chat(recipient, clear_history=clear_history, silent=silent, **context)

@@ -71,9 +71,8 @@ Reply "TERMINATE" in the end when everything is done.
         self.client_receive_queue = client_receive_queue
         self.new_reply_event = threading.Event()
 
-    def send(self, message, recipient, request_reply=None, silent=False):
-        super().send(message, recipient, request_reply, silent)
-        # # Send the message to the WebSocket connection
-        if message and isinstance(message, dict):
-            self.client_receive_queue.put(message)
-            self.new_reply_event.set()
+    def send(self, message, recipient, request_reply: bool | None = None, silent: bool | None = False) -> bool:
+        msg = {"content": message, "role": "user", "name": self.name}
+        self.client_receive_queue.put(msg)
+        self.new_reply_event.set()
+        return super().send(message, recipient, request_reply, silent)

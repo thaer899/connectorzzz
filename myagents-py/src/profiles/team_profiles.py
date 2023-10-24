@@ -25,8 +25,8 @@ class TeamProfiles:
         self.llm_config = self.get_llm_config(api_key)
         self.websocket = websocket
         self.chat_id = chat_id
-        self.client_sent_queue = queue.LifoQueue()
-        self.client_receive_queue = queue.LifoQueue()
+        self.client_sent_queue = queue.Queue()
+        self.client_receive_queue = queue.Queue()
         self.queue_event = threading.Event()
         self.boss = self.create_boss()
         self.aid = self.create_aid()
@@ -129,14 +129,6 @@ class TeamProfiles:
             message=prompt,
         )
 
-        formatted_messages = [
-            {"name": msg["name"], "content": msg["content"]} for msg in groupchat.messages]
-
-        for msg in formatted_messages:
-            self.client_receive_queue.put(msg)
-            print(f"Added message to client_receive_queue...{msg}")
-
         self.new_reply_event.set()
 
-        # return response
         return {"status": True, "message": "Chat initiated successfully."}

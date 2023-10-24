@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{.Values.appName}}-deployment"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: "{{.Values.appName}}"
+  template:
+    metadata:
+      labels:
+        app: "{{.Values.appName}}"
+    spec:
+      containers:
+        - name: "{{.Values.appName}}-container"
+          image: "{{.Values.registry}}/{{.Values.projectName}}/{{.Values.appName}}:latest"
+          ports:
+            - containerPort: 33000
+          env:
+            - name: OPENAI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: "{{.Values.appName}}-secret"
+                  key: OPENAI_API_KEY
+            - name: API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: "{{.Values.appName}}-secret"
+                  key: API_KEY
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 33000
+            initialDelaySeconds: 60
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 33000
+            initialDelaySeconds: 60
+            timeoutSeconds: 10

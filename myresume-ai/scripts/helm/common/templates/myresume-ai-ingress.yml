@@ -22,3 +22,10 @@ spec:
                 name: "{{.Values.MyResumeAppName}}-service"
                 port:
                   number: 80
+          - path: /autogen
+            pathType: Prefix
+            backend:
+              service:
+                name: "{{.Values.MyAgentsAppName}}-service"
+                port:
+                  number: 80

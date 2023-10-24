@@ -554,7 +554,6 @@ class ConversableAgent(Agent):
         self.send(self.generate_init_message(
             **context), recipient, silent=silent)
         logger.info("Initiating chat...")
-
         self.chat_initialized = True
 
     async def a_initiate_chat(
