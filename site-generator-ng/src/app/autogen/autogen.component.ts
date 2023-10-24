@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { WebsocketService } from '../services/websocket.service';
 import { ChangeDetectorRef } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-autogen',
@@ -22,9 +23,9 @@ export class AutogenComponent implements OnInit, OnDestroy {
   }
 
   connectToWebSocket(): void {
-    this.http.get('http://localhost:33000/get_chat_id').subscribe((response: any) => {
+    this.http.get(`https://${environment.myAgentsHost}/get_chat_id`).subscribe((response: any) => {
       this.chatId = response.chat_id;
-      const wsUrl = `ws://localhost:33000/ws/${this.chatId}`;
+      const wsUrl = `ws://${environment.myAgentsHost}/ws/${this.chatId}`;
       this.wsService.connect(wsUrl);
 
       this.wsService.messages$.subscribe(

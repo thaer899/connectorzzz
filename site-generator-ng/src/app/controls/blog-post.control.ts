@@ -43,7 +43,7 @@ export class BlogPostComponent extends JsonFormsControl {
       });
     }, 15000);
 
-    const url = `${environment.functionURL}/blog?email=${email}`;
+    const url = `${environment.myResumeURL}/blog?email=${email}`;
     const data = {
       recipientMessage
     };

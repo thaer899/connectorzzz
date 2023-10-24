@@ -6,7 +6,8 @@
 export const environment = {
   production: false,
   mainEmail: "rebel.saidi.thaer@gmail.com",
-  functionURL: 'http://localhost:4000',
+  myResumeURL: 'http://localhost:4000',
+  myAgentsHost: 'localhost:33000',
   functionApiKey: 'FJxJ2MRv4vtAH0Js81Q390',
   title: "Site Generator",
   firebaseConfig: {
