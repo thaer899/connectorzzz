@@ -42,7 +42,7 @@ async def probe():
     return {"status": "OK", "message": "Service is running"}
 
 
-@app.get("/get_chat_id")
+@app.get("/autogen/get_chat_id")
 async def get_chat_id(apiKey: str = Header(None)):
     if apiKey != API_KEY:
         raise HTTPException(status_code=403, detail="Invalid API key")
@@ -51,7 +51,7 @@ async def get_chat_id(apiKey: str = Header(None)):
     return {"chat_id": chat_id}
 
 
-@app.websocket("/ws/{chat_id}")
+@app.websocket("/autogen/ws/{chat_id}")
 async def websocket_endpoint(websocket: WebSocket, chat_id: str):
     await websocket.accept()
     team_profiles = TeamProfiles(chat_id=chat_id, websocket=websocket)
@@ -78,7 +78,7 @@ async def websocket_endpoint(websocket: WebSocket, chat_id: str):
         await manager.disconnect(websocket)
 
 
-@app.post("/team")
+@app.post("/autogen/team")
 async def initiate_chat(req: GenerateWebRequest, chat_id: str):
     prompt = req.prompt
     team_profiles = active_chats.get(chat_id)
