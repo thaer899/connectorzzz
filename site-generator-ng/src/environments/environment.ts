@@ -9,6 +9,8 @@ export const environment = {
   myResumeURL: 'http://localhost:4000/myresume',
   myAgentsURL: 'http://localhost:33000/autogen',
   myAgentsWS: 'ws://localhost:33000/autogen',
+  agentFlowURL: 'http://localhost:33000/agentflow',
+  agentFlowWS: 'ws://localhost:33000/agentflow',
   functionApiKey: 'FJxJ2MRv4vtAH0Js81Q390',
   title: "Site Generator",
   firebaseConfig: {
