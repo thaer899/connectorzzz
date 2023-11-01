@@ -32,6 +32,13 @@ import { VisualComponent } from './controls/visual.control';
 import { SiteVisualComponent } from './admin/site-visual/site-visual.component';
 import { CustomTooltipComponent } from './admin/custom-tooltip/custom-tooltip.component';
 import { AutogenComponent } from './autogen/autogen.component';
+import { AutoScrollDirective } from './directives/auto-scroll.directive';
+import { AgentflowComponent } from './agentflow/agentflow.component';
+import { SidenavComponent } from './agentflow/sidenav/sidenav.component';
+import { FlowchartComponent } from './agentflow/flowchart/flowchart.component';
+import { NgxEchartsModule } from 'ngx-echarts';
+import * as echarts from 'echarts';
+import { GroupSidenavComponent } from './agentflow/group-sidenav/group-sidenav.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +55,12 @@ import { AutogenComponent } from './autogen/autogen.component';
     DashboardComponent,
     SiteVisualComponent,
     VisualComponent,
-    AutogenComponent
+    AutogenComponent,
+    AutoScrollDirective,
+    AgentflowComponent,
+    SidenavComponent,
+    FlowchartComponent,
+    GroupSidenavComponent
   ],
   imports: [
     MatInputModule,
@@ -68,6 +80,7 @@ import { AutogenComponent } from './autogen/autogen.component';
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideAuth(() => getAuth()),
     AppRoutingModule,
+    NgxEchartsModule.forRoot({ echarts }),
   ],
   schemas: [],
   entryComponents: [CustomAutocompleteControlRenderer, LangComponent, DataDisplayComponent],

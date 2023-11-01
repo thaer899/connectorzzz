@@ -20,7 +20,7 @@ import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css'],
+  styleUrls: ['./admin.component.scss'],
 })
 export class AdminComponent {
   @ViewChild(VisualComponent) visualComponent: VisualComponent;

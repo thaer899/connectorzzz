@@ -1,3 +1,6 @@
+@import '../../assets/scss/custom-theme.scss';
+
+
 .toolbar {
   background-color: #313131;
   color: #ECEFF1;
@@ -8,6 +11,16 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 
   z-index: 1000;
+}
+
+:host ::ng-deep .mat-drawer-content {
+  background-color: #303030 !important;
+  position: relative;
+  z-index: 1;
+  display: block;
+  height: 100%;
+  overflow: auto;
+  margin-left: 20%;
 }
 
 
@@ -22,6 +35,9 @@
   flex: 1 1 auto;
 }
 
+.group {
+  color: #a72f2f;
+}
 
 @media screen and (max-width: 30em) {
 

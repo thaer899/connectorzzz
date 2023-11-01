@@ -1,0 +1,65 @@
+    <!-- Side navigation drawer -->
+      <div style="padding: 15px;">
+              <!-- Input for the agent name -->
+
+
+      <ng-container>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Agents</mat-label>
+          <textarea matInput [ngModel]="agentsAsString"  (ngModelChange)="onValueChange($event)"></textarea>
+        </mat-form-field>
+    <!-- Sliders -->
+        <!--
+        <mat-slide-toggle color="warn" *ngFor="let agent of agents">
+          {{agent.agent_name}}
+        </mat-slide-toggle>
+      -->
+
+      </ng-container>
+      <mat-form-field>
+        <mat-label>Select Agents</mat-label>
+        <mat-select [formControl]="groupAgents" multiple>
+          <mat-option *ngFor="let agent of agents" [value]="agent.agent_name" [class.selected-agent]="isSelected(agent.agent_name)">
+            {{agent.agent_name}}
+          </mat-option>
+                </mat-select>
+      </mat-form-field>
+            <!-- Button to run the agent -->
+            <button mat-raised-button color="secondary" style="margin: 5px;"
+            (click)="runAgents(agents)"
+            *ngIf="isWSConnected && agents.length>0">
+          Start Agents</button>
+
+      </div>
+
+      <hr>
+
+      <!-- Message display area -->
+      <ng-container>
+        <mat-card #scrollableContainer class="card" [autoScroll]="messages.length">
+          <mat-list>
+            <pre *ngFor="let msg of messages; let i = index">
+              <div [ngClass]="getUserClass(msg.name)"><strong>{{msg.name}}: </strong> {{ msg.content }}</div>
+            </pre>
+          </mat-list>
+
+
+       <!-- Spinner to indicate loading -->
+       <div class="spin">
+        <i class="fas fa-spinner fa-spin" *ngIf="loading" style="font-size: 40px;"></i>
+      </div>
+      </mat-card>
+      <hr>
+
+      </ng-container>
+             <!-- Bottom bar for user message input -->
+             <div class="bottombar">
+              <mat-form-field appearance="outline" style="margin: 0 10px; width: 80%">
+                <mat-label>Enter message</mat-label>
+                <textarea matInput #messageInput ></textarea>
+              </mat-form-field>
+              <!-- Button to initiate chat -->
+              <button mat-raised-button color="btn" style="margin: 5px;"
+                (click)="initiateGroupChat(messageInput.value, groupAgents.value)">Ask</button>
+            </div>  

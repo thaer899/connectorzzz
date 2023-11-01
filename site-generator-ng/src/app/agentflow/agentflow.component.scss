@@ -1,0 +1,105 @@
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0px;
+}
+
+
+.flowchart-container {
+  background-color: #746d6d;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+}
+
+:host ::ng-deep .mat-drawer-content  {
+  background-color: #303030 !important;
+  margin-left: 0% ;
+}
+
+/* Sidenav width and background */
+.left-sidenav{
+  width: 25%;
+  background-color: #424242;
+}
+
+/* Sidenav width and background */
+.right-sidenav{
+  width: 40%;
+  background-color: #424242;
+}
+
+
+.flowchart-sidenav-content{
+  background-color: #746d6d;
+  padding: 15px;
+}
+
+.mat-icon {
+  margin-right: 10px;
+  padding: 2px;
+  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+  font-size: 40px;
+  z-index: 99999;
+}
+
+.fill-toolbar {
+  flex: 1 1 auto;
+}
+
+
+.link-toggle {
+  color: #225f43;
+}
+
+.link-off-toggle {
+  color: #a72f2f;
+}
+
+.group-toggle {
+  position: absolute;
+  right: 10px;
+  top: 0px;
+  padding: 10px;
+  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+  font-size: 40px;
+  z-index: 99999;
+  color: #a72f2f;
+}
+
+
+/* Responsiveness for smaller screens */
+@media screen and (max-width: 30em) {
+
+  /* Sidenav width and background */
+.left-sidenav{
+  width: 30%;
+  background-color: #424242;
+}
+
+/* Sidenav width and background */
+.right-sidenav{
+  width: 60%;
+  background-color: #424242;
+}
+
+
+.mat-icon {
+  margin-right: 5px;
+  padding: 1px;
+  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+  font-size: 20px;
+}
+
+.group-toggle {
+  right: 0px;
+  top: 15px;
+
+}
+
+.separator {
+  display: none;
+
+}
+}

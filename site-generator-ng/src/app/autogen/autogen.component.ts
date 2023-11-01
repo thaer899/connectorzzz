@@ -3,13 +3,16 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { WebsocketService } from '../services/websocket.service';
 import { ChangeDetectorRef } from '@angular/core';
 import { environment } from '../../environments/environment';
+import { ElementRef, ViewChild, AfterViewChecked, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-autogen',
   templateUrl: './autogen.component.html',
   styleUrls: ['./autogen.component.scss']
 })
-export class AutogenComponent implements OnInit, OnDestroy {
+export class AutogenComponent implements  OnInit, OnDestroy {
+  @ViewChild('scrollableContainer') private scrollableContainer: ElementRef;
+
   public loading: boolean = false;
   public messages: any = [];
   public chats: any = [];
@@ -72,4 +75,5 @@ export class AutogenComponent implements OnInit, OnDestroy {
     // Close the WebSocket connection when the component is destroyed
     this.wsService.close();
   }
+
 }

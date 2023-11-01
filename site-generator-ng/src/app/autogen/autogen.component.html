@@ -1,17 +1,9 @@
-<mat-toolbar class="toolbar">
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-label>Enter message</mat-label>
-    <textarea matInput #messageInput></textarea>
-  </mat-form-field>
-  <button mat-raised-button color="secondary" style="margin-left: 15px;"
-    (click)="initiateChat(messageInput.value)">Ask</button>
-</mat-toolbar>
 <div>
   <div class="spin">
     <i class="fas fa-spinner fa-spin" *ngIf="loading" style="font-size: 40px;"></i>
   </div>
   <ng-container *ngIf="messages.length>0">
-    <mat-card class="card">
+    <mat-card #scrollableContainer class="card" [autoScroll]="messages.length">
       <mat-list>
         <pre *ngFor="let msg of messages; let i = index">
           <div [ngClass]="getUserClass(msg.name)"><strong>{{msg.name}}: </strong> {{ msg.content }}</div>
@@ -20,3 +12,11 @@
     </mat-card>
   </ng-container>
 </div>
+<mat-toolbar class="toolbar">
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Enter message</mat-label>
+    <textarea matInput #messageInput></textarea>
+  </mat-form-field>
+  <button mat-raised-button color="secondary" style="margin-left: 15px;"
+    (click)="initiateChat(messageInput.value)">Ask</button>
+</mat-toolbar>

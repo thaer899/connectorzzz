@@ -29,3 +29,11 @@ spec:
                 name: "{{.Values.MyAgentsAppName}}-service"
                 port:
                   number: 80
+          - path: /agentflow
+            pathType: Prefix
+            backend:
+              service:
+                name: "{{.Values.AgentFlowAppName}}-service"
+                port:
+                  number: 80
+

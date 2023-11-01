@@ -17,6 +17,9 @@ export class WebsocketService {
   private currentRetries = 0;
   private intentionalClose = false;
 
+  private isConnectedState = new BehaviorSubject<boolean>(false);
+  isConnected$ = this.isConnectedState.asObservable();
+
   connect(url: string): void {
     if (!this.socket || this.socket.readyState !== this.socket.OPEN) {
       this.socket = new WebSocket(url);
@@ -25,6 +28,7 @@ export class WebsocketService {
         console.log('WebSocket connected');
         this.connectionStatusSubject.next(true);
         this.currentRetries = 0; // reset retries count on successful connection
+        this.isConnectedState.next(true);
       };
 
       this.socket.onmessage = (event) => {
@@ -37,6 +41,7 @@ export class WebsocketService {
 
       this.socket.onclose = (event) => {
         this.connectionStatusSubject.next(false);
+        this.isConnectedState.next(false);
         if (event.wasClean) {
           console.log(`Connection closed cleanly, code=${event.code}, reason=${event.reason}`);
         } else {

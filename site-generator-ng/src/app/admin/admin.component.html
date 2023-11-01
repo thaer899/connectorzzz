@@ -1,6 +1,8 @@
 <mat-toolbar class="toolbar">
     <span>
-        <mat-icon matTooltip="Automation team" [routerLink]="['/autogen']">dashboard</mat-icon>
+        <mat-icon matTooltip="Automation" [routerLink]="['/admin']">dashboard</mat-icon>
+        <mat-icon class="separator">more_vert</mat-icon>
+        <mat-icon matTooltip="Automation Agents team" class="group" [routerLink]="['/agentflow']">group_work</mat-icon>
     </span>
 
     <span class="fill-toolbar"></span>

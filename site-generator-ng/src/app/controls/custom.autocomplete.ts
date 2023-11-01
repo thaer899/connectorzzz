@@ -1,4 +1,4 @@
-import * as randomWords from 'random-words';
+import randomWords from 'random-words';
 import {debounceTime, finalize, tap} from 'rxjs/operators';
 import {switchMap} from 'rxjs/operators';
 import {delay} from 'rxjs/operators';

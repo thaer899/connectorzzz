@@ -12,7 +12,7 @@ from typing import Dict
 # Load environment variables
 load_dotenv()
 api_key = os.getenv('OPENAI_API_KEY')
-
+model = os.getenv('OPENAI_API_MODEL')
 if api_key is None:
     raise ValueError("API Key not found!")
 
@@ -40,11 +40,11 @@ class TeamProfiles:
         x, dict) and "TERMINATE" == str(x.get("content", ""))[-9:].upper()
 
     @staticmethod
-    def get_llm_config(api_key: str):
+    def get_llm_config(api_key: str, model: str = 'gpt-4'):
         return {
-            "request_timeout": 60,
+            "request_timeout": 300,
             "seed": 42,
-            "config_list": [{'model': 'gpt-3.5-turbo', 'api_key': api_key}],
+            "config_list": [{'model': model, 'api_key': api_key}],
             "temperature": 0,
         }
 
@@ -56,9 +56,8 @@ class TeamProfiles:
             human_input_mode="TERMINATE",
             llm_config=self.llm_config,
             code_execution_config={
-                "last_n_messages": 2,
                 "work_dir": "coding/teamchat",
-                "use_docker": True},
+                "use_docker": "python:3"},
             client_sent_queue=self.client_sent_queue,
             client_receive_queue=self.client_receive_queue
         )
@@ -82,9 +81,8 @@ class TeamProfiles:
             system_message="A highly skilled coder with the ability to translate complex problems into executable code.",
             llm_config=self.llm_config,
             code_execution_config={
-                "last_n_messages": 2,
                 "work_dir": "coding/teamchat",
-                "use_docker": True},
+                "use_docker": "python:3"},
             client_sent_queue=self.client_sent_queue,
             client_receive_queue=self.client_receive_queue
         )

@@ -1,0 +1,44 @@
+    <!-- Side navigation drawer -->
+      <div style="padding: 15px;">
+        <p>Create Agent:</p>
+
+              <!-- Input for the agent name -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Name</mat-label>
+        <input matInput [(ngModel)]="selectedAgentName">
+      </mat-form-field>
+
+      <!-- Textarea for system message -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>System message</mat-label>
+        <textarea matInput [(ngModel)]="selectedAgentMessage"></textarea>
+      </mat-form-field>
+      
+      <!-- Button to run the agent -->
+      <button mat-raised-button color="secondary" style="margin: 5px;"
+        (click)="runAgent(selectedAgentMessage, selectedAgentName)" *ngIf="isWSConnected">
+      start</button>
+
+      </div>
+      <hr>
+
+      <!-- Message display area -->
+     <div style="padding: 15px;">
+            <!-- Input for the agent name -->
+    <p>Create Group:</p>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Name</mat-label>
+      <input matInput [(ngModel)]="selectedGroupName">
+    </mat-form-field>
+
+    <!-- Textarea for system message -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Agents</mat-label>
+      <textarea matInput [ngModel]="agentsAsString"  (ngModelChange)="onValueChange($event)" style="height: 35vh;"></textarea>
+    </mat-form-field>
+
+
+    </div>
+      <hr>
+
+

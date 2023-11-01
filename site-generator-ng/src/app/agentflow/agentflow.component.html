@@ -1,0 +1,31 @@
+<mat-drawer-container class="flowchart-container" autosize>
+  <mat-toolbar class="toolbar">
+    <span>
+      <mat-icon matTooltip="Automation Agents team" class="agents-toggle" (click)="drawer.toggle();groupdrawer.toggle();">group_work</mat-icon>
+    </span>
+    <span class="fill-toolbar"></span>
+    <span>
+      <mat-icon matTooltip="Console"  class="admin" [routerLink]="['/admin']">dashboard</mat-icon>
+      <mat-icon class="separator">more_vert</mat-icon>
+      <mat-icon matTooltip="Start Connection" class="link-off-toggle" (click)="connectToWebSocket()" *ngIf="!isWSConnected">link_off</mat-icon>
+      <mat-icon matTooltip="Start Connection" class="link-toggle" (click)="closeWebSocket()" *ngIf="isWSConnected">link</mat-icon>
+    </span>
+    <span class="fill-toolbar"></span>
+    <span>
+      <mat-icon matTooltip="Automation Agents team" class="group-toggle" (click)="groupdrawer.toggle();">group_work</mat-icon>
+    </span>
+  </mat-toolbar>
+  <mat-drawer #drawer class="left-sidenav" mode="side">
+    <app-sidenav #sidenav [isWSConnected]="isWSConnected"></app-sidenav>
+
+  </mat-drawer>
+
+  <div class="flowchart-sidenav-content">
+    <app-flowchart [agents]="groupsidenav.agents"></app-flowchart>
+  </div>
+
+  <mat-drawer #groupdrawer class="right-sidenav" mode="side" position="end"  opened="true">
+    <app-group-sidenav #groupsidenav [isWSConnected]="isWSConnected" [agents]="sidenav.agents"></app-group-sidenav>
+
+  </mat-drawer>
+</mat-drawer-container>

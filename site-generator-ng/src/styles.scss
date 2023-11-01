@@ -13,15 +13,6 @@ body {
     min-height: 85vh;
 }
 
-.mat-drawer-content {
-    background-color: $primary-color !important;
-    position: relative;
-    z-index: 1;
-    display: block;
-    height: 100%;
-    overflow: auto;
-    margin-left: 20%;
-}
 
 mat-icon {
     cursor: pointer;
