@@ -35,11 +35,10 @@ export class GroupSidenavComponent implements  OnInit, OnDestroy {
     if (changes.isWSConnected && changes.isWSConnected.currentValue) {
         this.listenToWebSocketMessages();
     }
-    if (changes.agents) {
-      for (let agent of this.agents) {
-        this.isSelected(agent.agent_name);
-      }
-  }
+    if (changes.agents && changes.agents.currentValue) {
+      this.groupAgents.setValue(this.agents.map(agent => agent.agent_name));
+    }
+
 }
 
   connectToWebSocket(): void {
@@ -171,6 +170,7 @@ export class GroupSidenavComponent implements  OnInit, OnDestroy {
   get agentsAsString(): string {
     return JSON.stringify(this.agents, null, 2);
   }
+
 
   ngOnDestroy() {
     // Close the WebSocket connection when the component is destroyed

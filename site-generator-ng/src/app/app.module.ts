@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BrowserModule } from '@angular/platform-browser';
@@ -82,7 +82,7 @@ import { GroupSidenavComponent } from './agentflow/group-sidenav/group-sidenav.c
     AppRoutingModule,
     NgxEchartsModule.forRoot({ echarts }),
   ],
-  schemas: [],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   entryComponents: [CustomAutocompleteControlRenderer, LangComponent, DataDisplayComponent],
   bootstrap: [AppComponent]
 })

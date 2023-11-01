@@ -112,7 +112,7 @@ export class SidenavComponent implements  OnInit, OnDestroy {
       const agentExists = this.agents.some(agent => agent.agent_name === agent_name);  
     if (!agentExists) {
       let newAgent = { 'agent_name': agent_name, 'message': message };
-      this.agents.push(newAgent);
+      this.agents = [...this.agents, newAgent];
     } else {
       console.log('Agent already exists. Not adding.'); 
     }

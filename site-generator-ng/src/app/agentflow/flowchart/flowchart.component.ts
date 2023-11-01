@@ -45,7 +45,7 @@ export class FlowchartComponent implements OnInit, OnChanges {
       }
     };
   
-    const agentNodes = this.agents.slice(1).map((agent, index) => {
+    const agentNodes = this.agents!.slice(1).map((agent, index) => {
       const angle = index * angleStep;
       const x = centerX + (0.25 * screenWidth) * Math.cos(angle); // 25% of screen width as radius
       const y = centerY + (0.25 * screenHeight) * Math.sin(angle); // 25% of screen height as radius
@@ -60,8 +60,8 @@ export class FlowchartComponent implements OnInit, OnChanges {
     const userNode = {
       name: 'User',
       message: 'Dialog with the agents.',
-      x: 0.1 * screenWidth,  // 10% of screen width
-      y: 0.7 * screenHeight, // 70% of screen height
+      x: 0.5 * screenWidth,  // 10% of screen width
+      y: 0.1 * screenHeight, // 70% of screen height
       itemStyle: {
         color: '#b7858d'
       }
@@ -72,7 +72,7 @@ export class FlowchartComponent implements OnInit, OnChanges {
       managerNode = {
         name: 'Manager',
         message: 'Team supervisor.',
-        x: 0,
+        x: 0.1 * screenWidth,
         y: 0,
         itemStyle: {
           color: '#b7a51d'
