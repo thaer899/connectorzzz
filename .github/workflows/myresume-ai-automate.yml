@@ -9,15 +9,16 @@ on:
     inputs:
       app:
         type: choice
-        description: 'Application'
+        description: "Application"
         required: true
         options:
           - myresume-express
+          - agentflow-py
           - myagents-py
           - x
       job:
         type: choice
-        description: 'Job'
+        description: "Job"
         required: true
         options:
           - all
@@ -26,12 +27,11 @@ on:
           - test
       common:
         type: boolean
-        description: 'Common'
+        description: "Common"
         required: true
         default: false
 
 jobs:
-
   build:
     if: (github.event_name == 'workflow_dispatch' && github.event.inputs.job == 'build' ) || ( github.event_name == 'push' ) || (github.event_name == 'workflow_dispatch' && github.event.inputs.job == 'all' )
     environment: myresume-ai
@@ -39,8 +39,8 @@ jobs:
     env:
       APP_NAME: ${{ (github.event_name == 'push') && 'myresume-express' || '' }}${{ github.event.inputs.app }}
     permissions:
-      contents: 'read'
-      id-token: 'write'      
+      contents: "read"
+      id-token: "write"
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -65,7 +65,7 @@ jobs:
           registry: eu.gcr.io
           username: oauth2accesstoken
           password: ${{ steps.auth.outputs.access_token }}
-          
+
       - name: Cache Docker layers
         uses: actions/cache@v3
         with:
@@ -92,17 +92,17 @@ jobs:
       APP_NAME: ${{ (github.event_name == 'push') && 'myresume-express' || '' }}${{ github.event.inputs.app }}
       APP_CHART_PATH: ./myresume-ai/scripts/helm/apps/${{ (github.event_name == 'push') && 'myresume-express' || '' }}${{ github.event.inputs.app }}
       COMMON_CHART_PATH: ./myresume-ai/scripts/helm/common
-      
+
     permissions:
-      contents: 'read'
-      id-token: 'write'      
+      contents: "read"
+      id-token: "write"
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: 'Auth to Google Cloud SDK'
-        uses: 'google-github-actions/auth@v1'
+      - name: "Auth to Google Cloud SDK"
+        uses: "google-github-actions/auth@v1"
         with:
           token_format: access_token
           workload_identity_provider: ${{ vars.WORKLOAD_IDENTITY_PROVIDER }}
@@ -113,7 +113,7 @@ jobs:
         with:
           project_id: ${{ vars.PROJECT_ID }}
           export_default_credentials: true
-          
+
       - name: Install GKE Auth plugin
         run: |
           gcloud components install gke-gcloud-auth-plugin
@@ -121,11 +121,11 @@ jobs:
       - name: Authenticate to the cluster
         run: |
           gcloud container clusters get-credentials ${{ vars.CLUSTER_NAME }} --region ${{ vars.CLUSTER_REGION }} --project ${{ vars.PROJECT_ID }} || gcloud feedback --verbosity=debug
-    
+
       - name: Install Helm
         uses: azure/setup-helm@v1
         with:
-          version: 'v3.5.2'
+          version: "v3.5.2"
 
       - name: Deploy Common Chart to Kubernetes
         if: ( github.event_name == 'workflow_dispatch' || github.event.inputs.common == 'true' )
@@ -142,12 +142,12 @@ jobs:
     environment: myresume-ai
     runs-on: ubuntu-latest
     env:
-      APP_NAME: ${{ (github.event_name == 'push') && 'myresume-express' || '' }}${{ github.event.inputs.app }}    
+      APP_NAME: ${{ (github.event_name == 'push') && 'myresume-express' || '' }}${{ github.event.inputs.app }}
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: Use Node.js 18.x
         uses: actions/setup-node@v3
         with:
