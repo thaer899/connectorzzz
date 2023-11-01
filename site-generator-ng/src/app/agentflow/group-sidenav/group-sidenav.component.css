@@ -39,7 +39,11 @@ pre {
   bottom: 0px;
   background-color: #424242;
   font-size: 14px;
-  height: 9vh;
+}
+
+.bottom-form {
+  width: 80%;
+  padding: 10px;
 }
 
 /* Loading spinner styling */
@@ -76,8 +80,8 @@ pre {
   padding: 5px;
   margin: 10px;
   overflow-y: auto;
-  max-height: 60vh;
-  height: 60vh;
+  max-height: 62vh;
+  height: 62vh;
   background-color: #979797;
 }
 
@@ -92,8 +96,18 @@ pre {
 /* Responsiveness for smaller screens */
 @media screen and (max-width: 30em) {
   .card {
-    width: 90% !important;
+    width: 80% !important;
     position: inherit;
   }
 
+  .bottombar {
+    width: 60%;
+    font-size: 12px;
+  }
+
+   .bottom-form {
+    width: 60%;
+    padding: 4px;
+
+  }
 }

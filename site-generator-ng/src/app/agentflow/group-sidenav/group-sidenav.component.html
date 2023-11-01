@@ -7,7 +7,7 @@
 
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Agents</mat-label>
-          <textarea matInput [ngModel]="agentsAsString"  (ngModelChange)="onValueChange($event)"></textarea>
+          <textarea matInput [ngModel]="agentsAsString"  (ngModelChange)="onValueChange($event)" style="height: 5vh;"></textarea>
         </mat-form-field>
     <!-- Sliders -->
         <!--
@@ -17,7 +17,7 @@
       -->
 
       </ng-container>
-      <mat-form-field>
+      <mat-form-field style="width: 100%;">
         <mat-label>Select Agents</mat-label>
         <mat-select [formControl]="groupAgents" multiple>
           <mat-option *ngFor="let agent of agents" [value]="agent.agent_name" [class.selected-agent]="isSelected(agent.agent_name)">
@@ -55,7 +55,7 @@
       </ng-container>
              <!-- Bottom bar for user message input -->
              <div class="bottombar">
-              <mat-form-field appearance="outline" style="margin: 0 10px; width: 80%">
+              <mat-form-field appearance="outline" class="bottom-form">
                 <mat-label>Enter message</mat-label>
                 <textarea matInput #messageInput ></textarea>
               </mat-form-field>
