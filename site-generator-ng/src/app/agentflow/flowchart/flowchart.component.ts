@@ -98,8 +98,8 @@ export class FlowchartComponent implements OnInit, OnChanges {
       tooltip: {
         formatter: (params) => {
           if (params.dataType === 'node') {
-            const node = this.agents.find(agent => agent.agent_name === params.data.name);
-            const description = node.message ? `Description: ${node.message}` : '';
+            const node = this.agents!.find(agent => agent.agent_name === params.data.name);
+            const description = node!.message ? `Description: ${node.message}` : '';
             return `Name: ${node.agent_name}<br>${description}`;
           }
         }
