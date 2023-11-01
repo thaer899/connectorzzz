@@ -3,13 +3,9 @@ from concurrent.futures import ProcessPoolExecutor
 from functools import partial
 import asyncio
 from .initialize import run_agents, initiate_group_chat, initiate_agent_chat
+from .config import config_list, request_timeout, seed, use_docker, group_name
 
 logging.basicConfig(filename='agent.log', level=logging.DEBUG)
-
-config_list = [{'model': 'gpt-3.5-turbo'}]
-request_timeout = 300
-seed = 42
-use_docker = False
 
 
 def setup_agent(agent_name, message, send_queue, receive_queue):
@@ -89,7 +85,7 @@ def group_chat(message, agent_name, agents, send_queue, receive_queue):
         partial(
             initiate_group_chat,
             prompt=message,
-            group_name="Connectorzzz",
+            group_name=group_name,
             llm_config={
                 "request_timeout": request_timeout,
                 "seed": seed,

@@ -4,8 +4,8 @@ export const environment = {
   myResumeURL: 'https://ai.thaersaidi.net/myresume',
   myAgentsURL: 'https://ai.thaersaidi.net/autogen',
   myAgentsWS: 'wss://ai.thaersaidi.net/autogen',
-  agentFlowURL: 'http://ai.thaersaidi.net/agentflow',
-  agentFlowWS: 'ws://ai.thaersaidi.net/agentflow',
+  agentFlowURL: 'https://ai.thaersaidi.net/agentflow',
+  agentFlowWS: 'wss://ai.thaersaidi.net/agentflow',
   functionApiKey: 'FJxJ2MRv4vtAH0Js81Q390',
   title: "Site Generator",
   firebaseConfig: {
