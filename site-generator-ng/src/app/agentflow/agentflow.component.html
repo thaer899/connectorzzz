@@ -21,7 +21,7 @@
   </mat-drawer>
 
   <div class="flowchart-sidenav-content">
-    <app-flowchart [agents]="sidenav.agents"></app-flowchart>
+    <app-flowchart #flowchart [messages]="groupsidenav.messages" [agents]="sidenav.agents"></app-flowchart>
   </div>
 
   <mat-drawer #groupdrawer class="right-sidenav" mode="side" position="end">

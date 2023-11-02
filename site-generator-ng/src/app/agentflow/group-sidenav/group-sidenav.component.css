@@ -4,6 +4,10 @@ pre {
   margin: -30px 0px;
 }
 
+hr {
+  border: 1px solid #9b9b9be0 !important;
+}
+
 .content {
   padding: 10px;
   display: flex;
@@ -42,8 +46,8 @@ pre {
 }
 
 .bottom-form {
-  width: 80%;
-  padding: 10px;
+  width: 70%;
+  padding: 0px 10px;
 }
 
 /* Loading spinner styling */
@@ -80,8 +84,8 @@ pre {
   padding: 5px;
   margin: 10px;
   overflow-y: auto;
-  max-height: 60vh;
-  height: 60vh;
+  max-height: 65%;
+  height: 100%;
   background-color: #979797;
 }
 
@@ -96,7 +100,8 @@ pre {
 /* Responsiveness for smaller screens */
 @media screen and (max-width: 30em) {
   .card {
-    width: 80% !important;
+    width: 86% !important;
+    max-height: 64%;
     position: inherit;
   }
 

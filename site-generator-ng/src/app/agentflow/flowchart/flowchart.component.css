@@ -1,0 +1,17 @@
+
+.sidenav-content {
+  background-color: #303030 !important;
+  color: white !important;
+  width: 94%; 
+  margin-left: 3%;
+  height: 84vh;
+  margin-top: 3vh;
+  border: 1px solid #9b9b9be0 !important;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+  max-width: 50vh !important;
+}

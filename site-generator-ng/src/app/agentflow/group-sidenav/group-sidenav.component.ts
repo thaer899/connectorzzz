@@ -56,7 +56,8 @@ export class GroupSidenavComponent implements  OnInit, OnDestroy {
           console.log("Received WebSocket message:", messageStr);
           const messageObj = JSON.parse(messageStr);
           if (messageObj) {
-            this.messages.push({ 'name': messageObj.name, 'content': messageObj.content });
+            this.messages = [...this.messages, { 'name': messageObj.name, 'content': messageObj.content }];
+
             this.loading = false;
           }
           this.cd.detectChanges();
@@ -81,7 +82,8 @@ export class GroupSidenavComponent implements  OnInit, OnDestroy {
         message:  message,
       })
     );
-    this.messages.push({ 'name': 'Manager', 'content': message });
+    this.messages = [...this.messages, { 'name': 'Manager', 'content': message }];
+
   }
 
   createGroup(agents: any[]): void {
@@ -104,10 +106,11 @@ export class GroupSidenavComponent implements  OnInit, OnDestroy {
         console.log("Received WebSocket message:", messageStr);
         const messageObj = JSON.parse(messageStr);
         if (messageObj && messageObj.name) {
-          this.messages.push({ 'name': messageObj.name, 'content': messageObj.content });
+          this.messages = [...this.messages, { 'name': messageObj.name, 'content': messageObj.content }];
           this.loading = false;
         }else if (messageObj && !messageObj.name) {
-          this.messages.push({ 'name': 'Hint', 'content': messageStr });
+          this.messages = [...this.messages, { 'name': 'Hint', 'content': messageStr }];
+
           this.loading = false;
         }
         this.cd.detectChanges();

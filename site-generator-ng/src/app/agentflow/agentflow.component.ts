@@ -7,6 +7,7 @@ import { ElementRef, ViewChild, AfterViewChecked, Renderer2 } from '@angular/cor
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { GroupSidenavComponent } from './group-sidenav/group-sidenav.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { FlowchartComponent } from './flowchart/flowchart.component';
 @Component({
   selector: 'app-agentflow',
   templateUrl: './agentflow.component.html',
@@ -16,6 +17,7 @@ export class AgentflowComponent implements  OnInit, OnDestroy {
   @ViewChild('scrollableContainer') private scrollableContainer: ElementRef;
   @ViewChild('sidenav') sidenavComponent: SidenavComponent;
   @ViewChild('groupsidenav') groupSidenavComponent: GroupSidenavComponent;
+  @ViewChild('flowchart') flowChartComponent: FlowchartComponent;
 
   events: string[] = [];
 
@@ -41,6 +43,7 @@ export class AgentflowComponent implements  OnInit, OnDestroy {
       this.groupSidenavComponent.agents = this.sidenavComponent.agents;
       this.sidenavComponent.chatId = this.chatId;
       this.sidenavComponent.isWSConnected = true;
+
     }
   }
 

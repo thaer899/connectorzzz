@@ -35,15 +35,11 @@
       </div>
       </mat-card>
       <hr>
-
+      <mat-form-field appearance="outline" class="bottom-form">
+        <mat-label>Enter message</mat-label>
+        <textarea matInput #messageInput ></textarea>
+      </mat-form-field>
+      <!-- Button to initiate chat -->
+      <button mat-raised-button color="btn" style="margin: 5px;"
+        (click)="initiateGroupChat(messageInput.value, groupAgents.value)">Ask</button>
       </ng-container>
-             <!-- Bottom bar for user message input -->
-             <div class="bottombar">
-              <mat-form-field appearance="outline" class="bottom-form">
-                <mat-label>Enter message</mat-label>
-                <textarea matInput #messageInput ></textarea>
-              </mat-form-field>
-              <!-- Button to initiate chat -->
-              <button mat-raised-button color="btn" style="margin: 5px;"
-                (click)="initiateGroupChat(messageInput.value, groupAgents.value)">Ask</button>
-            </div>  

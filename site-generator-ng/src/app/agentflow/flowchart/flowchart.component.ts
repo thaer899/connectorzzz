@@ -8,10 +8,12 @@ import type { EChartsOption } from 'echarts';
 })
 export class FlowchartComponent implements OnInit, OnChanges {
   @Input() agents: any[] = [];
+  @Input() messages: any[] = [];
 
   options: EChartsOption;
   public defaultAgents: any[] = []
-  
+  public lastMessenger = '';
+
   constructor() { }
 
   ngOnInit(): void {
@@ -19,9 +21,17 @@ export class FlowchartComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.agents && changes.agents.currentValue) {
       this.generateOptions();
-    }
+  }
+
+  getMessageCountForAgent(agentName: string): number {
+    return this.messages.filter(message => message.name === agentName).length;
+  }
+
+  getMessagesForAgent(agentName: string) {
+    return this.messages
+        .filter(message => message.name === agentName)
+        .map(message => message.content);
   }
 
   private generateOptions(): void {
@@ -29,14 +39,15 @@ export class FlowchartComponent implements OnInit, OnChanges {
     const screenHeight = window.innerHeight;
   
     const centerX = 0.2 * screenWidth;
-    const centerY = 0.4 * screenHeight;
+    const centerY = 0.3 * screenHeight;
   
     const angleStep = (2 * Math.PI) / this.agents.length;
   
     const firstAgent = this.agents[0];
-  
+
+    const rootNodeName = firstAgent ? firstAgent.agent_name + ` (${this.getMessageCountForAgent(firstAgent.agent_name)})` : 'Proxy';
     const rootNode = {
-      name: firstAgent ? firstAgent.agent_name : 'Proxy',
+      name: rootNodeName,
       message: firstAgent ? firstAgent.message : 'A User Proxy that can be used to interact with the agents.',
       x: centerX,
       y: centerY,
@@ -50,59 +61,92 @@ export class FlowchartComponent implements OnInit, OnChanges {
       const x = centerX + (0.25 * screenWidth) * Math.cos(angle); // 25% of screen width as radius
       const y = centerY + (0.25 * screenHeight) * Math.sin(angle); // 25% of screen height as radius
       return {
-        name: agent.agent_name,
+        name: agent.agent_name  + ` (${this.getMessageCountForAgent(agent.agent_name)})`,
         message: agent.message,
         x,
         y
       };
     });
-  
-    const userNode = {
-      name: 'User',
-      message: 'Dialog with the agents.',
-      x: 0.5 * screenWidth,  // 10% of screen width
-      y: 0.1 * screenHeight, // 70% of screen height
-      itemStyle: {
-        color: '#b7858d'
-      }
-    };
 
-    let managerNode  = {};
+    let managerNode = {'name':'', 'message':'', 'x':0, 'y':0, 'itemStyle':{color:''}};
     if (agentNodes.length > 0) {
       managerNode = {
-        name: 'Manager',
+        name: `Manager (${this.getMessageCountForAgent('Manager')})`,
         message: 'Team supervisor.',
-        x: 0.1 * screenWidth,
+        x: centerX,
         y: 0,
         itemStyle: {
           color: '#b7a51d'
         }
-      };
+      }
     }
+      else {
+        managerNode = {
+          name: 'User',
+          message: 'Dialog with the agents.',
+          x: 0.5 * screenWidth,  // 10% of screen width
+          y: 0.1 * screenHeight, // 70% of screen height
+          itemStyle: {
+            color: '#b7858d'
+          }
+        }; 
+      }
+
+
+      const lastMessage = this.messages[this.messages.length - 1];
 
     const agentLinks = [
-      ...this.agents.map(agent => ({
-        source: agent.agent_name,
+      ...agentNodes.map(agent => ({
+        source: agent.name,
         target: rootNode.name
       })),
+      ...agentNodes.map(agent => ({
+        source: rootNode.name,
+        target: agent.name
+      })),
       {
-        source: userNode.name,
+        source: managerNode.name,
         target: rootNode.name
       }
     ];
 
     this.options = {
-      title: {
-        text: 'Team Flow',
+      title:  {
+        text: (this.messages.length > 0 ? `Messages: ${this.messages.length}` : 'No messages Available'),
+        subtext: (this.messages.length > 0 ? `Latest message from: ${this.messages[this.messages.length - 1]?.name}`  : '')
       },
       tooltip: {
         formatter: (params) => {
           if (params.dataType === 'node') {
-            const node = this.agents!.find(agent => agent.agent_name === params.data.name);
-            const description = node!.message ? `Description: ${node.message}` : '';
-            return `Name: ${node.agent_name}<br>${description}`;
+            if (params.data.name.split(' ')[0] === 'Manager') {
+              return `<h4>Persona:</h4> ${params.data.message}<h4>Last message:</h4> "${this.getMessagesForAgent('Manager')}"`;
+            } 
+            if (params.data.name === 'User' || params.data.name === 'Proxy') {
+              return `<h4>Persona:</h4> ${params.data.message}<br>`;
+            } 
+            else {
+            const actualAgentName = params.data.name.split(' ')[0];
+            const node = this.agents!.find(agent => agent.agent_name === actualAgentName);
+            const description = node!.message ? node.message : '';
+            return `<h4>Persona:</h4> ${description}<h4>Last message:</h4> "${this.getMessagesForAgent(actualAgentName)}"`;
           }
         }
+        },
+        className: 'tooltip',
+        showContent: true,
+        position: 'top',
+        enterable: true,
+        confine: true,
+        transitionDuration: 0,
+        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+        borderColor: '#333',
+        borderWidth: 0,
+        padding: 25,
+        textStyle: {
+          color: '#fff',
+          fontSize: 14
+        },
+        extraCssText: 'width: 50vh;max-height:50vh;overflow-y: auto; white-space: normal;'  
       },
       animationDurationUpdate: 1500,
       animationEasingUpdate: 'quinticInOut',
@@ -127,7 +171,6 @@ export class FlowchartComponent implements OnInit, OnChanges {
           data: [
             ...agentNodes,
             rootNode,
-            userNode,
             ...(Object.keys(managerNode).length ? [managerNode] : []),
           ],
           links: [
