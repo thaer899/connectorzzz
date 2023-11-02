@@ -24,7 +24,7 @@ export class SidenavComponent implements  OnInit, OnDestroy {
   public chatId: string = '';
   public selectedGroupName: string = 'Connectorzzz';
   public selectedAgentName: string = 'AgentX';
-  public selectedAgentMessage: string = 'A reliable and knowledgeable aid with a knack for problem-solving. Detail-oriented reviewer ensuring code quality and functionality.';
+  public selectedAgentMessage: string = 'A reliable and knowledgeable aid with a knack for problem-solving.';
 
   constructor(private http: HttpClient,private snackBar: MatSnackBar, private wsService: WebsocketService, private cd: ChangeDetectorRef) {
   }
