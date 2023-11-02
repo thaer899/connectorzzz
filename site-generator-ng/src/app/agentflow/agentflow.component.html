@@ -15,9 +15,9 @@
       <mat-icon matTooltip="Automation Agents team" class="group-toggle" (click)="groupdrawer.toggle();drawer.toggle()">group_work</mat-icon>
     </span>
   </mat-toolbar>
+
   <mat-drawer #drawer class="left-sidenav" mode="side"  opened="true">
     <app-sidenav #sidenav [isWSConnected]="isWSConnected"></app-sidenav>
-
   </mat-drawer>
 
   <div class="flowchart-sidenav-content">
@@ -26,6 +26,5 @@
 
   <mat-drawer #groupdrawer class="right-sidenav" mode="side" position="end">
     <app-group-sidenav #groupsidenav [isWSConnected]="isWSConnected" [agents]="sidenav.agents"></app-group-sidenav>
-
   </mat-drawer>
 </mat-drawer-container>

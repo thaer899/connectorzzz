@@ -4,6 +4,17 @@ pre {
   margin: 0px;
 }
 
+.toolbar {
+  background-color: #313131;
+  color: #ECEFF1;
+  border-bottom: 1px solid #565656;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+
+  z-index: 1000;
+}
 
 .flowchart-container {
   background-color: #746d6d;
@@ -22,12 +33,14 @@ pre {
 .left-sidenav{
   width: 25%;
   background-color: #424242;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5) !important;
 }
 
 /* Sidenav width and background */
 .right-sidenav{
   width: 40%;
   background-color: #424242;
+  box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.5) !important;
 }
 
 
@@ -88,7 +101,7 @@ pre {
 .mat-icon {
   margin-right: 5px;
   padding: 1px;
-  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5) ;
   font-size: 20px;
 }
 
