@@ -37,16 +37,13 @@ hr {
 
 /* Bottom bar for message input */
 .bottombar {
-  width: 40%;
-  color: #ECEFF1;
-  position: fixed;
+  position: absolute;
   bottom: 0px;
-  background-color: #424242;
-  font-size: 14px;
+  width: 100%;
 }
 
 .bottom-form {
-  width: 70%;
+  width: 85%;
   padding: 0px 10px;
 }
 
@@ -97,6 +94,20 @@ hr {
   color: #a72f2f !important;
 }
 
+.start-agents-btn {
+  position: absolute;
+  top: 3vh;
+  right: 2vh;
+  background-color: #225f43 !important;
+}
+
+.ask-agents-btn {
+  position: absolute;
+  bottom: 4vh;
+  right: 4px;
+  /* color: #225f43 !important; */
+}
+
 /* Responsiveness for smaller screens */
 @media screen and (max-width: 30em) {
   .card {
@@ -106,12 +117,13 @@ hr {
   }
 
   .bottombar {
-    width: 60%;
-    font-size: 12px;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
   }
 
    .bottom-form {
-    width: 60%;
+    width: 75%;
     padding: 4px;
 
   }
