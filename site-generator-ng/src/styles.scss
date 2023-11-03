@@ -111,6 +111,41 @@ mat-icon {
     font-size: 12px;
 }
 
+
+/* Style the scrollbar container */
+::-webkit-scrollbar {
+    width: 6px;  /* Width of the vertical scrollbar */
+    height: 6px; /* Height of the horizontal scrollbar */
+}
+
+/* Handle (the draggable part) */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 4px; /* Rounded corners */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Track (the part that the draggable handle moves within) */
+::-webkit-scrollbar-track {
+    background: #303030;
+    border-radius: 2px; /* Rounded corners */
+}
+
+/* Track on active (when the scrollbar is being clicked) */
+::-webkit-scrollbar-track-piece:active {
+    background-color: #ccc;
+}
+
+/* Button at the top and bottom (up and down arrows) */
+::-webkit-scrollbar-button {
+    display: none; /* Hide the buttons */
+}
+
+
 @media screen and (max-width: 30em) {
     .mat-card {
         width: 70% !important;

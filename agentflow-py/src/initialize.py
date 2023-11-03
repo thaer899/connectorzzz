@@ -23,17 +23,18 @@ def run_agents(
         receive_queue: queue.Queue[Any]):
 
     logging.info(f"Running {agent_name} agent.")
-    
+
     assistant = WebSocketAssistantAgent(
         name=agent_name,
         system_message=initial_message,
         llm_config=llm_config,
         send_queue=send_queue,
         receive_queue=receive_queue
-        )
-    
+    )
+
     assistant.reset()
     return assistant
+
 
 def initiate_agent_chat(
         message: str,
@@ -44,11 +45,14 @@ def initiate_agent_chat(
         receive_queue: queue.Queue[Any]):
     user = {"agent_name": "User", "status": "active", "message": """Reply TERMINATE if the task has been solved at full satisfaction.
         Otherwise, reply CONTINUE, or the reason why the task is not solved yet."""}
-    agent = {"agent_name": agent_name, "status": "active", "message": """Reply TERMINATE if the task has been solved at full satisfaction."""}
-    user_proxy = create_instance_proxy(agent=user, code_execution_config=code_execution_config,llm_config=llm_config, send_queue=send_queue, receive_queue=receive_queue)
-    assistant = create_instance_agent(agent=agent, code_execution_config=code_execution_config,llm_config=llm_config, send_queue=send_queue, receive_queue=receive_queue)
+    agent = {"agent_name": agent_name, "status": "active",
+             "message": """Reply TERMINATE if the task has been solved at full satisfaction."""}
+    user_proxy = create_instance_proxy(agent=user, code_execution_config=code_execution_config,
+                                       llm_config=llm_config, send_queue=send_queue, receive_queue=receive_queue)
+    assistant = create_instance_agent(agent=agent, code_execution_config=code_execution_config,
+                                      llm_config=llm_config, send_queue=send_queue, receive_queue=receive_queue)
     user_proxy.initiate_chat(assistant, clear_history=True, message=message)
-    
+
 
 def create_group(
         prompt: str,
@@ -62,14 +66,17 @@ def create_group(
     logging.info(f"Creating group: {group_name}")
     for agent in agents:
         if agent["message"]:
-            agent["message"] = agent["message"].replace("{brand_task}", group_name)
+            agent["message"] = agent["message"].replace(
+                "{brand_task}", group_name)
             agent["message"] = agent["message"].replace("{user_task}", prompt)
 
     # Creating a list of agents for the group chat
-    group_agents = [create_instance_proxy(agent=agents[0], code_execution_config=code_execution_config,llm_config=llm_config, send_queue=send_queue, receive_queue=receive_queue)]
+    group_agents = [create_instance_proxy(agent=agents[0], code_execution_config=code_execution_config,
+                                          llm_config=llm_config, send_queue=send_queue, receive_queue=receive_queue)]
     for agent in agents[1:]:
         logging.info(f"Starting agent: {agent['agent_name']}")
-        group_agents.append(create_instance_agent(agent=agent, code_execution_config=code_execution_config,llm_config=llm_config, send_queue=send_queue, receive_queue=receive_queue))
+        group_agents.append(create_instance_agent(agent=agent, code_execution_config=code_execution_config,
+                            llm_config=llm_config, send_queue=send_queue, receive_queue=receive_queue))
     return group_agents
 
 
@@ -106,33 +113,33 @@ def initiate_group_chat(
         send_queue=send_queue,
         receive_queue=receive_queue,
     )
-    
+
     logging.info(f"Group chat...{groupchat}")
     logging.info(f"group_agents...{group_agents}")
-    
+
     group_agents[0].initiate_chat(
         manager,
         clear_history=True,
         message=prompt
     )
 
-    for msg in groupchat.messages:
-        receive_queue.put(msg)
-        logging.info(f"Added message to client_receive_queue...{msg}")
-        
-        def check_send_queue():
-            while True:
-                if not send_queue.empty():
-                    item = send_queue.get()
-                    logging.info(
-                        f"Sending group message: {item['message']} to {item['sender']}")
-                    manager.send(item['message'], item['sender'])
+    # for msg in groupchat.messages:
+    #     receive_queue.put(msg)
+    #     logging.info(f"Added message to client_receive_queue...{msg}")
 
-    # Start the check_send_queue function in a separate thread
-    thread = Thread(target=check_send_queue)
-    thread.start()
-    
-    return groupchat
+    #     def check_send_queue():
+    #         while True:
+    #             if not send_queue.empty():
+    #                 item = send_queue.get()
+    #                 logging.info(
+    #                     f"Sending group message: {item['message']} to {item['sender']}")
+    #                 manager.send(item['message'], item['sender'])
+
+    # # Start the check_send_queue function in a separate thread
+    # thread = Thread(target=check_send_queue)
+    # thread.start()
+
+    # return groupchat
 
 
 def create_instance_agent(agent, code_execution_config, llm_config, send_queue, receive_queue):
@@ -172,4 +179,3 @@ def termination_msg(x): return isinstance(
 def get_active_agents_by_name(agents: Dict) -> List[str]:
     """Get names of all agents with status set to active."""
     return [agent['agent_name'] for agent in agents if agent['status'] == 'active']
-

@@ -132,7 +132,8 @@ class GroupChatManager(ConversableAgent):
             system_message=system_message,
             **kwargs,
         )
-        self.register_reply(Agent, GroupChatManager.run_chat, config=groupchat, reset_config=GroupChat.reset)
+        self.register_reply(Agent, GroupChatManager.run_chat,
+                            config=groupchat, reset_config=GroupChat.reset)
         # self._random = random.Random(seed)
 
     def run_chat(
@@ -180,7 +181,7 @@ class GroupChatManager(ConversableAgent):
             # The speaker sends the message without requesting a reply
             speaker.send(reply, self, request_reply=False)
             message = self.last_message(speaker)
-        return super().run_chat(messages, sender, config)
+        return True, None
 
 
 class WebSocketManagerAgent(GroupChatManager):
@@ -191,7 +192,7 @@ class WebSocketManagerAgent(GroupChatManager):
         self.max_consecutive_auto_reply = max_consecutive_auto_reply
         self.send_queue = send_queue
         self.receive_queue = receive_queue
-        
+
     def get_human_input(self, message):
         logging.info(f"Received agent output: {message}")
         self.receive_queue.put(message)
@@ -206,16 +207,18 @@ class WebSocketManagerAgent(GroupChatManager):
         config: Optional[GroupChat] = None,
     ) -> Union[str, Dict, None]:
         """Override run_chat method for custom implementation."""
-        
+
         print("run_chat in WebSocketManagerAgent is being called.")
         logging.info(f"Config: {config}")
 
         if not isinstance(config, GroupChat):
-            raise TypeError(f"Expected an instance of GroupChat, but got {type(config)}")
+            raise TypeError(
+                f"Expected an instance of GroupChat, but got {type(config)}")
 
         # Adding logging at the start of the method
-        logging.info(f"Starting run_chat with messages: {messages} from sender: {sender.name}")
-        
+        logging.info(
+            f"Starting run_chat with messages: {messages} from sender: {sender.name}")
+
         # for message in messages:
         #     # Broadcast the message
         #     for agent in config.agents:
@@ -225,7 +228,7 @@ class WebSocketManagerAgent(GroupChatManager):
 
         #             # Adding the message to the queue
         #             self.receive_queue.put(message)
-        
+
         return super().run_chat(messages, sender, config)
 
     def receive(
@@ -237,11 +240,10 @@ class WebSocketManagerAgent(GroupChatManager):
     ):
         logging.info(
             f"Manager: Human received message: {message} from {sender.name}")
-        
+
         logging.info(f"Sender {sender.name}")
         self.receive_queue.put({
             "content": message,
             "name": sender.name
         })
         super().receive(message, sender, request_reply, silent)
-

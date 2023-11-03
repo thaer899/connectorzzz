@@ -21,6 +21,15 @@ class WebSocketUserProxyAgent(UserProxyAgent):
         self.code_execution_config = code_execution_config
         self.llm_config = llm_config
 
+    def get_human_input(self, message):
+        logging.info(
+            f"WebSocketAssistantAgent: Received agent output: {message}")
+        self.receive_queue.put(message)
+        human_message = self.send_queue.get()
+        logging.info(
+            f"WebSocketAssistantAgent: Sending human message: {human_message}")
+        return human_message["content"]
+
     def receive(
             self,
             message: Union[Dict, str],

@@ -13,7 +13,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class SidenavComponent implements  OnInit, OnDestroy {
   @ViewChild('scrollableContainer') private scrollableContainer: ElementRef;
   @Input() isWSConnected: boolean = false;
+  @Output() agentsChanged = new EventEmitter<any[]>();
 
+  private _agentsAsString: string;
 
   showFiller = false;
   public loading: boolean = false;
@@ -113,6 +115,8 @@ export class SidenavComponent implements  OnInit, OnDestroy {
     if (!agentExists) {
       let newAgent = { 'agent_name': agent_name, 'message': message };
       this.agents = [...this.agents, newAgent];
+      this.agentsChanged.emit(this.agents);
+
     } else {
       console.log('Agent already exists. Not adding.'); 
     }
@@ -157,20 +161,27 @@ export class SidenavComponent implements  OnInit, OnDestroy {
 onValueChange(newValue: string) {
   try {
     this.agents = JSON.parse(newValue);
-
+    if (this.agents.length > 0) {
+      this.agentsChanged.emit(this.agents);
+    }
   } catch (error) {
     console.error("Invalid JSON format:", error);
   }
-}
-
-
-get agentsAsString(): string {
-  return JSON.stringify(this.agents, null, 2);
 }
 
   ngOnDestroy() {
     // Close the WebSocket connection when the component is destroyed
     this.wsService.close();
   }
+
+  get agentsAsString(): string {
+    return JSON.stringify(this.agents, null, 2);
+  }
+  
+  set agentsAsString(value: string) {
+    this._agentsAsString = value;
+    // You can add additional logic here if needed
+  }
+  
 
 }

@@ -35,7 +35,17 @@ hr {
   background-color: #424242;
 }
 
-/* Bottom bar for message input */
+.card {
+  color: white;
+  padding: 10px;
+  margin: 10px;
+  overflow-y: auto;
+  max-height: 65%;
+  height: 100%;
+  background-color: #303030;
+  border: 1px solid #6b6666e0 !important;
+}
+
 .bottombar {
   position: absolute;
   bottom: 0px;
@@ -65,7 +75,9 @@ hr {
 /* Styling based on roles */
 .default, .boss, .boss-assistant, .senior-python-engineer, 
 .product-manager, .code-reviewer {
-  padding: 15px;
+  padding: 8px;
+  border: 1px solid #606060e0 !important;
+  
 }
 
 .default { background-color: #444e57; }
@@ -75,16 +87,6 @@ hr {
 .product-manager { background-color: #394f41; }
 .code-reviewer { background-color: #765e64; }
 
-/* Card styling for displaying messages */
-.card {
-  color: white;
-  padding: 5px;
-  margin: 10px;
-  overflow-y: auto;
-  max-height: 65%;
-  height: 100%;
-  background-color: #979797;
-}
 
 .mat-raised-button {
   background-color: #6c6c6c !important;
@@ -106,6 +108,11 @@ hr {
   bottom: 4vh;
   right: 4px;
   /* color: #225f43 !important; */
+}
+
+
+.mat-card>:first-child {
+  margin-top: 10px;
 }
 
 /* Responsiveness for smaller screens */

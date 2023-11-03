@@ -83,6 +83,9 @@ export class AgentflowComponent implements  OnInit, OnDestroy {
     );
   }
   
+  updateAgents(newAgents: any[]) {
+    this.agents = newAgents;
+  }
 
   closeWebSocket(): void {
     this.wsService.close();

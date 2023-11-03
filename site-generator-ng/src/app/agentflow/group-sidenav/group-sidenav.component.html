@@ -28,12 +28,6 @@
               <div [ngClass]="getUserClass(msg.name)"><strong>{{msg.name}}: </strong> {{ msg.content }}</div>
             </pre>
           </mat-list>
-
-
-       <!-- Spinner to indicate loading -->
-       <div class="spin">
-        <i class="fas fa-spinner fa-spin" *ngIf="loading" style="font-size: 40px;"></i>
-      </div>
       </mat-card>
       <hr>
       <div class="bottombar">
@@ -42,8 +36,10 @@
           <textarea matInput #messageInput ></textarea>
         </mat-form-field>
  
-          <span class="material-symbols-outlined ask-agents-btn" (click)="initiateGroupChat(messageInput.value, groupAgents.value)">
+          <span class="material-symbols-outlined ask-agents-btn" *ngIf="loading==false" (click)="initiateGroupChat(messageInput.value, groupAgents.value)">
             send
             </span>
+              <i class="fas fa-spinner fa-spin" *ngIf="loading==true"  style="font-size: 40px;"></i>
+
       </div>
       </ng-container>

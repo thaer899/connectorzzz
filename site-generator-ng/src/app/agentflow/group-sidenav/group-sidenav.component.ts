@@ -71,6 +71,7 @@ export class GroupSidenavComponent implements  OnInit, OnDestroy {
   }
 
   initiateGroupChat(message: string, agents: any[]): void {
+    this.loading = true;
     if (!this.isWSConnected) {
       this.connectToWebSocket();
       this.isWSConnected = true;
@@ -83,6 +84,7 @@ export class GroupSidenavComponent implements  OnInit, OnDestroy {
       })
     );
     this.messages = [...this.messages, { 'name': 'Manager', 'content': message }];
+    this.loading = false;
 
   }
 
@@ -107,11 +109,8 @@ export class GroupSidenavComponent implements  OnInit, OnDestroy {
         const messageObj = JSON.parse(messageStr);
         if (messageObj && messageObj.name) {
           this.messages = [...this.messages, { 'name': messageObj.name, 'content': messageObj.content }];
-          this.loading = false;
         }else if (messageObj && !messageObj.name) {
           this.messages = [...this.messages, { 'name': 'Hint', 'content': messageStr }];
-
-          this.loading = false;
         }
         this.cd.detectChanges();
       },

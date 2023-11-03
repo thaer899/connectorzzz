@@ -1,6 +1,9 @@
     <!-- Side navigation drawer -->
       <div style="padding: 15px;">
         <p>Agent:</p>
+        <span class="material-symbols-outlined add-agent" (click)="runAgent(selectedAgentMessage, selectedAgentName)" *ngIf="isWSConnected">
+          add_circle
+          </span>
               <!-- Input for the agent name -->
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Name</mat-label>
@@ -12,11 +15,6 @@
         <mat-label>System message</mat-label>
         <textarea matInput [(ngModel)]="selectedAgentMessage"></textarea>
       </mat-form-field>
-      
-      <!-- Button to run the agent -->
-      <button mat-raised-button color="secondary" style="margin: 5px;"
-        (click)="runAgent(selectedAgentMessage, selectedAgentName)" *ngIf="isWSConnected">
-      Add</button>
 
       </div>
       <hr>
