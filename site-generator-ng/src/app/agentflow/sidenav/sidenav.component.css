@@ -5,7 +5,7 @@ pre {
 }
 
 hr {
-  border: 1px solid #9b9b9be0 !important;
+  border: 1px solid #3b3b3b !important;
 }
 
 .content {
@@ -56,7 +56,6 @@ hr {
 /* General styling for input and text areas */
 .full-width {
   width: 100%;
-  background-color: #424242 !important;
   font-size: small;
 }
 
@@ -86,9 +85,12 @@ hr {
 
 .add-agent {
   position: fixed;
-  top: 6px;
+  top: 2.5vh;
   padding: 2px;
   left: 20%;
+  font-size: xx-large;
+  width: unset;
+  height: unset;
 }
 
 :host ::ng-deep .material-symbols-outlined :hover {
@@ -96,28 +98,6 @@ hr {
 }
 .mat-raised-button {
   background-color: #6c6c6c !important;
-}
-
-:host ::ng-deep .mat-form-field :hover {
-  border-bottom: 0px !important;
-
-}
-
-:host ::ng-deep .mat-form-field-flex {
-  background-color: #313131 !important;
-
-}
-
-:host ::ng-deep .mat-form-field-outline-end {
-  border: 0px  !important;
-}
-
-:host ::ng-deep .mat-form-field-outline-start {
-  border: 0px  !important;
-}
-
-:host ::ng-deep .ng-star-inserted {
-  padding-top: 8px  !important;
 }
 
 /* Responsiveness for smaller screens */

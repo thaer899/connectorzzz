@@ -154,7 +154,6 @@ class GroupChatManager(ConversableAgent):
             if message["role"] != "function":
                 message["name"] = speaker.name
             groupchat.messages.append(message)
-            print("Groupchat messages:", groupchat.messages)
             # broadcast the message to all agents except the speaker
             for agent in groupchat.agents:
                 if agent != speaker:
@@ -207,9 +206,6 @@ class WebSocketManagerAgent(GroupChatManager):
         config: Optional[GroupChat] = None,
     ) -> Union[str, Dict, None]:
         """Override run_chat method for custom implementation."""
-
-        print("run_chat in WebSocketManagerAgent is being called.")
-        logging.info(f"Config: {config}")
 
         if not isinstance(config, GroupChat):
             raise TypeError(

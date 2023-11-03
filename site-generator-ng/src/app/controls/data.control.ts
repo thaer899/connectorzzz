@@ -5,8 +5,8 @@ import { ControlProps } from '@jsonforms/core';
 @Component({
   selector: 'app-data-component',
   template: `
-  <mat-form-field  style="width: 100%">
-    <textarea  style="width: 100%;height: 75vh;" matInput [(ngModel)]="dataAsString"></textarea>
+  <mat-form-field  style="width: 100%;background-color:#212121">
+    <textarea  style="width: 96%;height: 70vh;background-color:#212121;padding:2vh" matInput [(ngModel)]="dataAsString"></textarea>
   </mat-form-field>
 `
 })

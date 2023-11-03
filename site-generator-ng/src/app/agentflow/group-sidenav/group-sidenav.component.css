@@ -5,7 +5,7 @@ pre {
 }
 
 hr {
-  border: 1px solid #9b9b9be0 !important;
+  border: 0px solid #3b3b3b !important;
 }
 
 .content {
@@ -42,7 +42,7 @@ hr {
   overflow-y: auto;
   max-height: 65%;
   height: 100%;
-  background-color: #303030;
+  background-color: #2c2c2cdb;
   border: 1px solid #6b6666e0 !important;
 }
 
@@ -53,8 +53,9 @@ hr {
 }
 
 .bottom-form {
-  width: 85%;
-  padding: 0px 10px;
+  width: 86%;
+  padding: 0 1em;
+  font-size: small;
 }
 
 /* Loading spinner styling */
@@ -73,23 +74,71 @@ hr {
 }
 
 /* Styling based on roles */
-.default, .boss, .boss-assistant, .senior-python-engineer, 
-.product-manager, .code-reviewer {
+.default, .bot, .manager, .proxy, .user{
   padding: 8px;
   border: 1px solid #606060e0 !important;
-  
 }
 
-.default { background-color: #444e57; }
-.boss { background-color: #4e4444; }
-.boss-assistant { background-color: #604c4c; }
-.senior-python-engineer { background-color: #444e57; }
-.product-manager { background-color: #394f41; }
-.code-reviewer { background-color: #765e64; }
-
+.user { 
+  background-color: #b7858d;
+  width: 92%;
+  color: #464646;
+}
+.manager { 
+  background-color: #b7a51d;
+  width: 92%;
+  color: #464646;
+}
+.default { 
+  background-color: #444e57; 
+  width: 92%;
+  margin-left: 4%;
+}
+.bot { 
+  background-color: #5470c6;
+  width: 92%;
+  margin-left: 4%;
+ }
+ .proxy { 
+  background-color: #99af9d;
+  width: 92%;
+  margin-left: 4%;
+  color: #464646;
+ }
 
 .mat-raised-button {
   background-color: #6c6c6c !important;
+}
+
+.chat-icon {
+  position: absolute;
+  padding: 4px;
+  width: unset;
+  height: unset;
+  font-size: x-large;
+  margin-top: 4.5%;
+}
+.person {
+  right: 0.5%;
+  color: #b7858d !important;
+}
+.account_circle  {
+  right: 0.5%;
+  color: #b7a51d !important;
+}
+.supervised_user_circle {
+  left: 1px;
+  color: #99af9d !important;
+
+}
+.robot_2 {
+  left: 1px;
+  color: #5470c6 !important;
+
+}
+
+.info {
+  left: 1px;
 }
 
 .selected-agent {
@@ -105,15 +154,16 @@ hr {
 
 .ask-agents-btn {
   position: absolute;
-  bottom: 4vh;
-  right: 4px;
-  /* color: #225f43 !important; */
+  bottom: 30%;
+  right: 2%;
 }
 
 
 .mat-card>:first-child {
   margin-top: 10px;
 }
+
+
 
 /* Responsiveness for smaller screens */
 @media screen and (max-width: 30em) {

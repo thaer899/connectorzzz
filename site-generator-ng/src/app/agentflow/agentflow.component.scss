@@ -5,7 +5,7 @@ pre {
 }
 
 .toolbar {
-  background-color: #313131;
+  background-color: #0d0d0d;
   color: #ECEFF1;
   border-bottom: 1px solid #565656;
   position: sticky;
@@ -17,7 +17,6 @@ pre {
 }
 
 .flowchart-container {
-  background-color: #746d6d;
   position: fixed;
   top: 0px;
   left: 0px;
@@ -25,28 +24,23 @@ pre {
   height: 100%;
 }
 
-:host ::ng-deep .mat-drawer-content  {
-  margin-left: 0% ;
-}
-
-
 /* Sidenav width and background */
 .left-sidenav{
   width: 25%;
-  background-color: #424242;
+  background-color: #0d0d0d;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5) !important;
 }
 
 /* Sidenav width and background */
 .right-sidenav{
   width: 40%;
-  background-color: #424242;
+  background-color: #0d0d0d;
   box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.5) !important;
 }
 
 
 .flowchart-sidenav-content{
-  background-color: #746d6d;
+  background-color: #303030;
   padding: 15px;
 }
 
@@ -116,3 +110,47 @@ pre {
 
 }
 }
+
+
+
+// Form Controls
+
+:host ::ng-deep .mat-drawer-content  {
+  margin-left: 0% ;
+}
+
+:host ::ng-deep .mat-form-field-flex {
+  background-color: #212121 !important;
+}
+
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  top: unset !important;
+  width:100% ;
+}
+
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline :hover {
+  top: unset !important;
+  bottom: unset;
+  width:100% ;
+}
+
+:host ::ng-deep .mat-form-field-label-wrapper {
+  top: -1.2em;
+}
+
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 1em 0em  !important;
+}
+
+:host ::ng-deep .mat-form-field-outline-end {
+  border: 0px  !important;
+}
+
+:host ::ng-deep .mat-form-field-outline-start {
+  border: 0px  !important;
+}
+
+// :host ::ng-deep .ng-star-inserted :hover{
+//   bottom: unset !important;
+//   width: 100% !important;
+// }

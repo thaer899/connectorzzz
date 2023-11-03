@@ -1,8 +1,8 @@
     <!-- Side navigation drawer -->
       <div style="padding: 15px;">
-        <p>Agent:</p>
+        <p>Agent</p>
         <span class="material-symbols-outlined add-agent" (click)="runAgent(selectedAgentMessage, selectedAgentName)" *ngIf="isWSConnected">
-          add_circle
+          add
           </span>
               <!-- Input for the agent name -->
       <mat-form-field appearance="outline" class="full-width">
@@ -22,7 +22,7 @@
       <!-- Message display area -->
      <div style="padding: 15px;">
             <!-- Input for the agent name -->
-    <p>Group:</p>
+    <p>Group</p>
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Name</mat-label>
       <input matInput [(ngModel)]="selectedGroupName">

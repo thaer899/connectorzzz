@@ -60,7 +60,7 @@ async def websocket_endpoint(websocket: WebSocket, chat_id: str):
                 # sleep for a second before checking again
                 await asyncio.sleep(1)
             except WebSocketDisconnect:
-                logging.warning("WebSocket disconnected during check_queue.")
+                logging.warning("check_queue: WebSocket disconnected.")
                 return
 
     asyncio.create_task(check_queue())
@@ -77,35 +77,33 @@ async def websocket_endpoint(websocket: WebSocket, chat_id: str):
                 agent_names = data.get("agent_name").split(",")
                 for name in agent_names:
                     if name and name not in agents:
-                        agents[name] = {
-                            "status": "inactive"
-                        }
+                        agents[name] = {"status": "inactive"}
 
                 if action == "start_agent":
                     logging.info(f"Starting agent: {agent_name}")
                     agents[agent_name] = setup_agent(
                         agent_name, message, send_queue, receive_queue)
-                    agents[agent_name]["status"] = "active"
-                    agents[agent_name]["message"] = message
 
                 if action == "send_message":
+                    logging.info(f"Starting send_message: {message}")
                     agent_chat(
                         agent_name, message, send_queue, receive_queue)
 
                 if action == "message_group":
+                    logging.info(f"Starting message_group: {message}")
                     group_chat(
                         message, agent_name, agents, send_queue, receive_queue)
 
             else:
-                print("Websocket disconnected")
+                logging.info("Websocket disconnected")
                 break
 
         except WebSocketDisconnect:
-            print("Websocket disconnected")
+            logging.info("WebSocketDisconnect: Websocket disconnected")
             break
         except RuntimeError as e:
             if "Cannot call 'receive' once a disconnect message has been received" in str(e):
-                print("Websocket disconnected")
+                logging.info("RuntimeError:Websocket disconnected")
                 break
             else:
                 raise e

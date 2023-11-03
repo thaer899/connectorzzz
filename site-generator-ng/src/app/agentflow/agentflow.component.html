@@ -16,7 +16,7 @@
         </span>
         <span class="fill-toolbar"></span>
         <span>
-          <mat-icon matTooltip="Automation Agents team" class="group-toggle" (click)="groupdrawer.toggle()" *ngIf="sidenav.agents.length>0">group_work</mat-icon>
+          <mat-icon matTooltip="Automation Agents team" class="group-toggle" (click)="groupdrawer.toggle();drawer.toggle()" *ngIf="sidenav.agents.length>0">group_work</mat-icon>
         </span>
       </mat-toolbar>
     

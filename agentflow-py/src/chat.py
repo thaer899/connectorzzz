@@ -70,14 +70,9 @@ def group_chat(message, agent_name, agents, send_queue, receive_queue):
     agents_to_initiate = []
     for name in agents_to_initiate_names:
         agent = agents.get(name)
-        if not agent:
-            print(
-                f"Agent {name} not found in 'agents' dictionary.")
-            continue
         agent["agent_name"] = name
         agents_to_initiate.append(agent)
 
-    print("Current agents:", agents.keys())
     loop = asyncio.get_event_loop()
     pool = ProcessPoolExecutor()
     loop.run_in_executor(

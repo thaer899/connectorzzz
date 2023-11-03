@@ -71,7 +71,6 @@ export class GroupSidenavComponent implements  OnInit, OnDestroy {
   }
 
   initiateGroupChat(message: string, agents: any[]): void {
-    this.loading = true;
     if (!this.isWSConnected) {
       this.connectToWebSocket();
       this.isWSConnected = true;
@@ -83,9 +82,11 @@ export class GroupSidenavComponent implements  OnInit, OnDestroy {
         message:  message,
       })
     );
-    this.messages = [...this.messages, { 'name': 'Manager', 'content': message }];
-    this.loading = false;
-
+    if (agents.length == 1) {
+    this.messages = [...this.messages, { 'name': 'User', 'content': message }];
+    } else {
+      this.messages = [...this.messages, { 'name': 'Manager', 'content': message }];
+    }
   }
 
   createGroup(agents: any[]): void {
@@ -145,9 +146,21 @@ export class GroupSidenavComponent implements  OnInit, OnDestroy {
   getUserClass(userType: string): string {
     switch (userType) {
       case 'Hint': return 'default';
-      case 'Boss': return 'boss';
-      case 'Manager': return 'product-manager';
-      default: return 'boss';
+      case 'Bot': return 'bot';
+      case this.agents[0].agent_name: return 'proxy';
+      case 'Manager': return 'manager';
+      case 'User': return 'user';
+      default: return 'bot';
+    }
+  }
+
+  getIcon(icon: string) {
+    switch (icon) {
+      case 'Hint': return 'info';
+      case this.agents[0].agent_name: return 'supervised_user_circle';
+      case 'Manager': return 'account_circle';
+      case 'User': return 'person';
+      default: return 'robot_2';
     }
   }
 

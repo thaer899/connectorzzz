@@ -2,7 +2,7 @@
 
 
 .toolbar {
-  background-color: #313131;
+  background-color: #0d0d0d;
   color: #ECEFF1;
   border-bottom: 1px solid #565656;
   position: sticky;
@@ -67,3 +67,22 @@
   }
 
 }
+
+// Form Controls
+
+:host ::ng-deep .mat-drawer {
+  background-color: #212121 !important;
+}
+
+:host ::ng-deep .mat-card{
+  background-color: #151515 !important;
+}
+
+:host ::ng-deep .mat-drawer-content {
+  background-color: #151515 !important;
+}
+
+:host ::ng-deep .mat-table{
+  background-color: #212121 !important;
+}
+
