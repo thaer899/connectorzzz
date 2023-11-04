@@ -56,7 +56,7 @@ export class FlowchartComponent implements OnInit, OnChanges {
     if (screenWidth <= maxWidthInPixels) {
       return [screenWidth*0.2, screenHeight*0.03];
     } else {
-      return [screenWidth*0.15, screenHeight*0.05];
+      return [screenWidth*0.1, screenHeight*0.05];
     }
   }
 

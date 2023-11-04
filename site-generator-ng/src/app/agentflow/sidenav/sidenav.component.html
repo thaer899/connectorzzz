@@ -1,6 +1,15 @@
     <!-- Side navigation drawer -->
       <div style="padding: 15px;">
-        <p>Agent</p>
+        <p>Partner Profile</p>
+        <mat-form-field class="select-profile" matTooltip="Select or create a new profile"  style="width: 100%;">
+          <mat-label>Profile</mat-label>
+          <mat-select>
+              <mat-option *ngFor="let user of users" [value]="user.value">
+                  <a (click)="getUserDataByEmail(user)">{{user}}</a>
+              </mat-option>
+          </mat-select>
+      </mat-form-field>
+        <p>Create Agent</p>
         <span class="material-symbols-outlined add-agent" (click)="runAgent(selectedAgentMessage, selectedAgentName)" *ngIf="isWSConnected">
           add
           </span>
@@ -36,6 +45,5 @@
 
 
     </div>
-      <hr>
 
 

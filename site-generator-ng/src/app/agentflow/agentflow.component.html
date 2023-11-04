@@ -21,7 +21,7 @@
       </mat-toolbar>
     
       <mat-drawer #drawer class="left-sidenav" mode="side"  opened="true">    
-        <app-sidenav #sidenav [isWSConnected]="isWSConnected" [profile]="data"></app-sidenav>
+        <app-sidenav #sidenav [isWSConnected]="isWSConnected" [profile]="data" ></app-sidenav>
       </mat-drawer>
     <div class="flowchart-sidenav-content" *ngIf="data.resume">
       <app-flowchart #flowchart [messages]="groupsidenav.messages" [agents]="sidenav.agents" [profile]="data"></app-flowchart>

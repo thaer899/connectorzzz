@@ -5,6 +5,14 @@ import { ChangeDetectorRef } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { ElementRef, ViewChild, AfterViewChecked, Renderer2 } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DataService } from 'src/app/services/data.service';
+import { cpuUsage } from 'process';
+import { AuthService } from 'src/app/services/auth.service';
+
+interface SkillEntry {
+  type: string;
+  list: [string];
+}
 
 interface EducationEntry {
   title: string;
@@ -40,6 +48,8 @@ export class SidenavComponent implements  OnInit, OnDestroy {
 
   showFiller = false;
   public loading: boolean = false;
+  public users: any;
+  public user: any;
   public messages: any = [];
   public chats: any = [];
   public agents: any = [];
@@ -56,10 +66,15 @@ export class SidenavComponent implements  OnInit, OnDestroy {
   agentName: string = 'User_AI';
   agentProfile: string = '';
 
-  constructor(private http: HttpClient,private snackBar: MatSnackBar, private wsService: WebsocketService, private cd: ChangeDetectorRef) {
+  constructor(private http: HttpClient,
+    private authService: AuthService,
+    private dataService: DataService,
+    private snackBar: MatSnackBar, private wsService: WebsocketService, private cd: ChangeDetectorRef) {
   }
 
   ngOnInit() {
+    this.getUsers();
+    this.user = this.authService.auth.currentUser;
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -209,6 +224,37 @@ onValueChange(newValue: string) {
   }
 }
 
+getUserDataByEmail(email: string) {
+  console.log("Fetching data for user:", email);
+  this.dataService.fetchDataForUser(email).subscribe(
+    data => {
+      if (data) {
+        let profile = {agent_name: data.resume.firstName, message: this.generateAgentProfile(data)};
+
+        this.agents = [...this.agents, profile];
+        this.agentsChanged.emit(this.agents);
+      }
+    },
+    error => {
+      console.error("Error fetching data for user:", email, error);
+      // Handle the error, e.g., show a notification to the user
+    }
+  );
+}
+
+getUsers() {
+  this.dataService.getListOfUsers().subscribe(
+    users => {
+      this.users = users.filter(user => user !== `${this.user.email}.json`);
+      console.log("Users fetched:", this.users);
+    },
+    error => {
+      console.error("Error fetching users:", error);
+      // Handle the error, e.g., show a notification to the user
+    }
+  );
+}
+
   ngOnDestroy() {
     // Close the WebSocket connection when the component is destroyed
     this.wsService.close();
@@ -217,6 +263,10 @@ onValueChange(newValue: string) {
   private generateAgentProfile(profileData: any): string {
     const educationEntries = profileData.education.map((edu: EducationEntry) => {
       return `- ${edu.title} at ${edu.school} (${edu.period}): ${edu.summary}`;
+    }).join('\n');
+
+    const SkillEntry = profileData.skills.map((skill: SkillEntry) => {
+      return `- ${skill.type} in ${skill.list}`;
     }).join('\n');
 
     const employmentEntries = profileData.employment.map((job: EmploymentEntry) => {
@@ -231,17 +281,17 @@ onValueChange(newValue: string) {
     }).join('\n\n');
 
     return `
-    As an AI agent named ${this.agentName}, your expertise is in cloud computing, DevOps, and AI technologies, bolstered by a comprehensive software engineering background. Your capabilities are applied in providing professional insights and handling technical tasks with precision and efficiency.
-  
+    As an AI agent named ${profileData.resume.firstName}, 
+    your expertise is:
+    ${SkillEntry}  
     Educational Background:
-    ${educationEntries}
-  
+    ${educationEntries}  
     Employment History:
     ${employmentEntries}
   
-    In your role, you collaborate with technical teams, use your knowledge in cloud environments to drive automation, and champion Cloud Native tools. Your responsibility is to keep abreast of the latest technological advancements and contribute your insights to discussions and documentation.
+    In your role, you collaborate with the teams, use your knowledge ${SkillEntry} and contribute your insights to discussions and documentation.
   
-    Efficiency and effectiveness are your guiding principles. You are tasked with delivering succinct technical solutions, eschewing all pleasantries and focusing solely on the technical objectives at hand.
+    Efficiency and effectiveness are your guiding principles. You are tasked with delivering succinct solutions, eschewing all pleasantries and focusing solely on the objectives at hand.
     Reply "TERMINATE" in the end when everything is done.
 
     `.trim();

@@ -199,7 +199,7 @@ hr {
 
   .card {
     width: 76% !important;
-    max-height: 74%;
+    max-height: 70%;
     position: inherit;
   }
 
@@ -211,6 +211,22 @@ hr {
    .bottom-form {
     width: 75%;
     padding: 4px;
+
+  }
+
+  .start-agents-btn {
+    position: absolute;
+    right: 1vh;
+    font-size: 3vh;
+    top: 5%;
+
+  }
+
+  .ask-agents-btn {
+    position: absolute;
+    right: 1vh;
+    font-size: 3vh;
+    top: 25%;
 
   }
 }
