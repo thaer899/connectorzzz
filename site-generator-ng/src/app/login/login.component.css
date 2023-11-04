@@ -1,16 +1,24 @@
 .login-container {
     display: flex;
     justify-content: center;
-    /* Horizontally center the content */
     align-items: center;
-    /* Vertically center the content */
-    height: 100vh;
-    /* Take the full viewport height */
+    height: 98vh;
 }
 
+.image-bg  {
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    bottom: 0; 
+    left: 0; 
+    background-image: url(../../assets/images/bg.webp); 
+    filter: grayscale(100%); 
+    z-index: -1;
+}
 
 .mat-raised-button {
     color: white;
     padding: 10px;
     margin: 10px;
+    background-color: #0d0d0d;
 }

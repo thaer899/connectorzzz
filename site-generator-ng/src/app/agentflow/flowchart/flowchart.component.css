@@ -15,3 +15,9 @@
   border-bottom: 1px dotted black;
   max-width: 50vh !important;
 }
+
+.echarts-container {
+  width: 96%;
+  height: 80vh;
+  padding: 2%;
+}

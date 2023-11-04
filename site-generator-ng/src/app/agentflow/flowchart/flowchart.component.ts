@@ -39,6 +39,26 @@ export class FlowchartComponent implements OnInit, OnChanges {
       return filteredMessages[filteredMessages.length - 1].content;
   }
   
+  getFontSize(screenWidth) {
+    const maxWidthInPixels = 30 * 16;
+  
+    if (screenWidth <= maxWidthInPixels) {
+      return 10; 
+    } else {
+      return 16; 
+    }
+  }
+
+  getSymbolSize(screenWidth,screenHeight) {
+    // Convert em to pixels; here, we assume 1em = 16px
+    const maxWidthInPixels = 30 * 16;
+  
+    if (screenWidth <= maxWidthInPixels) {
+      return [screenWidth*0.2, screenHeight*0.03];
+    } else {
+      return [screenWidth*0.15, screenHeight*0.05];
+    }
+  }
 
   private generateOptions(): void {
     const screenWidth = window.innerWidth;
@@ -101,10 +121,6 @@ export class FlowchartComponent implements OnInit, OnChanges {
 
     const agentLinks = [
       ...agentNodes.map(agent => ({
-        source: agent.name,
-        target: proxyNode.name
-      })),
-      ...agentNodes.map(agent => ({
         source: proxyNode.name,
         target: agent.name
       })),
@@ -129,19 +145,19 @@ export class FlowchartComponent implements OnInit, OnChanges {
               const actualAgentName = params.data.name.split(' ')[0];
               const node = this.agents!.find(agent => agent.agent_name === actualAgentName);
               const description = node!.message ? node.message : '';
-              return `<h4>Persona:</h4> ${description.length > 400 ? description.slice(0, 300) + '...' : description}<h4>Last message:</h4> "<pre>${this.getMessagesForAgent(`${this.profile.resume.firstName}_Proxy`)}<pre/>"`;
+              return `<h4>Persona:</h4> ${description.length > 400 ? description.slice(0, 300) + '...' : description}<h4>Last message:</h4> <pre>"${this.getMessagesForAgent(`${this.profile.resume.firstName}_Proxy`)}"<pre/>`;
             }
             else if(params.data.name.split(' ')[0] === `${this.profile.resume.firstName}_AI`) {
               const actualAgentName = params.data.name.split(' ')[0];
               const node = this.agents!.find(agent => agent.agent_name === actualAgentName);
               const description = node!.message ? node.message : '';
-              return `<h4>Persona:</h4> ${description.length > 400 ? description.slice(0, 300) + '...' : description}<h4>Last message:</h4> "<pre>${this.getMessagesForAgent(`${this.profile.resume.firstName}_AI`)}<pre/>"`;
+              return `<h4>Persona:</h4> ${description.length > 400 ? description.slice(0, 300) + '...' : description}<h4>Last message:</h4> <pre>"${this.getMessagesForAgent(`${this.profile.resume.firstName}_AI`)}"<pre/>`;
             }
             else {
             const actualAgentName = params.data.name.split(' ')[0];
             const node = this.agents!.find(agent => agent.agent_name === actualAgentName);
             const description = node!.message ? node.message : '';
-            return `<h4>Persona:</h4> ${description.length > 400 ? description.slice(0, 300) + '...' : description}<h4>Last message:</h4> "<pre>${this.getMessagesForAgent(params.data.name)}<pre/>"`;
+            return `<h4>Persona:</h4> ${description.length > 400 ? description.slice(0, 300) + '...' : description}<h4>Last message:</h4> <pre>"${this.getMessagesForAgent(params.data.name)}"<pre/>`;
           }
         }
         },
@@ -168,11 +184,13 @@ export class FlowchartComponent implements OnInit, OnChanges {
           type: 'graph',
           layout: 'none',
           symbol: 'rect',
-          symbolSize: [160, 50],
+          symbolSize: this.getSymbolSize(screenWidth,screenHeight),
           roam: true,
+          draggable: true,
+          scaleLimit: {min: 0.5, max: 1},
           label: {
             show: true,
-            fontSize: 16,
+            fontSize: this.getFontSize(screenWidth),
             fontFamily: 'Arial'
           },
           edgeSymbol: ['circle', 'arrow'],
