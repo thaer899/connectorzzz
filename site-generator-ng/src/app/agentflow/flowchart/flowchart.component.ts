@@ -30,11 +30,15 @@ export class FlowchartComponent implements OnInit, OnChanges {
     return this.messages.filter(message => message.name === agentName).length;
   }
 
-  getMessagesForAgent(agentName: string) {
-    return this.messages
-        .filter(message => message.name === agentName)
-        .map(message => message.content);
+  getMessagesForAgent(agentName) {
+    const filteredMessages = this.messages
+        .filter(message => message.name === agentName);
+      if (filteredMessages.length === 0) {
+      return 'No messages available'; 
+    }
+      return filteredMessages[filteredMessages.length - 1].content;
   }
+  
 
   private generateOptions(): void {
     const screenWidth = window.innerWidth;
@@ -47,8 +51,8 @@ export class FlowchartComponent implements OnInit, OnChanges {
   
 
     const proxyNode = {
-      name: `${this.profile.resume.firstName}_Proxy (${this.getMessageCountForAgent('Manager')})`,
-      message: this.profile.resume.firstName ? this.profile.resume.firstName.message : 'A User Proxy that can be used to interact with the agents.',
+      name: `${this.profile.resume.firstName}_Proxy (${this.getMessageCountForAgent(`${this.profile.resume.firstName}_Proxy`)})`,
+      message: this.profile.resume.firstName ? this.profile.resume.firstName.message : 'A User Proxy that can be used to interact with other members of the team.',
       x: centerX,
       y: centerY,
       itemStyle: {
@@ -118,17 +122,26 @@ export class FlowchartComponent implements OnInit, OnChanges {
       tooltip: {
         formatter: (params) => {
           if (params.dataType === 'node') {
-            if (params.data.name.split(' ')[0] === 'Manager') {
-              return `<h4>Persona:</h4> ${params.data.message}<h4>Last message:</h4> "${this.getMessagesForAgent('Manager')}"`;
-            } 
-            if (params.data.name.split(' ')[0] === this.profile.resume.firstName || params.data.name.split(' ')[0] === this.profile.resume.firstNam+ '_Proxy') {
+            if (params.data.name.split(' ')[0] === this.profile.resume.firstName) {
               return `<h4>Persona:</h4> ${params.data.message}<br>`;
             } 
+            else if(params.data.name.split(' ')[0] === `${this.profile.resume.firstName}_Proxy`) {
+              const actualAgentName = params.data.name.split(' ')[0];
+              const node = this.agents!.find(agent => agent.agent_name === actualAgentName);
+              const description = node!.message ? node.message : '';
+              return `<h4>Persona:</h4> ${description.length > 400 ? description.slice(0, 300) + '...' : description}<h4>Last message:</h4> "<pre>${this.getMessagesForAgent(`${this.profile.resume.firstName}_Proxy`)}<pre/>"`;
+            }
+            else if(params.data.name.split(' ')[0] === `${this.profile.resume.firstName}_AI`) {
+              const actualAgentName = params.data.name.split(' ')[0];
+              const node = this.agents!.find(agent => agent.agent_name === actualAgentName);
+              const description = node!.message ? node.message : '';
+              return `<h4>Persona:</h4> ${description.length > 400 ? description.slice(0, 300) + '...' : description}<h4>Last message:</h4> "<pre>${this.getMessagesForAgent(`${this.profile.resume.firstName}_AI`)}<pre/>"`;
+            }
             else {
             const actualAgentName = params.data.name.split(' ')[0];
             const node = this.agents!.find(agent => agent.agent_name === actualAgentName);
             const description = node!.message ? node.message : '';
-            return `<h4>Persona:</h4> ${description}<h4>Last message:</h4> "<pre>${this.getMessagesForAgent(actualAgentName)}<pre/>"`;
+            return `<h4>Persona:</h4> ${description.length > 400 ? description.slice(0, 300) + '...' : description}<h4>Last message:</h4> "<pre>${this.getMessagesForAgent(params.data.name)}<pre/>"`;
           }
         }
         },

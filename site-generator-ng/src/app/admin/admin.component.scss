@@ -48,6 +48,15 @@
 
 @media screen and (max-width: 30em) {
 
+  .background {
+    margin-top: 6vh;
+}
+
+:host ::ng-deep .select-profile {
+  width: 10vh !important;
+}
+
+
   .mat-icon {
     font-size: x-large;
     font-weight: normal;

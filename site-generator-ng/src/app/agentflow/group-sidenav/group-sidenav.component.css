@@ -37,13 +37,25 @@ hr {
 
 .card {
   color: white;
-  padding: 10px;
+  padding: 0 1em;
   margin: 10px;
   overflow-y: auto;
-  max-height: 65%;
+  max-height: 72%;
   height: 100%;
   background-color: #2c2c2cdb;
   border: 1px solid #4d4d4de0 !important;
+  border-radius: unset !important;
+}
+
+.selectbar {
+  width: 100%;
+  margin-top: 4vh;
+}
+
+.select-form {
+  width: 86%;
+  padding: 0 1em;
+  font-size: small;
 }
 
 .bottombar {
@@ -54,7 +66,7 @@ hr {
 
 .bottom-form {
   width: 86%;
-  padding: 0 1em;
+  padding: 0 1em !important;
   font-size: small;
 }
 
@@ -119,11 +131,11 @@ hr {
   margin-top: 4.5%;
 }
 .person {
-  right: 0.5%;
+  right: 0%;
   color: #b7858d !important;
 }
 .account_circle  {
-  right: 0.5%;
+  right: 0%;
   color: #b7a51d !important;
 }
 .supervised_user_circle {
@@ -142,22 +154,31 @@ hr {
 }
 
 .selected-agent {
-  color: #a72f2f;
+  color: #228057;
 }
 
 .start-agents-btn {
   position: absolute;
-  top: 9%;
-  right: 6%;
-  color: #225f43 !important;
+  right: 3vh;
+  font-size: 4vh;
+  color: #979797 !important;
+}
+.start-agents-btn:hover {
+  color: #228057 !important;
+  font-weight: bold !important;
 }
 
 .ask-agents-btn {
   position: absolute;
-  bottom: 30%;
-  right: 2%;
+  top: 15%;
+  right: 3vh;
+  font-size: 4vh;
+  color: #979797 !important;
 }
-
+.ask-agents-btn:hover {
+  color: #228057 !important;
+  font-weight: bold !important;
+}
 
 .mat-card>:first-child {
   margin-top: 10px;
@@ -167,14 +188,22 @@ hr {
 
 /* Responsiveness for smaller screens */
 @media screen and (max-width: 30em) {
+  .select-form {
+    width: 75%;
+  }
+
+  .selectbar {
+    width: 100%;
+    margin-top: 1vh;
+  }
+
   .card {
-    width: 86% !important;
-    max-height: 64%;
+    width: 76% !important;
+    max-height: 74%;
     position: inherit;
   }
 
   .bottombar {
-    position: absolute;
     bottom: 0px;
     width: 100%;
   }

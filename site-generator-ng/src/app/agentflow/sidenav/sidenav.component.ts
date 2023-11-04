@@ -36,8 +36,7 @@ export class SidenavComponent implements  OnInit, OnDestroy {
   @Output() agentsChanged = new EventEmitter<any[]>();
   @Input() profile: any = {};
 
-  agentName: string = 'User_Proxy';
-  agentProfile: string = '';
+
 
   showFiller = false;
   public loading: boolean = false;
@@ -50,6 +49,13 @@ export class SidenavComponent implements  OnInit, OnDestroy {
   public selectedAgentName: string = 'AgentX';
   public selectedAgentMessage: string = 'A reliable and knowledgeable aid with a knack for problem-solving.';
 
+  public user_proxy : any = {}
+  public userProxyName: string = 'User_Proxy';
+
+  public agent : any = {}
+  agentName: string = 'User_AI';
+  agentProfile: string = '';
+
   constructor(private http: HttpClient,private snackBar: MatSnackBar, private wsService: WebsocketService, private cd: ChangeDetectorRef) {
   }
 
@@ -61,9 +67,14 @@ export class SidenavComponent implements  OnInit, OnDestroy {
         this.listenToWebSocketMessages();
     }
     if (changes.profile && changes.profile.currentValue && this.profile.resume) {
-      this.agentName = this.profile.resume.firstName+'_Proxy';
+      this.agentName = this.profile.resume.firstName+'_AI';
+      this.userProxyName = this.profile.resume.firstName+'_Proxy';
+
       this.agentProfile = this.generateAgentProfile(this.profile);
-      this.agents.unshift({agent_name: this.agentName, message: this.agentProfile});
+      this.agent = {agent_name: this.agentName, message: this.agentProfile};
+      this.user_proxy = {agent_name: this.userProxyName, message: 'A human admin. Interact with team on behalf of the user.! Reply `TERMINATE` in the end when everything is done.'};
+
+      this.agents.unshift(this.user_proxy, this.agent);
       this.agentsChanged.emit(this.agents);
 
     }
@@ -245,7 +256,7 @@ onValueChange(newValue: string) {
   set agentsAsString(value: string) {
     try {
       this.agents = JSON.parse(value);
-      this.agents.unshift({agent_name: this.agentName, message: this.agentProfile});
+      this.agents.unshift(this.user_proxy, this.agent);
       this.onValueChange(value);
     } catch (error) {
       console.error("Invalid JSON format:", error);

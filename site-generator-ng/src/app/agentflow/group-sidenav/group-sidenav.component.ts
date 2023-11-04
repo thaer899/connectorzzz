@@ -17,7 +17,7 @@ export class GroupSidenavComponent implements  OnInit, OnDestroy {
   @Input() agents: any[] = [];
   @Input() isWSConnected: boolean = false;
   
-  agentName: string = 'User_Proxy';
+  agentName: string = 'User_AI';
   agentProfile: string = '';
   groupAgents = new FormControl('');
 

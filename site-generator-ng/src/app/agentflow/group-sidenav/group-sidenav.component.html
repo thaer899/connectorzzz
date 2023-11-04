@@ -1,22 +1,22 @@
     <!-- Side navigation drawer -->
-      <div style="padding: 15px 15px 0px 15px;">
-        <p>Chat Room</p>
-  <br/>
-      <mat-form-field style="width: 90%;">
-        <mat-label>Select Agents</mat-label>
-        <mat-select [formControl]="groupAgents" multiple>
-          <mat-option *ngFor="let agent of agents" [value]="agent.agent_name" [class.selected-agent]="isSelected(agent.agent_name)">
-            {{agent.agent_name}}
-          </mat-option>
-                </mat-select>
-      </mat-form-field>
-      <mat-icon matTooltip="Start Agents" class="material-symbols-outlined start-agents-btn" (click)="runAgents(agents)" *ngIf="isWSConnected && agents.length>0">
-        group_work
-      </mat-icon>
 
-      
-      </div>
+  <div class="selectbar">
+    <br/>
+    <mat-form-field class="select-form">
+      <mat-label>Select Agents</mat-label>
+      <mat-select [formControl]="groupAgents" multiple>
+        <mat-option *ngFor="let agent of agents" [value]="agent.agent_name" [class.selected-agent]="isSelected(agent.agent_name)">
+          {{agent.agent_name}}
+        </mat-option>
+              </mat-select>
+    </mat-form-field>
+    <mat-icon matTooltip="Start Agents" class="material-symbols-outlined start-agents-btn" (click)="runAgents(agents)" *ngIf="isWSConnected && agents.length>0">
+      group_work
+    </mat-icon>
+  </div>
 
+
+    
       <hr>
 
       <!-- Message display area -->
@@ -33,16 +33,14 @@
           </mat-list>
       </mat-card>
       <hr>
-      <div class="bottombar">
-         <mat-form-field appearance="outline" class="bottom-form">
-          <mat-label>Enter message</mat-label>
-          <textarea matInput #messageInput ></textarea>
-        </mat-form-field>
- 
-          <span class="material-symbols-outlined ask-agents-btn" *ngIf="loading==false" (click)="initiateGroupChat(messageInput.value, groupAgents.value)">
-            send
-            </span>
-              <i class="fas fa-spinner fa-spin" *ngIf="loading==true"  style="font-size: 40px;"></i>
-
-      </div>
       </ng-container>
+      <div class="bottombar">
+        <mat-form-field appearance="outline" class="bottom-form">
+         <mat-label>Enter message</mat-label>
+         <textarea matInput #messageInput ></textarea>
+       </mat-form-field>
+
+       <mat-icon class="material-symbols-outlined ask-agents-btn"  (click)="initiateGroupChat(messageInput.value, groupAgents.value)" *ngIf="isWSConnected && agents.length>0">
+         send
+       </mat-icon>
+     </div>
