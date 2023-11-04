@@ -263,10 +263,6 @@
       "label": "Bots",
       "elements": [
         {
-          "type": "Label",
-          "text": "Bots"
-        },
-        {
           "type": "ListWithDetail",
           "scope": "#/properties/bots"
         }
@@ -276,10 +272,6 @@
       "type": "Category",
       "label": "Data",
       "elements": [
-        {
-          "type": "Label",
-          "text": "Data"
-        },
         {
           "type": "Control",
           "scope": "#/___data"

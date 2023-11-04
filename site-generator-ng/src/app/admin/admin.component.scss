@@ -5,12 +5,19 @@
   background-color: #0d0d0d;
   color: #ECEFF1;
   border-bottom: 1px solid #565656;
-  position: sticky;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
   position: -webkit-sticky;
   top: 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 
   z-index: 1000;
+}
+
+.background {
+  margin-top: 5%;
 }
 
 :host ::ng-deep .mat-drawer-content {
@@ -72,17 +79,35 @@
 
 :host ::ng-deep .mat-drawer {
   background-color: #212121 !important;
+  color: #c0c0c0 !important;
+
 }
 
 :host ::ng-deep .mat-card{
   background-color: #151515 !important;
+  color: #c0c0c0 !important;
 }
 
 :host ::ng-deep .mat-drawer-content {
   background-color: #151515 !important;
+  color: #c0c0c0 !important;
+
 }
 
 :host ::ng-deep .mat-table{
   background-color: #212121 !important;
+  color: #c0c0c0 !important;
+
 }
+
+:host ::ng-deep .mat-list-item{
+  color: #c0c0c0 !important;
+  border-bottom: 1px solid #424242 !important;
+
+}
+
+:host ::ng-deep .mat-input-element{
+  color: #c0c0c0 !important;
+}
+
 

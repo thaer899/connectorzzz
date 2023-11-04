@@ -1,13 +1,8 @@
     <!-- Side navigation drawer -->
       <div style="padding: 15px 15px 0px 15px;">
         <p>Chat Room</p>
-              <!-- Button to run the agent -->
-              <button mat-raised-button class="start-agents-btn"
-              (click)="runAgents(agents)"
-              *ngIf="isWSConnected && agents.length>0">
-            Start Agents</button>
   <br/>
-      <mat-form-field style="width: 100%;">
+      <mat-form-field style="width: 90%;">
         <mat-label>Select Agents</mat-label>
         <mat-select [formControl]="groupAgents" multiple>
           <mat-option *ngFor="let agent of agents" [value]="agent.agent_name" [class.selected-agent]="isSelected(agent.agent_name)">
@@ -15,6 +10,10 @@
           </mat-option>
                 </mat-select>
       </mat-form-field>
+      <mat-icon matTooltip="Start Agents" class="material-symbols-outlined start-agents-btn" (click)="runAgents(agents)" *ngIf="isWSConnected && agents.length>0">
+        group_work
+      </mat-icon>
+
       
       </div>
 
@@ -35,7 +34,7 @@
       </mat-card>
       <hr>
       <div class="bottombar">
-        <mat-form-field appearance="outline" class="bottom-form">
+         <mat-form-field appearance="outline" class="bottom-form">
           <mat-label>Enter message</mat-label>
           <textarea matInput #messageInput ></textarea>
         </mat-form-field>

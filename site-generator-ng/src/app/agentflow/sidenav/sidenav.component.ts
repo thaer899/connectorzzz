@@ -5,6 +5,26 @@ import { ChangeDetectorRef } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { ElementRef, ViewChild, AfterViewChecked, Renderer2 } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+
+interface EducationEntry {
+  title: string;
+  school: string;
+  period: string;
+  summary: string;
+}
+
+interface Post {
+  title: string;
+  date: string;
+  summary: string;
+}
+
+interface EmploymentEntry {
+  title: string;
+  description: string;
+  posts?: Post[];
+}
+
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
@@ -14,8 +34,10 @@ export class SidenavComponent implements  OnInit, OnDestroy {
   @ViewChild('scrollableContainer') private scrollableContainer: ElementRef;
   @Input() isWSConnected: boolean = false;
   @Output() agentsChanged = new EventEmitter<any[]>();
+  @Input() profile: any = {};
 
-  private _agentsAsString: string;
+  agentName: string = 'User_Proxy';
+  agentProfile: string = '';
 
   showFiller = false;
   public loading: boolean = false;
@@ -37,6 +59,13 @@ export class SidenavComponent implements  OnInit, OnDestroy {
   ngOnChanges(changes: SimpleChanges) {
     if (changes.isWSConnected && changes.isWSConnected.currentValue) {
         this.listenToWebSocketMessages();
+    }
+    if (changes.profile && changes.profile.currentValue && this.profile.resume) {
+      this.agentName = this.profile.resume.firstName+'_Proxy';
+      this.agentProfile = this.generateAgentProfile(this.profile);
+      this.agents.unshift({agent_name: this.agentName, message: this.agentProfile});
+      this.agentsChanged.emit(this.agents);
+
     }
 }
 
@@ -174,14 +203,53 @@ onValueChange(newValue: string) {
     this.wsService.close();
   }
 
+  private generateAgentProfile(profileData: any): string {
+    const educationEntries = profileData.education.map((edu: EducationEntry) => {
+      return `- ${edu.title} at ${edu.school} (${edu.period}): ${edu.summary}`;
+    }).join('\n');
+
+    const employmentEntries = profileData.employment.map((job: EmploymentEntry) => {
+      let jobEntry = `- ${job.title}: ${job.description}`;
+      if (job.posts && job.posts.length > 0) {
+        const postsEntries = job.posts.map((post: Post) => {
+          return `  * ${post.title} (${post.date}): ${post.summary}`;
+        }).join('\n');
+        jobEntry += `\n${postsEntries}`;
+      }
+      return jobEntry;
+    }).join('\n\n');
+
+    return `
+    As an AI agent named ${this.agentName}, your expertise is in cloud computing, DevOps, and AI technologies, bolstered by a comprehensive software engineering background. Your capabilities are applied in providing professional insights and handling technical tasks with precision and efficiency.
+  
+    Educational Background:
+    ${educationEntries}
+  
+    Employment History:
+    ${employmentEntries}
+  
+    In your role, you collaborate with technical teams, use your knowledge in cloud environments to drive automation, and champion Cloud Native tools. Your responsibility is to keep abreast of the latest technological advancements and contribute your insights to discussions and documentation.
+  
+    Efficiency and effectiveness are your guiding principles. You are tasked with delivering succinct technical solutions, eschewing all pleasantries and focusing solely on the technical objectives at hand.
+    Reply "TERMINATE" in the end when everything is done.
+
+    `.trim();
+  
+  }
+
+
   get agentsAsString(): string {
     return JSON.stringify(this.agents, null, 2);
   }
-  
+
   set agentsAsString(value: string) {
-    this._agentsAsString = value;
-    // You can add additional logic here if needed
+    try {
+      this.agents = JSON.parse(value);
+      this.agents.unshift({agent_name: this.agentName, message: this.agentProfile});
+      this.onValueChange(value);
+    } catch (error) {
+      console.error("Invalid JSON format:", error);
+    }
   }
-  
 
 }

@@ -6,6 +6,7 @@ import { environment } from '../../../environments/environment';
 import { ElementRef, ViewChild, AfterViewChecked, Renderer2 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-group-sidenav',
   templateUrl: './group-sidenav.component.html',
@@ -15,7 +16,9 @@ export class GroupSidenavComponent implements  OnInit, OnDestroy {
   @ViewChild('scrollableContainer') private scrollableContainer: ElementRef;
   @Input() agents: any[] = [];
   @Input() isWSConnected: boolean = false;
-
+  
+  agentName: string = 'User_Proxy';
+  agentProfile: string = '';
   groupAgents = new FormControl('');
 
   public loading: boolean = false;
@@ -28,7 +31,6 @@ export class GroupSidenavComponent implements  OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -36,7 +38,10 @@ export class GroupSidenavComponent implements  OnInit, OnDestroy {
         this.listenToWebSocketMessages();
     }
     if (changes.agents && changes.agents.currentValue) {
-      this.groupAgents.setValue(this.agents.map(agent => agent.agent_name));
+      // Use a defensive copy to ensure change detection picks up changes
+      this.groupAgents.setValue([...this.agents.map(agent => agent.agent_name)]);
+      // Manually mark for check in case change detection does not catch this
+      this.cd.markForCheck();
     }
 
 }
@@ -186,10 +191,20 @@ export class GroupSidenavComponent implements  OnInit, OnDestroy {
     return JSON.stringify(this.agents, null, 2);
   }
 
+  set agentsAsString(value: string) {
+    try {
+      this.onValueChange(value);
+    } catch (error) {
+      console.error("Invalid JSON format:", error);
+    }
+  }
+
+
 
   ngOnDestroy() {
     // Close the WebSocket connection when the component is destroyed
     this.wsService.close();
   }
+
 
 }

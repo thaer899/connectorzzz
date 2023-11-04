@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, OnChanges,Output,Input, EventEmitter, SimpleChanges } from '@angular/core';
 import type { EChartsOption } from 'echarts';
 
 @Component({
@@ -9,6 +9,7 @@ import type { EChartsOption } from 'echarts';
 export class FlowchartComponent implements OnInit, OnChanges {
   @Input() agents: any[] = [];
   @Input() messages: any[] = [];
+  @Input() profile: any = {'resume': {'firstName': ''}};
 
   options: EChartsOption;
   public defaultAgents: any[] = []
@@ -24,6 +25,7 @@ export class FlowchartComponent implements OnInit, OnChanges {
       this.generateOptions();
   }
 
+  
   getMessageCountForAgent(agentName: string): number {
     return this.messages.filter(message => message.name === agentName).length;
   }
@@ -43,12 +45,10 @@ export class FlowchartComponent implements OnInit, OnChanges {
   
     const angleStep = (2 * Math.PI) / this.agents.length;
   
-    const firstAgent = this.agents[0];
 
-    const rootNodeName = firstAgent ? firstAgent.agent_name + ` (${this.getMessageCountForAgent(firstAgent.agent_name)})` : 'Proxy';
-    const rootNode = {
-      name: rootNodeName,
-      message: firstAgent ? firstAgent.message : 'A User Proxy that can be used to interact with the agents.',
+    const proxyNode = {
+      name: `${this.profile.resume.firstName}_Proxy (${this.getMessageCountForAgent('Manager')})`,
+      message: this.profile.resume.firstName ? this.profile.resume.firstName.message : 'A User Proxy that can be used to interact with the agents.',
       x: centerX,
       y: centerY,
       itemStyle: {
@@ -68,45 +68,45 @@ export class FlowchartComponent implements OnInit, OnChanges {
       };
     });
 
-    let managerNode = {'name':'', 'message':'', 'x':0, 'y':0, 'itemStyle':{color:''}};
-    if (agentNodes.length > 0) {
-      managerNode = {
-        name: `Manager (${this.getMessageCountForAgent('Manager')})`,
-        message: 'Team supervisor.',
-        x: centerX,
-        y: 0,
-        itemStyle: {
-          color: '#b7a51d'
-        }
-      }
-    }
-      else {
-        managerNode = {
-          name: 'User',
-          message: 'Dialog with the agents.',
+    let userNode = {'name':'', 'message':'', 'x':0, 'y':0, 'itemStyle':{color:''}};
+    if (this.agents.length > 1) {
+    userNode = {
+          name: `${this.profile.resume.firstName} (${this.getMessageCountForAgent('Manager')})`,
+          message: 'Dialog with the agent.',
           x: 0.5 * screenWidth,  // 10% of screen width
           y: 0.1 * screenHeight, // 70% of screen height
           itemStyle: {
-            color: '#b7858d'
+            color: '#b7a51d'
           }
-        }; 
       }
+    } else {
+      userNode = {
+        name: `${this.profile.resume.firstName} (${this.getMessageCountForAgent('Manager')})`,
+        message: 'Dialog with the agents.',
+        x: 0.5 * screenWidth,  // 10% of screen width
+        y: 0.1 * screenHeight, // 70% of screen height
+        itemStyle: {
+          color: '#b7858d'
+        }
+    }
+    }
 
+      
 
       const lastMessage = this.messages[this.messages.length - 1];
 
     const agentLinks = [
       ...agentNodes.map(agent => ({
         source: agent.name,
-        target: rootNode.name
+        target: proxyNode.name
       })),
       ...agentNodes.map(agent => ({
-        source: rootNode.name,
+        source: proxyNode.name,
         target: agent.name
       })),
       {
-        source: managerNode.name,
-        target: rootNode.name
+        source: userNode.name,
+        target: proxyNode.name
       }
     ];
 
@@ -121,14 +121,14 @@ export class FlowchartComponent implements OnInit, OnChanges {
             if (params.data.name.split(' ')[0] === 'Manager') {
               return `<h4>Persona:</h4> ${params.data.message}<h4>Last message:</h4> "${this.getMessagesForAgent('Manager')}"`;
             } 
-            if (params.data.name === 'User' || params.data.name === 'Proxy') {
+            if (params.data.name.split(' ')[0] === this.profile.resume.firstName || params.data.name.split(' ')[0] === this.profile.resume.firstNam+ '_Proxy') {
               return `<h4>Persona:</h4> ${params.data.message}<br>`;
             } 
             else {
             const actualAgentName = params.data.name.split(' ')[0];
             const node = this.agents!.find(agent => agent.agent_name === actualAgentName);
             const description = node!.message ? node.message : '';
-            return `<h4>Persona:</h4> ${description}<h4>Last message:</h4> "${this.getMessagesForAgent(actualAgentName)}"`;
+            return `<h4>Persona:</h4> ${description}<h4>Last message:</h4> "<pre>${this.getMessagesForAgent(actualAgentName)}<pre/>"`;
           }
         }
         },
@@ -170,8 +170,8 @@ export class FlowchartComponent implements OnInit, OnChanges {
           },
           data: [
             ...agentNodes,
-            rootNode,
-            ...(Object.keys(managerNode).length ? [managerNode] : []),
+            proxyNode,
+            ...(Object.keys(userNode).length ? [userNode] : []),
           ],
           links: [
             ...agentLinks

@@ -115,12 +115,22 @@ pre {
 
 // Form Controls
 
+:host ::ng-deep .mat-drawer  {
+  color: #c0c0c0 !important;
+}
+
+:host ::ng-deep .mat-primary  {
+  color: #c0c0c0 !important;
+}
+
+
 :host ::ng-deep .mat-drawer-content  {
   margin-left: 0% ;
+  color: #c0c0c0 !important;
 }
 
 :host ::ng-deep .mat-form-field-flex {
-  background-color: #212121 !important;
+  background-color: #212121;
 }
 
 :host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
@@ -150,7 +160,15 @@ pre {
   border: 0px  !important;
 }
 
-// :host ::ng-deep .ng-star-inserted :hover{
-//   bottom: unset !important;
-//   width: 100% !important;
-// }
+:host ::ng-deep .mat-select-value {
+  color: #be4242 !important;
+}
+
+:host ::ng-deep .mat-select-arrow {
+  color: #be4242 !important;
+} 
+
+:host ::ng-deep .mat-option-text{
+  color: #c0c0c0 !important;
+
+}

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { WebsocketService } from '../services/websocket.service';
 import { ChangeDetectorRef } from '@angular/core';
 import { environment } from '../../environments/environment';
@@ -8,6 +8,10 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { GroupSidenavComponent } from './group-sidenav/group-sidenav.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FlowchartComponent } from './flowchart/flowchart.component';
+import { DataService } from '../services/data.service';
+import { AuthService } from '../services/auth.service';
+import { ActivatedRoute } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-agentflow',
   templateUrl: './agentflow.component.html',
@@ -25,14 +29,55 @@ export class AgentflowComponent implements  OnInit, OnDestroy {
   public chatId: string = '';
   public isWSConnected: boolean = false;
   public messages: any = [];
+  public data :any= {};
+  showContent: boolean = false;
+  isAdmin: boolean = false;
+  public user: any;
+  public fileName: string;
 
-  constructor(private http: HttpClient,private snackBar: MatSnackBar, private wsService: WebsocketService, private cd: ChangeDetectorRef) {
-  }
+  constructor(
+    private cd: ChangeDetectorRef,
+    private dataService: DataService,
+    private authService: AuthService,
+    private wsService: WebsocketService,
+    private snackBar: MatSnackBar,
+    private ngZone: NgZone,
+    private route: ActivatedRoute,
+    private http: HttpClient,
+    private titleService: Title) { }
 
   ngOnInit() {
     this.connectToWebSocket();
     if (this.isWSConnected) {
       this.listenToWebSocketMessages();
+    }
+    this.route.data.subscribe(data => {
+      if (data && data.title) {
+        this.titleService.setTitle(environment.title + " - " + data.title);;
+      }
+    });
+    this.user = this.authService.auth.currentUser;
+    this.fileName = `${this.user.email}.json`;
+    if (this.user) {
+      this.showContent = true;
+      this.isAdmin = this.user.email === environment.mainEmail;
+      // Fetch data on component initialization
+      console.log("Fetching data for user:", this.user.email);
+      this.ngZone.run(() => {
+        this.dataService.fetchDataForUser(this.fileName).subscribe(
+          data => {
+            if (data) {
+              this.data = data;
+              console.log("data", data);
+              this.cd.detectChanges();  // Trigger change detection
+            }
+          },
+          error => {
+            console.error("Error fetching data for user:", this.user.email, error);
+            // Handle the error, e.g., show a notification to the user
+          }
+        );
+      })
     }
   }
 

@@ -102,7 +102,7 @@ def initiate_group_chat(
     groupchat = GroupChat(
         agents=group_agents,
         messages=[],
-        max_round=12,
+        max_round=10,
     )
 
     manager = WebSocketManagerAgent(
@@ -160,7 +160,7 @@ def create_instance_proxy(agent, code_execution_config, llm_config, send_queue, 
         name=agent['agent_name'],
         is_termination_msg=termination_msg,
         system_message=agent['message'],
-        human_input_mode="",
+        human_input_mode="TERMINATE",
         llm_config=llm_config,
         code_execution_config=code_execution_config,
         send_queue=send_queue,
