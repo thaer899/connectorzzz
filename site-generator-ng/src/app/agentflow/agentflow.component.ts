@@ -57,14 +57,13 @@ export class AgentflowComponent implements  OnInit, OnDestroy {
       }
     });
     this.user = this.authService.auth.currentUser;
-    this.fileName = `${this.user.email}.json`;
     if (this.user) {
       this.showContent = true;
       this.isAdmin = this.user.email === environment.mainEmail;
       // Fetch data on component initialization
       console.log("Fetching data for user:", this.user.email);
       this.ngZone.run(() => {
-        this.dataService.fetchDataForUser(this.fileName).subscribe(
+        this.dataService.fetchDataForUser(this.user.email).subscribe(
           data => {
             if (data) {
               this.data = data;
