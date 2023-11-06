@@ -1,6 +1,9 @@
 {
   "type": "object",
   "properties": {
+    "username": {
+       "type": "string"
+     },
     "education": {
       "type": "array",
       "items": {

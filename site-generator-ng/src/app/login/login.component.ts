@@ -8,13 +8,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-
+  username: string;
+  password: string;
   constructor(private router: Router, private authService: AuthService) { }
-
 
   loginWithGoogle() {
     this.authService.loginWithGoogle().then(() => {
-      this.router.navigate(['/admin']);
     }).catch(error => {
       console.error(error);
     });
@@ -22,7 +21,6 @@ export class LoginComponent {
 
   loginWithFacebook() {
     this.authService.loginWithFacebook().then(() => {
-      this.router.navigate(['/admin']);
     }).catch(error => {
       console.error(error);
     });

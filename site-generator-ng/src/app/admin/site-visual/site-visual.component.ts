@@ -20,9 +20,8 @@ export class SiteVisualComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.authService.auth.currentUser;
-    this.fileName = `${this.user.email}.json`;
     this.ngZone.run(() => {
-      this.dataService.fetchDataForUser(this.fileName).subscribe(
+      this.dataService.fetchDataForUser(this.user.email).subscribe(
         data => {
           if (data) {
             this.data = data.theme.colors;

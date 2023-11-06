@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef, ViewChild } from '@angular/core';
+import { Component, ChangeDetectorRef, ViewChild, SimpleChanges } from '@angular/core';
 import { angularMaterialRenderers } from '@jsonforms/angular-material';
 import { and, createAjv, isControl, rankWith, scopeEndsWith } from '@jsonforms/core';
 import { DataDisplayComponent } from '../controls/data.control';
@@ -15,6 +15,7 @@ import { NgZone } from '@angular/core';
 import { VisualComponent } from '../controls/visual.control';
 import { ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { UsernameComponent } from '../controls/username.control';
 
 
 @Component({
@@ -25,6 +26,7 @@ import { Title } from '@angular/platform-browser';
 export class AdminComponent {
   @ViewChild(VisualComponent) visualComponent: VisualComponent;
 
+  
   formData: any = {};
   renderers = [
     ...angularMaterialRenderers,
@@ -45,6 +47,16 @@ export class AdminComponent {
         and(
           isControl,
           scopeEndsWith('___color')
+        )
+      )
+    },
+    {
+      renderer: UsernameComponent,
+      tester: rankWith(
+        6,
+        and(
+          isControl,
+          scopeEndsWith('___username')
         )
       )
     },
@@ -81,6 +93,7 @@ export class AdminComponent {
   isAdmin: boolean = false;
   public user: any;
   public users: any;
+  public username: string;
   public fileName: string;
   constructor(
     private cdRef: ChangeDetectorRef,
@@ -96,22 +109,20 @@ export class AdminComponent {
 
     this.route.data.subscribe(data => {
       if (data && data.title) {
-        this.titleService.setTitle(environment.title + " - " + data.title);;
+        this.titleService.setTitle(`${environment.title} - ${data.title}`);
       }
     });
     this.user = this.authService.auth.currentUser;
-    this.fileName = `${this.user.email}.json`;
     if (this.user) {
-      this.showContent = true;
-      this.isAdmin = this.user.email === environment.mainEmail;
-      // Fetch data on component initialization
-      console.log("Fetching data for user:", this.user.email);
+      if (this.user.email == environment.mainEmail) {
+        this.isAdmin = true;
+            }
       this.ngZone.run(() => {
-        this.dataService.fetchDataForUser(this.fileName).subscribe(
+        this.dataService.fetchDataForUser(this.user.email).subscribe(
           data => {
             if (data) {
               this.data = data;
-              this.cdRef.detectChanges();  // Trigger change detection
+              this.cdRef.detectChanges();  
             }
           },
           error => {
@@ -120,30 +131,43 @@ export class AdminComponent {
           }
         );
       })
-    }
+        }
+    this.fileName = `${this.user.email}.json`;
     this.getUsers();
+
+    this.showContent = true;
+
   }
 
-  getUsers() {
-    this.dataService.getListOfUsers().subscribe(
-      users => {
-        this.users = users;
-      },
-      error => {
-        console.error("Error fetching users:", error);
-        // Handle the error, e.g., show a notification to the user
-      }
-    );
+
+  async getUsers() {
+    try {
+      const users = await this.dataService.fetchUsers().toPromise();
+      this.users = users;
+      this.checkInactiveUsers();
+    } catch (error) {
+      console.error("Error fetching users:", error);
+    }
   }
+  
+  checkInactiveUsers() {
+    const hasInactiveCurrentUser = this.users.some(user => !user.active && user.email === this.user.email);
+    if (hasInactiveCurrentUser) {
+      this.showContent = false;
+
+      this.snackBar.open('Inactive current user found!', 'Close', {
+        duration: 2000, // The snackbar will auto-dismiss after 2 seconds
+      });
+    }
+  }
+
 
   getUserDataByEmail(email: string) {
-    console.log("Fetching data for user:", email);
     this.dataService.fetchDataForUser(email).subscribe(
       data => {
         if (data) {
           this.data = data;
-          console.log("Data fetched:", this.data);
-          this.fileName = email
+          this.fileName = email+'.json'
           this.cdRef.detectChanges();
         }
       },
@@ -168,15 +192,7 @@ export class AdminComponent {
   async upload() {
     const storage = getStorage();
     console.log("Uploading data to Firebase Storage...");
-
-    // Debug: Print the user email and verify its value
-    console.log(`User email: ${this.user.email}`);
-
-
-    // Debug: Print the generated filename and verify its correctness
-    console.log(`Generated fileName: ${this.fileName}`);
-
-    const fileRef = ref(storage, this.fileName);
+    const fileRef = ref(storage, `profiles/${this.user.email}.json`);
     const dataString = JSON.stringify(this.formData);
     console.log("Data to be uploaded:", this.formData);
     try {

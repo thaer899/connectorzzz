@@ -9,7 +9,7 @@ import type { EChartsOption } from 'echarts';
 export class FlowchartComponent implements OnInit, OnChanges {
   @Input() agents: any[] = [];
   @Input() messages: any[] = [];
-  @Input() profile: any = {'resume': {'firstName': ''}};
+  @Input() profile: any = {'username':  ''};
 
   options: EChartsOption;
   public defaultAgents: any[] = []
@@ -71,8 +71,8 @@ export class FlowchartComponent implements OnInit, OnChanges {
   
 
     const proxyNode = {
-      name: `${this.profile.resume.firstName}_Proxy (${this.getMessageCountForAgent(`${this.profile.resume.firstName}_Proxy`)})`,
-      message: this.profile.resume.firstName ? this.profile.resume.firstName.message : 'A User Proxy that can be used to interact with other members of the team.',
+      name: `${this.profile.username}_Proxy (${this.getMessageCountForAgent(`${this.profile.username}_Proxy`)})`,
+      message: this.profile.username ? this.profile.username.message : 'A User Proxy that can be used to interact with other members of the team.',
       x: centerX,
       y: centerY,
       itemStyle: {
@@ -95,7 +95,7 @@ export class FlowchartComponent implements OnInit, OnChanges {
     let userNode = {'name':'', 'message':'', 'x':0, 'y':0, 'itemStyle':{color:''}};
     if (this.agents.length > 1) {
     userNode = {
-          name: `${this.profile.resume.firstName} (${this.getMessageCountForAgent('Manager')})`,
+          name: `${this.profile.username} (${this.getMessageCountForAgent('Manager')})`,
           message: 'Dialog with the agent.',
           x: 0.5 * screenWidth,  // 10% of screen width
           y: 0.1 * screenHeight, // 70% of screen height
@@ -105,7 +105,7 @@ export class FlowchartComponent implements OnInit, OnChanges {
       }
     } else {
       userNode = {
-        name: `${this.profile.resume.firstName} (${this.getMessageCountForAgent('Manager')})`,
+        name: `${this.profile.username} (${this.getMessageCountForAgent('Manager')})`,
         message: 'Dialog with the agents.',
         x: 0.5 * screenWidth,  // 10% of screen width
         y: 0.1 * screenHeight, // 70% of screen height
@@ -138,20 +138,20 @@ export class FlowchartComponent implements OnInit, OnChanges {
       tooltip: {
         formatter: (params) => {
           if (params.dataType === 'node') {
-            if (params.data.name.split(' ')[0] === this.profile.resume.firstName) {
+            if (params.data.name.split(' ')[0] === this.profile.username) {
               return `<h4>Persona:</h4> ${params.data.message}<br>`;
             } 
-            else if(params.data.name.split(' ')[0] === `${this.profile.resume.firstName}_Proxy`) {
+            else if(params.data.name.split(' ')[0] === `${this.profile.username}_Proxy`) {
               const actualAgentName = params.data.name.split(' ')[0];
               const node = this.agents!.find(agent => agent.agent_name === actualAgentName);
               const description = node!.message ? node.message : '';
-              return `<h4>Persona:</h4> ${description.length > 400 ? description.slice(0, 300) + '...' : description}<h4>Last message:</h4> <pre>"${this.getMessagesForAgent(`${this.profile.resume.firstName}_Proxy`)}"<pre/>`;
+              return `<h4>Persona:</h4> ${description.length > 400 ? description.slice(0, 300) + '...' : description}<h4>Last message:</h4> <pre>"${this.getMessagesForAgent(`${this.profile.username}_Proxy`)}"<pre/>`;
             }
-            else if(params.data.name.split(' ')[0] === `${this.profile.resume.firstName}_AI`) {
+            else if(params.data.name.split(' ')[0] === `${this.profile.username}_AI`) {
               const actualAgentName = params.data.name.split(' ')[0];
               const node = this.agents!.find(agent => agent.agent_name === actualAgentName);
               const description = node!.message ? node.message : '';
-              return `<h4>Persona:</h4> ${description.length > 400 ? description.slice(0, 300) + '...' : description}<h4>Last message:</h4> <pre>"${this.getMessagesForAgent(`${this.profile.resume.firstName}_AI`)}"<pre/>`;
+              return `<h4>Persona:</h4> ${description.length > 400 ? description.slice(0, 300) + '...' : description}<h4>Last message:</h4> <pre>"${this.getMessagesForAgent(`${this.profile.username}_AI`)}"<pre/>`;
             }
             else {
             const actualAgentName = params.data.name.split(' ')[0];

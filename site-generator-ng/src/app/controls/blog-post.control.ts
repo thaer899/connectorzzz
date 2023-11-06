@@ -9,11 +9,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-blog-post-component',
   template: `
-    <mat-form-field appearance="outline" style="width: 100%;">
+    <mat-form-field style="width: 90%;">
       <mat-label>Generate blog post with AI</mat-label>
       <input matInput [(ngModel)]="recipientMessage" placeholder="Example: ai,tech,innovation" />
     </mat-form-field>
-    <mat-icon class="create-post" matTooltip="AI Start" (click)="aiBlogPost(email, recipientMessage)">create</mat-icon>
+    <mat-icon style="width: 10%;text-align: center;color:white" matTooltip="AI Start" (click)="aiBlogPost(email, recipientMessage)">create</mat-icon>
 
   `
 })

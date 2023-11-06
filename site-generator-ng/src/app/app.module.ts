@@ -39,6 +39,8 @@ import { FlowchartComponent } from './agentflow/flowchart/flowchart.component';
 import { NgxEchartsModule } from 'ngx-echarts';
 import * as echarts from 'echarts';
 import { GroupSidenavComponent } from './agentflow/group-sidenav/group-sidenav.component';
+import { UsernameComponent } from './controls/username.control';
+import { AccountSetupComponent } from './account-setup/account-setup.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,7 @@ import { GroupSidenavComponent } from './agentflow/group-sidenav/group-sidenav.c
     DataDisplayComponent,
     BlogPostComponent,
     ColorPickerComponent,
+    UsernameComponent,
     ColorPickerInputComponent,
     CustomTooltipComponent,
     LoginComponent,
@@ -60,7 +63,8 @@ import { GroupSidenavComponent } from './agentflow/group-sidenav/group-sidenav.c
     AgentflowComponent,
     SidenavComponent,
     FlowchartComponent,
-    GroupSidenavComponent
+    GroupSidenavComponent,
+    AccountSetupComponent
   ],
   imports: [
     MatInputModule,

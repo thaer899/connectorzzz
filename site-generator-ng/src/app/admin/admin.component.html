@@ -13,19 +13,19 @@
             <mat-select>
                 <div style="padding: 20px;color: aquamarine;">
                     <mat-form-field class="profile-input">
-                        <mat-label>File Name</mat-label>
+                        <mat-label>Filename</mat-label>
                         <input matInput [(ngModel)]="fileName">
                     </mat-form-field>
                 </div>
                 <mat-option *ngFor="let user of users" [value]="user.value">
-                    <a (click)="getUserDataByEmail(user)">{{user}}</a>
+                    <a (click)="getUserDataByEmail(user.email)">{{user.username}}</a>
                 </mat-option>
             </mat-select>
         </mat-form-field>
         <span class="fill-toolbar"></span>
         <span>
             <mat-icon class="download" matTooltip="Download Profile data" (click)="download()">download</mat-icon>
-            <mat-icon class="upload" matTooltip="Upload Profile" (click)="upload()">file_upload</mat-icon>
+            <mat-icon class="upload" matTooltip="Update Profile" (click)="upload()">update</mat-icon>
     
     
             <mat-icon class="separator">more_vert</mat-icon>

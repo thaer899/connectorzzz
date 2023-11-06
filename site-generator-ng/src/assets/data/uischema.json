@@ -13,6 +13,16 @@
               "elements": [
                 {
                   "type": "Group",
+                  "label": "Account",
+                  "elements": [
+                    {
+                      "type": "Control",
+                      "scope": "#/___username"
+                    }
+                  ]
+                },
+                {
+                  "type": "Group",
                   "label": "Resume",
                   "elements": [
                     {
@@ -20,7 +30,7 @@
                       "scope": "#/properties/resume/properties/firstName",
                       "label": "First Name"
                     },
-                    {
+                       {
                       "type": "Control",
                       "scope": "#/properties/resume/properties/lastName",
                       "label": "Last Name"

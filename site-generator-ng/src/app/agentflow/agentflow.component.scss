@@ -168,5 +168,8 @@ pre {
 
 :host ::ng-deep .mat-option-text{
   color: #c0c0c0 !important;
+}
 
+:host ::ng-deep .mat-option-text a{
+  width: 100% !important;
 }

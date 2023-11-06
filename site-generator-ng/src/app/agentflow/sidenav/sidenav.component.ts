@@ -82,8 +82,8 @@ export class SidenavComponent implements  OnInit, OnDestroy {
         this.listenToWebSocketMessages();
     }
     if (changes.profile && changes.profile.currentValue && this.profile.resume) {
-      this.agentName = this.profile.resume.firstName+'_AI';
-      this.userProxyName = this.profile.resume.firstName+'_Proxy';
+      this.agentName = this.profile.username+'_AI';
+      this.userProxyName = this.profile.username+'_Proxy';
 
       this.agentProfile = this.generateAgentProfile(this.profile);
       this.agent = {agent_name: this.agentName, message: this.agentProfile};
@@ -228,13 +228,19 @@ getUserDataByEmail(email: string) {
   console.log("Fetching data for user:", email);
   this.dataService.fetchDataForUser(email).subscribe(
     data => {
-      if (data) {
-        let profile = {agent_name: data.resume.firstName, message: this.generateAgentProfile(data)};
+        if (data && data.employment && data.employment.length > 0 && data.education && data.education.length > 0 && data.skills && data.skills.length > 0) {
+
+        let profile = {agent_name: data.username, message: this.generateAgentProfile(data)};
 
         this.agents = [...this.agents, profile];
         this.agentsChanged.emit(this.agents);
       }
-    },
+      else {
+        this.snackBar.open('Not enough profile data', 'Close', {
+          duration: 3000,
+        });   
+    }
+  },
     error => {
       console.error("Error fetching data for user:", email, error);
       // Handle the error, e.g., show a notification to the user
@@ -243,9 +249,9 @@ getUserDataByEmail(email: string) {
 }
 
 getUsers() {
-  this.dataService.getListOfUsers().subscribe(
+  this.dataService.fetchUsers().subscribe(
     users => {
-      this.users = users.filter(user => user !== `${this.user.email}.json`);
+      this.users = users.filter(user => user.email !== `${this.user.email}` && user.active);
       console.log("Users fetched:", this.users);
     },
     error => {
@@ -281,7 +287,7 @@ getUsers() {
     }).join('\n\n');
 
     return `
-    As an AI agent named ${profileData.resume.firstName}, 
+    As an AI agent named ${profileData.username}, 
     your expertise is:
     ${SkillEntry}  
     Educational Background:
