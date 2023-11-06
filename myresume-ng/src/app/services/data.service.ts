@@ -36,7 +36,7 @@ export class DataService {
         if (email === "" || email === null || email === undefined) {
             email = this.mainEmail;
         }
-        const fileRef = ref(storage, `${email}.json`);
+        const fileRef = ref(storage, `profiles/${email}.json`);
         return from(getDownloadURL(fileRef)).pipe(
             switchMap(downloadURL => {
                 if (typeof downloadURL === 'string') {
