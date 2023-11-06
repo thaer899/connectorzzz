@@ -34,7 +34,7 @@ async function getDownloadUrl(email) {
 async function getFile(name) {
   try {
     console.log('########### Retrieving resume for:', name);
-    const downloadURL = await getDownloadUrl(name);
+    const downloadURL = await getDownloadUrl(`profiles/${name}`);
     const response = await axios.get(downloadURL);
     console.log('########### HTTP response status for resume retrieval:', response.status);
     if (response.status !== 200) {
