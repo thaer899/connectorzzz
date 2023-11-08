@@ -1,11 +1,30 @@
-pre {
-  white-space: pre-wrap;
-  word-break: break-word;
-  margin: -30px 0px;
+.pre {
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace; // ensures a monospaced font for better code legibility
+  font-size: 0.8em; // smaller font size if needed
+  line-height: 1.2; // tight line spacing
+  white-space: pre-wrap; // allows text to wrap and respects whitespace
+  word-break: break-all; // ensures long strings like URLs will wrap
+  padding: 6px 0 !important;
+  display:flex;
 }
 
-hr {
-  border: 0px solid #3b3b3b !important;
+li {
+  display: inline-grid !important;
+}
+
+ol {
+  display: inline-grid !important;
+  margin: unset !important;
+}
+
+code {
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace; // ensures a monospaced font for better code legibility
+  font-size: 0.8em; // smaller font size if needed
+  line-height: 1.2; // tight line spacing
+  white-space: pre-wrap; // allows text to wrap and respects whitespace
+  word-break: break-all; // ensures long strings like URLs will wrap
+  padding: 6px 0 !important;
+  display:flex;
 }
 
 .content {
@@ -15,12 +34,12 @@ hr {
 
 .agents-toggle {
   z-index: 1000;
-  color: #ECEFF1;
   font-size: xx-large;
   cursor: pointer;
   transition: 0.5s;
   left: 6px;
-  position: fixed
+  position: fixed;
+  color: #ECEFF1;
 }
 
 /* Top toolbar styling */
@@ -28,6 +47,7 @@ hr {
   width: 100%;
   min-height: 15vh;
   color: #ECEFF1;
+  box-shadow: -5px 9px 16px 3px rgba(0, 0, 0, 0.5);
   border-bottom: 1px solid #565656;
   position: sticky;
   top: 0;
@@ -47,25 +67,21 @@ hr {
   border-radius: unset !important;
 }
 
-.selectbar {
-  width: 100%;
-  margin-top: 4vh;
-}
 
 .select-form {
-  width: 86%;
-  padding: 0 1em;
+  width: 92%;
   font-size: small;
+  padding: 0 1em 0 0 !important;
 }
 
 .bottombar {
   position: absolute;
   bottom: 0px;
-  width: 100%;
+  width: 92%;
 }
 
 .bottom-form {
-  width: 86%;
+  width: 92%;
   padding: 0 1em !important;
   font-size: small;
 }
@@ -80,46 +96,64 @@ hr {
 /* General styling for input and text areas */
 .full-width {
   width: 100%;
-  margin-top: 1vh;
+  margin-top: 0vh;
   background-color: #424242 !important;
   font-size: small;
 }
 
 /* Styling based on roles */
 .default, .bot, .manager, .proxy, .user{
-  padding: 8px;
+  padding: 0 10px 0 10px;
   border: 1px solid #606060e0 !important;
+  display: flex;
+  border-radius: 12px;
+  position: relative;
+  width: 96%;
 }
 
 .user { 
   background-color: #b7858d;
-  width: 92%;
   color: #464646;
+  right:  0.5%;
 }
 .manager { 
   background-color: #b7a51d;
-  width: 92%;
   color: #464646;
+  right:  0.5%;
 }
 .default { 
   background-color: #444e57; 
-  width: 92%;
-  margin-left: 4%;
+  left: 2%;
 }
 .bot { 
   background-color: #5470c6;
-  width: 92%;
-  margin-left: 4%;
- }
+  left: 2%;
+}
  .proxy { 
   background-color: #99af9d;
-  width: 92%;
-  margin-left: 4%;
   color: #464646;
+  left: 2%;
  }
 
 .mat-raised-button {
   background-color: #6c6c6c !important;
+}
+
+.box {
+  padding: 0 15px;
+}
+
+.container {
+  position: relative; /* Set relative positioning here */
+
+}
+
+.user-container {
+  right: 4%;
+}
+
+.bot-container {
+  left: 4%;
 }
 
 .chat-icon {
@@ -128,14 +162,33 @@ hr {
   width: unset;
   height: unset;
   font-size: x-large;
-  margin-top: 4.5%;
+  margin-top: -1vh;
+  display: inline-block;
 }
+
+.name-tag {
+  position: absolute;
+  padding: 4px;
+  width: unset;
+  height: unset;
+  font-size: x-large;
+  display: inline-block;
+  font-size: x-large;
+  border-radius: 12px;
+  padding: 4px 8px;
+  font-size: smaller;
+  white-space: nowrap;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.2); /* Inner shadow for the inset effect */
+}
+
 .person {
-  right: 0%;
+  right: 0vh;
   color: #b7858d !important;
 }
 .account_circle  {
-  right: 0%;
+  right: 0vh;
   color: #b7a51d !important;
 }
 .supervised_user_circle {
@@ -157,11 +210,18 @@ hr {
   color: #228057;
 }
 
+.mat-icon {
+  margin-right: 10px;
+  padding: 2px;
+  font-size: 40px;
+  z-index: 99999;
+}
+
 .start-agents-btn {
   position: absolute;
-  right: 3vh;
   font-size: 4vh;
   color: #979797 !important;
+  right: 1%;
 }
 .start-agents-btn:hover {
   color: #228057 !important;
@@ -171,7 +231,6 @@ hr {
 .ask-agents-btn {
   position: absolute;
   top: 15%;
-  right: 3vh;
   font-size: 4vh;
   color: #979797 !important;
 }
@@ -181,7 +240,6 @@ hr {
 }
 
 .mat-card>:first-child {
-  margin-top: 10px;
 }
 
 
@@ -208,26 +266,30 @@ hr {
     width: 100%;
   }
 
-   .bottom-form {
-    width: 75%;
-    padding: 4px;
-
-  }
-
   .start-agents-btn {
     position: absolute;
-    right: 1vh;
     font-size: 3vh;
-    top: 5%;
 
   }
 
   .ask-agents-btn {
     position: absolute;
-    right: 1vh;
     font-size: 3vh;
-    top: 25%;
 
   }
 }
+
+
+:host ::ng-deep .mat-select-value {
+  color: #228057 !important;
+}
+
+:host ::ng-deep .mat-select-arrow {
+  color: #228057 !important;
+} 
+
+:host ::ng-deep .material-symbols-outlined {
+  filter: drop-shadow(2px -1px 0px #0d0d0d);
+} 
+
 

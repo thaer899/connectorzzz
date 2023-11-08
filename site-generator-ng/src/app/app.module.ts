@@ -41,6 +41,7 @@ import * as echarts from 'echarts';
 import { GroupSidenavComponent } from './agentflow/group-sidenav/group-sidenav.component';
 import { UsernameComponent } from './controls/username.control';
 import { AccountSetupComponent } from './account-setup/account-setup.component';
+import { MarkdownPipe } from './pipes/marked.pipe';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { AccountSetupComponent } from './account-setup/account-setup.component';
     SidenavComponent,
     FlowchartComponent,
     GroupSidenavComponent,
-    AccountSetupComponent
+    AccountSetupComponent,
+    MarkdownPipe
   ],
   imports: [
     MatInputModule,

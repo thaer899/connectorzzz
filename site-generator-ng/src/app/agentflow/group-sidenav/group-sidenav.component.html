@@ -1,46 +1,68 @@
-    <!-- Side navigation drawer -->
+<!-- Side navigation drawer -->
 
-  <div class="selectbar">
-    <br/>
-    <mat-form-field class="select-form">
-      <mat-label>Select Agents</mat-label>
-      <mat-select [formControl]="groupAgents" multiple>
-        <mat-option *ngFor="let agent of agents" [value]="agent.agent_name" [class.selected-agent]="isSelected(agent.agent_name)">
-          {{agent.agent_name}}
-        </mat-option>
-              </mat-select>
-    </mat-form-field>
-    <mat-icon matTooltip="Start Agents" class="material-symbols-outlined start-agents-btn" (click)="runAgents(agents)" *ngIf="isWSConnected && agents.length>0">
-      group_work
-    </mat-icon>
-  </div>
+<div class="box">
+  <p>Group chat</p>
+  <mat-form-field class="select-form">
+    <mat-label>Select Agents</mat-label>
+    <mat-select [formControl]="groupAgents" multiple>
+      <mat-option
+        *ngFor="let agent of agents"
+        [value]="agent.agent_name"
+        [class.selected-agent]="isSelected(agent.agent_name)"
+      >
+        {{ agent.agent_name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-icon
+    matTooltip="Start Agents"
+    class="material-symbols-outlined start-agents-btn"
+    (click)="runAgents(agents)"
+    *ngIf="isWSConnected && agents.length > 0"
+  >
+    group_work
+  </mat-icon>
+</div>
 
+<hr />
 
-    
-      <hr>
+<!-- Message display area -->
+<ng-container>
+  <mat-card #scrollableContainer class="card" [autoScroll]="messages.length">
+    <mat-list>
+      <div class="pre" *ngFor="let msg of messages; let i = index">
+        <span
+          [ngClass]="getAttributes(msg.name, 'icon')"
+          class="material-symbols-outlined chat-icon"
+        >
+          {{ getAttributes(msg.name, "icon") }}
+        </span>
+        <span class="name-tag" [ngClass]="getAttributes(msg.name, 'name')">{{
+          msg.name
+        }}</span>
 
-      <!-- Message display area -->
-      <ng-container>
-        <mat-card #scrollableContainer class="card" [autoScroll]="messages.length">
-          <mat-list>
-            <pre *ngFor="let msg of messages; let i = index">
-              <span [ngClass]="getIcon(msg.name)"class="material-symbols-outlined chat-icon">
-                {{getIcon(msg.name)}}
-                </span>
-              <div [ngClass]="getUserClass(msg.name)"><strong>{{msg.name}}: </strong> {{ msg.content }}</div>
-            </pre>
+        <div [ngClass]="getAttributes(msg.name, 'div')">
+          <div
+            [innerHTML]="msg.content | markdown"
+            style="margin-top: 2vh; width: 100%"
+          ></div>
+        </div>
+      </div>
+    </mat-list>
+  </mat-card>
+  <hr />
+</ng-container>
+<div class="bottombar">
+  <mat-form-field class="bottom-form">
+    <mat-label>Enter message</mat-label>
+    <textarea matInput #messageInput></textarea>
+  </mat-form-field>
 
-          </mat-list>
-      </mat-card>
-      <hr>
-      </ng-container>
-      <div class="bottombar">
-        <mat-form-field appearance="outline" class="bottom-form">
-         <mat-label>Enter message</mat-label>
-         <textarea matInput #messageInput ></textarea>
-       </mat-form-field>
-
-       <mat-icon class="material-symbols-outlined ask-agents-btn"  (click)="initiateGroupChat(messageInput.value, groupAgents.value)" *ngIf="isWSConnected && agents.length>0">
-         send
-       </mat-icon>
-     </div>
+  <mat-icon
+    class="material-symbols-outlined ask-agents-btn"
+    (click)="initiateGroupChat(messageInput.value, groupAgents.value)"
+    *ngIf="isWSConnected && agents.length > 0"
+  >
+    send
+  </mat-icon>
+</div>

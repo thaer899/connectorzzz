@@ -1,6 +1,6 @@
 <!-- Side navigation drawer -->
-<div style="padding: 15px">
-  <p>Partner Agent</p>
+<div class="box">
+  <p>Partner AI</p>
   <mat-form-field
     class="select-profile"
     matTooltip="Select or create a new profile"
@@ -24,33 +24,61 @@
 </div>
 <hr />
 
-<div style="padding: 15px">
-  <p>Create Agent</p>
-  <span
-    class="material-symbols-outlined add-agent"
-    (click)="runAgent(selectedAgentMessage, selectedAgentName)"
-    *ngIf="isWSConnected"
-  >
-    add
-  </span>
+<div class="box">
+  <div style="width: 100%; display: flex">
+    <p style="width: 60%">Add Agent</p>
+    <mat-icon
+      matTooltip="Automation Agents team"
+      class="add-agent"
+      (click)="addAgent(selectedAgent)"
+      *ngIf="isWSConnected"
+      >add</mat-icon
+    >
+  </div>
   <!-- Input for the agent name -->
   <mat-form-field class="full-width">
     <mat-label>Name</mat-label>
-    <input matInput [(ngModel)]="selectedAgentName" />
+    <input matInput [(ngModel)]="selectedAgent.agent_name" />
   </mat-form-field>
 
+  <mat-form-field class="full-width">
+    <mat-label>{{ selectedAgent.type }}</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let type of agentTypes" [value]="type">
+        {{ type }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Config</mat-label>
+    <textarea
+      style="height: 6vh"
+      matInput
+      [ngModel]="configAsString"
+      (ngModelChange)="onAgentConfigValueChange($event)"
+    ></textarea>
+  </mat-form-field>
   <!-- Textarea for system message -->
   <mat-form-field class="full-width">
     <mat-label>System message</mat-label>
-    <textarea matInput [(ngModel)]="selectedAgentMessage"></textarea>
+    <textarea matInput [(ngModel)]="selectedAgent.message"></textarea>
   </mat-form-field>
 </div>
 <hr />
 
 <!-- Message display area -->
-<div style="padding: 15px">
-  <!-- Input for the agent name -->
-  <p>Group</p>
+<div class="box">
+  <div style="width: 100%; display: flex">
+    <p style="width: 60%">Add Group</p>
+    <mat-icon
+      matTooltip="Automation Agents team"
+      class="add-agent"
+      (click)="onToggle()"
+      >add_circle</mat-icon
+    >
+  </div>
+
   <mat-form-field class="full-width">
     <mat-label>Name</mat-label>
     <input matInput [(ngModel)]="selectedGroupName" />
@@ -62,8 +90,8 @@
     <textarea
       matInput
       [ngModel]="agentsAsString"
-      (ngModelChange)="onValueChange($event)"
-      style="height: 35vh"
+      (ngModelChange)="onAgentsValueChange($event)"
+      style="height: 30vh"
     ></textarea>
   </mat-form-field>
 </div>

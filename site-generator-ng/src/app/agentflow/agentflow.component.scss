@@ -16,6 +16,15 @@ pre {
   z-index: 1000;
 }
 
+.resize-handle {
+  position: absolute;
+  top: 0;
+  right: 99%;
+  width: 1vh;
+  height: 100%;
+  cursor: col-resize;
+  z-index: 100;
+}
 .flowchart-container {
   position: fixed;
   top: 0px;
@@ -27,14 +36,14 @@ pre {
 /* Sidenav width and background */
 .left-sidenav{
   width: 25%;
-  background-color: #0d0d0d;
+  background-color: #303e3d; 
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5) !important;
 }
 
 /* Sidenav width and background */
 .right-sidenav{
   width: 40%;
-  background-color: #0d0d0d;
+  background-color: #3a3548;
   box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.5) !important;
 }
 
@@ -47,18 +56,17 @@ pre {
 .mat-icon {
   margin-right: 10px;
   padding: 2px;
-  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
   font-size: 40px;
   z-index: 99999;
+  filter: drop-shadow(2px -1px 0px #383838);
 }
 
 .fill-toolbar {
   flex: 1 1 auto;
 }
 
-
 .link-toggle {
-  color: #225f43;
+  color: #228057 ;
 }
 
 .link-off-toggle {
@@ -70,7 +78,6 @@ pre {
   right: 10px;
   top: 0px;
   padding: 10px;
-  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
   font-size: 40px;
   z-index: 99999;
   color: #a72f2f;
@@ -81,7 +88,7 @@ pre {
 
   /* Sidenav width and background */
 .left-sidenav{
-  width: 30%;
+  width: 40%;
 }
 
 /* Sidenav width and background */
@@ -114,22 +121,30 @@ pre {
 // Form Controls
 
 :host ::ng-deep .mat-drawer  {
-  color: #c0c0c0 !important;
+  color: #ECEFF1 !important;
 }
 
 :host ::ng-deep .mat-primary  {
-  color: #c0c0c0 !important;
+  color: #ECEFF1 !important;
 }
 
 
 :host ::ng-deep .mat-drawer-content  {
   margin-left: 0% ;
-  color: #c0c0c0 !important;
+  color: #ECEFF1 !important;
 }
 
 :host ::ng-deep .mat-form-field-flex {
-  background-color: #212121;
+  background-color: #0d0d0d;
+  box-shadow: -5px 9px 16px 3px rgba(0, 0, 0, 0.5);
+  padding: 0 1vh;
+  border-radius: 3px;
 }
+
+:host ::ng-deep .mat-form-field-infix {
+  font-size: small;
+}
+
 
 :host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
   top: unset !important;
@@ -157,14 +172,6 @@ pre {
 :host ::ng-deep .mat-form-field-outline-start {
   border: 0px  !important;
 }
-
-:host ::ng-deep .mat-select-value {
-  color: #228057 !important;
-}
-
-:host ::ng-deep .mat-select-arrow {
-  color: #228057 !important;
-} 
 
 :host ::ng-deep .mat-option-text{
   color: #c0c0c0 !important;

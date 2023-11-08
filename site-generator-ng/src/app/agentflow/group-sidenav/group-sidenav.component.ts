@@ -6,28 +6,30 @@ import { environment } from '../../../environments/environment';
 import { ElementRef, ViewChild, AfterViewChecked, Renderer2 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Subscription } from 'rxjs';
+import { ToggleService } from 'src/app/services/toggle.service';
+
 
 @Component({
   selector: 'app-group-sidenav',
   templateUrl: './group-sidenav.component.html',
-  styleUrls: ['./group-sidenav.component.css']
+  styleUrls: ['./group-sidenav.component.scss']
 })
-export class GroupSidenavComponent implements  OnInit, OnDestroy {
+export class GroupSidenavComponent implements OnInit, OnDestroy {
   @ViewChild('scrollableContainer') private scrollableContainer: ElementRef;
   @Input() agents: any[] = [];
   @Input() isWSConnected: boolean = false;
-  
+
   agentName: string = 'User_AI';
   agentProfile: string = '';
   groupAgents = new FormControl('');
-
   public loading: boolean = false;
   public messages: any = [];
   public chats: any = [];
   public chatId: string = '';
   public selectedAgents: any = [];
 
-  constructor(private http: HttpClient,private snackBar: MatSnackBar, private wsService: WebsocketService, private cd: ChangeDetectorRef) {
+  constructor(private http: HttpClient, private snackBar: MatSnackBar, private wsService: WebsocketService, private cd: ChangeDetectorRef) {
   }
 
   ngOnInit() {
@@ -35,7 +37,7 @@ export class GroupSidenavComponent implements  OnInit, OnDestroy {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.isWSConnected && changes.isWSConnected.currentValue) {
-        this.listenToWebSocketMessages();
+      this.listenToWebSocketMessages();
     }
     if (changes.agents && changes.agents.currentValue) {
       // Use a defensive copy to ensure change detection picks up changes
@@ -44,7 +46,7 @@ export class GroupSidenavComponent implements  OnInit, OnDestroy {
       this.cd.markForCheck();
     }
 
-}
+  }
 
   connectToWebSocket(): void {
     const headers = {
@@ -80,32 +82,18 @@ export class GroupSidenavComponent implements  OnInit, OnDestroy {
       this.connectToWebSocket();
       this.isWSConnected = true;
     }
-      this.wsService.send(
+    this.wsService.send(
       JSON.stringify({
         action: 'message_group',
-        agent_name: agents.join(','),
-        message:  message,
+        agents: agents.join(','),
+        message: message,
       })
     );
     if (agents.length == 1) {
-    this.messages = [...this.messages, { 'name': 'User', 'content': message }];
+      this.messages = [...this.messages, { 'name': 'User', 'content': message }];
     } else {
       this.messages = [...this.messages, { 'name': 'Manager', 'content': message }];
     }
-  }
-
-  createGroup(agents: any[]): void {
-    if (!this.isWSConnected) {
-      this.connectToWebSocket();
-      this.isWSConnected = true;
-    }
-      this.wsService.send(
-      JSON.stringify({
-        action: 'message_group',
-        agent_name: 'Manager',
-        message: agents.join(',') ,
-      })
-    );
   }
 
   listenToWebSocketMessages(): void {
@@ -115,7 +103,7 @@ export class GroupSidenavComponent implements  OnInit, OnDestroy {
         const messageObj = JSON.parse(messageStr);
         if (messageObj && messageObj.name) {
           this.messages = [...this.messages, { 'name': messageObj.name, 'content': messageObj.content }];
-        }else if (messageObj && !messageObj.name) {
+        } else if (messageObj && !messageObj.name) {
           this.messages = [...this.messages, { 'name': 'Hint', 'content': messageStr }];
         }
         this.cd.detectChanges();
@@ -136,39 +124,43 @@ export class GroupSidenavComponent implements  OnInit, OnDestroy {
       this.wsService.send(
         JSON.stringify({
           action: 'start_agent',
-          agent_name: agent.agent_name,
-          message: agent.message,
+          agent: agent
         })
       );
     }
     this.snackBar.open('Started Agents', 'Close', {
       duration: 3000,
     });
-   
-  }
 
-  
-  getUserClass(userType: string): string {
-    switch (userType) {
-      case 'Hint': return 'default';
-      case 'Bot': return 'bot';
-      case this.agents[0].agent_name: return 'proxy';
-      case 'Manager': return 'manager';
-      case 'User': return 'user';
-      default: return 'bot';
+  }
+  getAttributes(name, element) {
+    const agentName = this.agents[0].agent_name;
+    const attributes = {
+      'Hint': { userType: 'default', name: 'default bot-container', icon: 'info' },
+      'Bot': { userType: 'bot', name: 'bot bot-container', icon: 'robot_2' },
+      'Manager': { userType: 'manager', name: 'manager user-container', icon: 'account_circle' },
+      'User': { userType: 'user', name: 'user user-container', icon: 'person' },
+      [agentName]: { userType: 'proxy', name: 'proxy bot-container', icon: 'supervised_user_circle' }
+    };
+
+    // Default for unknown names
+    const defaultAttr = { userType: 'bot', name: 'bot bot-container', icon: 'robot_2' };
+
+    // Determine the attribute set based on the input name
+    const attrSet = attributes[name] || defaultAttr;
+
+    // Return the attribute based on the element type
+    switch (element) {
+      case "icon":
+        return attrSet.icon;
+      case "name":
+        return attrSet.name.split(' ');
+      case "div":
+        return attrSet.userType;
+      default:
+        return ''; // If the element type is unknown, return an empty string
     }
   }
-
-  getIcon(icon: string) {
-    switch (icon) {
-      case 'Hint': return 'info';
-      case this.agents[0].agent_name: return 'supervised_user_circle';
-      case 'Manager': return 'account_circle';
-      case 'User': return 'person';
-      default: return 'robot_2';
-    }
-  }
-
 
   onValueChange(newValue: string) {
     try {
@@ -179,13 +171,13 @@ export class GroupSidenavComponent implements  OnInit, OnDestroy {
       console.error("Invalid JSON format:", error);
     }
   }
-  
+
   isSelected(agentName: string): boolean {
     const selectedAgents = this.groupAgents.value;
     return selectedAgents.includes(agentName);
   }
 
-  
+
 
   get agentsAsString(): string {
     return JSON.stringify(this.agents, null, 2);
@@ -204,6 +196,7 @@ export class GroupSidenavComponent implements  OnInit, OnDestroy {
   ngOnDestroy() {
     // Close the WebSocket connection when the component is destroyed
     this.wsService.close();
+
   }
 
 

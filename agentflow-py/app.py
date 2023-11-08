@@ -10,7 +10,7 @@ from fastapi import FastAPI, WebSocket, HTTPException, Header
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.websockets import WebSocketDisconnect
 from src.config import API_KEY, OPENAI_API_KEY
-from src.chat import setup_agent, agent_chat, group_chat
+from src.chat import setup_agent, group_chat
 
 openai.api_key = OPENAI_API_KEY
 
@@ -70,29 +70,27 @@ async def websocket_endpoint(websocket: WebSocket, chat_id: str):
             if websocket.client_state == WebSocketState.CONNECTED:
                 data = await websocket.receive_json()
                 logging.debug(f"raw from client: {data}")
-                action = data.get("action")
-                agent_name = data.get("agent_name")
-                message = data.get("message")
+                action = data["action"]
+                message = data.get("message", "")
+                group_name = data.get("group_name", "")
+                agent = data.get("agent", {})
 
-                agent_names = data.get("agent_name").split(",")
+                agent_names = data.get("agents", "").split(",")
                 for name in agent_names:
                     if name and name not in agents:
-                        agents[name] = {"status": "inactive"}
+                        agents[name] = {"status": "inactive", "config": agent}
 
                 if action == "start_agent":
-                    logging.info(f"Starting agent: {agent_name}")
-                    agents[agent_name] = setup_agent(
-                        agent_name, message, send_queue, receive_queue)
-
-                if action == "send_message":
-                    logging.info(f"Starting send_message: {message}")
-                    agent_chat(
-                        agent_name, message, send_queue, receive_queue)
+                    logging.info(f"Starting agent: {agent.get('agent_name')}")
+                    agent_name = agent.get("agent_name")
+                    if agent_name is not None:  # Make sure that agent_name is not None
+                        agents[agent_name] = setup_agent(
+                            message, agent, send_queue, receive_queue)
 
                 if action == "message_group":
                     logging.info(f"Starting message_group: {message}")
                     group_chat(
-                        message, agent_name, agents, send_queue, receive_queue)
+                        group_name, message, agents, send_queue, receive_queue)
 
             else:
                 logging.info("Websocket disconnected")

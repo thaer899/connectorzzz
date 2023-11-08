@@ -3,7 +3,7 @@ import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { WebsocketService } from '../services/websocket.service';
 import { ChangeDetectorRef } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { ElementRef, ViewChild, AfterViewChecked, Renderer2 } from '@angular/core';
+import { ElementRef, ViewChild, AfterViewChecked, Renderer2, HostListener } from '@angular/core';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { GroupSidenavComponent } from './group-sidenav/group-sidenav.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -12,16 +12,25 @@ import { DataService } from '../services/data.service';
 import { AuthService } from '../services/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { ToggleService } from '../services/toggle.service';
+import { Subscription } from 'rxjs';
+import { MatDrawer } from '@angular/material/sidenav';
 @Component({
   selector: 'app-agentflow',
   templateUrl: './agentflow.component.html',
   styleUrls: ['./agentflow.component.scss']
 })
-export class AgentflowComponent implements  OnInit, OnDestroy {
+export class AgentflowComponent implements OnInit, OnDestroy {
   @ViewChild('scrollableContainer') private scrollableContainer: ElementRef;
   @ViewChild('sidenav') sidenavComponent: SidenavComponent;
   @ViewChild('groupsidenav') groupSidenavComponent: GroupSidenavComponent;
   @ViewChild('flowchart') flowChartComponent: FlowchartComponent;
+
+  @ViewChild('groupdrawer', { read: ElementRef }) groupdrawer: ElementRef;
+
+  @ViewChild('resizeHandle', { read: ElementRef }) resizeHandle: ElementRef;
+
+  private resizing: boolean = false;
 
   events: string[] = [];
 
@@ -29,11 +38,13 @@ export class AgentflowComponent implements  OnInit, OnDestroy {
   public chatId: string = '';
   public isWSConnected: boolean = false;
   public messages: any = [];
-  public data :any= {};
+  public data: any = {};
   showContent: boolean = false;
   isAdmin: boolean = false;
   public user: any;
   public fileName: string;
+  public groupDrawerOpen = false;
+  private subscription: Subscription;
 
   constructor(
     private cd: ChangeDetectorRef,
@@ -44,9 +55,14 @@ export class AgentflowComponent implements  OnInit, OnDestroy {
     private ngZone: NgZone,
     private route: ActivatedRoute,
     private http: HttpClient,
+    private toggleService: ToggleService,
     private titleService: Title) { }
 
   ngOnInit() {
+    this.subscription = this.toggleService.state$.subscribe(isOpen => {
+      this.groupDrawerOpen = isOpen;
+
+    });
     this.connectToWebSocket();
     if (this.isWSConnected) {
       this.listenToWebSocketMessages();
@@ -79,6 +95,7 @@ export class AgentflowComponent implements  OnInit, OnDestroy {
       })
     }
   }
+
 
   ngOnChanges(): void {
     if (this.isWSConnected) {
@@ -126,7 +143,7 @@ export class AgentflowComponent implements  OnInit, OnDestroy {
       }
     );
   }
-  
+
   updateAgents(newAgents: any[]) {
     this.agents = newAgents;
   }
@@ -141,6 +158,35 @@ export class AgentflowComponent implements  OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.wsService.close();
+    this.subscription.unsubscribe();
 
-}
+  }
+  // Function to start resizing
+  @HostListener('mousedown', ['$event.target'])
+  startResizing(target: HTMLElement, event: MouseEvent): void {
+    // Make sure the mousedown event is on the resize handle
+    if (target === this.resizeHandle.nativeElement) {
+      event.preventDefault();
+      this.resizing = true;
+    }
+  }
+
+  // Function to resize the drawer
+  @HostListener('document:mousemove', ['$event'])
+  onMouseMove(event: MouseEvent): void {
+    if (this.resizing) {
+      // Calculate the new width based on the mouse position
+      const newWidth = window.innerWidth - event.clientX;
+
+      // Set the width of the drawer
+      this.groupdrawer.nativeElement.style.width = `${newWidth}px`;
+    }
+  }
+
+  // Function to stop resizing
+  @HostListener('document:mouseup')
+  onMouseUp(): void {
+    this.resizing = false;
+  }
+
 }

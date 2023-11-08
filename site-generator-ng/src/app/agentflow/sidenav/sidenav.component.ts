@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, OnDestroy,Output,Input, EventEmitter, SimpleChanges } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, Input, EventEmitter, SimpleChanges } from '@angular/core';
 import { WebsocketService } from '../../services/websocket.service';
 import { ChangeDetectorRef } from '@angular/core';
 import { environment } from '../../../environments/environment';
@@ -8,6 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { DataService } from 'src/app/services/data.service';
 import { cpuUsage } from 'process';
 import { AuthService } from 'src/app/services/auth.service';
+import { ToggleService } from '../../services/toggle.service';
 
 interface SkillEntry {
   type: string;
@@ -38,7 +39,7 @@ interface EmploymentEntry {
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.css']
 })
-export class SidenavComponent implements  OnInit, OnDestroy {
+export class SidenavComponent implements OnInit, OnDestroy {
   @ViewChild('scrollableContainer') private scrollableContainer: ElementRef;
   @Input() isWSConnected: boolean = false;
   @Output() agentsChanged = new EventEmitter<any[]>();
@@ -55,21 +56,57 @@ export class SidenavComponent implements  OnInit, OnDestroy {
   public agents: any = [];
   public actifAgent = '';
   public chatId: string = '';
-  public selectedGroupName: string = 'Connectorzzz';
-  public selectedAgentName: string = 'AgentX';
-  public selectedAgentMessage: string = 'A reliable and knowledgeable aid with a knack for problem-solving.';
 
-  public user_proxy : any = {}
+  public selectedGroupName: string = 'Connectorzzz';
+
+  public agentTypes = ['Assistant', 'Teachable'];
+
+  public config = {
+    "llm_config": {
+      "request_timeout": 300,
+      "seed": 42,
+      "config_list": [{ 'model': 'gpt-3.5-turbo' }],
+      "temperature": 0,
+    },
+    "code_execution_config": {
+      "work_dir": "workspace",
+      "use_docker": true,
+      "last_n_messages": 5,
+    }
+  }
+
+  public selectedAgent: any = {
+    agent_name: 'AgentX',
+    type: 'Assistant',
+    config: {
+      "llm_config": {
+        "request_timeout": 300,
+        "seed": 42,
+        "config_list": [{ 'model': 'gpt-3.5-turbo' }],
+        "temperature": 0,
+      },
+      "code_execution_config": {
+        "work_dir": "workspace",
+        "use_docker": true,
+        "last_n_messages": 5,
+      }
+    },
+    message: 'A reliable and knowledgeable aid with a knack for problem-solving.'
+  };
+
+  public user_proxy: any = {}
   public userProxyName: string = 'User_Proxy';
 
-  public agent : any = {}
+  public agent: any = {}
   agentName: string = 'User_AI';
   agentProfile: string = '';
 
   constructor(private http: HttpClient,
     private authService: AuthService,
     private dataService: DataService,
-    private snackBar: MatSnackBar, private wsService: WebsocketService, private cd: ChangeDetectorRef) {
+    private snackBar: MatSnackBar,
+    private toggleService: ToggleService,
+    private wsService: WebsocketService, private cd: ChangeDetectorRef) {
   }
 
   ngOnInit() {
@@ -79,21 +116,55 @@ export class SidenavComponent implements  OnInit, OnDestroy {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.isWSConnected && changes.isWSConnected.currentValue) {
-        this.listenToWebSocketMessages();
+      this.listenToWebSocketMessages();
     }
     if (changes.profile && changes.profile.currentValue && this.profile.resume) {
-      this.agentName = this.profile.username+'_AI';
-      this.userProxyName = this.profile.username+'_Proxy';
+      this.agentName = this.profile.username + '_AI';
+      this.userProxyName = this.profile.username + '_Proxy';
 
       this.agentProfile = this.generateAgentProfile(this.profile);
-      this.agent = {agent_name: this.agentName, message: this.agentProfile};
-      this.user_proxy = {agent_name: this.userProxyName, message: 'A human admin. Interact with team on behalf of the user.! Reply `TERMINATE` in the end when everything is done.'};
+      this.agent = {
+        agent_name: this.agentName,
+        type: 'Assistant',
+        config: {
+          "llm_config": {
+            "request_timeout": 300,
+            "seed": 42,
+            "config_list": [{ 'model': 'gpt-3.5-turbo' }],
+            "temperature": 0,
+          },
+          "code_execution_config": {
+            "work_dir": "workspace",
+            "use_docker": true,
+            "last_n_messages": 5,
+          }
+        },
+        message: this.agentProfile
+      };
+      this.user_proxy = {
+        agent_name: this.userProxyName,
+        type: 'Proxy',
+        config: {
+          "llm_config": {
+            "request_timeout": 300,
+            "seed": 42,
+            "config_list": [{ 'model': 'gpt-3.5-turbo' }],
+            "temperature": 0,
+          },
+          "code_execution_config": {
+            "work_dir": "workspace",
+            "use_docker": true,
+            "last_n_messages": 5,
+          }
+        },
+        message: 'A human admin. Interact with team on behalf of the user.! Reply `TERMINATE` in the end when everything is done.'
+      };
 
       this.agents.unshift(this.user_proxy, this.agent);
       this.agentsChanged.emit(this.agents);
 
     }
-}
+  }
 
   connectToWebSocket(): void {
     const headers = {
@@ -126,7 +197,7 @@ export class SidenavComponent implements  OnInit, OnDestroy {
     });
   }
 
-  
+
   listenToWebSocketMessages(): void {
     this.wsService.messages$.subscribe(
       (messageStr) => {
@@ -135,7 +206,7 @@ export class SidenavComponent implements  OnInit, OnDestroy {
         if (messageObj && messageObj.name) {
           this.messages.push({ 'name': messageObj.name, 'content': messageObj.content });
           this.loading = false;
-        }else if (messageObj && !messageObj.name) {
+        } else if (messageObj && !messageObj.name) {
           this.messages.push({ 'name': 'Hint', 'content': messageStr });
           this.loading = false;
         }
@@ -147,53 +218,31 @@ export class SidenavComponent implements  OnInit, OnDestroy {
     );
   }
 
-  initiateChat(message: string): void {
-    this.loading = true;
-    // Send the initial message via WebSocket
-    this.wsService.send(
-      JSON.stringify({
-        action: 'send_message',
-        agent_name: this.actifAgent,
-        message: message,
-      })
-    );
-    this.messages.push({ 'name': 'Me (Product_Manager)', 'content': message });
-  }
-
-  runAgent(message: string, agent_name: string): void {
+  addAgent(agent: any): void {
     if (!this.isWSConnected) {
       this.connectToWebSocket();
       this.isWSConnected = true;
     }
 
-      const agentExists = this.agents.some(agent => agent.agent_name === agent_name);  
+    const agentExists = this.agents.some(ag => ag === agent);
     if (!agentExists) {
-      let newAgent = { 'agent_name': agent_name, 'message': message };
+      let newAgent = agent;
       this.agents = [...this.agents, newAgent];
       this.agentsChanged.emit(this.agents);
 
     } else {
-      console.log('Agent already exists. Not adding.'); 
+      console.log('Agent already exists. Not adding.');
     }
-  
-  
-    this.actifAgent = agent_name;
-    this.wsService.send(
-      JSON.stringify({
-        action: 'start_agent',
-        agent_name: agent_name,
-        message: message,
-      })
-    );
-    this.snackBar.open('Started Agent', 'Close', {
-      duration: 3000,
+
+    this.snackBar.open('Added Agent', 'Close', {
+      duration: 2000,
     });
   }
-  
-  
-  
 
-  getUserClass(userType: string='Default'): string {
+
+
+
+  getUserClass(userType: string = 'Default'): string {
     switch (userType) {
       case 'Hint': return 'default';
       case 'Boss': return 'boss';
@@ -208,58 +257,85 @@ export class SidenavComponent implements  OnInit, OnDestroy {
   updateSelectedAgentValues(): void {
     const selectedAgent = this.agents.find(agent => agent.agent_name === this.actifAgent);
     if (selectedAgent) {
-        this.selectedAgentName = selectedAgent.agent_name;
-        this.selectedAgentMessage = selectedAgent.message;
+      this.selectedAgent = selectedAgent;
     }
-}
-
-onValueChange(newValue: string) {
-  try {
-    this.agents = JSON.parse(newValue);
-    if (this.agents.length > 0) {
-      this.agentsChanged.emit(this.agents);
-    }
-  } catch (error) {
-    console.error("Invalid JSON format:", error);
   }
-}
 
-getUserDataByEmail(email: string) {
-  console.log("Fetching data for user:", email);
-  this.dataService.fetchDataForUser(email).subscribe(
-    data => {
-        if (data && data.employment && data.employment.length > 0 && data.education && data.education.length > 0 && data.skills && data.skills.length > 0) {
-
-        let profile = {agent_name: data.username, message: this.generateAgentProfile(data)};
-
-        this.agents = [...this.agents, profile];
+  onAgentsValueChange(newValue: string) {
+    try {
+      this.agents = JSON.parse(newValue);
+      if (this.agents.length > 0) {
         this.agentsChanged.emit(this.agents);
       }
-      else {
-        this.snackBar.open('Not enough profile data', 'Close', {
-          duration: 3000,
-        });   
+    } catch (error) {
+      console.error("Invalid JSON format:", error);
     }
-  },
-    error => {
-      console.error("Error fetching data for user:", email, error);
-      // Handle the error, e.g., show a notification to the user
-    }
-  );
-}
+  }
 
-getUsers() {
-  this.dataService.fetchUsers().subscribe(
-    users => {
-      this.users = users.filter(user => user.email !== `${this.user.email}` && user.active);
-      console.log("Users fetched:", this.users);
-    },
-    error => {
-      console.error("Error fetching users:", error);
-      // Handle the error, e.g., show a notification to the user
+  onAgentConfigValueChange(newValue: string) {
+    try {
+      this.selectedAgent.config = JSON.parse(newValue);
+    } catch (error) {
+      console.error("Invalid JSON format:", error);
     }
-  );
-}
+  }
+
+  getUserDataByEmail(email: string) {
+    console.log("Fetching data for user:", email);
+    this.dataService.fetchDataForUser(email).subscribe(
+      data => {
+        if (data && data.employment && data.employment.length > 0 && data.education && data.education.length > 0 && data.skills && data.skills.length > 0) {
+
+          let profile = {
+            agent_name: data.username + '_AI',
+            type: 'Assistant',
+            config: {
+              "llm_config": {
+                "request_timeout": 300,
+                "seed": 42,
+                "config_list": [{ 'model': 'gpt-3.5-turbo' }],
+                "temperature": 0,
+              },
+              "code_execution_config": {
+                "work_dir": "workspace",
+                "use_docker": true,
+                "last_n_messages": 5,
+              }
+            },
+            message: this.generateAgentProfile(data)
+          };
+          this.agents = [...this.agents, profile];
+          this.agentsChanged.emit(this.agents);
+        }
+        else {
+          this.snackBar.open('Not enough profile data', 'Close', {
+            duration: 3000,
+          });
+        }
+      },
+      error => {
+        console.error("Error fetching data for user:", email, error);
+        // Handle the error, e.g., show a notification to the user
+      }
+    );
+  }
+
+  getUsers() {
+    this.dataService.fetchUsers().subscribe(
+      users => {
+        this.users = users.filter(user => user.email !== `${this.user.email}` && user.active);
+        console.log("Users fetched:", this.users);
+      },
+      error => {
+        console.error("Error fetching users:", error);
+        // Handle the error, e.g., show a notification to the user
+      }
+    );
+  }
+
+  onToggle(): void {
+    this.toggleService.toggleDrawer();
+  }
 
   ngOnDestroy() {
     // Close the WebSocket connection when the component is destroyed
@@ -301,7 +377,7 @@ getUsers() {
     Reply "TERMINATE" in the end when everything is done.
 
     `.trim();
-  
+
   }
 
 
@@ -313,10 +389,24 @@ getUsers() {
     try {
       this.agents = JSON.parse(value);
       this.agents.unshift(this.user_proxy, this.agent);
-      this.onValueChange(value);
+      this.onAgentsValueChange(value);
     } catch (error) {
       console.error("Invalid JSON format:", error);
     }
   }
+
+  get configAsString(): string {
+    return JSON.stringify(this.selectedAgent.config, null, 2);
+  }
+
+  set configAsString(value: string) {
+    try {
+      this.selectedAgent.config = JSON.parse(value);
+      this.onAgentConfigValueChange(value);
+    } catch (error) {
+      console.error("Invalid JSON format:", error);
+    }
+  }
+
 
 }

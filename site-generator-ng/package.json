@@ -37,6 +37,7 @@
     "firebase-admin": "^11.11.0",
     "json-refs": "^3.0.4",
     "libphonenumber-js": "^1.6.8",
+    "marked": "^9.1.5",
     "ngx-echarts": "^7.1.0",
     "path": "^0.12.7",
     "random-words": "^1.1.0",
