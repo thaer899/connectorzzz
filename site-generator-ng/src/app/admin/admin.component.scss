@@ -86,6 +86,77 @@
 
 }
 
+
+
+
+// Form Controls
+
+:host ::ng-deep .mat-drawer  {
+  color: #ECEFF1 !important;
+}
+
+:host ::ng-deep .mat-primary  {
+  color: #ECEFF1 !important;
+}
+
+
+:host ::ng-deep .mat-drawer-content  {
+  color: #ECEFF1 !important;
+}
+
+:host ::ng-deep .mat-form-field-flex {
+  background-color: #0d0d0d;
+  box-shadow: -5px 9px 16px 3px rgba(0, 0, 0, 0.5);
+  padding: 0 1vh;
+  border-radius: 3px;
+  margin-top: 1vh;
+}
+
+:host ::ng-deep .mat-form-field-infix {
+  font-size: small;
+}
+
+
+:host ::ng-deep .mat-form-field-wrapper {
+  margin: 0 1vh !important;
+}
+
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  top: unset !important;
+  width:100% ;
+}
+
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline :hover {
+  top: unset !important;
+  bottom: unset;
+  width:100% ;
+}
+
+:host ::ng-deep .mat-form-field-label-wrapper {
+  top: -1.2em;
+}
+
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 1em 0em  !important;
+}
+
+:host ::ng-deep .mat-form-field-outline-end {
+  border: 0px  !important;
+}
+
+:host ::ng-deep .mat-form-field-outline-start {
+  border: 0px  !important;
+}
+
+:host ::ng-deep .mat-option-text{
+  color: #c0c0c0 !important;
+}
+
+:host ::ng-deep .mat-option-text a{
+  width: 100% !important;
+}
+
+
 // Form Controls
 
 :host ::ng-deep .mat-drawer {
@@ -120,5 +191,6 @@
 :host ::ng-deep .mat-input-element{
   color: #c0c0c0 !important;
 }
+
 
 
