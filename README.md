@@ -27,22 +27,22 @@ classDiagram
     class DB {
         Firebase
         Buckets()
-        --
+
         -Profiles()
         -Users()
         -Bots()
     }
     class ResumeUI {
         myresume-ng: Angular App
-        Functions()
-        --
+        UI()
+
         -User Resume()
         -User Bots()
     }
     class Dashboard {
         site-generator-ng: Angular App
          UI()
-         --
+
         -CRUD Resume()
         -User Bots()
         -MyAgents()
@@ -51,19 +51,19 @@ classDiagram
     class MyResumeExpress {
         NodeBackend: ExpressJS Service
         Functions()
-        --
+
         -User Bots()
     }
     class MyAgentsPy {
         PythonBackend: FastAPI Service
         Functions()
-        --
+
         -Autogen API()
     }
     class AgentFowPy {
         PythonBackend: FastAPI Service
         Functions()
-        --
+
         -AgentFlow API()
         -AgentFlow WS()
     }
