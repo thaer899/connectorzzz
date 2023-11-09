@@ -22,7 +22,7 @@ Encompassing backend services, front-end applications, and adept cloud resource 
 ### Diagram:
 
 ```mermaid
-%%{init: {'theme': 'neutral'}}%%
+%%{init: {'theme': 'default'}}%%
 classDiagram
     class DB {
         Firebase
@@ -37,20 +37,22 @@ classDiagram
         myresume-express: ExpressJS Service
     }
     class PythonBackend {
-       FastAPI Service
+        FastAPI Service
     }
     class OpenAI_LLM {
         AI Platform
     }
 
     %% Connections
-    ResumeUI --> DB : R
-    Dashboard --> DB : W/R
-    Dashboard --> NodeBackend : API
-    ResumeUI --> NodeBackend : API
-    NodeBackend --> OpenAI_LLM : API
-    Dashboard --> PythonBackend : WS
-    PythonBackend --> OpenAI_LLM : API
+    ResumeUI --> DB : (R)
+    Dashboard --> DB : (W/R)
+    ResumeUI --> NodeBackend : (API)
+    NodeBackend --> DB : Reads (R)
+    NodeBackend --> OpenAI_LLM : (API)
+    Dashboard --> PythonBackend : (WS)
+    PythonBackend --> DB : Reads (R)
+    PythonBackend --> OpenAI_LLM : (API)
+
 
 ```
 
