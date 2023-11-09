@@ -61,6 +61,18 @@ pre {
   filter: drop-shadow(2px -1px 0px #383838);
 }
 
+.mat-icon:hover {
+  font-weight: bold !important;
+  color: #979797 !important;
+  filter: unset
+}
+
+
+.separator {
+  color: #6f57b6;
+  
+}
+
 .fill-toolbar {
   flex: 1 1 auto;
 }
@@ -93,7 +105,7 @@ pre {
 
 /* Sidenav width and background */
 .right-sidenav{
-  width: 60%;
+  width: 50%;
 }
 
 
@@ -110,10 +122,10 @@ pre {
 
 }
 
-.separator {
-  display: none;
+// .separator {
+//   display: none;
+// }
 
-}
 }
 
 

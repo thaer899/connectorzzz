@@ -53,6 +53,13 @@ hr {
   background-color: #6c6c6c !important;
 }
 
+.mat-icon:hover {
+  font-weight: bold !important;
+  color: #979797 !important;
+  filter: unset
+}
+
+
 /* Responsiveness for smaller screens */
 @media screen and (max-width: 30em) {
 

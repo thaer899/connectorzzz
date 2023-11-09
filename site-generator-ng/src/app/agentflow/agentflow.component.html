@@ -14,7 +14,11 @@
         <mat-icon matTooltip="Console" class="admin" [routerLink]="['/admin']"
           >dashboard</mat-icon
         >
-        <mat-icon class="separator">more_vert</mat-icon>
+        <mat-icon
+          class="separator"
+          (click)="groupdrawer.toggle(); drawer.toggle()"
+          >more_vert</mat-icon
+        >
         <mat-icon
           matTooltip="Start Connection"
           class="link-off-toggle"
@@ -58,7 +62,13 @@
       ></app-flowchart>
     </div>
 
-    <mat-drawer #groupdrawer class="right-sidenav" mode="side" position="end">
+    <mat-drawer
+      #groupdrawer
+      class="right-sidenav"
+      mode="side"
+      position="end"
+      opened="true"
+    >
       <app-group-sidenav
         #groupsidenav
         [isWSConnected]="isWSConnected"

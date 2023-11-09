@@ -53,16 +53,18 @@
   <hr />
 </ng-container>
 <div class="bottombar">
-  <mat-form-field class="bottom-form">
-    <mat-label>Enter message</mat-label>
-    <textarea matInput #messageInput></textarea>
-  </mat-form-field>
+  <div class="box">
+    <mat-form-field class="bottom-form">
+      <mat-label>Enter message</mat-label>
+      <textarea matInput #messageInput></textarea>
+    </mat-form-field>
 
-  <mat-icon
-    class="material-symbols-outlined ask-agents-btn"
-    (click)="initiateGroupChat(messageInput.value, groupAgents.value)"
-    *ngIf="isWSConnected && agents.length > 0"
-  >
-    send
-  </mat-icon>
+    <mat-icon
+      class="material-symbols-outlined ask-agents-btn"
+      (click)="initiateGroupChat(messageInput.value, groupAgents.value)"
+      *ngIf="isWSConnected && agents.length > 0"
+    >
+      send
+    </mat-icon>
+  </div>
 </div>
