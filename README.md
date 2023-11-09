@@ -47,10 +47,10 @@ classDiagram
     ResumeUI --> DB : (R)
     Dashboard --> DB : (W/R)
     ResumeUI --> NodeBackend : (API)
-    NodeBackend --> DB : Reads (R)
+    NodeBackend --> DB : (R)
     NodeBackend --> OpenAI_LLM : (API)
     Dashboard --> PythonBackend : (WS)
-    PythonBackend --> DB : Reads (R)
+    PythonBackend --> DB : (R)
     PythonBackend --> OpenAI_LLM : (API)
 
 
