@@ -25,41 +25,47 @@ Encompassing backend services, front-end applications, and adept cloud resource 
 %%{init: {'theme': 'default'}}%%
 classDiagram
     class DB {
-        Firebase Bucket
+        Firebase
+        Buckets()
         --
-        -Profiles
-        -Users
-        -Bots
+        -Profiles()
+        -Users()
+        -Bots()
     }
     class ResumeUI {
         myresume-ng: Angular App
         Functions()
-        -User Resume
-        -User Bots
+        --
+        -User Resume()
+        -User Bots()
     }
     class Dashboard {
         site-generator-ng: Angular App
          UI()
-        -CRUD Resume
-        -User Bots
-        -MyAgents
-        -AgentFlow
+         --
+        -CRUD Resume()
+        -User Bots()
+        -MyAgents()
+        -AgentFlow()
     }
     class MyResumeExpress {
         NodeBackend: ExpressJS Service
         Functions()
-        -User Bots
+        --
+        -User Bots()
     }
     class MyAgentsPy {
         PythonBackend: FastAPI Service
         Functions()
-        -Autogen API
+        --
+        -Autogen API()
     }
     class AgentFowPy {
         PythonBackend: FastAPI Service
         Functions()
-        -AgentFlow API
-        -AgentFlow WS
+        --
+        -AgentFlow API()
+        -AgentFlow WS()
     }
     class OpenAI_LLM {
         AI Platform
