@@ -135,31 +135,4 @@ A collection of utility tools and libraries enhancing development and operationa
     |   \---workflows
     +---myresume-ai
     |   \---src
-    +---myresume-express
-    |   \---src
-    +---myresume-ng
-    |   +---e2e
-    |   +---src
-    |   \---tests
-    +---myresume-utils
-    |   \---utils
-    +---site-generator-ng
-    |   +---.firebase
-    |   +---e2e
-    |   \---src
-    \---utils
-        +---azure
-        +---gcp
-        \---helm
-            +---myresume-ai
-                +---apps
-                |   +---myresume-express
-                +---common
-        \---hugging_face
-            +---automator
-            +---myresume
-            +---t5
-        \---misc
-        \---multi_task
-
 ```
