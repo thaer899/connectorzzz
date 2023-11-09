@@ -64,8 +64,8 @@ export class SidenavComponent implements OnInit, OnDestroy {
   public config = {
     "llm_config": {
       "request_timeout": 300,
-      "seed": 42,
-      "config_list": [{ 'model': 'gpt-3.5-turbo' }],
+      "seed": 40,
+      "config_list": [{ 'model': 'gpt-4' }],
       "temperature": 0,
     },
     "code_execution_config": {
@@ -81,8 +81,8 @@ export class SidenavComponent implements OnInit, OnDestroy {
     config: {
       "llm_config": {
         "request_timeout": 300,
-        "seed": 42,
-        "config_list": [{ 'model': 'gpt-3.5-turbo' }],
+        "seed": 40,
+        "config_list": [{ 'model': 'gpt-4' }],
         "temperature": 0,
       },
       "code_execution_config": {
@@ -129,8 +129,8 @@ export class SidenavComponent implements OnInit, OnDestroy {
         config: {
           "llm_config": {
             "request_timeout": 300,
-            "seed": 42,
-            "config_list": [{ 'model': 'gpt-3.5-turbo' }],
+            "seed": 40,
+            "config_list": [{ 'model': 'gpt-4' }],
             "temperature": 0,
           },
           "code_execution_config": {
@@ -147,8 +147,8 @@ export class SidenavComponent implements OnInit, OnDestroy {
         config: {
           "llm_config": {
             "request_timeout": 300,
-            "seed": 42,
-            "config_list": [{ 'model': 'gpt-3.5-turbo' }],
+            "seed": 40,
+            "config_list": [{ 'model': 'gpt-4' }],
             "temperature": 0,
           },
           "code_execution_config": {
@@ -292,8 +292,8 @@ export class SidenavComponent implements OnInit, OnDestroy {
             config: {
               "llm_config": {
                 "request_timeout": 300,
-                "seed": 42,
-                "config_list": [{ 'model': 'gpt-3.5-turbo' }],
+                "seed": 40,
+                "config_list": [{ 'model': 'gpt-4' }],
                 "temperature": 0,
               },
               "code_execution_config": {

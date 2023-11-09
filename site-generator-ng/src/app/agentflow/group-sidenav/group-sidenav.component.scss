@@ -8,16 +8,21 @@
   display:flex;
 }
 
-li {
+.pre li {
   display: inline-grid !important;
 }
 
-ol {
+.pre ol {
   display: inline-grid !important;
   margin: unset !important;
 }
 
-code {
+.pre p {
+  margin: unset !important;
+  display: inline !important;
+}
+
+.pre code {
   font-family: 'Consolas', 'Monaco', 'Courier New', monospace; // ensures a monospaced font for better code legibility
   font-size: 0.8em; // smaller font size if needed
   line-height: 1.2; // tight line spacing
@@ -27,7 +32,7 @@ code {
   display:flex;
 }
 
-.content {
+.pre .content {
   padding: 10px;
   display: flex;
 }
@@ -103,9 +108,9 @@ code {
 
 /* Styling based on roles */
 .default, .bot, .manager, .proxy, .user{
-  padding: 0 10px 0 10px;
+  margin: 0 0 10px 0 !important;
   border: 1px solid #606060e0 !important;
-  display: flex;
+  display: block;
   border-radius: 12px;
   position: relative;
   width: 96%;
@@ -149,11 +154,11 @@ code {
 }
 
 .user-container {
-  right: 4%;
+  right: 4vh;
 }
 
 .bot-container {
-  left: 4%;
+  left: 4vh;
 }
 
 .chat-icon {
@@ -161,9 +166,14 @@ code {
   padding: 4px;
   width: unset;
   height: unset;
-  font-size: x-large;
+  font-size: x-large !important;
   margin-top: -1vh;
   display: inline-block;
+}
+
+.messages {
+  width: 100%;
+  display: inline-grid;
 }
 
 .name-tag {

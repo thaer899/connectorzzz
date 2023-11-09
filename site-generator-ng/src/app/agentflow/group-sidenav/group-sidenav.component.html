@@ -30,7 +30,7 @@
 <ng-container>
   <mat-card #scrollableContainer class="card" [autoScroll]="messages.length">
     <mat-list>
-      <div *ngFor="let msg of messages; let i = index">
+      <div class="pre" *ngFor="let msg of messages; let i = index">
         <mat-icon
           matTooltip="Automation Agents team"
           class="chat-icon"
@@ -42,11 +42,8 @@
           msg.name
         }}</span>
 
-        <div [ngClass]="getAttributes(msg.name, 'div')" class="pre">
-          <div
-            [innerHTML]="msg.content | markdown"
-            style="margin-top: 2vh; width: 100%"
-          ></div>
+        <div [ngClass]="getAttributes(msg.name, 'div')">
+          <div class="messages" [innerHTML]="msg.content | markdown"></div>
         </div>
       </div>
     </mat-list>
