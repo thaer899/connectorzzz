@@ -46,7 +46,7 @@ classDiagram
     }
     class MyResumeExpress {
         NodeBackend: ExpressJS Service
-        -- Services --
+        -- API --
         User Bots
     }
     class MyAgentsPy {
@@ -70,7 +70,7 @@ classDiagram
     ResumeUI --> MyResumeExpress : (API)
     MyResumeExpress --> DB :  (R)
     MyResumeExpress --> OpenAI_LLM : (API)
-    Dashboard --> MyAgentsPy :  (WS)
+    Dashboard --> MyAgentsPy :  (API)
     MyAgentsPy --> OpenAI_LLM : (API)
     Dashboard --> AgentFowPy :  (WS)
     AgentFowPy --> OpenAI_LLM : (API)
