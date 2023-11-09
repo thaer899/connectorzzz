@@ -98,7 +98,11 @@ classDiagram
 
 ### Workflows:
 
-🔄 [CI/CD Pipelines ](https://github.com/thaer899/thaersaidi.net/tree/master/.github/workflows/): Automating and optimizing the development workflow through Continuous Integration and Continuous Deployment pipelines.
+🔄 [myresume-ai-automate ](https://github.com/thaer899/thaersaidi.net/tree/master/.github/workflows/myresume-ai-automate): Build, deploy, and test Microservices hosted in GCP Kubernetes.
+
+🔄 [myresume-ng ](https://github.com/thaer899/thaersaidi.net/tree/master/.github/workflows/myresume-ng): Build, deploy, and test MyResumeNG website hosted in Firebase Hosting.
+
+🔄 [site-generator-ng ](https://github.com/thaer899/thaersaidi.net/tree/master/.github/workflows/site-generator-ng): Build, deploy, and test SiteGeneratorNG website hosted in Firebase Hosting.
 
 ---
 
