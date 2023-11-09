@@ -2,22 +2,59 @@
 [![site-generator-ng](https://github.com/thaer899/thaersaidi.net/actions/workflows/site-generator-ng.yml/badge.svg?branch=master)](https://github.com/thaer899/thaersaidi.net/actions/workflows/site-generator-ng.yml)
 [![myresume-ai-automate](https://github.com/thaer899/thaersaidi.net/actions/workflows/myresume-ai-automate.yml/badge.svg?branch=master)](https://github.com/thaer899/thaersaidi.net/actions/workflows/myresume-ai-automate.yml)
 
-
 ### MyResume Project
 
 This repository serves as the nucleus of an ensemble of projects and utilities.
 Engineered with precision for crafting and deploying top-notch applications.
 
-The project is exposed across multiple domains  and subdomains:  
+The project is exposed across multiple domains and subdomains:
 
-
-- 🌎 Resume UI: [`thaersaidi.net`](https://thaersaidi.net)   
- - 🛠️ Dashboard: [`console.thaersaidi.net`](https://console.thaersaidi.net)
-- 🧠 AI Utilities: [`ai.thaersaidi.net`](https://ai.thaersaidi.net) 
+- 🌎 Resume UI: [`thaersaidi.net`](https://thaersaidi.net)
+- 🛠️ Dashboard: [`console.thaersaidi.net`](https://console.thaersaidi.net)
+- 🧠 AI Utilities: [`ai.thaersaidi.net`](https://ai.thaersaidi.net)
 
 The architecture is methodically structured.
 Facilitating a streamlined workflow for managing the diverse project facets.
 Encompassing backend services, front-end applications, and adept cloud resource orchestration.
+
+#
+
+### Diagram:
+
+```mermaid
+%%{init: {'theme': 'neutral'}}%%
+classDiagram
+    class DB {
+        Firebase
+    }
+    class ResumeUI {
+        myresume-ng: Angular App
+    }
+    class Dashboard {
+        site-generator-ng: Angular App
+    }
+    class NodeBackend {
+        myresume-express: ExpressJS Service
+    }
+    class PythonBackend {
+       FastAPI Service
+    }
+    class OpenAI_LLM {
+        AI Platform
+    }
+
+    %% Connections
+    ResumeUI --> DB : R
+    Dashboard --> DB : W/R
+    Dashboard --> NodeBackend : API
+    ResumeUI --> NodeBackend : API
+    NodeBackend --> OpenAI_LLM : API
+    Dashboard --> PythonBackend : WS
+    PythonBackend --> OpenAI_LLM : API
+
+```
+
+#
 
 ---
 
@@ -28,58 +65,39 @@ Encompassing backend services, front-end applications, and adept cloud resource 
 - **Backend**: Backend services to interact with database and enhance UIs.
 - **Frontend**: Front-end using angular applications for a resume exposure.
 - **Admin Console**: Administrative console configurable using angular for UI and BOT management and orchestration.
-- **AI**: A suite of tools and components to interact with AI models.  
-- **Utils**: A suite of tools for automating and streamlining various aspects of the project.  
+- **AI**: A suite of tools and components to interact with AI models.
+- **Utils**: A suite of tools for automating and streamlining various aspects of the project.
 - **CI/CD**: Automation pipelines for all aspects of the project.
 </details>
 
-
 ---
+
 ### Workflows:
+
 🔄 [CI/CD Pipelines ](https://github.com/thaer899/thaersaidi.net/tree/master/.github/workflows/): Automating and optimizing the development workflow through Continuous Integration and Continuous Deployment pipelines.
 
 ---
 
 ### Apps:
-🖥️ [myresume-ng ](https://github.com/thaer899/thaersaidi.net/tree/master/myresume-ng): 
+
+🖥️ [myresume-ng ](https://github.com/thaer899/thaersaidi.net/tree/master/myresume-ng):
 Angular-based application showcasing my professional journey and skill set.
 
-🌐 [site-generator-ng ](https://github.com/thaer899/thaersaidi.net/tree/master/site-generator-ng): 
+🌐 [site-generator-ng ](https://github.com/thaer899/thaersaidi.net/tree/master/site-generator-ng):
 A dynamic site generator engineered with Angular, facilitating seamless site creation and management.
 
-🛠️ [myresume-express ](https://github.com/thaer899/thaersaidi.net/tree/master/myresume-express): 
+🛠️ [myresume-express ](https://github.com/thaer899/thaersaidi.net/tree/master/myresume-express):
 ExpressJS powered backend service, designed to deliver robust support for my online resume portal.
 
-🧠 [myresume-ai ](https://github.com/thaer899/thaersaidi.net/tree/master/myresume-ai): 
+🛠️ [myresume-express ](https://github.com/thaer899/thaersaidi.net/tree/master/myresume-express):
+ExpressJS powered backend service, designed to deliver robust support for my online resume portal.
+
+🧠 [myresume-ai ](https://github.com/thaer899/thaersaidi.net/tree/master/myresume-ai):
 A suite of tools and components to interact with Kubernetes cluster and AI models.
 
-🧰 [myresume-utils ](https://github.com/thaer899/thaersaidi.net/tree/master/myresume-utils): 
+🧰 [myresume-utils ](https://github.com/thaer899/thaersaidi.net/tree/master/myresume-utils):
 A collection of utility tools and libraries enhancing development and operational efficiencies.
 
-#
-
-### Diagrams:
-
-```bash
-
-       +-------------+     +-----+      +-------------------+
-       | myresume-ng |---->|  DB  |<----| site-generator-ng |
-       +-------------+     +-----+      +-------------------+
-             |               ^                     |
-             |               |                     |
-             |               |                     v
-             |   +--------------------+     +------------+
-             +-->|  myresume-express  |     | myagents-py|
-                 +--------------------+     +------------+
-                             |                     |
-                             |                     |
-                             v                     |
-                        +--------+                 |
-                        | OpenAI |<----------------+
-                        +--------+
- 
-
-```
 #
 
 ### Project Structure
@@ -117,3 +135,4 @@ A collection of utility tools and libraries enhancing development and operationa
         \---misc
         \---multi_task
 
+```
