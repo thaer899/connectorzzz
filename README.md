@@ -25,10 +25,11 @@ Encompassing backend services, front-end applications, and adept cloud resource 
 %%{init: {'theme': 'default'}}%%
 classDiagram
     class DB {
-        Firebase
+        Firebase Bucket
         --
         -Profiles
         -Users
+        -Bots
     }
     class ResumeUI {
         myresume-ng: Angular App
