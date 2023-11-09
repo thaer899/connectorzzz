@@ -40,6 +40,22 @@
   filter: drop-shadow(2px -1px 0px #383838);
 }
 
+.mat-icon:hover {
+  font-weight: bold !important;
+  color: #979797 !important;
+  filter: unset
+}
+
+.inactive {
+  color: #979797 !important;
+  cursor: unset;
+}
+
+.inactive:hover {
+  font-weight: unset !important;
+
+}
+
 .fill-toolbar {
   flex: 1 1 auto;
 }

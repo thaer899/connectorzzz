@@ -27,13 +27,6 @@
 <div class="box">
   <div style="width: 100%; display: flex">
     <p style="width: 60%">Add Agent</p>
-    <mat-icon
-      matTooltip="Automation Agents team"
-      class="add-agent"
-      (click)="addAgent(selectedAgent)"
-      *ngIf="isWSConnected"
-      >add</mat-icon
-    >
   </div>
   <!-- Input for the agent name -->
   <mat-form-field class="full-width">
@@ -64,6 +57,13 @@
     <mat-label>System message</mat-label>
     <textarea matInput [(ngModel)]="selectedAgent.message"></textarea>
   </mat-form-field>
+  <mat-icon
+    matTooltip="Automation Agents team"
+    class="add-agent"
+    (click)="addAgent(selectedAgent)"
+    *ngIf="isWSConnected"
+    >add_circle</mat-icon
+  >
 </div>
 <hr />
 
@@ -71,12 +71,6 @@
 <div class="box">
   <div style="width: 100%; display: flex">
     <p style="width: 60%">Add Group</p>
-    <mat-icon
-      matTooltip="Automation Agents team"
-      class="add-agent"
-      (click)="onToggle()"
-      >add_circle</mat-icon
-    >
   </div>
 
   <mat-form-field class="full-width">

@@ -1,49 +1,74 @@
-    <mat-toolbar class="toolbar">
-        <span>
-            <mat-icon matTooltip="Automation" [routerLink]="['/admin']">dashboard</mat-icon>
-            <mat-icon class="separator">more_vert</mat-icon>
-            <mat-icon matTooltip="Automation Agents team" class="group" [routerLink]="['/agentflow']">group_work</mat-icon>
-        </span>
-    
-        <span class="fill-toolbar"></span>
-    
-    
-        <mat-form-field class="select-profile" style="font-size: medium;width: 25vh;" matTooltip="Select or create a new profile" *ngIf="isAdmin">
-            <mat-label>Profile</mat-label>
-            <mat-select>
-                <div style="padding: 20px;color: aquamarine;">
-                    <mat-form-field class="profile-input">
-                        <mat-label>Filename</mat-label>
-                        <input matInput [(ngModel)]="fileName">
-                    </mat-form-field>
-                </div>
-                <mat-option *ngFor="let user of users" [value]="user.value">
-                    <a (click)="getUserDataByEmail(user.email)">{{user.username}}</a>
-                </mat-option>
-            </mat-select>
+<mat-toolbar class="toolbar">
+  <span>
+    <!-- <mat-icon matTooltip="Automation" [routerLink]="['/admin']"
+      >dashboard</mat-icon
+    >
+    <mat-icon class="separator inactive">more_vert</mat-icon> -->
+    <mat-icon
+      matTooltip="Agents Flow"
+      class="group"
+      [routerLink]="['/agentflow']"
+      >group_work</mat-icon
+    >
+  </span>
+
+  <span class="fill-toolbar"></span>
+
+  <mat-form-field
+    class="select-profile"
+    style="font-size: medium; width: 25vh"
+    matTooltip="Select or create a new profile"
+    *ngIf="isAdmin"
+  >
+    <mat-label>Profile</mat-label>
+    <mat-select>
+      <div style="padding: 20px; color: aquamarine">
+        <mat-form-field class="profile-input">
+          <mat-label>Filename</mat-label>
+          <input matInput [(ngModel)]="fileName" />
         </mat-form-field>
-        <span class="fill-toolbar"></span>
-        <span>
-            <mat-icon class="download" matTooltip="Download Profile data" (click)="download()">download</mat-icon>
-            <mat-icon class="upload" matTooltip="Update Profile" (click)="upload()">update</mat-icon>
-    
-    
-            <mat-icon class="separator">more_vert</mat-icon>
-            <a [href]="'https://log-book-ng.web.app/p/' + (fileName | slice:0:-5)" *ngIf="fileName" target="_blank">
-                <mat-icon class="profile" matTooltip="Visit Profile">account_circle</mat-icon>
-            </a>
-    
-            <mat-icon class="separator">more_vert</mat-icon>
-            <mat-icon class="logout" matTooltip="Logout" (click)="logout()">logout</mat-icon>
-    
-        </span>
-    
-    </mat-toolbar>
-    <div class="background" *ngIf="data">
-    
-        <jsonforms [data]="data" (dataChange)="onDataChange($event)" [schema]="schema" [uischema]="uischema"
-            [renderers]="renderers">
-        </jsonforms>
-    
-    
-    </div>
+      </div>
+      <mat-option *ngFor="let user of users" [value]="user.value">
+        <a (click)="getUserDataByEmail(user.email)">{{ user.username }}</a>
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <span class="fill-toolbar"></span>
+  <span>
+    <mat-icon
+      class="download"
+      matTooltip="Download Profile data"
+      (click)="download()"
+      >download</mat-icon
+    >
+    <mat-icon class="upload" matTooltip="Update Profile" (click)="upload()"
+      >update</mat-icon
+    >
+
+    <mat-icon class="separator inactive">more_vert</mat-icon>
+    <a
+      [href]="'https://log-book-ng.web.app/p/' + (fileName | slice : 0 : -5)"
+      *ngIf="fileName"
+      target="_blank"
+    >
+      <mat-icon class="profile" matTooltip="Visit Profile"
+        >account_circle</mat-icon
+      >
+    </a>
+
+    <mat-icon class="separator inactive">more_vert</mat-icon>
+    <mat-icon class="logout" matTooltip="Logout" (click)="logout()"
+      >logout</mat-icon
+    >
+  </span>
+</mat-toolbar>
+<div class="background" *ngIf="data">
+  <jsonforms
+    [data]="data"
+    (dataChange)="onDataChange($event)"
+    [schema]="schema"
+    [uischema]="uischema"
+    [renderers]="renderers"
+  >
+  </jsonforms>
+</div>

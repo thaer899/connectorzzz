@@ -36,12 +36,9 @@ hr {
 
 .add-agent {
   position: relative;
-  padding: 2px;
-  top: 5px;
   font-size: xx-large;
   width: unset;
   height: unset;
-  left: 3vh;
   color: #ECEFF1;
   filter: drop-shadow(2px -1px 0px #0d0d0d);
 }
