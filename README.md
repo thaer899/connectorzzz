@@ -29,6 +29,7 @@ classDiagram
         -- Buckets --
         Profiles
         Users
+        Bots
     }
     class ResumeUI {
         myresume-ng: Angular App
@@ -39,8 +40,9 @@ classDiagram
     class Dashboard {
         site-generator-ng: Angular App
         -- UI --
-        CRUD Resume
-        User Bots
+        Register
+        CRUD Profiles
+        CRUD Bots
         MyAgents
         AgentFlow
     }
