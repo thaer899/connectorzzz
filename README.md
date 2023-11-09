@@ -110,14 +110,17 @@ Angular-based application showcasing my professional journey and skill set.
 🌐 [site-generator-ng ](https://github.com/thaer899/thaersaidi.net/tree/master/site-generator-ng):
 A dynamic site generator engineered with Angular, facilitating seamless site creation and management.
 
-🛠️ [myresume-express ](https://github.com/thaer899/thaersaidi.net/tree/master/myresume-express):
-ExpressJS powered backend service, designed to deliver robust support for my online resume portal.
-
-🛠️ [myresume-express ](https://github.com/thaer899/thaersaidi.net/tree/master/myresume-express):
-ExpressJS powered backend service, designed to deliver robust support for my online resume portal.
-
 🧠 [myresume-ai ](https://github.com/thaer899/thaersaidi.net/tree/master/myresume-ai):
 A suite of tools and components to interact with Kubernetes cluster and AI models.
+
+🛠️ [myresume-express ](https://github.com/thaer899/thaersaidi.net/tree/master/myresume-express):
+ExpressJS powered backend service, designed to deliver robust support for my online resume portal.
+
+🛠️ [agentflow-py ](https://github.com/thaer899/thaersaidi.net/tree/master/agentflow-py):
+FastAPI powered backend service, designed to deliver websocket connection between OpenAI LLMs and the dashboard.
+
+🛠️ [myagents-py ](https://github.com/thaer899/thaersaidi.net/tree/master/myagents-py):
+FastAPI powered backend service, designed to deliver chat solution using Autogen.
 
 🧰 [myresume-utils ](https://github.com/thaer899/thaersaidi.net/tree/master/myresume-utils):
 A collection of utility tools and libraries enhancing development and operational efficiencies.
