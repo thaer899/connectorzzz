@@ -72,7 +72,6 @@ classDiagram
     MyResumeExpress --> DB :  (R)
     MyResumeExpress --> OpenAI_LLM : (API)
     Dashboard --> MyAgentsPy :  (WS)
-    MyAgentsPy --> DB :  (R)
     MyAgentsPy --> OpenAI_LLM : (API)
     Dashboard --> AgentFowPy :  (WS)
     AgentFowPy --> OpenAI_LLM : (API)
