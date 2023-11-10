@@ -58,6 +58,9 @@ export class ContactBoxComponent implements OnInit {
       if (email) {
         this.email = email;
       }
+      else {
+        this.email = this.mainEmail;
+      }
     });
 
   }
@@ -91,15 +94,24 @@ export class ContactBoxComponent implements OnInit {
 
     if (this.recipientMessage) {
       const messageURL = environment.functionURL + '/message';
-      this.http.post(messageURL, body, options).subscribe((response: any) => {
-        if (response) {
+      this.http.post(messageURL, body, options).pipe(
+        catchError(error => {
+          console.error('Error sending message', error);
           this.available = true;
+          this.changeDetectorRef.detectChanges();
+          return throwError(error);
+        })
+      ).subscribe((response: any) => {
+        this.available = true;
+        this.changeDetectorRef.detectChanges();
+        if (response) {
           this.chatCompletion = response;
           this.chatConversation = this.chatCompletion.choices;
         }
       });
     }
   }
+
 
 
 }

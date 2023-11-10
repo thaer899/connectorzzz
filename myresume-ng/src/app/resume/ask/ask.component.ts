@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, FormGroup, NgForm } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import OpenAI from 'openai';
+import { catchError, throwError } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
 import { GAService } from 'src/app/services/ga.service';
 import { environment } from 'src/environments/environment';
@@ -116,14 +117,21 @@ export class AskComponent implements OnInit {
 
     if (this.recipientMessage) {
       const messageURL = environment.functionURL + '/message';
-      this.http.post(messageURL, body, options).subscribe((response: any) => {
-        if (response) {
-          this.available = true;
-          this.chatCompletion = response;
-          this.chatConversation = this.chatCompletion.choices;
-        }
+      this.http.post(messageURL, body, options).pipe(
+        catchError((error) => {
+          console.error('Error sending message', error);
+          this.available = true; // Show the message form and hide the spinner on error
+          this.changeDetectorRef.detectChanges();
+          return throwError(() => new Error('Error sending message'));
+        })
+      ).subscribe((response: any) => {
+        this.available = true; // Show the message form and hide the spinner on success
+        this.changeDetectorRef.detectChanges();
+        this.chatCompletion = response;
+        this.chatConversation = this.chatCompletion.choices;
       });
+    } else {
+      this.available = true; // Show the message form and hide the spinner if there's no message
     }
   }
-
 }

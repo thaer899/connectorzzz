@@ -91,6 +91,15 @@
     cursor: pointer;
 }
 
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4vh;
+    width: 4vh;
+    margin-left: 48%;
+  }  
+  
 .contact-form textarea.form-control {
     width: 100%;
     box-sizing: border-box;

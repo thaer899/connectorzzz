@@ -1,39 +1,54 @@
 <section id="ask" *ngIf="isBotMessage">
-    <h1>Ask me:</h1>
+  <h1>Ask me:</h1>
 
-    <div class="modal-body">
-        <form class="contact-form" [formGroup]="messageForm" (submit)="message()">
-            <textarea name="recipientMessage" id="recipientMessage" class="form-control"
-                formControlName="recipientMessage"></textarea>
-            <br />
-            <div class="modal-footer">
-                <button type="button" class="skill-set" type="submit" value="Send" *ngIf="available">
-                    Send message
-                </button>
-                <i class="fas fa-spinner fa-spin" *ngIf="!available"></i>
-
-            </div>
-
-        </form>
-        <br />
-        <div class="frame-box">
-            <div class="card-body" *ngIf="available && !recipientMessage">
-                <p>This bot will answer any question you have regarding the resume
-                    available on the site, as if it was me.
-                </p>
-
-            </div>
-            <ng-container *ngIf="available">
-                <div *ngFor="let item of chatConversation">
-                    <div id="messageResponse" innerHTML="{{item.message.content}}" class="card-text padding"
-                        [ngClass]="item.cssClass">
-                    </div>
-
-                </div>
-            </ng-container>
-
-            <div>
-            </div>
-        </div>
+  <div class="modal-body">
+    <form class="contact-form" [formGroup]="messageForm" (submit)="message()">
+      <textarea
+        name="recipientMessage"
+        id="recipientMessage"
+        class="form-control"
+        formControlName="recipientMessage"
+      ></textarea>
+      <br />
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="skill-set"
+          type="submit"
+          value="Send"
+          *ngIf="available == true"
+        >
+          Send message
+        </button>
+      </div>
+    </form>
+    <div
+      class="spinner-border text-secondary center"
+      role="status"
+      *ngIf="!available"
+    >
+      <span class="sr-only">Loading...</span>
     </div>
+    <br />
+    <div class="frame-box">
+      <div class="card-body" *ngIf="available && !recipientMessage">
+        <p>
+          This bot will answer any question you have regarding the resume
+          available on the site, as if it was me.
+        </p>
+      </div>
+      <ng-container *ngIf="available == true">
+        <div *ngFor="let item of chatConversation">
+          <div
+            id="messageResponse"
+            innerHTML="{{ item.message.content }}"
+            class="card-text padding"
+            [ngClass]="item.cssClass"
+          ></div>
+        </div>
+      </ng-container>
+
+      <div></div>
+    </div>
+  </div>
 </section>

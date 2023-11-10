@@ -1,60 +1,102 @@
-<i class="fa fa-commenting commenting" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+<i
+  class="fa fa-commenting commenting"
+  aria-hidden="true"
+  data-bs-toggle="modal"
+  data-bs-target="#exampleModal"
+></i>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <div class="modal-header-right">
-
           <ng-container *ngIf="!email">
             <a (click)="openFullChat()" [routerLink]="['/ask']">
-              <i class="fa fa-arrows-alt open" aria-hidden="true" data-bs-dismiss="modal" aria-label="Close"></i>
+              <i
+                class="fa fa-arrows-alt open"
+                aria-hidden="true"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></i>
             </a>
           </ng-container>
           <ng-container *ngIf="email">
-            <a (click)="openFullChat()" [routerLink]="['/p',email,'ask']">
-              <i class="fa fa-arrows-alt open" aria-hidden="true" data-bs-dismiss="modal" aria-label="Close"></i>
+            <a (click)="openFullChat()" [routerLink]="['/p', email, 'ask']">
+              <i
+                class="fa fa-arrows-alt open"
+                aria-hidden="true"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></i>
             </a>
-
           </ng-container>
 
-
-          <i class="fa fa-window-close closing" aria-hidden="true" data-bs-dismiss="modal"></i>
-
+          <i
+            class="fa fa-window-close closing"
+            aria-hidden="true"
+            data-bs-dismiss="modal"
+          ></i>
         </div>
       </div>
       <div class="modal-body">
-        <form class="contact-form" [formGroup]="messageForm" (submit)="message()">
-          <textarea name="recipientMessage" id="recipientMessage" class="form-control input"
-            formControlName="recipientMessage"></textarea>
+        <form
+          class="contact-form"
+          [formGroup]="messageForm"
+          (submit)="message()"
+        >
+          <textarea
+            name="recipientMessage"
+            id="recipientMessage"
+            class="form-control input"
+            formControlName="recipientMessage"
+          ></textarea>
           <br />
           <div class="modal-footer">
-            <button type="button" class="skill-set" type="submit" value="Send" *ngIf="available"> Send
-              message</button>
-            <i class="fas fa-spinner fa-spin" *ngIf="!available"></i>
-
+            <button
+              type="button"
+              class="skill-set"
+              type="submit"
+              value="Send"
+              *ngIf="available"
+            >
+              Send message
+            </button>
+            <div
+              class="spinner-border text-secondary center"
+              role="status"
+              *ngIf="!available"
+            >
+              <span class="sr-only">Loading...</span>
+            </div>
           </div>
-
         </form>
         <br />
         <div class="frame-box">
           <div class="card-body" *ngIf="available && !recipientMessage">
-            <p>This bot will answer any question you have regarding the resume
+            <p>
+              This bot will answer any question you have regarding the resume
               available on the site, as if it was me.
             </p>
           </div>
-          <ng-container *ngIf="available">
+          <ng-container *ngIf="!available">
             <div *ngFor="let item of chatConversation">
-              <div innerHTML="{{item.message.content}}" class="card-text padding" [ngClass]="item.cssClass">
-              </div>
-
+              <div
+                innerHTML="{{ item.message.content }}"
+                class="card-text padding"
+                [ngClass]="item.cssClass"
+              ></div>
             </div>
           </ng-container>
-          <div>
-          </div>
+          <div></div>
         </div>
-        <div class="modal-footer">
-        </div>
+        <div class="modal-footer"></div>
       </div>
     </div>
   </div>
+</div>
