@@ -65,8 +65,8 @@ export class ResumeComponent implements OnInit, OnChanges, AfterViewInit {
       this.cdRef.detectChanges();
 
       if (data.bots && data.bots.some(bot => bot.type === 'quotes')) {
-        this.isBotQuotes = true;
         this.getQuote(email);
+        this.isBotQuotes = true;
       }
     });
   }
