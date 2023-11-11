@@ -97,6 +97,7 @@ export class ResumeComponent implements OnInit, OnChanges, AfterViewInit {
     this.http.post(quoteURL, {}, options).subscribe((response: any) => {
       if (response) {
         this.quote = response.choices[0].message.content;
+        this.cdRef.detectChanges();
 
       }
     });
