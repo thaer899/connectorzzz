@@ -168,7 +168,13 @@ export class AdminComponent {
               this.dataService.fetchFunctions().subscribe(
                 functionsData => {
                   this.data.functions = this.transformFunctionData(functionsData);
-                  console.log("Functions:", this.data);
+                  let functionNames = this.data.functions.map((func: { name: string }) => {
+                    return func.name;
+                  });
+                  this.updateSchemaForAgentFunctions(functionNames);
+                  console.log("schema:", this.schema);
+                  console.log("Functions:", functionNames);
+                  console.log("data:", this.data);
                   this.cdRef.detectChanges();  // Trigger change detection
                 },
                 error => console.error("Error fetching functions:", error)
@@ -185,6 +191,7 @@ export class AdminComponent {
     this.fileName = `${this.user.email}.json`;
     this.getUsers();
     this.showContent = true;
+    this.cdRef.detectChanges();
   }
 
 
@@ -235,11 +242,21 @@ export class AdminComponent {
     }
   }
 
+  updateSchemaForAgentFunctions(functionNames: string[]) {
+    const updatedSchema = JSON.parse(JSON.stringify(this.schema));
+    updatedSchema.properties.bots.items.properties.agent_functions.items.enum = functionNames;
+    this.schema = updatedSchema;
+  }
+
+
   // Upload the form data to Firebase Storage
   async upload() {
     const storage = getStorage();
     console.log("Uploading data to Firebase Storage...");
     const fileRef = ref(storage, `profiles/${this.user.email}.json`);
+
+    this.formData.bots.functions = this.revertFunctionData(this.formData.bots.functions);
+
     const dataString = JSON.stringify(this.formData);
     console.log("Data to be uploaded:", this.formData);
     try {

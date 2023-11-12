@@ -270,11 +270,38 @@
     },
     {
       "type": "Category",
-      "label": "Bots",
+      "label": "Agents",
       "elements": [
         {
           "type": "ListWithDetail",
-          "scope": "#/properties/bots"
+          "scope": "#/properties/bots",
+          "options": {
+            "detail": {
+              "type": "VerticalLayout",
+              "elements": [
+                {
+                  "type": "Control",
+                  "scope": "#/properties/type",
+                  "label": "Type"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/summary",
+                  "label": "Summary"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/messages",
+                  "label": "Messages"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/agent_functions",
+                  "label": "Functions"
+                }
+              ]
+            }
+          }
         }
       ]
     },

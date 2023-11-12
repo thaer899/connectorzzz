@@ -1,0 +1,232 @@
+{
+  "type": "procure_requestor",
+  "summary": "",
+  "messages": [
+    {
+      "role": "system",
+      "content": "As a Procurement Requestor, you initiate the procurement process for various operational needs. For each procurement task, it is imperative to specify and document the requirements comprehensively, providing detailed justifications for the procurement. Ensure that every request you submit is well-researched, cost-effective, and in line with our organizational objectives. Your proactive collaboration with Purchasers is essential to convey the precise needs and with Approvers to facilitate a smooth approval process. Your role is crucial in setting the pace and clarity for the entire procurement cycle."
+    }
+  ],
+  "functions": [
+    {
+      "name": "procure_approver_review_purchase_request",
+      "description": "Reviews a purchase request for compliance with budget and procurement policies.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "request_id": {
+            "type": "string",
+            "description": "The unique identifier of the purchase request to review."
+          }
+        },
+        "required": ["request_id"]
+      },
+      "return": {
+        "type": "object",
+        "description": "The decision on the purchase request, including any required modifications."
+      }
+    },
+    {
+      "name": "procure_approver_authorize_payment",
+      "description": "Authorizes the payment for a purchase order.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "purchase_order_id": {
+            "type": "string",
+            "description": "The unique identifier of the purchase order for which payment is to be authorized."
+          }
+        },
+        "required": ["purchase_order_id"]
+      },
+      "return": {
+        "type": "object",
+        "description": "Confirmation of payment authorization, with details of the payment terms."
+      }
+    },
+    {
+      "name": "procure_approver_audit_procurement",
+      "description": "Conducts an audit of procurement activities to ensure policy adherence and financial integrity.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "time_frame": {
+            "type": "object",
+            "description": "The specific time frame for the audit, with start and end dates."
+          }
+        },
+        "required": ["time_frame"]
+      },
+      "return": {
+        "type": "object",
+        "description": "The findings of the procurement audit, including any discrepancies and recommendations."
+      }
+    }
+  ]
+},
+{
+  "type": "procure_purchaser",
+  "summary": "",
+  "messages": [
+    {
+      "role": "system",
+      "content": "As the Lead Purchaser, you are charged with the efficient handling of all purchasing activities. For any procurement task assigned, you are to ensure the acquisition of required goods or services that align with our quality expectations and financial guidelines. Negotiate favorable terms with suppliers, maintaining a balance between cost-efficiency and quality. It is your responsibility to ensure procurement is conducted in compliance with all company policies and regulatory standards. Collaborate with Approvers for the verification and finalization of transactions, and maintain open communication with Requestors to clarify any details regarding procurement needs."
+    }
+  ],
+  "functions": [
+    {
+      "name": "procure_purchaser_initiate_negotiation",
+      "description": "Starts the negotiation process with a supplier for a procurement task.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "supplier_id": {
+            "type": "string",
+            "description": "The unique identifier of the supplier to negotiate with."
+          },
+          "procurement_details": {
+            "type": "object",
+            "description": "Details of the procurement items, quantities, and initial price points."
+          }
+        },
+        "required": ["supplier_id", "procurement_details"]
+      },
+      "return": {
+        "type": "object",
+        "description": "The status of the negotiation initiation, including any immediate counter-offers."
+      }
+    },
+    {
+      "name": "procure_purchaser_finalize_purchase",
+      "description": "Finalizes the purchasing agreement and processes payment.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "purchase_order_id": {
+            "type": "string",
+            "description": "The unique identifier of the purchase order to finalize."
+          },
+          "payment_details": {
+            "type": "object",
+            "description": "The payment information including method, amounts, and terms."
+          }
+        },
+        "required": ["purchase_order_id", "payment_details"]
+      },
+      "return": {
+        "type": "object",
+        "description": "Confirmation of the completed purchase and payment transaction details."
+      }
+    },
+    {
+      "name": "procure_purchaser_track_order",
+      "description": "Tracks the status of an order from placement to delivery.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "order_id": {
+            "type": "string",
+            "description": "The unique identifier of the order to track."
+          }
+        },
+        "required": ["order_id"]
+      },
+      "return": {
+        "type": "object",
+        "description": "Current status and location of the order, including expected delivery dates."
+      }
+    }
+  ]
+},
+{
+  "type": "procure_approver",
+  "summary": "",
+  "messages": [
+    {
+      "role": "system",
+      "content": "In your role as the Procurement Approver, you are entrusted with the critical task of reviewing and endorsing procurement actions for any procurement task that comes through. Scrutinize purchase requisitions and orders to ensure they are complete, accurate, and within the financial scope. Your approval confirms that each procurement action is justified, optimizes value, and adheres to our strategic financial plan. Work closely with both Purchasers to ensure the legitimacy and necessity of purchases and Requestors to confirm that the procurement requests meet operational requirements."
+    }
+  ],
+  "functions": [
+    {
+      "name": "procure_requestor_submit_item_request",
+      "description": "Submits a request for specific items needed for operational purposes.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "item_id": {
+                  "type": "string",
+                  "description": "The unique identifier for the item."
+                },
+                "quantity": {
+                  "type": "integer",
+                  "description": "The number of items requested."
+                },
+                "specifications": {
+                  "type": "string",
+                  "description": "Any specific requirements for the item."
+                }
+              },
+              "required": ["item_id", "quantity"]
+            },
+            "description": "A list of items requested, including specifications and quantity."
+          },
+          "reason": {
+            "type": "string",
+            "description": "The reason for the item request, explaining the need for the operation."
+          }
+        },
+        "required": ["items", "reason"]
+      },
+      "return": {
+        "type": "object",
+        "description": "Acknowledgment of the request submission, with a reference number for tracking."
+      }
+    },
+    {
+      "name": "procure_requestor_update_request_details",
+      "description": "Updates the details of an already submitted procurement request.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "request_id": {
+            "type": "string",
+            "description": "The unique identifier of the request to update."
+          },
+          "updated_details": {
+            "type": "object",
+            "description": "The new details of the request, including any changes to items or quantities."
+          }
+        },
+        "required": ["request_id", "updated_details"]
+      },
+      "return": {
+        "type": "object",
+        "description": "Confirmation of the request update, with the updated details reflected."
+      }
+    },
+    {
+      "name": "procure_requestor_cancel_request",
+      "description": "Cancels a previously submitted procurement request.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "request_id": {
+            "type": "string",
+            "description": "The unique identifier of the request to cancel."
+          }
+        },
+        "required": ["request_id"]
+      },
+      "return": {
+        "type": "object",
+        "description": "Confirmation of the request cancellation, with details of any implications."
+      }
+    }
+  ]
+}
