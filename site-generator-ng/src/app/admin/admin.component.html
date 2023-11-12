@@ -75,13 +75,15 @@
     >
   </span>
 </mat-toolbar>
-<div class="background" *ngIf="data">
+
+<div class="background">
   <jsonforms
     [data]="data"
     (dataChange)="onDataChange($event)"
     [schema]="schema"
     [uischema]="uischema"
     [renderers]="renderers"
+    *ngIf="data && data.functions"
   >
   </jsonforms>
 </div>
