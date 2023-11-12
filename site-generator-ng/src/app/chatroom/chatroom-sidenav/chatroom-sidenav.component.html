@@ -1,0 +1,91 @@
+<!-- Side navigation drawer -->
+<div class="box">
+  <p>Partner AI</p>
+  <mat-form-field
+    class="select-profile"
+    matTooltip="Select or create a new profile"
+    style="width: 100%"
+  >
+    <mat-label>Profile</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let user of users" [value]="user.value">
+        <a
+          style="
+            width: 100% !important;
+            height: 100% !important;
+            display: block !important;
+          "
+          (click)="getUserDataByEmail(user.email)"
+          >{{ user.username }}</a
+        >
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<hr />
+
+<div class="box">
+  <div style="width: 100%; display: flex">
+    <p style="width: 60%">Add Agent</p>
+  </div>
+  <!-- Input for the agent name -->
+  <mat-form-field class="full-width">
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="selectedAgent.agent_name" />
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>{{ selectedAgent.type }}</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let type of agentTypes" [value]="type">
+        {{ type }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Config</mat-label>
+    <textarea
+      style="height: 6vh"
+      matInput
+      [ngModel]="configAsString"
+      (ngModelChange)="onAgentConfigValueChange($event)"
+    ></textarea>
+  </mat-form-field>
+  <!-- Textarea for system message -->
+  <mat-form-field class="full-width">
+    <mat-label>System message</mat-label>
+    <textarea matInput [(ngModel)]="selectedAgent.message"></textarea>
+  </mat-form-field>
+  <mat-icon
+    matTooltip="Automation Agents team"
+    class="add-agent"
+    (click)="addAgent(selectedAgent)"
+    *ngIf="isWSConnected"
+    >add_circle</mat-icon
+  >
+</div>
+<hr />
+
+<!-- Message display area -->
+<div class="box">
+  <div style="width: 100%; display: flex">
+    <p style="width: 60%">Add Group</p>
+  </div>
+
+  <mat-form-field class="full-width">
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="selectedGroupName" />
+  </mat-form-field>
+
+  <!-- Textarea for system message -->
+  <mat-form-field class="full-width">
+    <mat-label>Agents</mat-label>
+    <textarea
+      matInput
+      [ngModel]="agentsAsString"
+      (ngModelChange)="onAgentsValueChange($event)"
+      style="height: 30vh"
+    ></textarea>
+  </mat-form-field>
+</div>

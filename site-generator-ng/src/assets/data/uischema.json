@@ -270,7 +270,7 @@
     },
     {
       "type": "Category",
-      "label": "Agents",
+      "label": "Bots",
       "elements": [
         {
           "type": "ListWithDetail",

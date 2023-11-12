@@ -126,6 +126,7 @@ export class AdminComponent {
   isAdmin: boolean = false;
   public user: any;
   public users: any;
+  public functions: any = [];
   public username: string;
   public fileName: string;
   currentTheme = 'dark';
@@ -138,7 +139,7 @@ export class AdminComponent {
     private ngZone: NgZone,
     private route: ActivatedRoute,
     private titleService: Title) {
-    this.renderer.addClass(document.body, 'dark-theme');
+    this.renderer.addClass(document.body, 'light-theme');
 
   }
 
@@ -168,13 +169,7 @@ export class AdminComponent {
               this.dataService.fetchFunctions().subscribe(
                 functionsData => {
                   this.data.functions = this.transformFunctionData(functionsData);
-                  let functionNames = this.data.functions.map((func: { name: string }) => {
-                    return func.name;
-                  });
-                  this.updateSchemaForAgentFunctions(functionNames);
-                  console.log("schema:", this.schema);
-                  console.log("Functions:", functionNames);
-                  console.log("data:", this.data);
+                  this.schema = this.updateSchemaForAgentFunctions(this.data.functions);
                   this.cdRef.detectChanges();  // Trigger change detection
                 },
                 error => console.error("Error fetching functions:", error)
@@ -189,7 +184,7 @@ export class AdminComponent {
     }
 
     this.fileName = `${this.user.email}.json`;
-    this.getUsers();
+    // this.getUsers();
     this.showContent = true;
     this.cdRef.detectChanges();
   }
@@ -242,10 +237,13 @@ export class AdminComponent {
     }
   }
 
-  updateSchemaForAgentFunctions(functionNames: string[]) {
+  updateSchemaForAgentFunctions(data: any[]) {
+    this.functions = data.map((func: { name: string }) => {
+      return func.name;
+    });
     const updatedSchema = JSON.parse(JSON.stringify(this.schema));
-    updatedSchema.properties.bots.items.properties.agent_functions.items.enum = functionNames;
-    this.schema = updatedSchema;
+    updatedSchema.properties.bots.items.properties.agent_functions.items.enum = this.functions;
+    return updatedSchema;
   }
 
 
@@ -254,8 +252,6 @@ export class AdminComponent {
     const storage = getStorage();
     console.log("Uploading data to Firebase Storage...");
     const fileRef = ref(storage, `profiles/${this.user.email}.json`);
-
-    this.formData.bots.functions = this.revertFunctionData(this.formData.bots.functions);
 
     const dataString = JSON.stringify(this.formData);
     console.log("Data to be uploaded:", this.formData);
@@ -280,7 +276,10 @@ export class AdminComponent {
     console.log("Data to be uploaded:", functionsData);
     try {
       await uploadString(fileRef, dataString);
+
+      this.schema = this.updateSchemaForAgentFunctions(this.formData.functions);
       console.log('Data uploaded to Firebase Storage');
+
       this.snackBar.open('Data uploaded successfully!', 'Close', {
         duration: 2000,  // The snackbar will auto-dismiss after 2 seconds
       });
@@ -389,7 +388,7 @@ export class AdminComponent {
 
   ngOnDestroy() {
     // Remove class from body when the component is destroyed
-    this.renderer.removeClass(document.body, 'dark-theme');
+    this.renderer.removeClass(document.body, 'light-theme');
   }
 }
 

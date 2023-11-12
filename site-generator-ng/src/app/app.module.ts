@@ -42,6 +42,10 @@ import { GroupSidenavComponent } from './agentflow/group-sidenav/group-sidenav.c
 import { UsernameComponent } from './controls/username.control';
 import { AccountSetupComponent } from './account-setup/account-setup.component';
 import { MarkdownPipe } from './pipes/marked.pipe';
+import { ChatroomComponent } from './chatroom/chatroom.component';
+import { ChatroomSidenavComponent } from './chatroom/chatroom-sidenav/chatroom-sidenav.component';
+import { ChatroomGroupSidenavComponent } from './chatroom/chatroom-group-sidenav/chatroom-group-sidenav.component';
+import { ChatroomFlowchartComponent } from './chatroom/chatroom-flowchart/chatroom-flowchart.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +65,10 @@ import { MarkdownPipe } from './pipes/marked.pipe';
     VisualComponent,
     AutogenComponent,
     AutoScrollDirective,
+    ChatroomComponent,
+    ChatroomSidenavComponent,
+    ChatroomGroupSidenavComponent,
+    ChatroomFlowchartComponent,
     AgentflowComponent,
     SidenavComponent,
     FlowchartComponent,

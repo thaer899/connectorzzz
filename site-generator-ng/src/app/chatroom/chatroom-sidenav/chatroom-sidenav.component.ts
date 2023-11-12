@@ -35,11 +35,11 @@ interface EmploymentEntry {
 }
 
 @Component({
-  selector: 'app-sidenav',
-  templateUrl: './sidenav.component.html',
-  styleUrls: ['./sidenav.component.css']
+  selector: 'app-chatroom-sidenav',
+  templateUrl: './chatroom-sidenav.component.html',
+  styleUrls: ['./chatroom-sidenav.component.css']
 })
-export class SidenavComponent implements OnInit, OnDestroy {
+export class ChatroomSidenavComponent implements OnInit, OnDestroy {
   @ViewChild('scrollableContainer') private scrollableContainer: ElementRef;
   @Input() isWSConnected: boolean = false;
   @Output() agentsChanged = new EventEmitter<any[]>();

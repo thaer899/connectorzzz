@@ -10,12 +10,6 @@
       [routerLink]="['/agentflow']"
       >group_work</mat-icon
     >
-    <mat-icon
-      matTooltip="Save Agents Flow Function"
-      class=""
-      (click)="save_functions()"
-      >smart_toy</mat-icon
-    >
   </span>
 
   <span class="fill-toolbar"></span>
@@ -41,17 +35,20 @@
   </mat-form-field>
   <span class="fill-toolbar"></span>
   <span>
-    <mat-icon class="upload" matTooltip="Update Profile" (click)="upload()"
+    <mat-icon
+      matTooltip="Save Agents Flow Function"
+      class=""
+      [routerLink]="['/chatroom']"
+      >smart_toy</mat-icon
+    >
+    <mat-icon
+      class="upload"
+      matTooltip="Update Common Functions"
+      (click)="save_functions()"
       >update</mat-icon
     >
     <ng-container>
       <mat-icon class="separator inactive">more_vert</mat-icon>
-      <mat-icon
-        class="download"
-        matTooltip="Download Profile data"
-        (click)="download()"
-        >download</mat-icon
-      >
       <a
         [href]="'https://log-book-ng.web.app/p/' + (fileName | slice : 0 : -5)"
         *ngIf="fileName"
@@ -61,6 +58,15 @@
           >account_circle</mat-icon
         >
       </a>
+      <mat-icon class="upload" matTooltip="Update Profile" (click)="upload()"
+        >update</mat-icon
+      >
+      <mat-icon
+        class="download"
+        matTooltip="Download Profile data"
+        (click)="download()"
+        >download</mat-icon
+      >
     </ng-container>
 
     <mat-icon class="separator inactive">more_vert</mat-icon>

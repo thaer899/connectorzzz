@@ -1,4 +1,4 @@
-import { Component, OnInit,ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { JsonFormsAngularService, JsonFormsControl } from '@jsonforms/angular';
 import { ControlProps } from '@jsonforms/core';
 import { AuthService } from '../services/auth.service';
@@ -33,15 +33,17 @@ export class UsernameComponent extends JsonFormsControl implements OnInit {
   public username: string = '';
   public email: string = '';
   public currentUserEmail: string = '';
-  constructor(private cdRef: ChangeDetectorRef,private snackBar: MatSnackBar,service: JsonFormsAngularService,private authService: AuthService, private dataService: DataService) {
+  constructor(private cdRef: ChangeDetectorRef, private snackBar: MatSnackBar, service: JsonFormsAngularService, private authService: AuthService, private dataService: DataService) {
     super(service);
 
   }
 
   ngOnInit() {
     this.getUserData();
+    this.getUsers();
+
   }
-  
+
 
   getUsernameByEmail(users, email) {
     const user = users.find(user => user.email === email);
@@ -59,7 +61,6 @@ export class UsernameComponent extends JsonFormsControl implements OnInit {
         if (data) {
           this.data = data;
           this.currentUserEmail = JSON.stringify(data).replace('.json', '');
-          this.getUsers();
         }
       },
       error => {
@@ -78,7 +79,7 @@ export class UsernameComponent extends JsonFormsControl implements OnInit {
       this.username = this.getUsernameByEmail(users, this.authService.auth.currentUser.email);
       this.isUserActive = this.getUserStatus(this.users, this.email) === true;
       this.cdRef.detectChanges();
-      } catch (error) {
+    } catch (error) {
       console.error("Error fetching users:", error);
     }
   }
@@ -94,15 +95,15 @@ export class UsernameComponent extends JsonFormsControl implements OnInit {
       });
       return;
     }
-    this.dataService.updateUser(this.email, this.username,true).subscribe({
+    this.dataService.updateUser(this.email, this.username, true).subscribe({
       next: (updatedUsers) => {
         this.snackBar.open('Username updated successfully!', 'Close', {
           duration: 2000,
         });
-        if(!this.isUserActive){
+        if (!this.isUserActive) {
           setTimeout(() => {
             window.location.reload();
-          }, 2100); 
+          }, 2100);
         }
 
       },

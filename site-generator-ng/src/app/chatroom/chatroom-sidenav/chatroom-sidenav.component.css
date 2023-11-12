@@ -1,0 +1,66 @@
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: -30px 0px;
+}
+
+hr {
+  border: 1px solid #555555 !important;
+}
+
+.content {
+  padding: 10px;
+  display: flex;
+}
+
+.box {
+  padding: 0 15px;
+}
+/* Top toolbar styling */
+.toolbar {
+  width: 100%;
+  min-height: 15vh;
+  color: #ECEFF1;
+  border-bottom: 1px solid #565656;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  background-color: #424242;
+}
+
+/* General styling for input and text areas */
+.full-width {
+  width: 100%;
+  font-size: small;
+}
+
+.add-agent {
+  position: relative;
+  font-size: xx-large;
+  width: unset;
+  height: unset;
+  color: #ECEFF1;
+  filter: drop-shadow(2px -1px 0px #0d0d0d);
+}
+
+:host ::ng-deep .material-symbols-outlined :hover {
+  background-color: #225f43 !important;
+}
+.mat-raised-button {
+  background-color: #6c6c6c !important;
+}
+
+.mat-icon:hover {
+  font-weight: bold !important;
+  color: #979797 !important;
+  filter: unset
+}
+
+
+/* Responsiveness for smaller screens */
+@media screen and (max-width: 30em) {
+
+  .add-agent {
+    left: unset;
+  }
+}
