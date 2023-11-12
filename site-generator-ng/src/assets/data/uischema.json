@@ -30,7 +30,7 @@
                       "scope": "#/properties/resume/properties/firstName",
                       "label": "First Name"
                     },
-                       {
+                    {
                       "type": "Control",
                       "scope": "#/properties/resume/properties/lastName",
                       "label": "Last Name"
@@ -275,6 +275,60 @@
         {
           "type": "ListWithDetail",
           "scope": "#/properties/bots"
+        }
+      ]
+    },
+    {
+      "type": "Category",
+      "label": "Functions",
+      "elements": [
+        {
+          "type": "ListWithDetail",
+          "scope": "#/properties/functions",
+          "options": {
+            "detail": {
+              "type": "VerticalLayout",
+              "elements": [
+                {
+                  "type": "Label",
+                  "text": "Definition"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/name",
+                  "label": "name"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/description",
+                  "label": "Description"
+                },
+                {
+                  "type": "Label",
+                  "text": "Parameters"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/parameters",
+                  "label": "parameters"
+                },
+                {
+                  "type": "Label",
+                  "text": "Output"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/return_type",
+                  "label": "Return type"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/return_description",
+                  "label": "Return description"
+                }
+              ]
+            }
+          }
         }
       ]
     },

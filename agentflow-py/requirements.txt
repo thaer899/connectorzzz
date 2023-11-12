@@ -13,3 +13,4 @@ websocket-client>=1.6.4
 wsproto>=1.2.0
 yarl>=1.9.2
 IPython
+selenium

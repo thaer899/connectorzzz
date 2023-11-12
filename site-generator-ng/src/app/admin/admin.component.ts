@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef, ViewChild, SimpleChanges } from '@angular/core';
+import { Component, ChangeDetectorRef, ViewChild, SimpleChanges, Inject, Renderer2 } from '@angular/core';
 import { angularMaterialRenderers } from '@jsonforms/angular-material';
 import { and, createAjv, isControl, rankWith, scopeEndsWith } from '@jsonforms/core';
 import { DataDisplayComponent } from '../controls/data.control';
@@ -16,7 +16,40 @@ import { VisualComponent } from '../controls/visual.control';
 import { ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { UsernameComponent } from '../controls/username.control';
+import { DOCUMENT } from '@angular/common';
 
+
+
+interface ParameterDetail {
+  type: string;
+  description: string;
+}
+
+interface FunctionData {
+  name: string;
+  description: string;
+  parameters: Array<{
+    name: string;
+    type: string;
+    description: string;
+  }>;
+  return_type: string;
+  return_description: string;
+}
+
+interface OriginalFunctionData {
+  name: string;
+  description: string;
+  parameters: {
+    type: string;
+    properties: Record<string, { type: string; description: string; }>;
+    required?: string[];
+  };
+  return: {
+    type: string;
+    description: string;
+  };
+}
 
 @Component({
   selector: 'app-admin',
@@ -26,7 +59,7 @@ import { UsernameComponent } from '../controls/username.control';
 export class AdminComponent {
   @ViewChild(VisualComponent) visualComponent: VisualComponent;
 
-  
+
   formData: any = {};
   renderers = [
     ...angularMaterialRenderers,
@@ -88,21 +121,26 @@ export class AdminComponent {
   ];
   uischema = uischemaAsset;
   public schema = schemaAsset;
-  public data = {};
+  public data: any = {};
   showContent: boolean = false;
   isAdmin: boolean = false;
   public user: any;
   public users: any;
   public username: string;
   public fileName: string;
+  currentTheme = 'dark';
   constructor(
+    private renderer: Renderer2,
     private cdRef: ChangeDetectorRef,
     private dataService: DataService,
     private authService: AuthService,
     private snackBar: MatSnackBar,
     private ngZone: NgZone,
     private route: ActivatedRoute,
-    private titleService: Title) { }
+    private titleService: Title) {
+    this.renderer.addClass(document.body, 'light-theme');
+
+  }
 
 
   ngOnInit() {
@@ -112,31 +150,41 @@ export class AdminComponent {
         this.titleService.setTitle(`${environment.title} - ${data.title}`);
       }
     });
+
     this.user = this.authService.auth.currentUser;
+
     if (this.user) {
       if (this.user.email == environment.mainEmail) {
         this.isAdmin = true;
-            }
+      }
+
+      // Fetch data for user
       this.ngZone.run(() => {
         this.dataService.fetchDataForUser(this.user.email).subscribe(
           data => {
             if (data) {
               this.data = data;
-              this.cdRef.detectChanges();  
+              // Fetch functions and update this.data.functions
+              this.dataService.fetchFunctions().subscribe(
+                functionsData => {
+                  this.data.functions = this.transformFunctionData(functionsData);
+                  console.log("Functions:", this.data);
+                  this.cdRef.detectChanges();  // Trigger change detection
+                },
+                error => console.error("Error fetching functions:", error)
+              );
             }
           },
           error => {
             console.error("Error fetching data for user:", this.user.email, error);
-            // Handle the error, e.g., show a notification to the user
           }
         );
-      })
-        }
+      });
+    }
+
     this.fileName = `${this.user.email}.json`;
     this.getUsers();
-
     this.showContent = true;
-
   }
 
 
@@ -149,7 +197,7 @@ export class AdminComponent {
       console.error("Error fetching users:", error);
     }
   }
-  
+
   checkInactiveUsers() {
     const hasInactiveCurrentUser = this.users.some(user => !user.active && user.email === this.user.email);
     if (hasInactiveCurrentUser) {
@@ -167,7 +215,7 @@ export class AdminComponent {
       data => {
         if (data) {
           this.data = data;
-          this.fileName = email+'.json'
+          this.fileName = email + '.json'
           this.cdRef.detectChanges();
         }
       },
@@ -182,7 +230,6 @@ export class AdminComponent {
   // Handle form data changes
   onDataChange(event) {
     this.formData = event;
-    this.dataService.updateData(this.formData);
     if (this.visualComponent) {
       this.visualComponent.data = this.formData;
     }
@@ -207,6 +254,23 @@ export class AdminComponent {
   }
 
 
+  async save_functions() {
+    const storage = getStorage();
+    console.log("Uploading data to Firebase Storage...");
+    const fileRef = ref(storage, `functions.json`);
+    const functionsData = this.revertFunctionData(this.formData.functions);
+    const dataString = JSON.stringify(functionsData);
+    console.log("Data to be uploaded:", functionsData);
+    try {
+      await uploadString(fileRef, dataString);
+      console.log('Data uploaded to Firebase Storage');
+      this.snackBar.open('Data uploaded successfully!', 'Close', {
+        duration: 2000,  // The snackbar will auto-dismiss after 2 seconds
+      });
+    } catch (error) {
+      console.error("Error uploading data:", error);
+    }
+  }
 
   // Download the form data as a JSON file
   download() {
@@ -242,6 +306,74 @@ export class AdminComponent {
     this.formData.picture = fileContent;
   }
 
+  transformFunctionData(functionsData: OriginalFunctionData[]) {
+    return functionsData.map((func) => {
+      let transformedFunc = {
+        name: func.name,
+        description: func.description,
+        parameters: [],
+        return_type: func.return.type,
+        return_description: func.return.description,
+      };
+
+      if (func.parameters && 'properties' in func.parameters) {
+        Object.entries(func.parameters.properties).forEach(([paramName, paramDetails]) => {
+          let paramObj = {
+            name: paramName,
+            type: paramDetails.type,
+            description: paramDetails.description,
+            required: func.parameters.required?.includes(paramName),
+          };
+          transformedFunc.parameters.push(paramObj);
+        });
+      }
+
+      return transformedFunc;
+    });
+  }
+
+
+  revertFunctionData(transformedData: FunctionData[]): OriginalFunctionData[] {
+    return transformedData.map(func => {
+      let originalFunc = {
+        name: func.name,
+        description: func.description,
+        parameters: {
+          type: "object",
+          properties: {},
+          required: []
+        },
+        return: {
+          type: func.return_type,
+          description: func.return_description
+        }
+      };
+
+      // Iterate over parameters array and populate properties and required
+      func.parameters.forEach(param => {
+        originalFunc.parameters.properties[param.name] = {
+          type: param.type,
+          description: param.description
+        };
+        // Assuming every parameter is required (adjust logic if this assumption is incorrect)
+        originalFunc.parameters.required.push(param.name);
+      });
+
+      return originalFunc;
+    });
+  }
+
+  toggleTheme(): void {
+    this.renderer.removeClass(document.body, this.currentTheme + '-theme');
+    this.currentTheme = this.currentTheme === 'dark' ? 'light' : 'dark';
+    this.renderer.addClass(document.body, this.currentTheme + '-theme');
+    console.log("Theme changed to:", this.currentTheme);
+  }
+
+  ngOnDestroy() {
+    // Remove class from body when the component is destroyed
+    this.renderer.removeClass(document.body, 'light-theme');
+  }
 }
 
 

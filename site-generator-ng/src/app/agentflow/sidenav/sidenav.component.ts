@@ -65,7 +65,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
     "llm_config": {
       "request_timeout": 300,
       "seed": 40,
-      "config_list": [{ 'model': 'gpt-4' }],
+      "config_list": [{ 'model': 'gpt-4-1106-preview' }],
       "temperature": 0,
     },
     "code_execution_config": {
@@ -82,7 +82,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
       "llm_config": {
         "request_timeout": 300,
         "seed": 40,
-        "config_list": [{ 'model': 'gpt-4' }],
+        "config_list": [{ 'model': 'gpt-4-1106-preview' }],
         "temperature": 0,
       },
       "code_execution_config": {
@@ -130,7 +130,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
           "llm_config": {
             "request_timeout": 300,
             "seed": 40,
-            "config_list": [{ 'model': 'gpt-4' }],
+            "config_list": [{ 'model': 'gpt-4-1106-preview' }],
             "temperature": 0,
           },
           "code_execution_config": {
@@ -148,16 +148,17 @@ export class SidenavComponent implements OnInit, OnDestroy {
           "llm_config": {
             "request_timeout": 300,
             "seed": 40,
-            "config_list": [{ 'model': 'gpt-4' }],
+            "config_list": [{ 'model': 'gpt-4-1106-preview' }],
             "temperature": 0,
+            "functions": []
           },
           "code_execution_config": {
             "work_dir": "workspace",
             "use_docker": true,
             "last_n_messages": 5,
-          }
+          },
         },
-        message: 'A human admin. Interact with team on behalf of the user.! Reply `TERMINATE` in the end when everything is done.'
+        message: 'A human admin. Interact with team on behalf of the user! Reply `TERMINATE` in the end when everything is done.'
       };
 
       this.agents.unshift(this.user_proxy, this.agent);
@@ -224,20 +225,24 @@ export class SidenavComponent implements OnInit, OnDestroy {
       this.isWSConnected = true;
     }
 
-    const agentExists = this.agents.some(ag => ag === agent);
+    console.log('Attempting to add agent:', agent.agent_name);
+    console.log('Current agents:', this.agents.map(ag => ag.agent_name));
+
+    const agentExists = this.agents.some(ag => ag.agent_name === agent.agent_name);
     if (!agentExists) {
       let newAgent = agent;
       this.agents = [...this.agents, newAgent];
+      this.agentsAsString = JSON.stringify(this.agents, null, 2);
       this.agentsChanged.emit(this.agents);
-
     } else {
-      console.log('Agent already exists. Not adding.');
+      console.log('Agent already exists. Not adding:', agent.agent_name);
     }
 
     this.snackBar.open('Added Agent', 'Close', {
       duration: 2000,
     });
   }
+
 
 
 
@@ -258,6 +263,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
     const selectedAgent = this.agents.find(agent => agent.agent_name === this.actifAgent);
     if (selectedAgent) {
       this.selectedAgent = selectedAgent;
+      this.cd.detectChanges();
     }
   }
 
@@ -275,6 +281,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
   onAgentConfigValueChange(newValue: string) {
     try {
       this.selectedAgent.config = JSON.parse(newValue);
+      this.cd.detectChanges();
     } catch (error) {
       console.error("Invalid JSON format:", error);
     }
@@ -293,13 +300,14 @@ export class SidenavComponent implements OnInit, OnDestroy {
               "llm_config": {
                 "request_timeout": 300,
                 "seed": 40,
-                "config_list": [{ 'model': 'gpt-4' }],
+                "config_list": [{ 'model': 'gpt-4-1106-preview' }],
                 "temperature": 0,
-              },
-              "code_execution_config": {
-                "work_dir": "workspace",
-                "use_docker": true,
-                "last_n_messages": 5,
+                "code_execution_config": {
+                  "work_dir": "workspace",
+                  "use_docker": true,
+                  "last_n_messages": 5,
+                },
+                "functions": []
               }
             },
             message: this.generateAgentProfile(data)
@@ -374,7 +382,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
     In your role, you collaborate with the teams, use your knowledge ${SkillEntry} and contribute your insights to discussions and documentation.
   
     Efficiency and effectiveness are your guiding principles. You are tasked with delivering succinct solutions, eschewing all pleasantries and focusing solely on the objectives at hand.
-    Reply "TERMINATE" in the end when everything is done.
+    Use the provided functions when user request is related!
 
     `.trim();
 

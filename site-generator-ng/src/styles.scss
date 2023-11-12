@@ -1,18 +1,5 @@
 @import 'assets/scss/custom-theme.scss';
 
-body {
-    background-color: #303030;
-    color: white;
-    font-family: 'Roboto', sans-serif;
-}
-
-.background {
-    background-color: #303030;
-    margin: 0 auto;
-    color: white;
-    padding: 0 20px 0 20px;
-    min-height: 85vh;
-}
 
 
 mat-icon {
@@ -36,6 +23,12 @@ mat-icon {
     color: $accent-color !important;
 }
 
+.background {
+    width: 100% !important;
+    left: 0;
+    position: absolute;
+    top: 0;
+}
 .mat-button {
     min-width: 5px !important;
     line-height: 36px;
@@ -50,7 +43,6 @@ mat-icon {
     font-weight: bold;
 
 }
-
 
 .right {
     position: absolute;
@@ -155,10 +147,6 @@ mat-icon {
         left: 10vh !important;
     }
 
-    .background {
-        padding: 0 10px 0 10px;
-    }
-
     .mat-button-wrapper .mat-icon {
         font-size: medium;
     }
@@ -173,3 +161,79 @@ mat-icon {
         padding: 1px !important;
     }
 }
+
+
+/* Dark Theme Styles */
+.dark-theme {
+    .toolbar {
+      background-color: #0d0d0d !important;
+      color: #ECEFF1 !important;
+      border-bottom: 1px solid #565656 !important;
+    }
+
+    .background {
+        background-color: #0d0d0d !important;
+        color: #ECEFF1 !important;
+    }
+    :host ::ng-deep .mat-drawer {
+      background-color: #212121 !important;
+      color: #c0c0c0 !important;
+    }
+  
+    :host ::ng-deep .mat-card,
+    :host ::ng-deep .mat-drawer-content,
+    :host ::ng-deep .mat-table {
+      background-color: #151515 !important;
+      color: #c0c0c0 !important;
+    }
+  
+    :host ::ng-deep .mat-list-item {
+      border-bottom: 1px solid #424242 !important;
+    }
+  
+    :host ::ng-deep .mat-input-element {
+      color: #c0c0c0 !important;
+    }
+  
+  }
+  
+  /* Light Theme Styles */
+  .light-theme {
+
+    .background {
+        background-color: #c4c2c2 !important; /* Fine light grey */
+      color: #212121 !important; /* Soft contrast */
+     }
+
+    :host ::ng-deep .mat-drawer {
+      background-color: #c4c2c2 !important; /* Fine light grey */
+      color: #212121 !important; /* Soft contrast */
+    }
+  
+    :host ::ng-deep .mat-toolbar {
+        background-color: #48a656 !important; /* Fine light grey */
+        color: #212121 !important; /* Soft contrast */
+        border-bottom: 1px solid #c2c2c2 !important;
+   
+    }
+  
+    :host ::ng-deep .mat-card,
+    :host ::ng-deep .mat-table,
+    :host ::ng-deep .mat-list-item,
+    :host ::ng-deep .mat-form-field-infix 
+    // :host ::ng-deep .mat-drawer-content
+  {
+        background-color: #67a17133 !important;
+        color: #212121 !important; 
+      }
+  
+      :host ::ng-deep .mat-list-item
+    {
+          color: #ECEFF1 !important; 
+        }
+  
+      :host ::ng-deep .mat-drawer-content
+      {
+        background-color: #c4c2c2 !important;
+      }
+  }

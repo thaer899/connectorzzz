@@ -1,28 +1,22 @@
 @import '../../assets/scss/custom-theme.scss';
 
-
+/* Base styles for common elements */
 .toolbar {
-  background-color: #0d0d0d;
-  color: #ECEFF1;
-  border-bottom: 1px solid #565656;
   position: fixed;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  position: -webkit-sticky;
   top: 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-
+  left: 0;
+  width: 100%;
   z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .background {
-  margin-top: 7vh;
+  margin-top: 6vh;
   margin-left: 0vh;
-  width: 92%;}
+  width: 92%;
+}
 
 :host ::ng-deep .mat-drawer-content {
-  background-color: #303030 !important;
   position: relative;
   z-index: 1;
   display: block;
@@ -31,29 +25,28 @@
   margin-left: 20%;
 }
 
-
+.theme-switch,
 .mat-icon {
   margin-right: 10px;
   padding: 2px;
-  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
   font-size: 40px;
-  filter: drop-shadow(2px -1px 0px #383838);
+  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
 }
 
+.theme-switch:hover,
 .mat-icon:hover {
-  font-weight: bold !important;
-  color: #979797 !important;
-  filter: unset
+  font-weight: bold;
+  color: #979797;
+  filter: unset;
 }
 
 .inactive {
-  color: #979797 !important;
+  color: #979797;
   cursor: unset;
 }
 
 .inactive:hover {
-  font-weight: unset !important;
-
+  font-weight: unset;
 }
 
 .fill-toolbar {
@@ -64,149 +57,128 @@
   color: #a72f2f;
 }
 
-@media screen and (max-width: 30em) {
+.material-symbols-outlined {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  display: inline-flex;
+  font-size: xxx-large;
+  cursor: pointer;
+  z-index: 1000;
+}
 
+.upload {
+  color: #3b9029;
+  right: 80px;
+}
+
+.download {
+  color: #f96c6c;
+  right: 120px;
+}
+
+@media screen and (max-width: 30em) {
   .background {
     margin-top: 6vh;
-}
+  }
 
-:host ::ng-deep .select-profile {
-  width: 10vh !important;
-}
-
+  :host ::ng-deep .select-profile {
+    width: 10vh !important;
+  }
 
   .mat-icon {
     font-size: x-large;
     font-weight: normal;
     margin-right: 0px;
-
   }
 
   .material-symbols-outlined {
     width: 40px;
     height: 40px;
+    font-size: x-large;
   }
 
   .upload {
-    color: #3b9029 !important;
     right: 80px;
-
   }
 
   .download {
-    color: #f96c6c !important;
     right: 120px;
+  }
+}
 
 
+
+/* Dark Theme Styles */
+.dark-theme {
+  .toolbar {
+    background-color: #0d0d0d !important;
+    color: #ECEFF1 !important;
+    border-bottom: 1px solid #565656 !important;
+  }
+
+  .background {
+      background-color: #0d0d0d !important;
+      color: #ECEFF1 !important;
+  }
+  :host ::ng-deep .mat-drawer {
+    background-color: #212121 !important;
+    color: #c0c0c0 !important;
+  }
+
+  :host ::ng-deep .mat-card,
+  :host ::ng-deep .mat-drawer-content,
+  :host ::ng-deep .mat-table {
+    background-color: #151515 !important;
+    color: #c0c0c0 !important;
+  }
+
+  :host ::ng-deep .mat-list-item {
+    border-bottom: 1px solid #424242 !important;
+  }
+
+  :host ::ng-deep .mat-input-element {
+    color: #c0c0c0 !important;
   }
 
 }
 
+/* Light Theme Styles */
+.light-theme {
 
+  .background {
+      background-color: #c4c2c2 !important; /* Fine light grey */
+    color: #212121 !important; /* Soft contrast */
+   }
 
+  :host ::ng-deep .mat-toolbar {
+      background-color: #48a656 !important; /* Fine light grey */
+      color: #212121 !important; /* Soft contrast */
+      border-bottom: 1px solid #c2c2c2 !important;
+ 
+  }
 
-// Form Controls
+  :host ::ng-deep .mat-card,
+  :host ::ng-deep .mat-table,
+  :host ::ng-deep .mat-drawer,
+  :host ::ng-deep .mat-tab-label,
+  :host ::ng-deep .mat-form-field-infix 
+  // :host ::ng-deep .mat-drawer-content
+{
+      background-color: #67a17133 !important;
+      color: #212121 !important; 
+    }
 
-:host ::ng-deep .mat-drawer  {
-  color: #ECEFF1 !important;
-}
+    :host ::ng-deep .mat-list-item
+  {
+        background-color: #67a17133 !important;
+        color: #ECEFF1 !important; 
+      }
 
-:host ::ng-deep .mat-primary  {
-  color: #ECEFF1 !important;
-}
+    :host ::ng-deep .mat-drawer-content
+    {
+      background-color: #c4c2c2 !important;
+    }
 
-
-:host ::ng-deep .mat-drawer-content  {
-  color: #ECEFF1 !important;
-}
-
-:host ::ng-deep .mat-form-field-flex {
-  background-color: #0d0d0d;
-  box-shadow: -5px 9px 16px 3px rgba(0, 0, 0, 0.5);
-  padding: 0 1vh;
-  border-radius: 3px;
-  margin-top: 1vh;
-}
-
-:host ::ng-deep .mat-form-field-infix {
-  font-size: small;
-}
-
-
-:host ::ng-deep .mat-form-field-wrapper {
-  margin: 0 1vh !important;
-}
-
-:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
-  top: unset !important;
-  width:100% ;
-}
-
-:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline :hover {
-  top: unset !important;
-  bottom: unset;
-  width:100% ;
-}
-
-:host ::ng-deep .mat-form-field-label-wrapper {
-  top: -1.2em;
-}
-
-:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
-  padding: 1em 0em  !important;
-}
-
-:host ::ng-deep .mat-form-field-outline-end {
-  border: 0px  !important;
-}
-
-:host ::ng-deep .mat-form-field-outline-start {
-  border: 0px  !important;
-}
-
-:host ::ng-deep .mat-option-text{
-  color: #c0c0c0 !important;
-}
-
-:host ::ng-deep .mat-option-text a{
-  width: 100% !important;
-}
-
-
-// Form Controls
-
-:host ::ng-deep .mat-drawer {
-  background-color: #212121 !important;
-  color: #c0c0c0 !important;
 
 }
-
-:host ::ng-deep .mat-card{
-  background-color: #151515 !important;
-  color: #c0c0c0 !important;
-}
-
-:host ::ng-deep .mat-drawer-content {
-  background-color: #151515 !important;
-  color: #c0c0c0 !important;
-
-}
-
-:host ::ng-deep .mat-table{
-  background-color: #212121 !important;
-  color: #c0c0c0 !important;
-
-}
-
-:host ::ng-deep .mat-list-item{
-  color: #c0c0c0 !important;
-  border-bottom: 1px solid #424242 !important;
-
-}
-
-:host ::ng-deep .mat-input-element{
-  color: #c0c0c0 !important;
-}
-
-
-

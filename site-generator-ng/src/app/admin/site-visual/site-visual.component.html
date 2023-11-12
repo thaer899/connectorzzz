@@ -1,37 +1,59 @@
 <div class="border" *ngIf="data && profile">
-  <div class="topbar" [style.background]="getColor('topbar')" [style.color]="getColor('bodycolor')">
+  <div
+    class="topbar"
+    [style.background]="getColor('topbar')"
+    [style.color]="getColor('bodycolor')"
+  >
     <mat-icon class="visibility" (click)="visualize(data)">visibility</mat-icon>
-    <div class="quote">
-      Lorem Epsum long Lorem Epsum long
-    </div>
-
+    <div class="quote">Lorem Epsum long Lorem Epsum long</div>
   </div>
 
   <div class="content row">
     <div class="profile-card" [style.background]="getColor('sidebar')">
-      <div class="circle-center" [style.background]="getColor('themecolor')" [style.color]="getColor('themecoloralt')">
-        {{profile.firstName | slice:0:1 }}
+      <div
+        class="circle-center"
+        [style.background]="getColor('themecolor')"
+        [style.color]="getColor('themecoloralt')"
+      >
+        {{ profile.firstName | slice : 0 : 1 }}
       </div>
       <br />
       <div class="profile-content">
-        <h1 [style.color]="getColor('themecolor')">{{profile.firstName}}</h1>
-        <p [style.color]="getColor('bodytext')">{{profile.location}}
-        </p>
+        <h1 [style.color]="getColor('themecolor')">{{ profile.firstName }}</h1>
+        <p [style.color]="getColor('bodytext')">{{ profile.location }}</p>
 
-
-        <button [style.background]="getColor('themecolor')" [style.color]="getColor('bodycolor')">Blog</button>
-        <button [style.background]="getColor('themecolor')" [style.color]="getColor('bodycolor')">Skills</button>
+        <button
+          [style.background]="getColor('themecolor')"
+          [style.color]="getColor('bodycolor')"
+        >
+          Blog
+        </button>
+        <button
+          [style.background]="getColor('themecolor')"
+          [style.color]="getColor('bodycolor')"
+        >
+          Skills
+        </button>
       </div>
     </div>
 
-    <div class="content-card" [style.background]="getColor('bodycolor')" [style.color]="getColor('bodytext')">
+    <div
+      class="content-card"
+      [style.background]="getColor('bodycolor')"
+      [style.color]="getColor('bodytext')"
+    >
       <h1 [style.color]="getColor('themecoloralt')">Hi</h1>
       <h3 [style.color]="getColor('themecolor')">Lorem Epsum Sub Title</h3>
       <p>Lorem Epsum Sub Long Description</p>
-      <h1 [style.color]="getColor('themecoloralt')">Ask me: </h1>
-      <input matInput type="text" class="input">
+      <h1 [style.color]="getColor('themecoloralt')">Ask me:</h1>
+      <input matInput type="text" class="input" />
       <br />
-      <button [style.background]="getColor('themecolor')" [style.color]="getColor('bodycolor')">Message</button>
+      <button
+        [style.background]="getColor('themecolor')"
+        [style.color]="getColor('bodycolor')"
+      >
+        Message
+      </button>
     </div>
   </div>
 </div>

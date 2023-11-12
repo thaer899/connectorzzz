@@ -1,8 +1,11 @@
+import json
+import os
 from threading import Thread
 from typing import Any, Dict, List
 from src.agents.ws_assistant import WebSocketAssistantAgent
 from src.agents.ws_user_proxy import WebSocketUserProxyAgent
 from src.agents.ws_manager import WebSocketManagerAgent
+from src.agents.tools.functions import get_user_profile, browse_web, invoke_github_actions_pipeline, register_functions, read_file
 from autogen import config_list_from_json, AssistantAgent, UserProxyAgent,  GroupChat
 from concurrent.futures import ThreadPoolExecutor
 import queue
@@ -107,6 +110,12 @@ def create_instance_agent(agent, send_queue, receive_queue):
     code_execution_config = agent.get(
         "config", {}).get('code_execution_config', {})
 
+    file_path = os.path.join(os.path.dirname(
+        __file__), 'agents/tools/data/functions.json')
+    content = read_file(file_path)
+    logging.info(f"content functions.json: {content}")
+    llm_config["functions"] = json.loads(content) if content else []
+
     instance_agent = WebSocketAssistantAgent(
         name=agent.get("agent_name"),
         is_termination_msg=termination_msg,
@@ -114,8 +123,12 @@ def create_instance_agent(agent, send_queue, receive_queue):
         llm_config=llm_config,
         code_execution_config=code_execution_config,
         send_queue=send_queue,
-        receive_queue=receive_queue
+        receive_queue=receive_queue,
+        function_map={
+        }
     )
+
+    register_functions(instance_agent)
     return instance_agent
 
 
@@ -124,19 +137,27 @@ def create_instance_proxy(agent, send_queue, receive_queue):
     code_execution_config = agent.get(
         "config", {}).get('code_execution_config', {})
 
+    file_path = os.path.join(os.path.dirname(
+        __file__), 'agents/tools/data/functions.json')
+    content = read_file(file_path)
+    logging.info(f"content XXXX: {content}")
+    llm_config["functions"] = json.loads(content) if content else []
+
     instance_agent = WebSocketUserProxyAgent(
         name=agent.get("agent_name"),
         is_termination_msg=termination_msg,
         system_message=agent.get("message"),
-        human_input_mode="TERMINATE",
+        human_input_mode="NEVER",
         llm_config=llm_config,
         code_execution_config=code_execution_config,
         send_queue=send_queue,
         receive_queue=receive_queue,
         default_auto_reply="",
-        function_map={},
-        max_consecutive_auto_reply=5
+        max_consecutive_auto_reply=5,
+        function_map={
+        }
     )
+    register_functions(instance_agent)
     return instance_agent
 
 

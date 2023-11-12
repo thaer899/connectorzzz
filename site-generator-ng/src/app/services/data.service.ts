@@ -12,36 +12,35 @@ const app = initializeApp(firebaseConfig); // Initialize Firebase app once
 const storage = getStorage(app);
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class DataService {
-    private data = new BehaviorSubject<any>({});
-    private usersSource = new BehaviorSubject<any[]>([]);
-    public users$ = this.usersSource.asObservable();
-    public templateProfile = new TemplateProfile();
-    constructor(
-        private readonly http: HttpClient
-    ) {
-        this.initializeUsers();
-        }
+  private data = new BehaviorSubject<any>({});
+  private usersSource = new BehaviorSubject<any[]>([]);
+  public users$ = this.usersSource.asObservable();
+  public templateProfile = new TemplateProfile();
+  constructor(
+    private readonly http: HttpClient
+  ) {
+  }
 
-    getData(): Observable<any> {
-        return this.data.asObservable();
-    }
+  getData(): Observable<any> {
+    return this.data.asObservable();
+  }
 
-    updateData(newData: any): void {
-        this.data.next(newData);
-    }
+  updateData(newData: any): void {
+    this.data.next(newData);
+  }
 
-    private initializeUsers() {
-        this.fetchAndStoreUsers().subscribe({
-          next: (users) => {
-          },
-          error: (error) => {
-            console.error('Error during user initialization:', error);
-          }
-        });
+  private initializeUsers() {
+    this.fetchAndStoreUsers().subscribe({
+      next: (users) => {
+      },
+      error: (error) => {
+        console.error('Error during user initialization:', error);
       }
+    });
+  }
 
 
 
@@ -49,7 +48,8 @@ export class DataService {
     const fileRef = ref(storage, `profiles/${email}.json`);
     this.templateProfile.email = email;
     this.templateProfile.username = username;
-    this.templateProfile.theme = { "colors": [
+    this.templateProfile.theme = {
+      "colors": [
         {
           "key": "themecolor",
           "value": "#1D1D35"
@@ -113,9 +113,9 @@ export class DataService {
   public fetchUsers(): Observable<any> {
     const defaultFileRef = ref(storage, 'users.json');
     return from(getDownloadURL(defaultFileRef)).pipe(
-        switchMap(defaultDownloadURL => this.http.get(defaultDownloadURL))
+      switchMap(defaultDownloadURL => this.http.get(defaultDownloadURL))
     );
-}
+  }
 
   private saveUsers(users: any[]): void {
     const fileRef = ref(storage, 'users.json');
@@ -136,29 +136,44 @@ export class DataService {
   }
 
 
-public fetchDataForUser(email: string): Observable<any> {
-    return this.fetchDataFromFirebase(email).pipe(
-        catchError(_ => this.fetchDefaultData()), // If there's an error, fetch default data
-        tap(data => this.data.next(data)) // Update the BehaviorSubject with the fetched data
+  public fetchDataForUser(email: string): Observable<any> {
+    return this.fetchDataFromFirebase(`profiles/${email}.json`).pipe(
+      catchError(_ => this.fetchDefaultData()), // If there's an error, fetch default data
+      tap(data => this.data.next(data)) // Update the BehaviorSubject with the fetched data
     );
-}
+  }
 
 
+  public fetchFunctions(): Observable<any> {
+    return this.fetchDataFromFirebase("functions.json").pipe(
+      tap(data => this.data.next(data))
+    );
+  }
 
-    private fetchDataFromFirebase(email: string): Observable<any> {
+  public saveFunctions(functions: any[]): void {
+    const fileRef = ref(storage, 'functions.json');
+    const dataString = JSON.stringify(functions);
+    uploadString(fileRef, dataString).then(() => {
+    }).catch(error => {
+      console.error("Error saving users:", error);
+    });
+  }
+  private fetchDataFromFirebase(email: string): Observable<any> {
+    const fileRef = ref(storage, email);
 
-        const fileRef = ref(storage, `profiles/${email}.json`);
+    return from(getDownloadURL(fileRef)).pipe(
+      switchMap(downloadURL => this.http.get(downloadURL)),
+      catchError((error) => {
+        return of(null);
+      })
+    );
+  }
 
-        return from(getDownloadURL(fileRef)).pipe(
-            switchMap(downloadURL => this.http.get(downloadURL))
-        );
-    }
+  private fetchDefaultData(): Observable<any> {
+    const defaultFileRef = ref(storage, 'template.json');
 
-    private fetchDefaultData(): Observable<any> {
-        const defaultFileRef = ref(storage, 'template.json');
-
-        return from(getDownloadURL(defaultFileRef)).pipe(
-            switchMap(defaultDownloadURL => this.http.get(defaultDownloadURL))
-        );
-    }
+    return from(getDownloadURL(defaultFileRef)).pipe(
+      switchMap(defaultDownloadURL => this.http.get(defaultDownloadURL))
+    );
+  }
 }

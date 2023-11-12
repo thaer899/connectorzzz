@@ -8,6 +8,7 @@ import { FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 import { ToggleService } from 'src/app/services/toggle.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -23,16 +24,18 @@ export class GroupSidenavComponent implements OnInit, OnDestroy {
   agentName: string = 'User_AI';
   agentProfile: string = '';
   groupAgents = new FormControl('');
+  user: any;
   public loading: boolean = false;
   public messages: any = [];
   public chats: any = [];
   public chatId: string = '';
   public selectedAgents: any = [];
 
-  constructor(private http: HttpClient, private snackBar: MatSnackBar, private wsService: WebsocketService, private cd: ChangeDetectorRef) {
+  constructor(private authService: AuthService, private http: HttpClient, private snackBar: MatSnackBar, private wsService: WebsocketService, private cd: ChangeDetectorRef) {
   }
 
   ngOnInit() {
+    this.user = this.authService.auth.currentUser;
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -63,8 +66,13 @@ export class GroupSidenavComponent implements OnInit, OnDestroy {
           console.log("Received WebSocket message:", messageStr);
           const messageObj = JSON.parse(messageStr);
           if (messageObj) {
-            this.messages = [...this.messages, { 'name': messageObj.name, 'content': messageObj.content }];
-
+            this.messages = [
+              ...this.messages,
+              {
+                'name': messageObj.name,
+                'content': messageObj.function_call != null ? JSON.stringify(messageObj.function_call) : JSON.stringify(messageObj.content)
+              }
+            ];
             this.loading = false;
           }
           this.cd.detectChanges();
@@ -73,9 +81,9 @@ export class GroupSidenavComponent implements OnInit, OnDestroy {
           console.error('WebSocket Error:', error);
         }
       );
-
     });
   }
+
 
   initiateGroupChat(message: string, agents: any[]): void {
     if (!this.isWSConnected) {
@@ -102,7 +110,13 @@ export class GroupSidenavComponent implements OnInit, OnDestroy {
         console.log("Received WebSocket message:", messageStr);
         const messageObj = JSON.parse(messageStr);
         if (messageObj && messageObj.name) {
-          this.messages = [...this.messages, { 'name': messageObj.name, 'content': messageObj.content }];
+          this.messages = [
+            ...this.messages,
+            {
+              'name': messageObj.name,
+              'content': messageObj.function_call != null ? JSON.stringify(messageObj.function_call) : JSON.stringify(messageObj.content)
+            }
+          ];
         } else if (messageObj && !messageObj.name) {
           this.messages = [...this.messages, { 'name': 'Hint', 'content': messageStr }];
         }

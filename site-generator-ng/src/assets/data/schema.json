@@ -2,8 +2,8 @@
   "type": "object",
   "properties": {
     "username": {
-       "type": "string"
-     },
+      "type": "string"
+    },
     "education": {
       "type": "array",
       "items": {
@@ -186,10 +186,7 @@
                 "type": "string"
               }
             },
-            "required": [
-              "key",
-              "value"
-            ]
+            "required": ["key", "value"]
           }
         }
       }
@@ -250,14 +247,7 @@
         "properties": {
           "type": {
             "type": "string",
-            "enum": [
-              "default",
-              "messages",
-              "skills",
-              "quotes",
-              "blog",
-              "perso"
-            ]
+            "enum": ["default", "messages", "skills", "quotes", "blog", "perso"]
           },
           "summary": {
             "type": "string"
@@ -269,17 +259,52 @@
               "properties": {
                 "role": {
                   "type": "string",
-                  "enum": [
-                    "system",
-                    "user",
-                    "assistant"
-                  ]
+                  "enum": ["system", "user", "assistant"]
                 },
                 "content": {
                   "type": "string"
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "functions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "parameters": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string",
+                  "enum": ["string", "number", "boolean", "array", "object"]
+                },
+                "description": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "return_type": {
+            "type": "string",
+            "enum": ["string", "number", "boolean", "array", "object"]
+          },
+          "return_description": {
+            "type": "string"
           }
         }
       }

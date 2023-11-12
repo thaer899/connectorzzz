@@ -1,0 +1,18 @@
+{
+  "email": "",
+  "username": "",
+  "theme": {
+    "colors": [
+      { "key": "themecolor", "value": "" },
+      { "key": "themecoloralt", "value": "" },
+      { "key": "topbar", "value": "grey" },
+      { "key": "sidebar", "value": "blue" },
+      { "key": "bodycolor", "value": "" },
+      { "key": "bodytext", "value": "#1D1D35" }
+    ]
+  },
+  "resume": {},
+  "references": [],
+  "languages": [],
+  "interests": [""]
+}

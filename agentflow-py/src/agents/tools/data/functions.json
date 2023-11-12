@@ -1,0 +1,104 @@
+[
+  {
+    "name": "spr_writer",
+    "description": "Creates an SPR by combining provided data with content from a predefined markdown file, effectively compressing the input data into a more succinct representation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "string",
+          "description": "Input data to be transformed into an SPR."
+        }
+      },
+      "required": ["data"]
+    },
+    "return": {
+      "type": "string",
+      "description": "A compressed Sparse Priming Representation of the provided data."
+    }
+  },
+  {
+    "name": "spr_reader",
+    "description": "Expands an SPR back into a more detailed form by combining it with predefined markdown content, effectively decompressing the SPR data.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "string",
+          "description": "SPR data to be expanded into detailed content."
+        }
+      },
+      "required": ["data"]
+    },
+    "return": {
+      "type": "string",
+      "description": "Decompressed content derived from the provided SPR."
+    }
+  },
+  {
+    "name": "get_user_profile",
+    "description": "Retrieve a user's profile using username or email",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string",
+          "description": "The username of the user"
+        },
+        "email": {
+          "type": "string",
+          "description": "The email of the user"
+        }
+      },
+      "required": []
+    },
+    "return": {
+      "type": "object",
+      "description": "The user's profile"
+    }
+  },
+  {
+    "name": "browse_web",
+    "description": "Browse the web and retrieve information from a specified URL",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "description": "The URL to browse"
+        }
+      },
+      "required": ["url"]
+    },
+    "return": {
+      "type": "object",
+      "description": "The retrieved web content"
+    }
+  },
+  {
+    "name": "invoke_github_actions_pipeline",
+    "description": "Invoke a pipeline in GitHub Actions",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "repository": {
+          "type": "string",
+          "description": "The GitHub repository containing the pipeline"
+        },
+        "workflow_id": {
+          "type": "string",
+          "description": "The ID of the workflow to invoke"
+        },
+        "token": {
+          "type": "string",
+          "description": "Personal Access Token for authentication"
+        }
+      },
+      "required": ["repository", "workflow_id", "token"]
+    },
+    "return": {
+      "type": "object",
+      "description": "The status of the invoked pipeline"
+    }
+  }
+]

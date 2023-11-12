@@ -39,7 +39,7 @@ export class SiteVisualComponent implements OnInit {
   }
 
   ngOnChanges(event): void {
-    if (this.dataFromParent && Object.keys(this.dataFromParent).length !== 0) {
+    if (this.dataFromParent && this.dataFromParent.theme && Object.keys(this.dataFromParent).length !== 0) {
       this.data = this.dataFromParent.theme.colors;
       this.profile = this.dataFromParent.resume
 
