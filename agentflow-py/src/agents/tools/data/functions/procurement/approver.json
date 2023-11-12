@@ -1,0 +1,56 @@
+[
+  {
+    "name": "review_purchase_request",
+    "description": "Reviews a purchase request for compliance with budget and procurement policies.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "request_id": {
+          "type": "string",
+          "description": "The unique identifier of the purchase request to review."
+        }
+      },
+      "required": ["request_id"]
+    },
+    "return": {
+      "type": "object",
+      "description": "The decision on the purchase request, including any required modifications."
+    }
+  },
+  {
+    "name": "authorize_payment",
+    "description": "Authorizes the payment for a purchase order.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "purchase_order_id": {
+          "type": "string",
+          "description": "The unique identifier of the purchase order for which payment is to be authorized."
+        }
+      },
+      "required": ["purchase_order_id"]
+    },
+    "return": {
+      "type": "object",
+      "description": "Confirmation of payment authorization, with details of the payment terms."
+    }
+  },
+  {
+    "name": "audit_procurement",
+    "description": "Conducts an audit of procurement activities to ensure policy adherence and financial integrity.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "time_frame": {
+          "type": "object",
+          "description": "The specific time frame for the audit, with start and end dates."
+        }
+      },
+      "required": ["time_frame"]
+    },
+    "return": {
+      "type": "object",
+      "description": "The findings of the procurement audit, including any discrepancies and recommendations."
+    }
+  }
+]

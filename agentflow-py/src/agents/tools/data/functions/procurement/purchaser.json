@@ -1,0 +1,64 @@
+[
+  {
+    "name": "initiate_negotiation",
+    "description": "Starts the negotiation process with a supplier for a procurement task.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "supplier_id": {
+          "type": "string",
+          "description": "The unique identifier of the supplier to negotiate with."
+        },
+        "procurement_details": {
+          "type": "object",
+          "description": "Details of the procurement items, quantities, and initial price points."
+        }
+      },
+      "required": ["supplier_id", "procurement_details"]
+    },
+    "return": {
+      "type": "object",
+      "description": "The status of the negotiation initiation, including any immediate counter-offers."
+    }
+  },
+  {
+    "name": "finalize_purchase",
+    "description": "Finalizes the purchasing agreement and processes payment.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "purchase_order_id": {
+          "type": "string",
+          "description": "The unique identifier of the purchase order to finalize."
+        },
+        "payment_details": {
+          "type": "object",
+          "description": "The payment information including method, amounts, and terms."
+        }
+      },
+      "required": ["purchase_order_id", "payment_details"]
+    },
+    "return": {
+      "type": "object",
+      "description": "Confirmation of the completed purchase and payment transaction details."
+    }
+  },
+  {
+    "name": "track_order",
+    "description": "Tracks the status of an order from placement to delivery.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "order_id": {
+          "type": "string",
+          "description": "The unique identifier of the order to track."
+        }
+      },
+      "required": ["order_id"]
+    },
+    "return": {
+      "type": "object",
+      "description": "Current status and location of the order, including expected delivery dates."
+    }
+  }
+]

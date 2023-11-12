@@ -22,6 +22,7 @@ export class DataService {
   constructor(
     private readonly http: HttpClient
   ) {
+    this.initializeUsers();
   }
 
   getData(): Observable<any> {
@@ -111,9 +112,8 @@ export class DataService {
   }
 
   public fetchUsers(): Observable<any> {
-    const defaultFileRef = ref(storage, 'users.json');
-    return from(getDownloadURL(defaultFileRef)).pipe(
-      switchMap(defaultDownloadURL => this.http.get(defaultDownloadURL))
+    return this.fetchDataFromFirebase(`users.json`).pipe(
+      tap(data => this.data.next(data))
     );
   }
 
@@ -138,8 +138,8 @@ export class DataService {
 
   public fetchDataForUser(email: string): Observable<any> {
     return this.fetchDataFromFirebase(`profiles/${email}.json`).pipe(
-      catchError(_ => this.fetchDefaultData()), // If there's an error, fetch default data
-      tap(data => this.data.next(data)) // Update the BehaviorSubject with the fetched data
+      catchError(_ => this.fetchDefaultData()),
+      tap(data => this.data.next(data))
     );
   }
 

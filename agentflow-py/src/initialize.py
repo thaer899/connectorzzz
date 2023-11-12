@@ -5,7 +5,7 @@ from typing import Any, Dict, List
 from src.agents.ws_assistant import WebSocketAssistantAgent
 from src.agents.ws_user_proxy import WebSocketUserProxyAgent
 from src.agents.ws_manager import WebSocketManagerAgent
-from src.agents.tools.functions import get_user_profile, browse_web, invoke_github_actions_pipeline, register_functions, read_file
+from src.agents.tools.function import register_functions, read_file
 from autogen import config_list_from_json, AssistantAgent, UserProxyAgent,  GroupChat
 from concurrent.futures import ThreadPoolExecutor
 import queue
