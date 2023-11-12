@@ -138,7 +138,7 @@ export class AdminComponent {
     private ngZone: NgZone,
     private route: ActivatedRoute,
     private titleService: Title) {
-    this.renderer.addClass(document.body, 'light-theme');
+    this.renderer.addClass(document.body, 'dark-theme');
 
   }
 
@@ -372,7 +372,7 @@ export class AdminComponent {
 
   ngOnDestroy() {
     // Remove class from body when the component is destroyed
-    this.renderer.removeClass(document.body, 'light-theme');
+    this.renderer.removeClass(document.body, 'dark-theme');
   }
 }
 
