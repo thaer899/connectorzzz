@@ -1,51 +1,8 @@
 <mat-toolbar class="toolbar">
   <span>
-    <!-- <mat-icon matTooltip="Automation" [routerLink]="['/admin']"
-      >dashboard</mat-icon
-    >
-    <mat-icon class="separator inactive">more_vert</mat-icon> -->
-    <mat-icon
-      matTooltip="Agents Flow"
-      class="group"
-      [routerLink]="['/agentflow']"
-      >group_work</mat-icon
-    >
-  </span>
-
-  <span class="fill-toolbar"></span>
-
-  <mat-form-field
-    class="select-profile"
-    style="font-size: medium; width: 25vh"
-    matTooltip="Select or create a new profile"
-    *ngIf="isAdmin"
-  >
-    <mat-label>Profile</mat-label>
-    <mat-select>
-      <div style="padding: 20px; color: aquamarine">
-        <mat-form-field class="profile-input">
-          <mat-label>Filename</mat-label>
-          <input matInput [(ngModel)]="fileName" />
-        </mat-form-field>
-      </div>
-      <mat-option *ngFor="let user of users" [value]="user.value">
-        <a (click)="getUserDataByEmail(user.email)">{{ user.username }}</a>
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <span>
-    <mat-icon
-      class="theme-switch"
-      matTooltip="Switch Theme"
-      (click)="toggleTheme()"
-      >brightness_6</mat-icon
-    >
-  </span>
-  <span class="fill-toolbar"></span>
-  <span>
     <span
       matTooltip="Open Playground"
-      class="material-symbols-outlined"
+      class="material-symbols-outlined playground"
       [routerLink]="['/playground']"
     >
       robot_2
@@ -56,28 +13,38 @@
       (click)="save_functions()"
       >update</mat-icon
     >
-    <ng-container>
-      <mat-icon class="separator inactive">more_vert</mat-icon>
-      <a
-        [href]="'https://log-book-ng.web.app/p/' + (fileName | slice : 0 : -5)"
-        *ngIf="fileName"
-        target="_blank"
+  </span>
+  <span class="fill-toolbar"></span>
+  <span>
+    <a
+      [href]="'https://log-book-ng.web.app/p/' + (fileName | slice : 0 : -5)"
+      *ngIf="fileName"
+      target="_blank"
+    >
+      <mat-icon class="profile" matTooltip="Visit Profile"
+        >account_circle</mat-icon
       >
-        <mat-icon class="profile" matTooltip="Visit Profile"
-          >account_circle</mat-icon
-        >
-      </a>
-      <mat-icon class="upload" matTooltip="Update Profile" (click)="upload()"
-        >update</mat-icon
-      >
+    </a>
+    <mat-icon class="upload" matTooltip="Update Profile" (click)="upload()"
+      >update</mat-icon
+    >
+    <mat-icon
+      class="download"
+      matTooltip="Download Profile data"
+      (click)="download()"
+      >download</mat-icon
+    >
+  </span>
+  <span class="fill-toolbar"></span>
+  <span>
+    <span>
       <mat-icon
-        class="download"
-        matTooltip="Download Profile data"
-        (click)="download()"
-        >download</mat-icon
+        class="theme-switch"
+        matTooltip="Switch Theme"
+        (click)="toggleTheme()"
+        >brightness_6</mat-icon
       >
-    </ng-container>
-
+    </span>
     <mat-icon class="separator inactive">more_vert</mat-icon>
     <mat-icon class="logout" matTooltip="Logout" (click)="logout()"
       >logout</mat-icon
