@@ -42,10 +42,10 @@ import { GroupSidenavComponent } from './agentflow/group-sidenav/group-sidenav.c
 import { UsernameComponent } from './controls/username.control';
 import { AccountSetupComponent } from './account-setup/account-setup.component';
 import { MarkdownPipe } from './pipes/marked.pipe';
-import { ChatroomComponent } from './chatroom/chatroom.component';
-import { ChatroomSidenavComponent } from './chatroom/chatroom-sidenav/chatroom-sidenav.component';
-import { ChatroomGroupSidenavComponent } from './chatroom/chatroom-group-sidenav/chatroom-group-sidenav.component';
-import { ChatroomFlowchartComponent } from './chatroom/chatroom-flowchart/chatroom-flowchart.component';
+import { PlaygroundComponent } from './playground/playground.component';
+import { PlaygroundSidenavComponent } from './playground/playground-sidenav/playground-sidenav.component';
+import { PlaygroundGroupSidenavComponent } from './playground/playground-group-sidenav/playground-group-sidenav.component';
+import { PlaygroundFlowchartComponent } from './playground/playground-flowchart/playground-flowchart.component';
 
 @NgModule({
   declarations: [
@@ -65,10 +65,10 @@ import { ChatroomFlowchartComponent } from './chatroom/chatroom-flowchart/chatro
     VisualComponent,
     AutogenComponent,
     AutoScrollDirective,
-    ChatroomComponent,
-    ChatroomSidenavComponent,
-    ChatroomGroupSidenavComponent,
-    ChatroomFlowchartComponent,
+    PlaygroundComponent,
+    PlaygroundSidenavComponent,
+    PlaygroundGroupSidenavComponent,
+    PlaygroundFlowchartComponent,
     AgentflowComponent,
     SidenavComponent,
     FlowchartComponent,

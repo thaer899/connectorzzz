@@ -12,11 +12,11 @@ import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
-  selector: 'app-chatroom-group-sidenav',
-  templateUrl: './chatroom-group-sidenav.component.html',
-  styleUrls: ['./chatroom-group-sidenav.component.scss']
+  selector: 'app-playground-group-sidenav',
+  templateUrl: './playground-group-sidenav.component.html',
+  styleUrls: ['./playground-group-sidenav.component.scss']
 })
-export class ChatroomGroupSidenavComponent implements OnInit, OnDestroy {
+export class PlaygroundGroupSidenavComponent implements OnInit, OnDestroy {
   @ViewChild('scrollableContainer') private scrollableContainer: ElementRef;
   @Input() agents: any[] = [];
   @Input() isWSConnected: boolean = false;

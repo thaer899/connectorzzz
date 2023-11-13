@@ -1,4 +1,4 @@
-@import '../../assets/scss/custom-theme.scss';
+@import "../../assets/scss/custom-theme.scss";
 
 /* Base styles for common elements */
 .toolbar {
@@ -32,8 +32,8 @@
   font-size: 40px;
   text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
 }
-.theme-switch{
-  color: purple;
+.theme-switch {
+  color: #ff62ffc9;
 }
 
 .theme-switch:hover,
@@ -60,15 +60,6 @@
   color: #a72f2f;
 }
 
-.material-symbols-outlined {
-  width: 50px;
-  height: 50px;
-  position: fixed;
-  display: inline-flex;
-  font-size: xxx-large;
-  cursor: pointer;
-  z-index: 1000;
-}
 
 .upload {
   color: #3b9029;
@@ -78,6 +69,14 @@
 .download {
   color: #f96c6c;
   right: 120px;
+}
+
+.data-textarea {
+  width: 96%;
+  height: 75vh;
+  background-color:#212121;
+  padding:2vh;
+  border-bottom:unset
 }
 
 @media screen and (max-width: 30em) {
@@ -110,83 +109,70 @@
   }
 }
 
-
 :host ::ng-deep .mat-tab-group {
   padding: 2vh !important;
 }
 
-/* Dark Theme Styles */
-.dark-theme {
-  .toolbar {
-    background-color: #0d0d0d !important;
-    color: #ECEFF1 !important;
-    border-bottom: 1px solid #565656 !important;
-  }
-
-  .background {
-      background-color: #0d0d0d !important;
-      color: #ECEFF1 !important;
-  }
-  :host ::ng-deep .mat-drawer {
-    background-color: #212121 !important;
-    color: #c0c0c0 !important;
-  }
-
-  :host ::ng-deep .mat-card,
-  :host ::ng-deep .mat-drawer-content,
-  :host ::ng-deep .mat-table {
-    background-color: #151515 !important;
-    color: #c0c0c0 !important;
-  }
-
-  :host ::ng-deep .mat-list-item {
-    border-bottom: 1px solid #424242 !important;
-  }
-
-  :host ::ng-deep .mat-input-element {
-    color: #c0c0c0 !important;
-  }
-
-}
-
 /* Light Theme Styles */
 .light-theme {
-
-  .background {
-      background-color: #c4c2c2 !important; /* Fine light grey */
+  :host ::ng-deep .background {
+    background-color: #c4c2c2 !important; /* Fine light grey */
     color: #212121 !important; /* Soft contrast */
     padding: 2vh;
-   }
+  }
 
-  // :host ::ng-deep .mat-toolbar {
-  //     background-color: #48a656 !important; /* Fine light grey */
-  //     color: #212121 !important; /* Soft contrast */
-  //     border-bottom: 1px solid #c2c2c2 !important;
-  //     height: 6vh !important;
- 
-  // }
+  :host ::ng-deep .mat-toolbar {
+    background-color: #615f5f !important;
+    padding: 15px;
+  }
 
-  :host ::ng-deep .mat-card,
-  :host ::ng-deep .mat-table,
-  :host ::ng-deep .mat-drawer,
-  :host ::ng-deep .mat-tab-label,
-  // :host ::ng-deep .mat-form-field-infix 
-  // :host ::ng-deep .mat-drawer-content
-{
-      background-color: #67a17133 !important;
-      color: #212121 !important; 
-    }
+  :host ::ng-deep .mat-card {
+    background-color: #89a2a147 !important;
+    color: #212121 !important;
+  }
 
-    :host ::ng-deep .mat-list-item
-  {
-        background-color: #67a17133 !important;
-        color: #ECEFF1 !important; 
-      }
+  :host ::ng-deep .mat-drawer-content {
+    background-color: #c4c2c2 !important;
+    color: #212121 !important;
+  }
+  :host ::ng-deep .mat-form-field-infix {
+    background-color: #89a2a147 !important;
+    color: #212121 !important;
+  }
+  :host ::ng-deep .mat-table {
+    background-color: #89a2a147 !important;
+    color: #212121 !important;
+  }
+  :host ::ng-deep .mat-drawer {
+    background-color: #89a2a147 !important;
+    color: #212121 !important;
+  }
+  :host ::ng-deep .mat-tab-label {
+    background-color: #89a2a147 !important;
+    color: #212121 !important;
+  }
+  :host ::ng-deep .mat-list-item {
+    background-color: #89a2a147 !important;
+    color: #eceff1 !important;
+  }
 
-    :host ::ng-deep .mat-drawer-content
-    {
-      background-color: #c4c2c2 !important;
-    }
+  :host ::ng-deep .mat-primary  {
+    color: #171717 !important;
+  }
+  
+  :host ::ng-deep .mat-header-cell  {
+    color: #171717 !important;
+  }
+  :host ::ng-deep .mat-form-field-label {
+    color: #171717 !important;
+  }
 
+  :host ::ng-deep .ng-star-inserted .mat-icon {
+    filter: drop-shadow(1px -1px 0px #757572);
+    color: #212121 !important;
+}
 
+  :host ::ng-deep .material-symbols-outlined {
+    filter: drop-shadow(1px -1px 0px #757572);
+}
 }

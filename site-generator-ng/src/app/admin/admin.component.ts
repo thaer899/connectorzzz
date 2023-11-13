@@ -139,7 +139,7 @@ export class AdminComponent {
     private ngZone: NgZone,
     private route: ActivatedRoute,
     private titleService: Title) {
-    this.renderer.addClass(document.body, 'light-theme');
+    this.renderer.addClass(document.body, 'dark-theme');
 
   }
 

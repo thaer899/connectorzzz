@@ -21,6 +21,18 @@
           >more_vert</mat-icon
         >
         <mat-icon
+          class="theme-switch"
+          matTooltip="Switch Theme"
+          (click)="toggleTheme()"
+          >brightness_6</mat-icon
+        >
+        <mat-icon
+          class="separator"
+          matTooltip="Toggle"
+          (click)="groupdrawer.toggle(); drawer.toggle()"
+          >more_vert</mat-icon
+        >
+        <mat-icon
           matTooltip="Start Connection"
           class="link-off-toggle"
           (click)="connectToWebSocket()"
@@ -48,19 +60,19 @@
     </mat-toolbar>
 
     <mat-drawer #drawer class="left-sidenav" mode="side" opened="true">
-      <app-sidenav
+      <app-playground-sidenav
         #sidenav
         [isWSConnected]="isWSConnected"
         [profile]="data"
-      ></app-sidenav>
+      ></app-playground-sidenav>
     </mat-drawer>
     <div class="flowchart-sidenav-content" *ngIf="data.resume">
-      <app-flowchart
+      <app-playground-flowchart
         #flowchart
         [messages]="groupsidenav.messages"
         [agents]="sidenav.agents"
         [profile]="data"
-      ></app-flowchart>
+      ></app-playground-flowchart>
     </div>
 
     <mat-drawer
@@ -70,11 +82,11 @@
       position="end"
       opened="true"
     >
-      <app-group-sidenav
+      <app-playground-group-sidenav
         #groupsidenav
         [isWSConnected]="isWSConnected"
         [agents]="sidenav.agents"
-      ></app-group-sidenav>
+      ></app-playground-group-sidenav>
       <div
         #resizeHandle
         class="resize-handle"

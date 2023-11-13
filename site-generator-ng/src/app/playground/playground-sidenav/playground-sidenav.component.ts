@@ -35,11 +35,11 @@ interface EmploymentEntry {
 }
 
 @Component({
-  selector: 'app-chatroom-sidenav',
-  templateUrl: './chatroom-sidenav.component.html',
-  styleUrls: ['./chatroom-sidenav.component.css']
+  selector: 'app-playground-sidenav',
+  templateUrl: './playground-sidenav.component.html',
+  styleUrls: ['./playground-sidenav.component.css']
 })
-export class ChatroomSidenavComponent implements OnInit, OnDestroy {
+export class PlaygroundSidenavComponent implements OnInit, OnDestroy {
   @ViewChild('scrollableContainer') private scrollableContainer: ElementRef;
   @Input() isWSConnected: boolean = false;
   @Output() agentsChanged = new EventEmitter<any[]>();
@@ -100,6 +100,7 @@ export class ChatroomSidenavComponent implements OnInit, OnDestroy {
   public agent: any = {}
   agentName: string = 'User_AI';
   agentProfile: string = '';
+  public userAgents: any = [];
 
   constructor(private http: HttpClient,
     private authService: AuthService,
@@ -112,6 +113,7 @@ export class ChatroomSidenavComponent implements OnInit, OnDestroy {
   ngOnInit() {
     // this.getUsers();
     this.user = this.authService.auth.currentUser;
+
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -160,7 +162,8 @@ export class ChatroomSidenavComponent implements OnInit, OnDestroy {
         },
         message: 'A human admin. Interact with team on behalf of the user! Reply `TERMINATE` in the end when everything is done.'
       };
-
+      this.getUserBots();
+      this.cd.detectChanges();
       this.agents.unshift(this.user_proxy, this.agent);
       this.agentsChanged.emit(this.agents);
 
@@ -287,33 +290,40 @@ export class ChatroomSidenavComponent implements OnInit, OnDestroy {
     }
   }
 
-  getUserDataByEmail(email: string) {
-    console.log("Fetching data for user:", email);
+  getUserBots(): any {
+    let email = this.user.email;
+    let userAgents: any = [];
     this.dataService.fetchDataForUser(email).subscribe(
       data => {
-        if (data && data.employment && data.employment.length > 0 && data.education && data.education.length > 0 && data.skills && data.skills.length > 0) {
+        if (data && data.bots && data.bots.length > 0) {
 
-          let profile = {
-            agent_name: data.username + '_AI',
-            type: 'Assistant',
-            config: {
-              "llm_config": {
-                "request_timeout": 300,
-                "seed": 40,
-                "config_list": [{ 'model': 'gpt-4-1106-preview' }],
-                "temperature": 0,
-                "code_execution_config": {
-                  "work_dir": "workspace",
-                  "use_docker": true,
-                  "last_n_messages": 5,
-                },
-                "functions": []
-              }
-            },
-            message: this.generateAgentProfile(data)
-          };
-          this.agents = [...this.agents, profile];
-          this.agentsChanged.emit(this.agents);
+          for (let bot of data.bots) {
+
+            let profile = {
+              agent_name: bot.type,
+              type: 'Assistant',
+              config: {
+                "llm_config": {
+                  "request_timeout": 300,
+                  "seed": 40,
+                  "config_list": [{ 'model': 'gpt-4-1106-preview' }],
+                  "temperature": 0,
+                  "code_execution_config": {
+                    "work_dir": "workspace",
+                    "use_docker": true,
+                    "last_n_messages": 5,
+                  },
+                  "functions": bot.agent_functions
+                }
+              },
+              message: bot.messages[0]?.content
+            };
+            userAgents = [...userAgents, profile];
+          }
+
+          this.userAgents = userAgents;
+          console.log("Fetching userAgents:", this.userAgents);
+
         }
         else {
           this.snackBar.open('Not enough profile data', 'Close', {
@@ -328,17 +338,17 @@ export class ChatroomSidenavComponent implements OnInit, OnDestroy {
     );
   }
 
-  getUsers() {
-    this.dataService.fetchUsers().subscribe(
-      users => {
-        this.users = users.filter(user => user.email !== `${this.user.email}` && user.active);
-        console.log("Users fetched:", this.users);
-      },
-      error => {
-        console.error("Error fetching users:", error);
-        // Handle the error, e.g., show a notification to the user
-      }
-    );
+  selectAgent(bot: any): void {
+    //if bot is not in agents, add it
+    let agentExists = this.agents.some(ag => ag.agent_name === bot.agent_name);
+    if (!agentExists) {
+      this.agents = [...this.agents, bot];
+    } else {
+      this.snackBar.open('Agent already exists.', 'Close', {
+        duration: 3000,
+      });
+    }
+
   }
 
   onToggle(): void {

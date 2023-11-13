@@ -50,12 +50,9 @@ mat-icon {
 }
 
 .material-symbols-outlined {
-    width: 50px;
-    height: 50px;
-    position: fixed;
     color: $accent-color !important;
     display: inline-flex;
-    font-size: xxx-large;
+    font-size: 40px;;
     cursor: pointer;
     z-index: 1000;
 
@@ -106,6 +103,13 @@ mat-icon {
     font-size: 12px;
 }
 
+.data-textarea {
+    width: 96%;
+    height: 75vh;
+    background-color:#212121;
+    padding:2vh;
+    border-bottom:unset
+  }
 
 /* Style the scrollbar container */
 ::-webkit-scrollbar {

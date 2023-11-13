@@ -1,22 +1,22 @@
 <!-- Side navigation drawer -->
 <div class="box">
-  <p>Partner AI</p>
+  <p>My Agents</p>
   <mat-form-field
     class="select-profile"
     matTooltip="Select or create a new profile"
     style="width: 100%"
   >
-    <mat-label>Profile</mat-label>
+    <mat-label>Agent</mat-label>
     <mat-select>
-      <mat-option *ngFor="let user of users" [value]="user.value">
+      <mat-option *ngFor="let agent of userAgents" [value]="agent.value">
         <a
           style="
             width: 100% !important;
             height: 100% !important;
             display: block !important;
           "
-          (click)="getUserDataByEmail(user.email)"
-          >{{ user.username }}</a
+          (click)="selectAgent(agent)"
+          >{{ agent.agent_name }}</a
         >
       </mat-option>
     </mat-select>
@@ -26,7 +26,7 @@
 
 <div class="box">
   <div style="width: 100%; display: flex">
-    <p style="width: 60%">Add Agent</p>
+    <p style="width: 60%">New</p>
   </div>
   <!-- Input for the agent name -->
   <mat-form-field class="full-width">
@@ -70,7 +70,7 @@
 <!-- Message display area -->
 <div class="box">
   <div style="width: 100%; display: flex">
-    <p style="width: 60%">Add Group</p>
+    <p style="width: 60%">Group</p>
   </div>
 
   <mat-form-field class="full-width">

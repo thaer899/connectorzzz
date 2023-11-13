@@ -2,11 +2,11 @@ import { Component, OnInit, OnChanges, Output, Input, EventEmitter, SimpleChange
 import type { EChartsOption } from 'echarts';
 
 @Component({
-  selector: 'app-chatroom-flowchart',
-  templateUrl: './chatroom-flowchart.component.html',
-  styleUrls: ['./chatroom-flowchart.component.css']
+  selector: 'app-playground-flowchart',
+  templateUrl: './playground-flowchart.component.html',
+  styleUrls: ['./playground-flowchart.component.css']
 })
-export class ChatroomFlowchartComponent implements OnInit, OnChanges {
+export class PlaygroundFlowchartComponent implements OnInit, OnChanges {
   @Input() agents: any[] = [];
   @Input() messages: any[] = [];
   @Input() profile: any = { 'username': '' };

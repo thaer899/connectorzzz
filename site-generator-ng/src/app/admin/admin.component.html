@@ -33,14 +33,23 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <span class="fill-toolbar"></span>
   <span>
     <mat-icon
-      matTooltip="Save Agents Flow Function"
-      class=""
-      [routerLink]="['/chatroom']"
-      >smart_toy</mat-icon
+      class="theme-switch"
+      matTooltip="Switch Theme"
+      (click)="toggleTheme()"
+      >brightness_6</mat-icon
     >
+  </span>
+  <span class="fill-toolbar"></span>
+  <span>
+    <span
+      matTooltip="Open Playground"
+      class="material-symbols-outlined"
+      [routerLink]="['/playground']"
+    >
+      robot_2
+    </span>
     <mat-icon
       class="upload"
       matTooltip="Update Common Functions"
@@ -72,12 +81,6 @@
     <mat-icon class="separator inactive">more_vert</mat-icon>
     <mat-icon class="logout" matTooltip="Logout" (click)="logout()"
       >logout</mat-icon
-    >
-    <mat-icon
-      class="theme-switch"
-      matTooltip="Switch Theme"
-      (click)="toggleTheme()"
-      >brightness_6</mat-icon
     >
   </span>
 </mat-toolbar>

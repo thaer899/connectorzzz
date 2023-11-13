@@ -31,12 +31,13 @@
   <mat-card #scrollableContainer class="card" [autoScroll]="messages.length">
     <mat-list>
       <div class="pre" *ngFor="let msg of messages; let i = index">
-        <mat-icon
+        <span
+          class="material-symbols-outlined chat-icon"
           matTooltip="Automation Agents team"
-          class="chat-icon"
           [ngClass]="getAttributes(msg.name, 'icon')"
-          >{{ getAttributes(msg.name, "icon") }}</mat-icon
         >
+          {{ getAttributes(msg.name, "icon") }}
+        </span>
 
         <span class="name-tag" [ngClass]="getAttributes(msg.name, 'name')">{{
           msg.name

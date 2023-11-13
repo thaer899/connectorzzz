@@ -4,10 +4,10 @@ import { WebsocketService } from '../services/websocket.service';
 import { ChangeDetectorRef } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { ElementRef, ViewChild, AfterViewChecked, Renderer2, HostListener } from '@angular/core';
-import { ChatroomSidenavComponent } from './chatroom-sidenav/chatroom-sidenav.component';
-import { ChatroomGroupSidenavComponent } from './chatroom-group-sidenav/chatroom-group-sidenav.component';
+import { PlaygroundSidenavComponent } from './playground-sidenav/playground-sidenav.component';
+import { PlaygroundGroupSidenavComponent } from './playground-group-sidenav/playground-group-sidenav.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ChatroomFlowchartComponent } from './chatroom-flowchart/chatroom-flowchart.component';
+import { PlaygroundFlowchartComponent } from './playground-flowchart/playground-flowchart.component';
 import { DataService } from '../services/data.service';
 import { AuthService } from '../services/auth.service';
 import { ActivatedRoute } from '@angular/router';
@@ -16,15 +16,15 @@ import { ToggleService } from '../services/toggle.service';
 import { Subscription } from 'rxjs';
 import { MatDrawer } from '@angular/material/sidenav';
 @Component({
-  selector: 'app-chatroom',
-  templateUrl: './chatroom.component.html',
-  styleUrls: ['./chatroom.component.scss']
+  selector: 'app-playground',
+  templateUrl: './playground.component.html',
+  styleUrls: ['./playground.component.scss']
 })
-export class ChatroomComponent implements OnInit, OnDestroy {
+export class PlaygroundComponent implements OnInit, OnDestroy {
   @ViewChild('scrollableContainer') private scrollableContainer: ElementRef;
-  @ViewChild('sidenav') sidenavComponent: ChatroomSidenavComponent;
-  @ViewChild('groupsidenav') groupSidenavComponent: ChatroomGroupSidenavComponent;
-  @ViewChild('flowchart') flowChartComponent: ChatroomFlowchartComponent;
+  @ViewChild('sidenav') playgroundSidenavComponent: PlaygroundSidenavComponent;
+  @ViewChild('groupsidenav') playgroundGroupSidenavComponent: PlaygroundGroupSidenavComponent;
+  @ViewChild('flowchart') playgroundFlowChartComponent: PlaygroundFlowchartComponent;
 
   @ViewChild('groupdrawer', { read: ElementRef }) groupdrawer: ElementRef;
 
@@ -45,9 +45,11 @@ export class ChatroomComponent implements OnInit, OnDestroy {
   public fileName: string;
   public groupDrawerOpen = false;
   private subscription: Subscription;
+  currentTheme = 'dark';
 
   constructor(
     private cd: ChangeDetectorRef,
+    private renderer: Renderer2,
     private dataService: DataService,
     private authService: AuthService,
     private wsService: WebsocketService,
@@ -56,7 +58,9 @@ export class ChatroomComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private http: HttpClient,
     private toggleService: ToggleService,
-    private titleService: Title) { }
+    private titleService: Title) {
+    this.renderer.addClass(document.body, 'dark-theme');
+  }
 
   ngOnInit() {
     this.subscription = this.toggleService.state$.subscribe(isOpen => {
@@ -99,11 +103,11 @@ export class ChatroomComponent implements OnInit, OnDestroy {
 
   ngOnChanges(): void {
     if (this.isWSConnected) {
-      this.groupSidenavComponent.isWSConnected = true;
-      this.groupSidenavComponent.chatId = this.chatId;
-      this.groupSidenavComponent.agents = this.sidenavComponent.agents;
-      this.sidenavComponent.chatId = this.chatId;
-      this.sidenavComponent.isWSConnected = true;
+      this.playgroundGroupSidenavComponent.isWSConnected = true;
+      this.playgroundGroupSidenavComponent.chatId = this.chatId;
+      this.playgroundGroupSidenavComponent.agents = this.playgroundSidenavComponent.agents;
+      this.playgroundSidenavComponent.chatId = this.chatId;
+      this.playgroundSidenavComponent.isWSConnected = true;
 
     }
   }
@@ -188,5 +192,13 @@ export class ChatroomComponent implements OnInit, OnDestroy {
   onMouseUp(): void {
     this.resizing = false;
   }
+
+  toggleTheme(): void {
+    this.renderer.removeClass(document.body, this.currentTheme + '-theme');
+    this.currentTheme = this.currentTheme === 'dark' ? 'light' : 'dark';
+    this.renderer.addClass(document.body, this.currentTheme + '-theme');
+    console.log("Theme changed to:", this.currentTheme);
+  }
+
 
 }
