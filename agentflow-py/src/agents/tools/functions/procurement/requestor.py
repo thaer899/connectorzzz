@@ -1,13 +1,3 @@
-def register_functions(instance_agent):
-    instance_agent.register_function(
-        function_map={
-            # ... existing functions ...
-            "submit_item_request": submit_item_request,
-            "update_request_details": update_request_details,
-            "cancel_request": cancel_request,
-        }
-    )
-
 
 def submit_item_request(items, reason):
     # Here you would implement the logic to handle the item request.

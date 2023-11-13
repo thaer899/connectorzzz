@@ -5,7 +5,8 @@ from typing import Any, Dict, List
 from src.agents.ws_assistant import WebSocketAssistantAgent
 from src.agents.ws_user_proxy import WebSocketUserProxyAgent
 from src.agents.ws_manager import WebSocketManagerAgent
-from src.agents.tools.function import register_functions, read_file
+from src.agents.tools.register_functions import register_functions
+from src.agents.tools.functions.misc.functions import read_file
 from autogen import config_list_from_json, AssistantAgent, UserProxyAgent,  GroupChat
 from concurrent.futures import ThreadPoolExecutor
 import queue
@@ -110,11 +111,25 @@ def create_instance_agent(agent, send_queue, receive_queue):
     code_execution_config = agent.get(
         "config", {}).get('code_execution_config', {})
 
+    # Extract function names from llm_config
+    function_names = agent.get("config", {}).get('functions', [])
+
+    # GET Agent functions
     file_path = os.path.join(os.path.dirname(
         __file__), 'agents/tools/data/functions.json')
     content = read_file(file_path)
     logging.info(f"content functions.json: {content}")
-    llm_config["functions"] = json.loads(content) if content else []
+
+    if content:
+        functions = json.loads(content)
+        agent_functions = [
+            func for func in functions if func["name"] in function_names]
+
+    # Debug prints
+    print(f"function_names: {function_names}")
+    print(f"agent_functions: {agent_functions}")
+
+    llm_config["functions"] = agent_functions
 
     instance_agent = WebSocketAssistantAgent(
         name=agent.get("agent_name"),

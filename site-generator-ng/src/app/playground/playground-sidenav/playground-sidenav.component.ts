@@ -151,14 +151,14 @@ export class PlaygroundSidenavComponent implements OnInit, OnDestroy {
             "request_timeout": 300,
             "seed": 40,
             "config_list": [{ 'model': 'gpt-4-1106-preview' }],
-            "temperature": 0,
-            "functions": []
+            "temperature": 0
           },
           "code_execution_config": {
             "work_dir": "workspace",
             "use_docker": true,
             "last_n_messages": 5,
           },
+          "functions": []
         },
         message: 'A human admin. Interact with team on behalf of the user! Reply `TERMINATE` in the end when everything is done.'
       };
@@ -307,14 +307,14 @@ export class PlaygroundSidenavComponent implements OnInit, OnDestroy {
                   "request_timeout": 300,
                   "seed": 40,
                   "config_list": [{ 'model': 'gpt-4-1106-preview' }],
-                  "temperature": 0,
-                  "code_execution_config": {
-                    "work_dir": "workspace",
-                    "use_docker": true,
-                    "last_n_messages": 5,
-                  },
-                  "functions": bot.agent_functions
-                }
+                  "temperature": 0
+                },
+                "code_execution_config": {
+                  "work_dir": "workspace",
+                  "use_docker": true,
+                  "last_n_messages": 5,
+                },
+                "functions": bot.agent_functions
               },
               message: bot.messages[0]?.content
             };

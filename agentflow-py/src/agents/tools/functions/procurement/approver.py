@@ -1,13 +1,3 @@
-# Register the functions with the instance agent
-def register_functions(instance_agent):
-    instance_agent.register_function(
-        function_map={
-            "review_purchase_request": review_purchase_request,
-            "authorize_payment": authorize_payment,
-            "audit_procurement": audit_procurement,
-        }
-    )
-
 
 def review_purchase_request(request_id):
     # Logic to review a purchase request

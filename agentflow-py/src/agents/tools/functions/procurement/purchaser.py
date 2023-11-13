@@ -1,13 +1,3 @@
-# Register the functions with the instance agent
-def register_functions(instance_agent):
-    instance_agent.register_function(
-        function_map={
-            "initiate_negotiation": initiate_negotiation,
-            "finalize_purchase": finalize_purchase,
-            "track_order": track_order
-        }
-    )
-
 
 # Define the procurement functions
 def initiate_negotiation(supplier_id, procurement_details):
