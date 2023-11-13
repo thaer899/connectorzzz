@@ -1,108 +1,128 @@
 [
   {
-    "name": "spr_writer",
-    "description": "Creates an SPR by combining provided data with content from a predefined markdown file, effectively compressing the input data into a more succinct representation.",
+    "name": "review_purchase_request",
+    "description": "Reviews a purchase request for compliance with budget and procurement policies.",
     "parameters": {
       "type": "object",
       "properties": {
-        "data": {
+        "request_id": {
           "type": "string",
-          "description": "Input data to be transformed into an SPR."
+          "description": "The unique identifier of the purchase request to review."
         }
       },
-      "required": ["data"]
+      "required": ["request_id"]
     },
     "return": {
-      "type": "string",
-      "description": "A compressed Sparse Priming Representation of the provided data."
-    }
+      "type": "object",
+      "description": "The decision on the purchase request, including any required modifications."
+    },
+    "location": "procurement.approver"
   },
   {
-    "name": "spr_reader",
-    "description": "Expands an SPR back into a more detailed form by combining it with predefined markdown content, effectively decompressing the SPR data.",
+    "name": "authorize_payment",
+    "description": "Authorizes the payment for a purchase order.",
     "parameters": {
       "type": "object",
       "properties": {
-        "data": {
+        "purchase_order_id": {
           "type": "string",
-          "description": "SPR data to be expanded into detailed content."
+          "description": "The unique identifier of the purchase order for which payment is to be authorized."
         }
       },
-      "required": ["data"]
+      "required": ["purchase_order_id"]
     },
     "return": {
-      "type": "string",
-      "description": "Decompressed content derived from the provided SPR."
-    }
+      "type": "object",
+      "description": "Confirmation of payment authorization, with details of the payment terms."
+    },
+    "location": "procurement.approver"
   },
   {
-    "name": "get_user_profile",
-    "description": "Retrieve a user's profile using username or email",
+    "name": "audit_procurement",
+    "description": "Conducts an audit of procurement activities to ensure policy adherence and financial integrity.",
     "parameters": {
       "type": "object",
       "properties": {
-        "username": {
+        "time_frame": {
+          "type": "object",
+          "description": "The specific time frame for the audit, with start and end dates."
+        }
+      },
+      "required": ["time_frame"]
+    },
+    "return": {
+      "type": "object",
+      "description": "The findings of the procurement audit, including any discrepancies and recommendations."
+    },
+    "location": "procurement.approver"
+  },
+  {
+    "name": "initiate_negotiation",
+    "description": "Starts the negotiation process with a supplier for a procurement task.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "supplier_id": {
           "type": "string",
-          "description": "The username of the user"
+          "description": "The unique identifier of the supplier to negotiate with."
         },
-        "email": {
-          "type": "string",
-          "description": "The email of the user"
+        "procurement_details": {
+          "type": "object",
+          "description": "Details of the procurement items, quantities, and initial price points."
         }
       },
-      "required": []
+      "required": ["supplier_id", "procurement_details"]
     },
     "return": {
       "type": "object",
-      "description": "The user's profile"
-    }
+      "description": "The status of the negotiation initiation, including any immediate counter-offers."
+    },
+    "location": "procurement.purchaser"
   },
   {
-    "name": "gitops_browse_web",
-    "description": "Browse the web and retrieve information from a specified URL",
+    "name": "finalize_purchase",
+    "description": "Finalizes the purchasing agreement and processes payment.",
     "parameters": {
       "type": "object",
       "properties": {
-        "url": {
+        "purchase_order_id": {
           "type": "string",
-          "description": "The URL to browse"
+          "description": "The unique identifier of the purchase order to finalize."
+        },
+        "payment_details": {
+          "type": "object",
+          "description": "The payment information including method, amounts, and terms."
         }
       },
-      "required": ["url"]
+      "required": ["purchase_order_id", "payment_details"]
     },
     "return": {
       "type": "object",
-      "description": "The retrieved web content"
-    }
+      "description": "Confirmation of the completed purchase and payment transaction details."
+    },
+    "location": "procurement.purchaser"
   },
   {
-    "name": "gitops_invoke_github_actions_pipeline",
-    "description": "Invoke a pipeline in GitHub Actions",
+    "name": "track_order",
+    "description": "Tracks the status of an order from placement to delivery.",
     "parameters": {
       "type": "object",
       "properties": {
-        "repository": {
+        "order_id": {
           "type": "string",
-          "description": "The GitHub repository containing the pipeline"
-        },
-        "workflow_id": {
-          "type": "string",
-          "description": "The ID of the workflow to invoke"
-        },
-        "token": {
-          "type": "string",
-          "description": "Personal Access Token for authentication"
+          "description": "The unique identifier of the order to track."
         }
       },
-      "required": ["repository", "workflow_id", "token"]
+      "required": ["order_id"]
     },
     "return": {
       "type": "object",
-      "description": "The status of the invoked pipeline"
-    }
+      "description": "Current status and location of the order, including expected delivery dates."
+    },
+    "location": "procurement.purchaser"
   },
   {
-    "name": "procure_requestor_submit_item_request",
+    "name": "submit_item_request",
     "description": "Submits a request for specific items needed for operational purposes.",
     "parameters": {
       "type": "object",
@@ -139,10 +159,11 @@
     "return": {
       "type": "object",
       "description": "Acknowledgment of the request submission, with a reference number for tracking."
-    }
+    },
+    "location": "procurement.requestor"
   },
   {
-    "name": "procure_requestor_update_request_details",
+    "name": "update_request_details",
     "description": "Updates the details of an already submitted procurement request.",
     "parameters": {
       "type": "object",
@@ -161,10 +182,11 @@
     "return": {
       "type": "object",
       "description": "Confirmation of the request update, with the updated details reflected."
-    }
+    },
+    "location": "procurement.requestor"
   },
   {
-    "name": "procure_requestor_cancel_request",
+    "name": "cancel_request",
     "description": "Cancels a previously submitted procurement request.",
     "parameters": {
       "type": "object",
@@ -179,122 +201,108 @@
     "return": {
       "type": "object",
       "description": "Confirmation of the request cancellation, with details of any implications."
-    }
+    },
+    "location": "procurement.requestor"
   },
   {
-    "name": "procure_purchaser_initiate_negotiation",
-    "description": "Starts the negotiation process with a supplier for a procurement task.",
+    "name": "spr_writer",
+    "description": "Creates an SPR by combining provided data with content from a predefined markdown file, effectively compressing the input data into a more succinct representation.",
     "parameters": {
       "type": "object",
       "properties": {
-        "supplier_id": {
+        "data": {
           "type": "string",
-          "description": "The unique identifier of the supplier to negotiate with."
+          "description": "Input data to be transformed into an SPR."
+        }
+      },
+      "required": ["data"]
+    },
+    "return": {
+      "type": "string",
+      "description": "A compressed Sparse Priming Representation of the provided data."
+    },
+    "location": "misc.functions"
+  },
+  {
+    "name": "spr_reader",
+    "description": "Expands an SPR back into a more detailed form by combining it with predefined markdown content, effectively decompressing the SPR data.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "string",
+          "description": "SPR data to be expanded into detailed content."
+        }
+      },
+      "required": ["data"]
+    },
+    "return": {
+      "type": "string",
+      "description": "Decompressed content derived from the provided SPR."
+    },
+    "location": "misc.functions"
+  },
+  {
+    "name": "get_user_profile",
+    "description": "Retrieve a user's profile using username or email",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string",
+          "description": "The username of the user"
         },
-        "procurement_details": {
-          "type": "object",
-          "description": "Details of the procurement items, quantities, and initial price points."
+        "email": {
+          "type": "string",
+          "description": "The email of the user"
         }
       },
-      "required": ["supplier_id", "procurement_details"]
+      "required": ["username", "email"]
     },
-    "return": {
-      "type": "object",
-      "description": "The status of the negotiation initiation, including any immediate counter-offers."
-    }
+    "return": { "type": "object", "description": "The user's profile" },
+    "location": "misc.functions"
   },
   {
-    "name": "procure_purchaser_finalize_purchase",
-    "description": "Finalizes the purchasing agreement and processes payment.",
+    "name": "browse_web",
+    "description": "Browse the web and retrieve information from a specified URL",
     "parameters": {
       "type": "object",
       "properties": {
-        "purchase_order_id": {
+        "url": { "type": "string", "description": "The URL to browse" }
+      },
+      "required": ["url"]
+    },
+    "return": {
+      "type": "object",
+      "description": "The retrieved web content"
+    },
+    "location": "misc.functions"
+  },
+  {
+    "name": "invoke_github_actions_pipeline",
+    "description": "Invoke a pipeline in GitHub Actions",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "repository": {
           "type": "string",
-          "description": "The unique identifier of the purchase order to finalize."
+          "description": "The GitHub repository containing the pipeline"
         },
-        "payment_details": {
-          "type": "object",
-          "description": "The payment information including method, amounts, and terms."
-        }
-      },
-      "required": ["purchase_order_id", "payment_details"]
-    },
-    "return": {
-      "type": "object",
-      "description": "Confirmation of the completed purchase and payment transaction details."
-    }
-  },
-  {
-    "name": "procure_purchaser_track_order",
-    "description": "Tracks the status of an order from placement to delivery.",
-    "parameters": {
-      "type": "object",
-      "properties": {
-        "order_id": {
+        "workflow_id": {
           "type": "string",
-          "description": "The unique identifier of the order to track."
-        }
-      },
-      "required": ["order_id"]
-    },
-    "return": {
-      "type": "object",
-      "description": "Current status and location of the order, including expected delivery dates."
-    }
-  },
-  {
-    "name": "procure_approver_review_purchase_request",
-    "description": "Reviews a purchase request for compliance with budget and procurement policies.",
-    "parameters": {
-      "type": "object",
-      "properties": {
-        "request_id": {
+          "description": "The ID of the workflow to invoke"
+        },
+        "token": {
           "type": "string",
-          "description": "The unique identifier of the purchase request to review."
+          "description": "Personal Access Token for authentication"
         }
       },
-      "required": ["request_id"]
+      "required": ["repository", "workflow_id", "token"]
     },
     "return": {
       "type": "object",
-      "description": "The decision on the purchase request, including any required modifications."
-    }
-  },
-  {
-    "name": "procure_approver_authorize_payment",
-    "description": "Authorizes the payment for a purchase order.",
-    "parameters": {
-      "type": "object",
-      "properties": {
-        "purchase_order_id": {
-          "type": "string",
-          "description": "The unique identifier of the purchase order for which payment is to be authorized."
-        }
-      },
-      "required": ["purchase_order_id"]
+      "description": "The status of the invoked pipeline"
     },
-    "return": {
-      "type": "object",
-      "description": "Confirmation of payment authorization, with details of the payment terms."
-    }
-  },
-  {
-    "name": "procure_approver_audit_procurement",
-    "description": "Conducts an audit of procurement activities to ensure policy adherence and financial integrity.",
-    "parameters": {
-      "type": "object",
-      "properties": {
-        "time_frame": {
-          "type": "object",
-          "description": "The specific time frame for the audit, with start and end dates."
-        }
-      },
-      "required": ["time_frame"]
-    },
-    "return": {
-      "type": "object",
-      "description": "The findings of the procurement audit, including any discrepancies and recommendations."
-    }
+    "location": "misc.functions"
   }
 ]

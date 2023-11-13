@@ -79,7 +79,6 @@ async def websocket_endpoint(websocket: WebSocket, chat_id: str):
                 for name in agent_names:
                     if name and name not in agents:
                         agents[name] = {"status": "inactive", "config": agent}
-
                 if action == "start_agent":
                     logging.info(f"Starting agent: {agent.get('agent_name')}")
                     agent_name = agent.get("agent_name")

@@ -35,6 +35,7 @@ interface FunctionData {
   }>;
   return_type: string;
   return_description: string;
+  location: string;
 }
 
 interface OriginalFunctionData {
@@ -49,6 +50,7 @@ interface OriginalFunctionData {
     type: string;
     description: string;
   };
+  location: string;
 }
 
 @Component({
@@ -330,6 +332,7 @@ export class AdminComponent {
         parameters: [],
         return_type: func.return.type,
         return_description: func.return.description,
+        location: func.location
       };
 
       if (func.parameters && 'properties' in func.parameters) {
@@ -362,7 +365,8 @@ export class AdminComponent {
         return: {
           type: func.return_type,
           description: func.return_description
-        }
+        },
+        location: func.location
       };
 
       // Iterate over parameters array and populate properties and required

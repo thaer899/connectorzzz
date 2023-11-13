@@ -1,38 +1,69 @@
+import importlib
+import json
 import os
-import requests
-from src.agents.tools.functions.procurement.approver import review_purchase_request, authorize_payment, audit_procurement
-from src.agents.tools.functions.procurement.purchaser import track_order, finalize_purchase, initiate_negotiation
-from src.agents.tools.functions.procurement.requestor import submit_item_request, update_request_details, cancel_request
-from src.agents.tools.functions.misc.functions import spr_writer, spr_reader, browse_web, invoke_github_actions_pipeline, get_user_profile
-from src.agents.tools.driver_manager import DriverManager
-from src.config import GITHUB_TOKEN
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
-import time
-from contextlib import contextmanager
-from src.config import SELENIULM_LOCAL
 
 
-def register_functions(instance_agent):
-    instance_agent.register_function(
-        function_map={
-            "spr_writer": spr_writer,
-            "spr_reader": spr_reader,
-            "get_user_profile": get_user_profile,
-            "gitops_browse_web": browse_web,
-            "gitops_invoke_github_actions_pipeline": invoke_github_actions_pipeline,
-            "procure_requestor_submit_item_request": submit_item_request,
-            "procure_requestor_update_request_details": update_request_details,
-            "procure_requestor_cancel_request": cancel_request,
-            "procure_purchaser_initiate_negotiation": initiate_negotiation,
-            "procure_purchaser_finalize_purchase": finalize_purchase,
-            "procure_purchaser_track_order": track_order,
-            "procure_approver_review_purchase_request": review_purchase_request,
-            "procure_approver_authorize_payment": authorize_payment,
-            "procure_approver_audit_procurement": audit_procurement,
-        }
-    )
+def dynamic_import_function(module_name, function_name):
+    try:
+        # Import the module
+        module = importlib.import_module(module_name)
+        return getattr(module, function_name)
+    except (ImportError, AttributeError) as e:
+        # Handle the error or return None if the function cannot be imported
+        print(f"Error importing {function_name} from {module_name}: {e}")
+        return None
+
+
+def get_functions(function_names=None):
+    # Define the file path
+    file_path = os.path.join(os.path.dirname(__file__), 'data/functions.json')
+
+    # Check if the file exists
+    if not os.path.exists(file_path):
+        print("Functions file not found.")
+        return []
+
+    try:
+        # Open and parse the JSON file
+        with open(file_path, 'r') as file:
+            functions = json.load(file)
+
+        # Filter and return the functions
+        if function_names:
+            return [func for func in functions if func["name"] in function_names]
+        else:
+            return functions  # Return all functions if no specific names are provided
+
+    except json.JSONDecodeError as e:
+        print(f"Error parsing JSON from functions file: {e}")
+        return []
+
+
+def register_functions(instance_agent, functions=None):
+    if functions is None:
+        functions = get_functions()  # Get all functions if none are specified
+
+    if not functions:
+        print("No functions to register for this agent.")
+        return
+
+    function_names = [func_info['name'] for func_info in functions]
+    registered_functions = get_functions(function_names)
+
+    print(f"Attempting to register functions: {function_names}")
+    function_map = {}
+    for func_info in registered_functions:
+        module_name = "src.agents.tools.functions." + func_info["location"]
+        function_name = func_info["name"]
+        func = dynamic_import_function(module_name, function_name)
+        if func:
+            function_map[function_name] = func
+        else:
+            print(f"Failed to import {function_name}")
+
+    if function_map:
+        print(f"Registered functions: {list(function_map.keys())}")
+    else:
+        print("No functions were successfully registered.")
+
+    instance_agent.register_function(function_map=function_map)

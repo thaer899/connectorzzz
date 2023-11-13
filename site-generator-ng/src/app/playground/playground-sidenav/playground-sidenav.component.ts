@@ -72,12 +72,13 @@ export class PlaygroundSidenavComponent implements OnInit, OnDestroy {
       "work_dir": "workspace",
       "use_docker": true,
       "last_n_messages": 5,
-    }
+    },
+    "functions": []
   }
 
   public selectedAgent: any = {
     agent_name: 'AgentX',
-    type: 'Assistant',
+    type: 'assistant',
     config: {
       "llm_config": {
         "request_timeout": 300,
@@ -89,7 +90,8 @@ export class PlaygroundSidenavComponent implements OnInit, OnDestroy {
         "work_dir": "workspace",
         "use_docker": true,
         "last_n_messages": 5,
-      }
+      },
+      "functions": []
     },
     message: 'A reliable and knowledgeable aid with a knack for problem-solving.'
   };
@@ -127,7 +129,7 @@ export class PlaygroundSidenavComponent implements OnInit, OnDestroy {
       this.agentProfile = this.generateAgentProfile(this.profile);
       this.agent = {
         agent_name: this.agentName,
-        type: 'Assistant',
+        type: 'assistant',
         config: {
           "llm_config": {
             "request_timeout": 300,
@@ -139,13 +141,14 @@ export class PlaygroundSidenavComponent implements OnInit, OnDestroy {
             "work_dir": "workspace",
             "use_docker": true,
             "last_n_messages": 5,
-          }
+          },
+          "functions": []
         },
         message: this.agentProfile
       };
       this.user_proxy = {
         agent_name: this.userProxyName,
-        type: 'Proxy',
+        type: 'user_proxy',
         config: {
           "llm_config": {
             "request_timeout": 300,
@@ -301,7 +304,7 @@ export class PlaygroundSidenavComponent implements OnInit, OnDestroy {
 
             let profile = {
               agent_name: bot.type,
-              type: 'Assistant',
+              type: 'assistant',
               config: {
                 "llm_config": {
                   "request_timeout": 300,

@@ -352,6 +352,15 @@
                   "type": "Control",
                   "scope": "#/properties/return_description",
                   "label": "Return description"
+                },
+                {
+                  "type": "Label",
+                  "text": "File Location"
+                },
+                {
+                  "type": "Control",
+                  "scope": "#/properties/location",
+                  "label": "Location"
                 }
               ]
             }

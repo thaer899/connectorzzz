@@ -311,6 +311,9 @@
           },
           "return_description": {
             "type": "string"
+          },
+          "location": {
+            "type": "string"
           }
         }
       }

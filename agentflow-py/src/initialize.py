@@ -1,22 +1,27 @@
-import json
-import os
-from threading import Thread
 from typing import Any, Dict, List
 from src.agents.ws_assistant import WebSocketAssistantAgent
-from src.agents.ws_user_proxy import WebSocketUserProxyAgent
 from src.agents.ws_manager import WebSocketManagerAgent
-from src.agents.tools.register_functions import register_functions
-from src.agents.tools.functions.misc.functions import read_file
-from autogen import config_list_from_json, AssistantAgent, UserProxyAgent,  GroupChat
-from concurrent.futures import ThreadPoolExecutor
+from autogen import GroupChat
 import queue
 import logging
 from threading import Lock
 from .config import config_list, request_timeout, seed
+from src.agents.ws_assistant import WebSocketAssistantAgent
+from src.agents.ws_user_proxy import WebSocketUserProxyAgent
+import logging
+import os
+from src.agents.tools.functions.misc.functions import read_file
+import json
+from src.agents.tools.register_functions import get_functions, register_functions
+
 
 active_agents_lock = Lock()
 active_agents_instances = {}
 logging.basicConfig(filename='agent.log', level=logging.DEBUG)
+
+
+def termination_msg(x): return isinstance(
+    x, dict) and "TERMINATE" == str(x.get("content", ""))[-9:].upper()
 
 
 def run_agent(
@@ -27,15 +32,15 @@ def run_agent(
 
     logging.info(f"Running {agent_name} agent.")
 
-    assistant = WebSocketAssistantAgent(
+    agent = WebSocketAssistantAgent(
         name=agent_name,
         system_message=initial_message,
         send_queue=send_queue,
         receive_queue=receive_queue
     )
 
-    assistant.reset()
-    return assistant
+    agent.reset()
+    return agent
 
 
 def initiate_group_chat(
@@ -91,9 +96,7 @@ def create_group(
     logging.info(f"Creating group: {group_name}")
 
     proxy = agents.get(next(iter(agents)))
-    print(f"proxy: {proxy}")
     assistants = {k: v for k, v in agents.items() if k != proxy}
-    print(f"assistants: {assistants}")
 
     # Creating a list of agents for the group chat
     group_agents = [create_instance_proxy(
@@ -106,31 +109,13 @@ def create_group(
     return group_agents
 
 
-def create_instance_agent(agent, send_queue, receive_queue):
-    llm_config = agent.get("config", {}).get('llm_config', {})
-    code_execution_config = agent.get(
-        "config", {}).get('code_execution_config', {})
+def get_active_agents_by_name(agents: Dict) -> List[str]:
+    """Get names of all agents with status set to active."""
+    return [agent['agent_name'] for agent in agents if agent['status'] == 'active']
 
-    # Extract function names from llm_config
-    function_names = agent.get("config", {}).get('functions', [])
 
-    # GET Agent functions
-    file_path = os.path.join(os.path.dirname(
-        __file__), 'agents/tools/data/functions.json')
-    content = read_file(file_path)
-    logging.info(f"content functions.json: {content}")
-
-    if content:
-        functions = json.loads(content)
-        agent_functions = [
-            func for func in functions if func["name"] in function_names]
-
-    # Debug prints
-    print(f"function_names: {function_names}")
-    print(f"agent_functions: {agent_functions}")
-
-    llm_config["functions"] = agent_functions
-
+def create_instance_proxy(agent, send_queue, receive_queue):
+    llm_config, code_execution_config, agent_functions = agent_config(agent)
     instance_agent = WebSocketAssistantAgent(
         name=agent.get("agent_name"),
         is_termination_msg=termination_msg,
@@ -147,16 +132,8 @@ def create_instance_agent(agent, send_queue, receive_queue):
     return instance_agent
 
 
-def create_instance_proxy(agent, send_queue, receive_queue):
-    llm_config = agent.get("config", {}).get('llm_config', {})
-    code_execution_config = agent.get(
-        "config", {}).get('code_execution_config', {})
-
-    file_path = os.path.join(os.path.dirname(
-        __file__), 'agents/tools/data/functions.json')
-    content = read_file(file_path)
-    logging.info(f"content XXXX: {content}")
-    llm_config["functions"] = json.loads(content) if content else []
+def create_instance_agent(agent, send_queue, receive_queue):
+    llm_config, code_execution_config, agent_functions = agent_config(agent)
 
     instance_agent = WebSocketUserProxyAgent(
         name=agent.get("agent_name"),
@@ -172,14 +149,24 @@ def create_instance_proxy(agent, send_queue, receive_queue):
         function_map={
         }
     )
-    register_functions(instance_agent)
+
+    register_functions(instance_agent, agent_functions)
     return instance_agent
 
 
-def termination_msg(x): return isinstance(
-    x, dict) and "TERMINATE" == str(x.get("content", ""))[-9:].upper()
+def agent_config(agent):
+    llm_config = agent.get("config", {}).get('llm_config', {})
+    code_execution_config = agent.get(
+        "config", {}).get('code_execution_config', {})
 
+    # Extract function names from llm_config
+    function_names = agent.get("config", {}).get('functions', [])
 
-def get_active_agents_by_name(agents: Dict) -> List[str]:
-    """Get names of all agents with status set to active."""
-    return [agent['agent_name'] for agent in agents if agent['status'] == 'active']
+    agent_functions = get_functions(function_names)
+
+    for agent in agent_functions:
+        agent.pop('location', None)
+
+    llm_config["functions"] = agent_functions
+
+    return llm_config, code_execution_config, agent_functions
