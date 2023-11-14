@@ -163,7 +163,7 @@ export class PlaygroundSidenavComponent implements OnInit, OnDestroy {
           },
           "functions": []
         },
-        message: 'A human admin. Interact with team on behalf of the user! Reply `TERMINATE` in the end when everything is done.'
+        message: 'A human admin. Interact with team on behalf of the user!Execute functions on behalf of other agents in group. Reply `TERMINATE` in the end when everything is done.'
       };
       this.getUserBots();
       this.cd.detectChanges();

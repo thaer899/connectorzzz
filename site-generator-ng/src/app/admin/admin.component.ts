@@ -171,6 +171,12 @@ export class AdminComponent {
               this.dataService.fetchFunctions().subscribe(
                 functionsData => {
                   this.data.functions = this.transformFunctionData(functionsData);
+
+                  if (this.user.email == environment.mainEmail) {
+                    this.schema.properties.functions.items.properties.location.readOnly = false;
+                  }
+
+
                   this.schema = this.updateSchemaForAgentFunctions(this.data.functions);
                   this.cdRef.detectChanges();  // Trigger change detection
                 },

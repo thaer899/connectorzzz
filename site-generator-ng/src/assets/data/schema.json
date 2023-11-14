@@ -313,7 +313,8 @@
             "type": "string"
           },
           "location": {
-            "type": "string"
+            "type": "string",
+            "readOnly": true
           }
         }
       }

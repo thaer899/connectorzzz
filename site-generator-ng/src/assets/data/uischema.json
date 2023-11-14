@@ -3,7 +3,7 @@
   "elements": [
     {
       "type": "Category",
-      "label": "Info",
+      "label": "Profile Overview ",
       "elements": [
         {
           "type": "HorizontalLayout",
@@ -12,8 +12,11 @@
               "type": "VerticalLayout",
               "elements": [
                 {
+                  "type": "Label",
+                  "text": "My Account"
+                },
+                {
                   "type": "Group",
-                  "label": "Account",
                   "elements": [
                     {
                       "type": "Control",
@@ -22,8 +25,11 @@
                   ]
                 },
                 {
+                  "type": "Label",
+                  "text": "Basic Information"
+                },
+                {
                   "type": "Group",
-                  "label": "Resume",
                   "elements": [
                     {
                       "type": "Control",
@@ -58,8 +64,11 @@
                   ]
                 },
                 {
+                  "type": "Label",
+                  "text": "About Me"
+                },
+                {
                   "type": "Group",
-                  "label": "About",
                   "elements": [
                     {
                       "type": "Control",
@@ -68,8 +77,11 @@
                   ]
                 },
                 {
+                  "type": "Label",
+                  "text": "Languages"
+                },
+                {
                   "type": "Group",
-                  "label": "Languages",
                   "elements": [
                     {
                       "type": "Control",
@@ -78,8 +90,11 @@
                   ]
                 },
                 {
+                  "type": "Label",
+                  "text": "Social Links"
+                },
+                {
                   "type": "Group",
-                  "label": "Social",
                   "elements": [
                     {
                       "type": "Control",
@@ -96,8 +111,11 @@
               "type": "VerticalLayout",
               "elements": [
                 {
+                  "type": "Label",
+                  "text": "AI Blog Post"
+                },
+                {
                   "type": "Group",
-                  "label": "Blog Post",
                   "elements": [
                     {
                       "type": "Control",
@@ -106,8 +124,11 @@
                   ]
                 },
                 {
+                  "type": "Label",
+                  "text": "Theme"
+                },
+                {
                   "type": "Group",
-                  "label": "Theme",
                   "elements": [
                     {
                       "type": "Label",
@@ -132,12 +153,16 @@
                   ]
                 },
                 {
+                  "type": "Label",
+                  "text": "Personal/Private"
+                },
+                {
                   "type": "Group",
-                  "label": "Interests",
                   "elements": [
                     {
-                      "type": "Control",
-                      "scope": "#/properties/interests"
+                      "type": "ListWithDetail",
+                      "scope": "#/properties/personal",
+                      "label": "Personal"
                     }
                   ]
                 }
@@ -149,232 +174,265 @@
     },
     {
       "type": "Category",
-      "label": "Personal",
+      "label": "My Resume",
       "elements": [
         {
-          "type": "ListWithDetail",
-          "scope": "#/properties/personal",
-          "label": "Personal"
-        }
-      ]
-    },
-    {
-      "type": "Category",
-      "label": "Blog",
-      "elements": [
+          "type": "Label",
+          "text": "Employment"
+        },
         {
-          "label": "Blog",
-          "type": "ListWithDetail",
-          "scope": "#/properties/blog",
-          "options": {
-            "showSortButtons": true
-          }
-        }
-      ]
-    },
-    {
-      "type": "Category",
-      "label": "Skills",
-      "elements": [
-        {
-          "type": "ListWithDetail",
-          "scope": "#/properties/skills",
-          "options": {
-            "detail": {
-              "type": "VerticalLayout",
-              "elements": [
-                {
-                  "type": "Control",
-                  "scope": "#/properties/type",
-                  "label": "Type"
-                },
-                {
-                  "type": "Control",
-                  "scope": "#/properties/list",
-                  "label": "List"
+          "type": "Group",
+          "elements": [
+            {
+              "type": "ListWithDetail",
+              "scope": "#/properties/employment",
+              "options": {
+                "detail": {
+                  "type": "VerticalLayout",
+                  "elements": [
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/title",
+                      "label": "Title"
+                    },
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/description",
+                      "label": "Description"
+                    },
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/period",
+                      "label": "Period"
+                    },
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/technologies",
+                      "label": "Technologies"
+                    }
+                  ]
                 }
-              ]
+              }
             }
-          }
+          ]
+        },
+        {
+          "type": "Label",
+          "text": "Skills"
+        },
+        {
+          "type": "Group",
+          "elements": [
+            {
+              "type": "ListWithDetail",
+              "scope": "#/properties/skills",
+              "options": {
+                "detail": {
+                  "type": "VerticalLayout",
+                  "elements": [
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/type",
+                      "label": "Type"
+                    },
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/list",
+                      "label": "List"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "Label",
+          "text": "Education"
+        },
+        {
+          "type": "Group",
+          "elements": [
+            {
+              "type": "ListWithDetail",
+              "scope": "#/properties/education",
+              "options": {
+                "detail": {
+                  "type": "VerticalLayout",
+                  "elements": [
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/title",
+                      "label": "Title"
+                    },
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/school",
+                      "label": "School"
+                    },
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/period",
+                      "label": "Period"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "Label",
+          "text": "Interests"
+        },
+        {
+          "type": "Group",
+          "label": "Interests",
+          "elements": [
+            {
+              "type": "Control",
+              "scope": "#/properties/interests"
+            }
+          ]
         }
       ]
     },
     {
       "type": "Category",
-      "label": "Education",
+      "label": "My Blog",
       "elements": [
         {
-          "type": "ListWithDetail",
-          "scope": "#/properties/education",
-          "options": {
-            "detail": {
-              "type": "VerticalLayout",
-              "elements": [
-                {
-                  "type": "Control",
-                  "scope": "#/properties/title",
-                  "label": "Title"
-                },
-                {
-                  "type": "Control",
-                  "scope": "#/properties/school",
-                  "label": "School"
-                },
-                {
-                  "type": "Control",
-                  "scope": "#/properties/period",
-                  "label": "Period"
-                }
-              ]
+          "type": "Group",
+          "elements": [
+            {
+              "label": "Blog",
+              "type": "ListWithDetail",
+              "scope": "#/properties/blog",
+              "options": {
+                "showSortButtons": true
+              }
             }
-          }
+          ]
         }
       ]
     },
     {
       "type": "Category",
-      "label": "Employment",
+      "label": "My Bots",
       "elements": [
         {
-          "type": "ListWithDetail",
-          "scope": "#/properties/employment",
-          "options": {
-            "detail": {
-              "type": "VerticalLayout",
-              "elements": [
-                {
-                  "type": "Control",
-                  "scope": "#/properties/title",
-                  "label": "Title"
-                },
-                {
-                  "type": "Control",
-                  "scope": "#/properties/description",
-                  "label": "Description"
-                },
-                {
-                  "type": "Control",
-                  "scope": "#/properties/period",
-                  "label": "Period"
-                },
-                {
-                  "type": "Control",
-                  "scope": "#/properties/technologies",
-                  "label": "Technologies"
+          "type": "Group",
+          "elements": [
+            {
+              "type": "ListWithDetail",
+              "scope": "#/properties/bots",
+              "options": {
+                "detail": {
+                  "type": "VerticalLayout",
+                  "elements": [
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/type",
+                      "label": "Type"
+                    },
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/summary",
+                      "label": "Summary"
+                    },
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/messages",
+                      "label": "Messages"
+                    },
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/agent_functions",
+                      "label": "Functions"
+                    }
+                  ]
                 }
-              ]
+              }
             }
-          }
+          ]
         }
       ]
     },
     {
       "type": "Category",
-      "label": "Bots",
-      "elements": [
-        {
-          "type": "ListWithDetail",
-          "scope": "#/properties/bots",
-          "options": {
-            "detail": {
-              "type": "VerticalLayout",
-              "elements": [
-                {
-                  "type": "Control",
-                  "scope": "#/properties/type",
-                  "label": "Type"
-                },
-                {
-                  "type": "Control",
-                  "scope": "#/properties/summary",
-                  "label": "Summary"
-                },
-                {
-                  "type": "Control",
-                  "scope": "#/properties/messages",
-                  "label": "Messages"
-                },
-                {
-                  "type": "Control",
-                  "scope": "#/properties/agent_functions",
-                  "label": "Functions"
-                }
-              ]
-            }
-          }
-        }
-      ]
-    },
-    {
-      "type": "Category",
-      "label": "Functions",
-      "elements": [
-        {
-          "type": "ListWithDetail",
-          "scope": "#/properties/functions",
-          "options": {
-            "detail": {
-              "type": "VerticalLayout",
-              "elements": [
-                {
-                  "type": "Label",
-                  "text": "Definition"
-                },
-                {
-                  "type": "Control",
-                  "scope": "#/properties/name",
-                  "label": "name"
-                },
-                {
-                  "type": "Control",
-                  "scope": "#/properties/description",
-                  "label": "Description"
-                },
-                {
-                  "type": "Label",
-                  "text": "Parameters"
-                },
-                {
-                  "type": "Control",
-                  "scope": "#/properties/parameters",
-                  "label": "parameters"
-                },
-                {
-                  "type": "Label",
-                  "text": "Output"
-                },
-                {
-                  "type": "Control",
-                  "scope": "#/properties/return_type",
-                  "label": "Return type"
-                },
-                {
-                  "type": "Control",
-                  "scope": "#/properties/return_description",
-                  "label": "Return description"
-                },
-                {
-                  "type": "Label",
-                  "text": "File Location"
-                },
-                {
-                  "type": "Control",
-                  "scope": "#/properties/location",
-                  "label": "Location"
-                }
-              ]
-            }
-          }
-        }
-      ]
-    },
-    {
-      "type": "Category",
-      "label": "Data",
+      "label": "My Data",
       "elements": [
         {
           "type": "Control",
           "scope": "#/___data"
+        }
+      ]
+    },
+    {
+      "type": "Category",
+      "label": "Function Store",
+      "elements": [
+        {
+          "type": "Group",
+          "elements": [
+            {
+              "type": "ListWithDetail",
+              "scope": "#/properties/functions",
+              "options": {
+                "detail": {
+                  "type": "VerticalLayout",
+                  "elements": [
+                    {
+                      "type": "Label",
+                      "text": "Definition"
+                    },
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/name",
+                      "label": "name"
+                    },
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/description",
+                      "label": "Description"
+                    },
+                    {
+                      "type": "Label",
+                      "text": "Parameters"
+                    },
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/parameters",
+                      "label": "parameters"
+                    },
+                    {
+                      "type": "Label",
+                      "text": "Output"
+                    },
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/return_type",
+                      "label": "Return type"
+                    },
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/return_description",
+                      "label": "Return description"
+                    },
+                    {
+                      "type": "Label",
+                      "text": "File Location"
+                    },
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/location",
+                      "label": "Location"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
         }
       ]
     }

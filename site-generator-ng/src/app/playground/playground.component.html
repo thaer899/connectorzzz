@@ -1,12 +1,9 @@
 <ng-container *ngIf="agents">
   <mat-drawer-container class="flowchart-container" autosize>
     <mat-toolbar class="toolbar">
-      <span>
-        <mat-icon
-          matTooltip="Automation Agents team"
-          class="agents-toggle"
-          (click)="drawer.toggle()"
-          >group_work</mat-icon
+      <span class="sidenav-toggle">
+        <mat-icon class="toggle" matTooltip="Toggle" (click)="drawer.toggle()"
+          >more_vert</mat-icon
         >
       </span>
       <span class="fill-toolbar"></span>
@@ -15,22 +12,10 @@
           >dashboard</mat-icon
         >
         <mat-icon
-          class="separator"
-          matTooltip="Toggle"
-          (click)="groupdrawer.toggle(); drawer.toggle()"
-          >more_vert</mat-icon
-        >
-        <mat-icon
           class="theme-switch"
           matTooltip="Switch Theme"
           (click)="toggleTheme()"
           >brightness_6</mat-icon
-        >
-        <mat-icon
-          class="separator"
-          matTooltip="Toggle"
-          (click)="groupdrawer.toggle(); drawer.toggle()"
-          >more_vert</mat-icon
         >
         <mat-icon
           matTooltip="Start Connection"
@@ -48,13 +33,12 @@
         >
       </span>
       <span class="fill-toolbar"></span>
-      <span>
+      <span class="groupsidenav-toggle">
         <mat-icon
-          matTooltip="Automation Agents team"
-          class="group-toggle"
-          (click)="groupdrawer.toggle(); drawer.toggle()"
-          *ngIf="sidenav.agents.length > 0"
-          >group_work</mat-icon
+          class="toggle"
+          matTooltip="Toggle"
+          (click)="groupdrawer.toggle()"
+          >more_vert</mat-icon
         >
       </span>
     </mat-toolbar>

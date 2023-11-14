@@ -68,6 +68,21 @@ pre {
   color: #6f57b6;
 }
 
+.groupsidenav-toggle {
+  right: 0;
+  position: absolute;
+}
+
+.sidenav-toggle {
+  left: -8px;
+  position: absolute;
+}
+
+.toggle {
+  color: #6f57b6;
+  margin: unset;
+}
+
 .fill-toolbar {
   flex: 1 1 auto;
 }
@@ -111,11 +126,21 @@ pre {
 
 @media screen and (max-width: 30em) {
   .left-sidenav {
-    width: 40%;
+    width: 43%;
   }
 
   .right-sidenav {
-    width: 50%;
+    width: 53%;
+  }
+
+  .groupsidenav-toggle {
+    right: -10px;
+    position: absolute;
+  }
+  
+  .sidenav-toggle {
+    left: -8px;
+    position: absolute;
   }
 
   .mat-icon {
@@ -125,10 +150,6 @@ pre {
     font-size: 26px;
   }
 
-  .group-toggle {
-    right: 0px;
-    top: 10px;
-  }
 }
 
 .dark-theme {

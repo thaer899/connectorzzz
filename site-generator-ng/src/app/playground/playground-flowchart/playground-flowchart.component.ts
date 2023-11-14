@@ -64,8 +64,8 @@ export class PlaygroundFlowchartComponent implements OnInit, OnChanges {
     const screenWidth = window.innerWidth;
     const screenHeight = window.innerHeight;
 
-    const centerX = 0.2 * screenWidth;
-    const centerY = 0.3 * screenHeight;
+    const centerX = 0.5 * screenWidth;
+    const centerY = 0.5 * screenHeight;
 
     const angleStep = (2 * Math.PI) / this.agents.length;
 
@@ -73,8 +73,8 @@ export class PlaygroundFlowchartComponent implements OnInit, OnChanges {
     const proxyNode = {
       name: `${this.profile.username}_Proxy (${this.getMessageCountForAgent(`${this.profile.username}_Proxy`)})`,
       message: this.profile.username ? this.profile.username.message : 'A User Proxy that can be used to interact with the members of the team.',
-      x: centerX - (0.25 * screenWidth),
-      y: centerY - (0.5 * screenHeight),
+      x: centerX - (0.05 * screenWidth),
+      y: centerY - (0.05 * screenHeight),
       itemStyle: {
         color: '#99af9d'
       }
@@ -97,7 +97,7 @@ export class PlaygroundFlowchartComponent implements OnInit, OnChanges {
         name: `${this.profile.username} (${this.getMessageCountForAgent('Manager')})`,
         message: 'Dialog with the agent.',
         x: centerX - (0.25 * screenWidth),
-        y: centerY - (0.8 * screenHeight),
+        y: centerY - (0.5 * screenHeight),
         itemStyle: {
           color: '#b7a51d'
         }
@@ -107,7 +107,7 @@ export class PlaygroundFlowchartComponent implements OnInit, OnChanges {
         name: `${this.profile.username} (${this.getMessageCountForAgent('Manager')})`,
         message: 'Dialog with the agents.',
         x: centerX - (0.25 * screenWidth),
-        y: centerY - (0.8 * screenHeight),
+        y: centerY - (0.5 * screenHeight),
         itemStyle: {
           color: '#b7858d'
         }
@@ -117,16 +117,48 @@ export class PlaygroundFlowchartComponent implements OnInit, OnChanges {
 
     const agentNodes = this.agents!.slice(1).map((agent, index) => {
       const angle = index * angleStep;
-      const x = centerX - (0.25 * screenWidth) * Math.cos(angle); // 25% of screen width as radius
-      const y = centerY + (0.25 * screenHeight) * Math.sin(angle); // 25% of screen height as radius
+      const x = centerX - (0.3 * screenWidth) * Math.cos(angle); // 30% of screen width as radius
+      const y = centerY + (0.3 * screenHeight) * Math.sin(angle); // 30% of screen height as radius
       return {
         name: agent.agent_name + ` (${this.getMessageCountForAgent(agent.agent_name)})`,
         message: agent.message,
         x,
-        y
+        y,
+        symbolSize: this.getSymbolSize(screenWidth, screenHeight)
       };
     });
 
+    // Calculate bounds for group node
+    const xValues = agentNodes.map(node => node.x);
+    const yValues = agentNodes.map(node => node.y);
+    const minX = Math.min(...xValues);
+    const maxX = Math.max(...xValues);
+    const minY = Math.min(...yValues);
+    const maxY = Math.max(...yValues);
+
+    // Ensure minimum width and height based on screen dimensions
+    const minGroupWidth = screenWidth * 0.6;
+    const minGroupHeight = screenHeight * 0.4;
+
+    const groupWidth = Math.max((maxX - minX)); // Use the larger of the calculated width or the minimum width
+    const groupHeight = Math.max((maxY - minY)); // Use the larger of the calculated height or the minimum height  
+
+
+    const groupNode = {
+      name: '',
+      x: centerX, // position X du centre du groupe
+      y: centerY, // position Y du centre du groupe
+      symbolSize: [groupWidth, groupHeight],
+      itemStyle: {
+        color: '#bebebe2e', // transparent ou la couleur de votre choix
+        borderColor: '#7a7a7a', // la couleur de la bordure du groupe
+        borderWidth: 2, // l'épaisseur de la bordure
+      },
+      label: {
+        show: true,
+        formatter: '{b}', // utilisez le nom du nœud comme texte de l'étiquette
+      },
+    };
 
     const agentLinks = [
       ...agentNodes.map(agent => ({
@@ -138,14 +170,6 @@ export class PlaygroundFlowchartComponent implements OnInit, OnChanges {
         target: managerNode.name
       })),
       {
-        source: managerNode.name,
-        target: proxyNode.name
-      },
-      {
-        source: proxyNode.name,
-        target: managerNode.name
-      },
-      {
         source: userNode.name,
         target: proxyNode.name
       },
@@ -154,6 +178,7 @@ export class PlaygroundFlowchartComponent implements OnInit, OnChanges {
         target: userNode.name
       }
     ];
+
 
     this.options = {
       title: {
@@ -228,6 +253,7 @@ export class PlaygroundFlowchartComponent implements OnInit, OnChanges {
             fontFamily: 'Arial'
           },
           data: [
+            groupNode,
             ...agentNodes,
             managerNode,
             proxyNode,
