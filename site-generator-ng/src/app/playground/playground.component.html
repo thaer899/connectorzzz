@@ -1,16 +1,27 @@
 <ng-container *ngIf="agents">
   <mat-drawer-container class="flowchart-container" autosize>
     <mat-toolbar class="toolbar">
-      <span class="sidenav-toggle">
-        <mat-icon class="toggle" matTooltip="Toggle" (click)="drawer.toggle()"
+      <span class="left-sidenav-toggle">
+        <mat-icon
+          class="icon-left-sidenav"
+          matTooltip="Toggle"
+          (click)="drawer.toggle()"
           >more_vert</mat-icon
         >
       </span>
       <span class="fill-toolbar"></span>
       <span>
-        <mat-icon matTooltip="Console" class="admin" [routerLink]="['/admin']"
-          >dashboard</mat-icon
+        <a
+          href="/admin"
+          target="_blank"
+          style="color: inherit"
+          matTooltip="Open Playground"
+          class="material-symbols-outlined admin"
         >
+          <span> dashboard </span>
+        </a>
+        <mat-icon class="separator inactive">more_vert</mat-icon>
+
         <mat-icon
           class="theme-switch"
           matTooltip="Switch Theme"
@@ -31,11 +42,17 @@
           *ngIf="isWSConnected"
           >link</mat-icon
         >
+        <mat-icon
+          matTooltip="Toggle Drawers"
+          class="group-toggle"
+          (click)="drawer.toggle(); groupdrawer.toggle()"
+          >group_work</mat-icon
+        >
       </span>
       <span class="fill-toolbar"></span>
-      <span class="groupsidenav-toggle">
+      <span class="right-sidenav-toggle">
         <mat-icon
-          class="toggle"
+          class="icon-right-sidenav"
           matTooltip="Toggle"
           (click)="groupdrawer.toggle()"
           >more_vert</mat-icon

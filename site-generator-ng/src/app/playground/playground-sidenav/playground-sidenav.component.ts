@@ -301,7 +301,6 @@ export class PlaygroundSidenavComponent implements OnInit, OnDestroy {
         if (data && data.bots && data.bots.length > 0) {
 
           for (let bot of data.bots) {
-
             let profile = {
               agent_name: bot.type,
               type: 'assistant',

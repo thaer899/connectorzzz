@@ -65,22 +65,33 @@ pre {
 }
 
 .separator {
-  color: #6f57b6;
+  cursor: unset;
+  color: #979797 !important;
 }
 
-.groupsidenav-toggle {
+.separator:hover {
+  cursor: unset;
+  font-weight: unset !important;
+}
+
+.right-sidenav-toggle {
   right: 0;
   position: absolute;
 }
 
-.sidenav-toggle {
+.icon-right-sidenav {
+  margin: unset;
+  color: #6954a2;
+}
+
+.left-sidenav-toggle {
   left: -8px;
   position: absolute;
 }
 
-.toggle {
-  color: #6f57b6;
+.icon-left-sidenav {
   margin: unset;
+  color: #4c716f;
 }
 
 .fill-toolbar {
@@ -96,12 +107,6 @@ pre {
 }
 
 .group-toggle {
-  position: absolute;
-  right: 10px;
-  top: 0px;
-  padding: 10px;
-  font-size: 40px;
-  z-index: 99999;
   color: #a72f2f;
 }
 
@@ -126,20 +131,20 @@ pre {
 
 @media screen and (max-width: 30em) {
   .left-sidenav {
-    width: 43%;
+    width: 40%;
   }
 
   .right-sidenav {
     width: 53%;
   }
 
-  .groupsidenav-toggle {
-    right: -10px;
+  .right-sidenav-toggle {
+    right: 0px;
     position: absolute;
   }
   
-  .sidenav-toggle {
-    left: -8px;
+  .left-sidenav-toggle {
+    left: 0px;
     position: absolute;
   }
 
