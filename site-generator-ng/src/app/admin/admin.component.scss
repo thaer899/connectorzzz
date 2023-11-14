@@ -179,11 +179,11 @@
 
 /* Light Theme Styles */
 .light-theme {
-  :host ::ng-deep .background {
-    background-color: #c4c2c2 !important; /* Fine light grey */
-    color: #212121 !important; /* Soft contrast */
-    padding: 2vh;
-  }
+  // :host ::ng-deep .background {
+  //   background-color: #c4c2c2 !important; /* Fine light grey */
+  //   color: #212121 !important; /* Soft contrast */
+  //   padding: 2vh;
+  // }
 
   :host ::ng-deep .mat-toolbar {
     background-color: #615f5f !important;
