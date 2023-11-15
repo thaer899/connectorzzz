@@ -5,7 +5,7 @@
         <mat-icon
           class="icon-left-sidenav"
           matTooltip="Toggle"
-          (click)="drawer.toggle()"
+          (click)="agentsdrawer.toggle()"
           >more_vert</mat-icon
         >
       </span>
@@ -28,6 +28,8 @@
           (click)="toggleTheme()"
           >brightness_6</mat-icon
         >
+        <mat-icon class="separator inactive">more_vert</mat-icon>
+
         <mat-icon
           matTooltip="Start Connection"
           class="link-off-toggle"
@@ -42,30 +44,35 @@
           *ngIf="isWSConnected"
           >link</mat-icon
         >
-        <mat-icon
+        <!-- <mat-icon
           matTooltip="Toggle Drawers"
           class="group-toggle"
-          (click)="drawer.toggle(); groupdrawer.toggle()"
+          (click)="agentsdrawer.toggle(); groupdrawer.toggle()"
           >group_work</mat-icon
-        >
+        > -->
       </span>
       <span class="fill-toolbar"></span>
       <span class="right-sidenav-toggle">
         <mat-icon
           class="icon-right-sidenav"
           matTooltip="Toggle"
-          (click)="groupdrawer.toggle()"
+          (click)="groupdrawer.toggle(); agentsdrawer.toggle()"
           >more_vert</mat-icon
         >
       </span>
     </mat-toolbar>
 
-    <mat-drawer #drawer class="left-sidenav" mode="side" opened="true">
+    <mat-drawer #agentsdrawer class="left-sidenav" mode="side" opened="true">
       <app-playground-sidenav
         #sidenav
         [isWSConnected]="isWSConnected"
         [profile]="data"
       ></app-playground-sidenav>
+      <div
+        #leftresizeHandle
+        class="left-resize-handle"
+        (mousedown)="startResizing(leftresizeHandle, $event, 'left')"
+      ></div>
     </mat-drawer>
     <div class="flowchart-sidenav-content" *ngIf="data.resume">
       <app-playground-flowchart
@@ -89,9 +96,9 @@
         [agents]="sidenav.agents"
       ></app-playground-group-sidenav>
       <div
-        #resizeHandle
+        #rightresizeHandle
         class="resize-handle"
-        (mousedown)="startResizing(resizeHandle, $event)"
+        (mousedown)="startResizing(rightresizeHandle, $event, 'right')"
       ></div>
     </mat-drawer>
   </mat-drawer-container>

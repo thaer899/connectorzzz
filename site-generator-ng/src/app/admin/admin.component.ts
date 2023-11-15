@@ -127,7 +127,7 @@ export class AdminComponent {
   showContent: boolean = false;
   isAdmin: boolean = false;
   public user: any;
-  public users: any;
+  public users: any = [];
   public functions: any = [];
   public username: string;
   public fileName: string;
@@ -147,6 +147,7 @@ export class AdminComponent {
 
 
   ngOnInit() {
+    this.getUsers();
 
     this.route.data.subscribe(data => {
       if (data && data.title) {
@@ -258,14 +259,12 @@ export class AdminComponent {
   // Upload the form data to Firebase Storage
   async upload() {
     const storage = getStorage();
-    console.log("Uploading data to Firebase Storage...");
     const fileRef = ref(storage, `profiles/${this.user.email}.json`);
-
+    this.getUsers();
+    this.formData.username = this.getUsernameByEmail(this.users, this.user.email);
     const dataString = JSON.stringify(this.formData);
-    console.log("Data to be uploaded:", this.formData);
     try {
       await uploadString(fileRef, dataString);
-      console.log('Data uploaded to Firebase Storage');
       this.snackBar.open('Data uploaded successfully!', 'Close', {
         duration: 2000,  // The snackbar will auto-dismiss after 2 seconds
       });
@@ -274,6 +273,10 @@ export class AdminComponent {
     }
   }
 
+  getUsernameByEmail(users, email) {
+    const user = users.find(user => user.email === email);
+    return user ? user.username : null; // returns null if no user is found
+  }
 
   async save_functions() {
     const storage = getStorage();

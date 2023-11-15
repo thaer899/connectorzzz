@@ -4,8 +4,9 @@ pre {
   margin: -30px 0px;
 }
 
+
 hr {
-  border: 1px solid #555555 !important;
+  border: 1px solid #ffffff45 !important;
 }
 
 .content {
@@ -20,12 +21,12 @@ hr {
 .toolbar {
   width: 100%;
   min-height: 15vh;
-  color: #ECEFF1;
-  border-bottom: 1px solid #565656;
+  color: #ECEFF1; /* Keep the text color */
+  border-bottom: 1px solid #757575; /* Lighter grey for bottom border */
   position: sticky;
   top: 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  background-color: #424242;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Keep the shadow */
+  background-color: #333333; /* Darker grey for background */
 }
 
 /* General styling for input and text areas */
@@ -39,23 +40,39 @@ hr {
   font-size: xx-large;
   width: unset;
   height: unset;
-  color: #ECEFF1;
-  filter: drop-shadow(2px -1px 0px #0d0d0d);
+  color: #ECEFF1; /* Keep the add agent color */
+  filter: drop-shadow(2px -1px 0px #222222); /* Darker shadow for contrast */
 }
 
-:host ::ng-deep .material-symbols-outlined :hover {
-  background-color: #225f43 !important;
+:host ::ng-deep .material-symbols-outlined:hover {
+  background-color: #33691E !important; /* Dark green for hover */
 }
+
+:host ::ng-deep .mat-card:not([class*=mat-elevation-z]) {
+  padding: 0px 5px 0px 5px;
+  box-shadow: unset;
+  margin: 0px !important;
+  margin-bottom: 0px !important;
+  background-color: #1A1A1A; /* Darker background for cards */
+}
+
+:host ::ng-deep .mat-card>:first-child {
+  margin: 0px !important;
+}
+
+:host ::ng-deep .ng-star-inserted {
+  margin-bottom: 0 !important;
+}
+
 .mat-raised-button {
-  background-color: #6c6c6c !important;
+  background-color: #4E4E4E !important; /* Dark grey for buttons */
 }
 
 .mat-icon:hover {
   font-weight: bold !important;
-  color: #979797 !important;
-  filter: unset
+  color: #B9B9B9 !important; /* Lighter grey for icon hover */
+  filter: unset;
 }
-
 
 /* Responsiveness for smaller screens */
 @media screen and (max-width: 30em) {

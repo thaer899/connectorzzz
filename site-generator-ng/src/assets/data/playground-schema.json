@@ -1,0 +1,72 @@
+{
+  "type": "object",
+  "properties": {
+    "agents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "agent_name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "config": {
+            "type": "object",
+            "properties": {
+              "llm_config": {
+                "type": "object",
+                "properties": {
+                  "request_timeout": {
+                    "type": "integer"
+                  },
+                  "seed": {
+                    "type": "integer"
+                  },
+                  "config_list": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "model": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "temperature": {
+                    "type": "number"
+                  }
+                }
+              },
+              "code_execution_config": {
+                "type": "object",
+                "properties": {
+                  "work_dir": {
+                    "type": "string"
+                  },
+                  "use_docker": {
+                    "type": "boolean"
+                  },
+                  "last_n_messages": {
+                    "type": "integer"
+                  }
+                }
+              }
+            },
+            "functions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

@@ -117,7 +117,7 @@ export class DataService {
     );
   }
 
-  private saveUsers(users: any[]): void {
+  public saveUsers(users: any[]): void {
     const fileRef = ref(storage, 'users.json');
     const dataString = JSON.stringify(users);
     uploadString(fileRef, dataString).then(() => {
@@ -126,7 +126,7 @@ export class DataService {
     });
   }
 
-  private saveUser(user: any): void {
+  public saveUser(user: any): void {
     const fileRef = ref(storage, `profiles/${user}.json`);
     const dataString = JSON.stringify(this.data.value);
     uploadString(fileRef, dataString).then(() => {

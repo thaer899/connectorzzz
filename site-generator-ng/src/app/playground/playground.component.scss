@@ -25,6 +25,16 @@ pre {
   z-index: 100;
 }
 
+.left-resize-handle {
+  position: absolute;
+  top: 0;
+  left: 99%;
+  width: 1vh;
+  height: 100%;
+  cursor: col-resize;
+  z-index: 100;
+}
+
 .flowchart-container {
   position: fixed;
   top: 0px;
@@ -34,13 +44,13 @@ pre {
 }
 
 .left-sidenav {
-  width: 25%;
+  width: 30%;
   background-color: #303e3d;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5) !important;
 }
 
 .right-sidenav {
-  width: 40%;
+  width: 35%;
   background-color: #3a3548;
   box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.5) !important;
 }
@@ -129,13 +139,69 @@ pre {
   filter: unset;
 }
 
+:host ::ng-deep .content {
+  margin-left: 0%;
+}
+
+:host ::ng-deep .mat-card-title {
+  font-size: xx-small;
+}
+:host ::ng-deep .mat-input-element {
+  font-size: 12px;
+}
+
+:host ::ng-deep .mat-form-field-infix {
+  font-size: small;
+}
+
+:host ::ng-deep .mat-form-field-flex {
+  padding: 0 1vh;
+  border-radius: 3px;
+}
+
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  top: unset !important;
+  width: 100%;
+}
+
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline:hover {
+  top: unset !important;
+  bottom: unset;
+  width: 100%;
+}
+
+:host ::ng-deep .mat-form-field-label-wrapper {
+  top: -1.2em;
+}
+
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 1em 0em !important;
+}
+
+:host ::ng-deep .mat-form-field-outline-end {
+  border: 0px !important;
+}
+
+:host ::ng-deep .mat-form-field-outline-start {
+  border: 0px !important;
+}
+
+:host ::ng-deep .mat-option-text a {
+  width: 100% !important;
+}
+
+:host ::ng-deep .mat-select-panel .mat-primary {
+  background: #0d0d0d !important;
+}
+
+
 @media screen and (max-width: 30em) {
   .left-sidenav {
-    width: 40%;
+    width: 45%;
   }
 
   .right-sidenav {
-    width: 53%;
+    width: 45%;
   }
 
   .right-sidenav-toggle {
@@ -155,8 +221,10 @@ pre {
     font-size: 26px;
   }
 
+  .separator {
+    display: none;
+  }
 }
-
 .dark-theme {
   :host ::ng-deep .mat-drawer {
     color: #ECEFF1 !important;
@@ -167,85 +235,39 @@ pre {
   }
   
   :host ::ng-deep .content {
-    margin-left: 0%;
     color: #ECEFF1 !important;
     background-color: #202020 !important;
   }
   
   :host ::ng-deep .mat-form-field-flex {
-    background-color: #0d0d0d;
-    box-shadow: -5px 9px 16px 3px rgba(0, 0, 0, 0.5);
-    padding: 0 1vh;
-    border-radius: 3px;
-  }
-  
-  :host ::ng-deep .mat-form-field-infix {
-    font-size: small;
-  }
-  
-  :host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
-    top: unset !important;
-    width: 100%;
-  }
-  
-  :host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline:hover {
-    top: unset !important;
-    bottom: unset;
-    width: 100%;
-  }
-  
-  :host ::ng-deep .mat-form-field-label-wrapper {
-    top: -1.2em;
-  }
-  
-  :host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
-    padding: 1em 0em !important;
-  }
-  
-  :host ::ng-deep .mat-form-field-outline-end {
-    border: 0px !important;
-  }
-  
-  :host ::ng-deep .mat-form-field-outline-start {
-    border: 0px !important;
+    background-color: #0d0d0d88;
+    box-shadow: inset 6px 0px 20px 5px rgba(0, 0, 0, 0.5);
   }
   
   :host ::ng-deep .mat-option-text {
     color: #c0c0c0 !important;
   }
-  
-  :host ::ng-deep .mat-option-text a {
-    width: 100% !important;
-  }
+
 }
 
 /* Light Theme Styles */
 .light-theme {
-  :host ::ng-deep .background {
-    background-color: #c4c2c2 !important; /* Fine light grey */
-    color: #212121 !important; /* Soft contrast */
-    padding: 2vh;
-  }
 
   :host ::ng-deep .mat-toolbar {
     background-color: #615f5f !important;
-    padding: 15px;
   }
 
   :host ::ng-deep .flowchart-sidenav-content {
     background-color: #c4c2c2 !important;
-    padding: 15px;
   }
 
   :host ::ng-deep .left-sidenav {
-    width: 25%;
-    background-color: #94a8a8;
+    background-color: #76867ad9;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5) !important;
   }
   
   :host ::ng-deep .right-sidenav {
-    width: 40%;
-    background-color: #8d869f;
+    background-color: #7b7499;
     box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.5) !important;
   }
 
@@ -269,6 +291,8 @@ pre {
   :host ::ng-deep .mat-form-field-flex {
     background-color: #dadadaa6 !important;
     color: #171717 !important;
+    box-shadow: inset 0px 0px 4px 0px rgba(0, 0, 0, 0.5);
+
   }
 
   :host ::ng-deep .mat-list-item {
@@ -299,4 +323,6 @@ pre {
   :host ::ng-deep .material-symbols-outlined {
     filter: drop-shadow(1px -1px 0px #757572);
 }
+
+
 }

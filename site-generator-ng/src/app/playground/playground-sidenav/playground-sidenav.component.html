@@ -85,7 +85,21 @@
       matInput
       [ngModel]="agentsAsString"
       (ngModelChange)="onAgentsValueChange($event)"
-      style="height: 30vh"
+      style="height: 28vh"
     ></textarea>
   </mat-form-field>
+
+  <!--
+      <hr />
+      <div class="box">
+    <jsonforms
+      [data]="agents"
+      (dataChange)="onAgentsChange($event)"
+      [schema]="schema"
+      [uischema]="uischema"
+      [renderers]="renderers"
+      *ngIf="agents && agents.length > 0"
+    >
+    </jsonforms>
+  </div> -->
 </div>

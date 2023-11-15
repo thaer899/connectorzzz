@@ -9,6 +9,11 @@ import { DataService } from 'src/app/services/data.service';
 import { cpuUsage } from 'process';
 import { AuthService } from 'src/app/services/auth.service';
 import { ToggleService } from '../../services/toggle.service';
+import { angularMaterialRenderers } from '@jsonforms/angular-material';
+import { and, createAjv, isControl, rankWith, scopeEndsWith } from '@jsonforms/core';
+import { DataDisplayComponent } from '../../controls/data.control';
+import uischemaAsset from '../../../assets/data/playground-uischema.json';
+import schemaAsset from '../../../assets/data/playground-schema.json';
 
 interface SkillEntry {
   type: string;
@@ -46,7 +51,22 @@ export class PlaygroundSidenavComponent implements OnInit, OnDestroy {
   @Input() profile: any = {};
 
 
-
+  formData: any = {};
+  renderers = [
+    ...angularMaterialRenderers,
+    {
+      renderer: DataDisplayComponent,
+      tester: rankWith(
+        6,
+        and(
+          isControl,
+          scopeEndsWith('___data')
+        )
+      )
+    }
+  ];
+  uischema = uischemaAsset;
+  public schema = schemaAsset;
   showFiller = false;
   public loading: boolean = false;
   public users: any;
@@ -79,20 +99,7 @@ export class PlaygroundSidenavComponent implements OnInit, OnDestroy {
   public selectedAgent: any = {
     agent_name: 'AgentX',
     type: 'assistant',
-    config: {
-      "llm_config": {
-        "request_timeout": 300,
-        "seed": 40,
-        "config_list": [{ 'model': 'gpt-4-1106-preview' }],
-        "temperature": 0,
-      },
-      "code_execution_config": {
-        "work_dir": "workspace",
-        "use_docker": true,
-        "last_n_messages": 5,
-      },
-      "functions": []
-    },
+    config: this.config,
     message: 'A reliable and knowledgeable aid with a knack for problem-solving.'
   };
 
@@ -130,39 +137,13 @@ export class PlaygroundSidenavComponent implements OnInit, OnDestroy {
       this.agent = {
         agent_name: this.agentName,
         type: 'assistant',
-        config: {
-          "llm_config": {
-            "request_timeout": 300,
-            "seed": 40,
-            "config_list": [{ 'model': 'gpt-4-1106-preview' }],
-            "temperature": 0,
-          },
-          "code_execution_config": {
-            "work_dir": "workspace",
-            "use_docker": true,
-            "last_n_messages": 5,
-          },
-          "functions": []
-        },
+        config: this.config,
         message: this.agentProfile
       };
       this.user_proxy = {
         agent_name: this.userProxyName,
         type: 'user_proxy',
-        config: {
-          "llm_config": {
-            "request_timeout": 300,
-            "seed": 40,
-            "config_list": [{ 'model': 'gpt-4-1106-preview' }],
-            "temperature": 0
-          },
-          "code_execution_config": {
-            "work_dir": "workspace",
-            "use_docker": true,
-            "last_n_messages": 5,
-          },
-          "functions": []
-        },
+        config: this.config,
         message: 'A human admin. Interact with team on behalf of the user!Execute functions on behalf of other agents in group. Reply `TERMINATE` in the end when everything is done.'
       };
       this.getUserBots();
@@ -172,6 +153,13 @@ export class PlaygroundSidenavComponent implements OnInit, OnDestroy {
 
     }
   }
+
+
+  // Handle form data changes
+  onAgentsChange(event) {
+    this.formData = event;
+  }
+
 
   connectToWebSocket(): void {
     const headers = {
@@ -230,10 +218,6 @@ export class PlaygroundSidenavComponent implements OnInit, OnDestroy {
       this.connectToWebSocket();
       this.isWSConnected = true;
     }
-
-    console.log('Attempting to add agent:', agent.agent_name);
-    console.log('Current agents:', this.agents.map(ag => ag.agent_name));
-
     const agentExists = this.agents.some(ag => ag.agent_name === agent.agent_name);
     if (!agentExists) {
       let newAgent = agent;
@@ -245,7 +229,7 @@ export class PlaygroundSidenavComponent implements OnInit, OnDestroy {
     }
 
     this.snackBar.open('Added Agent', 'Close', {
-      duration: 2000,
+      duration: 1000,
     });
   }
 
@@ -304,20 +288,7 @@ export class PlaygroundSidenavComponent implements OnInit, OnDestroy {
             let profile = {
               agent_name: bot.type,
               type: 'assistant',
-              config: {
-                "llm_config": {
-                  "request_timeout": 300,
-                  "seed": 40,
-                  "config_list": [{ 'model': 'gpt-4-1106-preview' }],
-                  "temperature": 0
-                },
-                "code_execution_config": {
-                  "work_dir": "workspace",
-                  "use_docker": true,
-                  "last_n_messages": 5,
-                },
-                "functions": bot.agent_functions
-              },
+              config: this.config,
               message: bot.messages[0]?.content
             };
             userAgents = [...userAgents, profile];

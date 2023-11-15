@@ -8,6 +8,10 @@
   display:flex;
 }
 
+hr {
+  border: 1px solid #ffffff45 !important;
+}
+
 .pre li {
   display: inline-grid !important;
 }
@@ -238,13 +242,13 @@
   position: absolute;
   font-size: 4vh;
   right: 1%;
-  color: #228057 !important;
+  color: white !important;
 }
 
 .ask-agents-btn {
   position: absolute;
   top: 15%;
-  color: #228057 !important;
+  color: white !important;
   font-size: 4vh;
   right: 1%;
 }

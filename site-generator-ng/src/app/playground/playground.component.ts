@@ -26,11 +26,14 @@ export class PlaygroundComponent implements OnInit, OnDestroy {
   @ViewChild('groupsidenav') playgroundGroupSidenavComponent: PlaygroundGroupSidenavComponent;
   @ViewChild('flowchart') playgroundFlowChartComponent: PlaygroundFlowchartComponent;
 
+  @ViewChild('agentsdrawer', { read: ElementRef }) agentsdrawer: ElementRef;
   @ViewChild('groupdrawer', { read: ElementRef }) groupdrawer: ElementRef;
 
-  @ViewChild('resizeHandle', { read: ElementRef }) resizeHandle: ElementRef;
+  @ViewChild('leftresizeHandle', { read: ElementRef }) leftresizeHandle: ElementRef;
+  @ViewChild('rightresizeHandle', { read: ElementRef }) rightresizeHandle: ElementRef;
 
-  private resizing: boolean = false;
+  resizing: boolean = false;
+  resizeDirection: 'left' | 'right';
 
   events: string[] = [];
 
@@ -165,25 +168,33 @@ export class PlaygroundComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
 
   }
-  // Function to start resizing
-  @HostListener('mousedown', ['$event.target'])
-  startResizing(target: HTMLElement, event: MouseEvent): void {
-    // Make sure the mousedown event is on the resize handle
-    if (target === this.resizeHandle.nativeElement) {
+
+  @HostListener('mousedown', ['$event.target', '$event'])
+  startResizing(target: HTMLElement, event: MouseEvent, direction: 'left' | 'right'): void {
+    // Check if the target is the correct resize handle
+    const isLeftHandle = target === this.leftresizeHandle.nativeElement;
+    const isRightHandle = target === this.rightresizeHandle.nativeElement;
+
+    if ((direction === 'left' && isLeftHandle) || (direction === 'right' && isRightHandle)) {
       event.preventDefault();
       this.resizing = true;
+      this.resizeDirection = direction;
     }
   }
 
-  // Function to resize the drawer
   @HostListener('document:mousemove', ['$event'])
   onMouseMove(event: MouseEvent): void {
     if (this.resizing) {
-      // Calculate the new width based on the mouse position
-      const newWidth = window.innerWidth - event.clientX;
-
-      // Set the width of the drawer
-      this.groupdrawer.nativeElement.style.width = `${newWidth}px`;
+      let newWidth;
+      if (this.resizeDirection === 'right') {
+        // Calculate new width for right resizing (groupdrawer)
+        newWidth = window.innerWidth - event.clientX;
+        this.groupdrawer.nativeElement.style.width = `${newWidth}px`;
+      } else if (this.resizeDirection === 'left') {
+        // Calculate new width for left resizing (agentsdrawer)
+        newWidth = event.clientX;
+        this.agentsdrawer.nativeElement.style.width = `${newWidth}px`;
+      }
     }
   }
 
@@ -192,6 +203,7 @@ export class PlaygroundComponent implements OnInit, OnDestroy {
   onMouseUp(): void {
     this.resizing = false;
   }
+
 
   toggleTheme(): void {
     this.renderer.removeClass(document.body, this.currentTheme + '-theme');
