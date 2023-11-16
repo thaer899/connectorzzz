@@ -116,6 +116,10 @@
 }
 
 .dark-theme {
+  :host ::ng-deep .mat-card {
+    background-color: #42424261 !important;
+  }
+
   :host ::ng-deep .mat-drawer {
     color: #ECEFF1 !important;
   }

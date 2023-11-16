@@ -429,10 +429,6 @@
                       "label": "Location"
                     },
                     {
-                      "type": "Label",
-                      "text": "Code"
-                    },
-                    {
                       "type": "Control",
                       "scope": "#/___code"
                     }
