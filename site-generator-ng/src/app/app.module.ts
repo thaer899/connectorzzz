@@ -46,6 +46,8 @@ import { PlaygroundComponent } from './playground/playground.component';
 import { PlaygroundSidenavComponent } from './playground/playground-sidenav/playground-sidenav.component';
 import { PlaygroundGroupSidenavComponent } from './playground/playground-group-sidenav/playground-group-sidenav.component';
 import { PlaygroundFlowchartComponent } from './playground/playground-flowchart/playground-flowchart.component';
+import { MonacoEditorModule } from 'ngx-monaco-editor';
+import { CodeComponent } from './controls/code.control';
 
 @NgModule({
   declarations: [
@@ -74,7 +76,8 @@ import { PlaygroundFlowchartComponent } from './playground/playground-flowchart/
     FlowchartComponent,
     GroupSidenavComponent,
     AccountSetupComponent,
-    MarkdownPipe
+    MarkdownPipe,
+    CodeComponent
   ],
   imports: [
     MatInputModule,
@@ -95,6 +98,7 @@ import { PlaygroundFlowchartComponent } from './playground/playground-flowchart/
     provideAuth(() => getAuth()),
     AppRoutingModule,
     NgxEchartsModule.forRoot({ echarts }),
+    MonacoEditorModule.forRoot()
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   entryComponents: [CustomAutocompleteControlRenderer, LangComponent, DataDisplayComponent],

@@ -17,6 +17,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { UsernameComponent } from '../controls/username.control';
 import { DOCUMENT } from '@angular/common';
+import { CodeComponent } from '../controls/code.control';
 
 
 
@@ -72,6 +73,16 @@ export class AdminComponent {
         and(
           isControl,
           scopeEndsWith('___blog')
+        )
+      )
+    },
+    {
+      renderer: CodeComponent,
+      tester: rankWith(
+        6,
+        and(
+          isControl,
+          scopeEndsWith('___code')
         )
       )
     },

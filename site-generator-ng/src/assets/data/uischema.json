@@ -427,6 +427,14 @@
                       "type": "Control",
                       "scope": "#/properties/location",
                       "label": "Location"
+                    },
+                    {
+                      "type": "Label",
+                      "text": "Code"
+                    },
+                    {
+                      "type": "Control",
+                      "scope": "#/___code"
                     }
                   ]
                 }
