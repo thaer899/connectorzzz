@@ -1,5 +1,7 @@
 import os
+import time
 import requests
+from src.db import read_profile
 from src.agents.tools.driver_manager import DriverManager
 from src.config import GITHUB_TOKEN
 from selenium.webdriver.support.ui import WebDriverWait
@@ -38,14 +40,12 @@ def spr_reader(data):
         return "File not found or empty"
 
 
-def get_user_profile(username, email):
-    # Implement the logic to fetch user profile
-    # For demonstration, returning a mock profile
-    return {
-        "username": username,
-        "email": email,
-        "profile": "User profile information"
-    }
+async def get_user_profile(email, username=None):
+    profile = await read_profile(email)
+    if profile:
+        return profile
+    else:
+        return {"message": "Profile not found"}
 
 
 @contextmanager
@@ -55,23 +55,14 @@ def get_driver_context(local=False):
     try:
         yield driver_instance
     finally:
-        driver_manager.close_driver(driver_instance)
+        print("Running driver")
 
 
 def browse_web(url):
     try:
         with get_driver_context(local=SELENIULM_LOCAL) as driver:
             driver.get(url)
-
-            # Wait for the body of the page to be loaded
-            WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.TAG_NAME, "body")))
-
-            # Find the main content div and get its text
-            main_content = driver.find_element(By.ID, "content")
-            main_text = main_content.text
-
-            return main_text
+            return f'${url} opened successfully'
     except Exception as e:
         return f"Error accessing {url}: {e}"
 

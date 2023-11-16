@@ -1,15 +1,24 @@
 import importlib
 import json
 import os
+import asyncio
+import inspect
+
+
+def sync_wrapper(async_func):
+    def wrapper(*args, **kwargs):
+        return asyncio.run(async_func(*args, **kwargs))
+    return wrapper
 
 
 def dynamic_import_function(module_name, function_name):
     try:
-        # Import the module
         module = importlib.import_module(module_name)
-        return getattr(module, function_name)
+        func = getattr(module, function_name)
+        if inspect.iscoroutinefunction(func):
+            return sync_wrapper(func)
+        return func
     except (ImportError, AttributeError) as e:
-        # Handle the error or return None if the function cannot be imported
         print(f"Error importing {function_name} from {module_name}: {e}")
         return None
 

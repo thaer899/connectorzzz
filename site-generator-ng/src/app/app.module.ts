@@ -48,6 +48,7 @@ import { PlaygroundGroupSidenavComponent } from './playground/playground-group-s
 import { PlaygroundFlowchartComponent } from './playground/playground-flowchart/playground-flowchart.component';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
 import { CodeComponent } from './controls/code.control';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [
@@ -92,6 +93,7 @@ import { CodeComponent } from './controls/code.control';
     MatProgressSpinnerModule,
     HttpClientModule,
     MatSelectModule,
+    MatButtonToggleModule,
     MatTooltipModule,
     MatSnackBarModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),

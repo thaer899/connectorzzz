@@ -421,12 +421,16 @@
                     },
                     {
                       "type": "Label",
-                      "text": "File Location"
+                      "text": "Code Location"
                     },
                     {
                       "type": "Control",
                       "scope": "#/properties/location",
                       "label": "Location"
+                    },
+                    {
+                      "type": "Label",
+                      "text": "Code"
                     },
                     {
                       "type": "Control",

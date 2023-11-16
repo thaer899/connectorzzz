@@ -15,3 +15,7 @@ yarl>=1.9.2
 IPython
 selenium
 pytest
+sqlalchemy
+databases[postgresql] 
+asyncpg
+pydantic[email]

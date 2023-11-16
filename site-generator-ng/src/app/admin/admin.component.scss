@@ -113,9 +113,16 @@
 
 :host ::ng-deep .mat-tab-group {
   padding: 2vh !important;
+  min-height: 90vh;
 }
 
+
 .dark-theme {
+
+  body {
+    background-color: #42424261 !important;
+  }
+
   :host ::ng-deep .mat-card {
     background-color: #42424261 !important;
   }
@@ -135,7 +142,7 @@
   
   :host ::ng-deep .mat-form-field-flex {
     background-color: #0d0d0d;
-    box-shadow: -5px 9px 16px 3px rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0px -1px 1px 2px rgb(68 68 68 / 50%);
     padding: 0 1vh;
     border-radius: 3px;
   }

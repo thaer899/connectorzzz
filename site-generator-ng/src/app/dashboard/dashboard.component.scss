@@ -1,0 +1,83 @@
+@import '../../assets/scss/custom-theme.scss';
+
+
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0px;
+}
+
+
+.toolbar {
+  min-height: 15vh !important;
+  color: #ECEFF1;
+  border-bottom: 1px solid #565656;
+  position: fixed;
+  position: -webkit-sticky;
+  bottom: 0 !important;
+  right: 2px !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+
+.spin {
+  display: flex;
+  justify-content: center;
+  color: #333131
+}
+
+
+.full-width {
+  width: 100%;
+  margin-top: 2vh;
+  background-color: #212121 !important;
+  font-size: small;
+}
+
+
+.boss {
+  background-color: #4e4444;
+  padding: 20px;
+}
+
+.boss-assistant {
+  background-color: #604c4c;
+  padding: 20px;
+
+}
+
+.senior-python-engineer {
+  background-color: #444e57;
+  padding: 20px;
+
+}
+
+.product-manager {
+  background-color: #394f41;
+  padding: 20px;
+
+}
+
+.code-reviewer {
+  background-color: #765e64;
+  padding: 20px;
+
+}
+
+.card {
+  color: white !important;
+  padding: 20px;
+  margin: 10px;
+  overflow-y: auto;
+  max-height: 70vh;
+}
+
+
+
+@media screen and (max-width: 30em) {
+  .mat-card {
+    width: 83% !important;
+    left: 0vh !important;
+  }
+}

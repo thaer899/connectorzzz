@@ -207,6 +207,7 @@ export class AdminComponent {
     // this.getUsers();
     this.showContent = true;
     this.cdRef.detectChanges();
+    console.log('hello admin')
   }
 
 

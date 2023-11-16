@@ -3,14 +3,17 @@ from multiprocessing import Manager
 import queue
 import uuid
 import logging
+from fastapi.responses import JSONResponse
 from fastapi.websockets import WebSocketState
 import openai
+from pydantic import EmailStr
 import uvicorn
-from fastapi import FastAPI, WebSocket, HTTPException, Header
+from fastapi import FastAPI, Request, WebSocket, HTTPException, Header, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.websockets import WebSocketDisconnect
 from src.config import API_KEY, OPENAI_API_KEY
 from src.chat import setup_agent, group_chat
+from src.db import create_profile, read_profile, update_profile, delete_profile
 
 openai.api_key = OPENAI_API_KEY
 
@@ -104,6 +107,30 @@ async def websocket_endpoint(websocket: WebSocket, chat_id: str):
                 break
             else:
                 raise e
+
+
+@app.api_route("/agentflow/profiles/{email}", methods=["GET", "POST", "PUT", "DELETE"])
+async def profile_handler(request: Request, email: EmailStr = None):
+    if request.method == "POST":
+        data = await request.json()
+        await create_profile(email, data)
+        return {"message": "Profile created successfully"}
+
+    if request.method == "GET":
+        profile = await read_profile(email)
+        if profile:
+            return profile
+        else:
+            return {"message": "Profile not found"}
+
+    if request.method == "PUT":
+        data = await request.json()
+        await update_profile(email, data)
+        return {"message": "Profile updated successfully"}
+
+    if request.method == "DELETE":
+        await delete_profile(email)
+        return {"message": "Profile deleted successfully"}
 
 if __name__ == "__main__":
     manager = Manager()
