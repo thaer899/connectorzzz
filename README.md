@@ -142,3 +142,9 @@ A collection of utility tools and libraries enhancing development and operationa
     +---myresume-ai
     |   \---src
 ```
+
+### Running the project
+
+```bash
+Install "Auto Run Command" extension in VSCode
+```

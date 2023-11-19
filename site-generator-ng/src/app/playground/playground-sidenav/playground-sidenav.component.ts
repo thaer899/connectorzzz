@@ -83,7 +83,6 @@ export class PlaygroundSidenavComponent implements OnInit, OnDestroy {
 
   public config = {
     "llm_config": {
-      "request_timeout": 300,
       "seed": 40,
       "config_list": [{ 'model': 'gpt-4-1106-preview' }],
       "temperature": 0,

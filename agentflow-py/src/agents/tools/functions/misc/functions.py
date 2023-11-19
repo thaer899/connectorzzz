@@ -1,5 +1,3 @@
-import os
-import time
 import requests
 from src.db import read_profile
 from src.agents.tools.driver_manager import DriverManager
@@ -9,35 +7,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from contextlib import contextmanager
 from src.config import SELENIULM_LOCAL
-
-
-def read_file(file_path):
-    if os.path.exists(file_path):
-        with open(file_path, 'r') as file:
-            return file.read()
-    else:
-        return None
-
-
-def spr_writer(data):
-    file_path = os.path.join(os.path.dirname(__file__), 'data/system.md')
-    content = read_file(file_path)
-    if content:
-        # Process the content to create an SPR
-        spr = f"{content}\n\n{data}"
-        return spr
-    else:
-        return "File not found or empty"
-
-
-def spr_reader(data):
-    file_path = os.path.join(os.path.dirname(__file__), 'data/unpack.md')
-    content = read_file(file_path)
-    if content:
-        spr = f"{content}\n\n{data}"
-        return spr
-    else:
-        return "File not found or empty"
 
 
 async def get_user_profile(email, username=None):

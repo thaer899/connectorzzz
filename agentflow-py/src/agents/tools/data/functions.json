@@ -205,44 +205,6 @@
     "location": "procurement.requestor"
   },
   {
-    "name": "spr_writer",
-    "description": "Creates an SPR by combining provided data with content from a predefined markdown file, effectively compressing the input data into a more succinct representation.",
-    "parameters": {
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "string",
-          "description": "Input data to be transformed into an SPR."
-        }
-      },
-      "required": ["data"]
-    },
-    "return": {
-      "type": "string",
-      "description": "A compressed Sparse Priming Representation of the provided data."
-    },
-    "location": "misc.functions"
-  },
-  {
-    "name": "spr_reader",
-    "description": "Expands an SPR back into a more detailed form by combining it with predefined markdown content, effectively decompressing the SPR data.",
-    "parameters": {
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "string",
-          "description": "SPR data to be expanded into detailed content."
-        }
-      },
-      "required": ["data"]
-    },
-    "return": {
-      "type": "string",
-      "description": "Decompressed content derived from the provided SPR."
-    },
-    "location": "misc.functions"
-  },
-  {
     "name": "get_user_profile",
     "description": "Retrieve a user's profile using username or email",
     "parameters": {
@@ -304,5 +266,207 @@
       "description": "The status of the invoked pipeline"
     },
     "location": "misc.functions"
+  },
+  {
+    "name": "spr_writer",
+    "description": "Creates an SPR by combining provided data with content from a predefined markdown file, effectively compressing the input data into a more succinct representation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "string",
+          "description": "Input data to be transformed into an SPR."
+        }
+      },
+      "required": ["data"]
+    },
+    "return": {
+      "type": "string",
+      "description": "A compressed Sparse Priming Representation of the provided data."
+    },
+    "location": "misc.files"
+  },
+  {
+    "name": "spr_reader",
+    "description": "Expands an SPR back into a more detailed form by combining it with predefined markdown content, effectively decompressing the SPR data.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "string",
+          "description": "SPR data to be expanded into detailed content."
+        }
+      },
+      "required": ["data"]
+    },
+    "return": {
+      "type": "string",
+      "description": "Decompressed content derived from the provided SPR."
+    },
+    "location": "misc.files"
+  },
+  {
+    "name": "write_file",
+    "description": "Writes data to a specified file within the 'misc' directory.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "file_name": {
+          "type": "string",
+          "description": "The path of the file to write to."
+        },
+        "data": {
+          "type": "string",
+          "description": "The data to be written into the file."
+        }
+      },
+      "required": ["file_path", "data"]
+    },
+    "return": {
+      "type": "string",
+      "description": "Returns file_path for further processing."
+    },
+    "location": "misc.files"
+  },
+  {
+    "name": "execute_file",
+    "description": "Executes a Python script located at the given file path.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "file_path": {
+          "type": "string",
+          "description": "The path of the Python script to execute."
+        }
+      },
+      "required": ["file_path"]
+    },
+    "return": {
+      "type": "object",
+      "description": "Outputs the result of the script execution, including stdout and stderr."
+    },
+    "location": "misc.files"
+  },
+  {
+    "name": "read_doc",
+    "description": "Reads the content of a specified documentation file.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "file_name": {
+          "type": "string",
+          "description": "The name of the documentation file to be read."
+        }
+      },
+      "required": ["file_name"]
+    },
+    "return": {
+      "type": "object",
+      "description": "The content of the documentation file or null if the file does not exist."
+    },
+    "location": "misc.files"
+  },
+  {
+    "name": "get_files",
+    "description": "Retrieves a list of markdown files from a specified directory path.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "description": "The directory path to search for markdown files."
+        }
+      },
+      "required": ["path"]
+    },
+    "return": {
+      "type": "object",
+      "description": "A list of file paths for markdown files found within the specified directory."
+    },
+    "location": "misc.files"
+  },
+  {
+    "name": "create_file",
+    "description": "Creates a new file entry in the database with the provided data.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The unique identifier of the file."
+        },
+        "data": {
+          "type": "object",
+          "description": "The data to store for the file."
+        }
+      },
+      "required": ["id", "data"]
+    },
+    "return": {
+      "type": "object",
+      "description": "A confirmation of the file creation."
+    },
+    "location": "misc.db"
+  },
+  {
+    "name": "read_file",
+    "description": "Reads the data of a file from the database using the file's unique identifier.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The unique identifier of the file to retrieve."
+        }
+      },
+      "required": ["id"]
+    },
+    "return": {
+      "type": "object",
+      "description": "The data associated with the file, if found."
+    },
+    "location": "misc.db"
+  },
+  {
+    "name": "update_file",
+    "description": "Updates the data for an existing file in the database.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The unique identifier of the file to update."
+        },
+        "data": {
+          "type": "object",
+          "description": "The new data for the file."
+        }
+      },
+      "required": ["id", "data"]
+    },
+    "return": {
+      "type": "object",
+      "description": "A confirmation of the file update."
+    },
+    "location": "misc.db"
+  },
+  {
+    "name": "delete_file",
+    "description": "Deletes a file from the database using the file's unique identifier.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The unique identifier of the file to delete."
+        }
+      },
+      "required": ["id"]
+    },
+    "return": {
+      "type": "object",
+      "description": "A confirmation of the file deletion."
+    },
+    "location": "misc.db"
   }
 ]

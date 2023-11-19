@@ -22,13 +22,13 @@
         </button>
       </div>
     </form>
-    <div
-      class="spinner-border text-secondary center"
-      role="status"
-      *ngIf="!available"
-    >
-      <span class="sr-only">Loading...</span>
-    </div>
+      <div
+        class="spinner-border text-secondary center"
+        role="status"
+        *ngIf="!available"
+      >
+        <span class="sr-only">Loading...</span>
+      </div>
     <br />
     <div class="frame-box">
       <div class="card-body" *ngIf="available && !recipientMessage">

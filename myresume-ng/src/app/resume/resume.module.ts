@@ -15,7 +15,8 @@ import { SidenavComponent } from './shared/sidenav/sidenav.component';
 import { SkillComponent } from './skills/skill/skill.component';
 import { BlogComponent } from './blogs/blog/blog.component';
 import { BlogsComponent } from './blogs/blogs.component'
-import { ContactBoxComponent } from './shared/contact-box/contact-box.component'
+import { ContactBoxComponent } from './shared/contact-box/contact-box.component';
+import { PrivacyComponent } from './privacy/privacy.component'
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import { ContactBoxComponent } from './shared/contact-box/contact-box.component'
     SidenavComponent,
     SkillComponent,
     BlogComponent,
-    BlogsComponent],
+    BlogsComponent,
+    PrivacyComponent],
   exports: [SidenavComponent]
 
 }

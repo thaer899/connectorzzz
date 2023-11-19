@@ -24,24 +24,28 @@ def dynamic_import_function(module_name, function_name):
 
 
 def get_functions(function_names=None):
-    # Define the file path
     file_path = os.path.join(os.path.dirname(__file__), 'data/functions.json')
 
-    # Check if the file exists
     if not os.path.exists(file_path):
         print("Functions file not found.")
         return []
 
     try:
-        # Open and parse the JSON file
         with open(file_path, 'r') as file:
             functions = json.load(file)
 
-        # Filter and return the functions
+        # Debugging - print the structure of 'functions'
+        print("Loaded functions:", functions)
+
         if function_names:
-            return [func for func in functions if func["name"] in function_names]
+            # Ensure 'functions' is a list and each element is a dictionary
+            if isinstance(functions, list) and all(isinstance(func, dict) for func in functions):
+                return [func for func in functions if func.get("name") in function_names]
+            else:
+                print("Incorrect format of functions data")
+                return []
         else:
-            return functions  # Return all functions if no specific names are provided
+            return functions
 
     except json.JSONDecodeError as e:
         print(f"Error parsing JSON from functions file: {e}")
