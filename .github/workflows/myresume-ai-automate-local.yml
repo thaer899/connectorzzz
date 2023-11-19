@@ -1,4 +1,4 @@
-name: myresume-ai-automate
+name: myresume-ai-automate-local
 run-name: ${{ (github.event_name == 'push') && 'auto' || '' }}${{ github.event.inputs.app }}${{ (github.event_name == 'workflow_dispatch') && '-' || '' }}${{github.event.inputs.job}}${{ (github.event.inputs.common == 'true') && '-with-common' || '' }}-${{ github.run_number }}
 
 on:
