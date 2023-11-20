@@ -49,6 +49,7 @@ async def get_chat_id(apiKey: str = Header(None)):
 
 @app.websocket("/agentflow/ws/{chat_id}")
 async def websocket_endpoint(websocket: WebSocket, chat_id: str):
+    active_chats[chat_id] = websocket
     logging.info('Starting websocket server.')
     await websocket.accept()
 
@@ -107,6 +108,29 @@ async def websocket_endpoint(websocket: WebSocket, chat_id: str):
                 break
             else:
                 raise e
+
+    del active_chats[chat_id]
+
+
+@app.post("/agentflow/send_message/{chat_id}")
+async def send_message(request: Request, chat_id: str, apiKey: str = Header(None)):
+    if apiKey != API_KEY:
+        raise HTTPException(status_code=403, detail="Invalid API key")
+
+    print(active_chats)
+    print(chat_id)
+    if chat_id not in active_chats:
+        return JSONResponse(status_code=404, content={"message": "Chat session not found"})
+
+    data = await request.json()
+    message = data.get("message")
+
+    websocket = active_chats[chat_id]
+    if websocket.client_state == WebSocketState.CONNECTED:
+        await websocket.send_json({"message": message})
+        return {"message": "Message sent successfully"}
+    else:
+        return JSONResponse(status_code=410, content={"message": "WebSocket is not connected"})
 
 
 @app.api_route("/agentflow/profiles/{email}", methods=["GET", "POST", "PUT", "DELETE"])

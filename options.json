@@ -1,0 +1,330 @@
+openapi: 3.0.0
+info:
+  title: MongoDB Data API
+  description: Provides REST-like access to MongoDB Atlas. Full documentation at [MongoDB Data API Resources](https://docs.atlas.mongodb.com/api/data-api-resources/#data-api-resources).
+  version: 1.0.0
+servers:
+  - url: https://eu-central-1.aws.data.mongodb-api.com/app/data-aacow/endpoint/data/v1
+paths:
+  /action/findOne:
+    post:
+      tags:
+        - default
+      summary: Find Document
+      description: Retrieves a single document from a collection based on the provided filter criteria.
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: |-
+                {
+                  "dataSource": "Cluster0",
+                  "database": "agentflow",
+                  "collection": "profiles",
+                  "filter": { "name": "John Doe" }
+                }
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Access-Control-Request-Headers
+          in: header
+          schema:
+            type: string
+          example: '*'
+        - name: api-key
+          in: header
+          required: true
+          schema:
+            type: string
+          example: your_actual_api_key_here
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /action/updateOne:
+    post:
+      tags:
+        - default
+      summary: Update Document
+      description: Updates a single document in a collection that matches the given filter criteria.
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: |-
+                {
+                  "dataSource": "Cluster0",
+                  "database": "agentflow",
+                  "collection": "profiles",
+                  "filter": { "name": "John Doe" },
+                  "update": { "$set": { "age": 35 } }
+                }
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Access-Control-Request-Headers
+          in: header
+          schema:
+            type: string
+          example: '*'
+        - name: api-key
+          in: header
+          required: true
+          schema:
+            type: string
+          example: your_actual_api_key_here
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /action/deleteOne:
+    post:
+      tags:
+        - default
+      summary: Delete Document
+      description: Deletes a single document from a collection that matches the provided filter criteria.
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: |-
+                {
+                  "dataSource": "Cluster0",
+                  "database": "agentflow",
+                  "collection": "profiles",
+                  "filter": { "name": "John Doe" }
+                }
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Access-Control-Request-Headers
+          in: header
+          schema:
+            type: string
+          example: '*'
+        - name: api-key
+          in: header
+          required: true
+          schema:
+            type: string
+          example: your_actual_api_key_here
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /action/insertMany:
+    post:
+      tags:
+        - default
+      summary: Insert Multiple Documents
+      description: Adds multiple documents to a specified collection.
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: |-
+                {
+                  "dataSource": "Cluster0",
+                  "database": "agentflow",
+                  "collection": "profiles",
+                  "documents": [{ "name": "Alice", "age": 28 }, { "name": "Bob", "age": 32 }]
+                }
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Access-Control-Request-Headers
+          in: header
+          schema:
+            type: string
+          example: '*'
+        - name: api-key
+          in: header
+          required: true
+          schema:
+            type: string
+          example: your_actual_api_key_here
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /action/find:
+    post:
+      tags:
+        - default
+      summary: Find Multiple Documents
+      description: Fetches multiple documents from a collection based on the provided filter criteria.
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: |-
+                {
+                  "dataSource": "Cluster0",
+                  "database": "agentflow",
+                  "collection": "profiles",
+                  "filter": {}
+                }
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Access-Control-Request-Headers
+          in: header
+          schema:
+            type: string
+          example: '*'
+        - name: api-key
+          in: header
+          required: true
+          schema:
+            type: string
+          example: your_actual_api_key_here
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /action/updateMany:
+    post:
+      tags:
+        - default
+      summary: Update Multiple Documents
+      description: Updates all documents in a collection that match the given filter criteria.
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: |-
+                {
+                  "dataSource": "Cluster0",
+                  "database": "agentflow",
+                  "collection": "profiles",
+                  "filter": { "age": { "$gt": 30 } },
+                  "update": { "$set": { "category": "senior" } }
+                }
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Access-Control-Request-Headers
+          in: header
+          schema:
+            type: string
+          example: '*'
+        - name: api-key
+          in: header
+          required: true
+          schema:
+            type: string
+          example: your_actual_api_key_here
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /action/deleteMany:
+    post:
+      tags:
+        - default
+      summary: Delete Many Documents
+      description: Deletes multiple documents from a collection that match the provided filter criteria.
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: |-
+                {
+                  "dataSource": "Cluster0",
+                  "database": "agentflow",
+                  "collection": "profiles",
+                  "filter": { "status": "inactive" }
+                }
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Access-Control-Request-Headers
+          in: header
+          schema:
+            type: string
+          example: '*'
+        - name: api-key
+          in: header
+          required: true
+          schema:
+            type: string
+          example: your_actual_api_key_here
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /action/aggregate:
+    post:
+      tags:
+        - default
+      summary: Run Aggregation Pipeline
+      description: Executes an aggregation pipeline on a collection.
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: |-
+                {
+                  "dataSource": "Cluster0",
+                  "database": "agentflow",
+                  "collection": "profiles",
+                  "pipeline": [{ "$match": { "age": { "$gt": 25 } } }, { "$group": { "_id": "$age", "total": { "$sum": 1 } } }]
+                }
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Access-Control-Request-Headers
+          in: header
+          schema:
+            type: string
+          example: '*'
+        - name: api-key
+          in: header
+          required: true
+          schema:
+            type: string
+          example: your_actual_api_key_here
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}

@@ -1,0 +1,183 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "MongoDB Data API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://eu-central-1.aws.data.mongodb-api.com/app/data-aacow/endpoint/data/v1"
+    }
+  ],
+  "paths": {
+    "/action/findOne": {
+      "post": {
+        "tags": ["default"],
+        "summary": "Find Document",
+        "operationId": "action_findOne",
+        "parameters": [
+          {
+            "name": "api-key",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "Apikey" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "dataSource": { "type": "string" },
+                  "database": { "type": "string" },
+                  "collection": { "type": "string" },
+                  "filter": { "type": "object" }
+                },
+                "required": ["dataSource", "database", "collection", "filter"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": { "schema": {} }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/action/insertOne": {
+      "post": {
+        "tags": ["default"],
+        "summary": "Insert Document",
+        "operationId": "action_insertOne",
+        "parameters": [
+          {
+            "name": "api-key",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "Apikey" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "dataSource": { "type": "string" },
+                  "database": { "type": "string" },
+                  "collection": { "type": "string" },
+                  "document": { "type": "object" }
+                },
+                "required": ["dataSource", "database", "collection", "document"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": { "schema": {} }
+            }
+          }
+        }
+      }
+    },
+    "/action/updateOne": {
+      "post": {
+        "tags": ["default"],
+        "summary": "Update Document",
+        "operationId": "action_updateOne"
+        /* UpdateOne specification based on Postman collection */
+      }
+    },
+    "/action/deleteOne": {
+      "post": {
+        "tags": ["default"],
+        "summary": "Delete Document",
+        "operationId": "action_deleteOne"
+        /* DeleteOne specification based on Postman collection */
+      }
+    },
+    "/action/insertMany": {
+      "post": {
+        "tags": ["default"],
+        "summary": "Insert Multiple Documents",
+        "operationId": "action_insertMany"
+        /* InsertMany specification based on Postman collection */
+      }
+    },
+    "/action/find": {
+      "post": {
+        "tags": ["default"],
+        "summary": "Find Multiple Documents",
+        "operationId": "action_find"
+        /* Find specification based on Postman collection */
+      }
+    },
+    "/action/updateMany": {
+      "post": {
+        "tags": ["default"],
+        "summary": "Update Multiple Documents",
+        "operationId": "action_updateMany"
+        /* UpdateMany specification based on Postman collection */
+      }
+    },
+    "/action/deleteMany": {
+      "post": {
+        "tags": ["default"],
+        "summary": "Delete Many Documents",
+        "operationId": "action_deleteMany"
+        /* DeleteMany specification based on Postman collection */
+      }
+    },
+    "/action/aggregate": {
+      "post": {
+        "tags": ["default"],
+        "summary": "Run Aggregation Pipeline",
+        "operationId": "action_aggregate"
+        /* Aggregate specification based on Postman collection */
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "HTTPValidationError": {
+        "type": "object",
+        "properties": {
+          "detail": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/ValidationError" }
+          }
+        }
+      },
+      "ValidationError": {
+        "type": "object",
+        "required": ["loc", "msg", "type"],
+        "properties": {
+          "loc": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "msg": { "type": "string" },
+          "type": { "type": "string" }
+        }
+      }
+    }
+  }
+}
