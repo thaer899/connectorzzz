@@ -3,6 +3,7 @@ from multiprocessing import Manager
 import queue
 import uuid
 import logging
+from fastapi import websockets
 from fastapi.responses import JSONResponse
 from fastapi.websockets import WebSocketState
 import openai
@@ -45,6 +46,13 @@ async def get_chat_id(apiKey: str = Header(None)):
 
     chat_id = str(uuid.uuid1())
     return {"chat_id": chat_id}
+
+
+@app.get("/agentflow/get_gpt_chat_id")
+async def get_gpt_chat_id():
+    async with websockets.connect("wss://console.thaersaidi.net/playground") as websocket:
+        chat_id = await websocket.recv()
+        return chat_id
 
 
 @app.websocket("/agentflow/ws/{chat_id}")
@@ -155,6 +163,8 @@ async def profile_handler(request: Request, email: EmailStr = None):
     if request.method == "DELETE":
         await delete_profile(email)
         return {"message": "Profile deleted successfully"}
+
+asyncio.run(get_gpt_chat_id())
 
 if __name__ == "__main__":
     manager = Manager()
