@@ -1,0 +1,2365 @@
+{
+  "data": {
+    "artistUnion": {
+      "__typename": "Artist",
+      "discography": {
+        "all": {
+          "totalCount": 85,
+          "items": [
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "6GMy1L0OFXE5UXY5scYimM",
+                    "uri": "spotify:album:6GMy1L0OFXE5UXY5scYimM",
+                    "name": "Trafiquant",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2023,
+                      "isoString": "2023-11-16T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e0211e064f75a79be8dec0fdd35",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000485111e064f75a79be8dec0fdd35",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b27311e064f75a79be8dec0fdd35",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "v62GndVFQHu9lgpPbIfjZA",
+                      "shareUrl": "https://open.spotify.com/album/6GMy1L0OFXE5UXY5scYimM?si=v62GndVFQHu9lgpPbIfjZA"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "4LLuFmgxTuPkb5kRj7fSgg",
+                    "uri": "spotify:album:4LLuFmgxTuPkb5kRj7fSgg",
+                    "name": "Hamdoulah",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2023,
+                      "isoString": "2023-11-13T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e02d8c1e6ca2b0e25aa94ed571d",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00004851d8c1e6ca2b0e25aa94ed571d",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b273d8c1e6ca2b0e25aa94ed571d",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "E7KEMK0DTiyCTbGi3m_9BQ",
+                      "shareUrl": "https://open.spotify.com/album/4LLuFmgxTuPkb5kRj7fSgg?si=E7KEMK0DTiyCTbGi3m_9BQ"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "25S67q8KdIfyhyY7XshQpT",
+                    "uri": "spotify:album:25S67q8KdIfyhyY7XshQpT",
+                    "name": "Samahni Omi",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2023,
+                      "isoString": "2023-11-06T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e0279c3418eec40849ce9d318e5",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000485179c3418eec40849ce9d318e5",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b27379c3418eec40849ce9d318e5",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "_sdZpS-BQAeL65VnFb8JOw",
+                      "shareUrl": "https://open.spotify.com/album/25S67q8KdIfyhyY7XshQpT?si=_sdZpS-BQAeL65VnFb8JOw"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "0Hi4FWW786Mag0k5mcefXC",
+                    "uri": "spotify:album:0Hi4FWW786Mag0k5mcefXC",
+                    "name": "Vélo",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2023,
+                      "isoString": "2023-11-05T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e02535306c0ca774dc3ded65f82",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00004851535306c0ca774dc3ded65f82",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b273535306c0ca774dc3ded65f82",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "2rGgWbm4TRaKGK6Ub2QuzA",
+                      "shareUrl": "https://open.spotify.com/album/0Hi4FWW786Mag0k5mcefXC?si=2rGgWbm4TRaKGK6Ub2QuzA"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "1iX685tvAi7znl63yUvbdW",
+                    "uri": "spotify:album:1iX685tvAi7znl63yUvbdW",
+                    "name": "Black Diamond",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2023,
+                      "isoString": "2023-10-14T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e02700dbdd42ce9a261d493ee36",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00004851700dbdd42ce9a261d493ee36",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b273700dbdd42ce9a261d493ee36",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "tN0SZdvCRQ2rvLWXR1319w",
+                      "shareUrl": "https://open.spotify.com/album/1iX685tvAi7znl63yUvbdW?si=tN0SZdvCRQ2rvLWXR1319w"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "3nQyJKflMMrLQtNfNno51B",
+                    "uri": "spotify:album:3nQyJKflMMrLQtNfNno51B",
+                    "name": "CONNEXION (feat. Samara, Izi & AbSynapse)",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2023,
+                      "isoString": "2023-10-13T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e02515507be28e2845da422fb36",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00004851515507be28e2845da422fb36",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b273515507be28e2845da422fb36",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "pnnOpr4BT_mn7hxPBRrrfQ",
+                      "shareUrl": "https://open.spotify.com/album/3nQyJKflMMrLQtNfNno51B?si=pnnOpr4BT_mn7hxPBRrrfQ"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "0SpWrOW8gNuhK7IATRva1d",
+                    "uri": "spotify:album:0SpWrOW8gNuhK7IATRva1d",
+                    "name": "Ena",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2023,
+                      "isoString": "2023-10-05T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e02f62d806a4b811edbe5d8d1c7",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00004851f62d806a4b811edbe5d8d1c7",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b273f62d806a4b811edbe5d8d1c7",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "aTcGE3x1QNSmPGhiXqPe8A",
+                      "shareUrl": "https://open.spotify.com/album/0SpWrOW8gNuhK7IATRva1d?si=aTcGE3x1QNSmPGhiXqPe8A"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "7gW3D75MWJcy1PJCUBaoAK",
+                    "uri": "spotify:album:7gW3D75MWJcy1PJCUBaoAK",
+                    "name": "Dhekrayet",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2023,
+                      "isoString": "2023-09-30T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e02897e7394c6bcc19949794f15",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00004851897e7394c6bcc19949794f15",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b273897e7394c6bcc19949794f15",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "cELwTWiVT7egLpY5aNSaPQ",
+                      "shareUrl": "https://open.spotify.com/album/7gW3D75MWJcy1PJCUBaoAK?si=cELwTWiVT7egLpY5aNSaPQ"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "4I1O3sdr5oeZfiHOTl9tK6",
+                    "uri": "spotify:album:4I1O3sdr5oeZfiHOTl9tK6",
+                    "name": "Haram",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2023,
+                      "isoString": "2023-09-17T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e0237d061b5421b4cffc2fc37a9",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000485137d061b5421b4cffc2fc37a9",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b27337d061b5421b4cffc2fc37a9",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "SPoeiQfaRRmy1-2gbkkAnQ",
+                      "shareUrl": "https://open.spotify.com/album/4I1O3sdr5oeZfiHOTl9tK6?si=SPoeiQfaRRmy1-2gbkkAnQ"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "6TnY97ryUXmFjv13ELpJ8c",
+                    "uri": "spotify:album:6TnY97ryUXmFjv13ELpJ8c",
+                    "name": "7050",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2023,
+                      "isoString": "2023-08-14T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e02688684d9cfdec81cd1160268",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00004851688684d9cfdec81cd1160268",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b273688684d9cfdec81cd1160268",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "h6Z4YralRZyMYbNQJ-e4MQ",
+                      "shareUrl": "https://open.spotify.com/album/6TnY97ryUXmFjv13ELpJ8c?si=h6Z4YralRZyMYbNQJ-e4MQ"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "491srHK2V5EfADg40AVsO0",
+                    "uri": "spotify:album:491srHK2V5EfADg40AVsO0",
+                    "name": "Marbella",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2023,
+                      "isoString": "2023-08-12T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e020c71959ae4d1f4672e755250",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d000048510c71959ae4d1f4672e755250",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b2730c71959ae4d1f4672e755250",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "90URZ3cZQL-c39_EvDBGNw",
+                      "shareUrl": "https://open.spotify.com/album/491srHK2V5EfADg40AVsO0?si=90URZ3cZQL-c39_EvDBGNw"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "6cjiodEbf1rxHUIUWe8S1p",
+                    "uri": "spotify:album:6cjiodEbf1rxHUIUWe8S1p",
+                    "name": "Conan",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2023,
+                      "isoString": "2023-07-28T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e0216b32de7076bfd54edc666d0",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000485116b32de7076bfd54edc666d0",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b27316b32de7076bfd54edc666d0",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "1uP4Op5MThqC6gMeJD9BjQ",
+                      "shareUrl": "https://open.spotify.com/album/6cjiodEbf1rxHUIUWe8S1p?si=1uP4Op5MThqC6gMeJD9BjQ"
+                    },
+                    "tracks": {
+                      "totalCount": 3
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "65GFTwCPo8G4Yd08H6PgRF",
+                    "uri": "spotify:album:65GFTwCPo8G4Yd08H6PgRF",
+                    "name": "Palestine",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2023,
+                      "isoString": "2023-07-13T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e02f414526cd1efbcea2bcd8732",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00004851f414526cd1efbcea2bcd8732",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b273f414526cd1efbcea2bcd8732",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "Q7i-OfUaQNmKrTHjvv59Kw",
+                      "shareUrl": "https://open.spotify.com/album/65GFTwCPo8G4Yd08H6PgRF?si=Q7i-OfUaQNmKrTHjvv59Kw"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "1LHOadZ395NoAaGkjfAbZD",
+                    "uri": "spotify:album:1LHOadZ395NoAaGkjfAbZD",
+                    "name": "Koli Vibe",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2023,
+                      "isoString": "2023-07-07T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e020b85d7179dbbe6823cc421c9",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d000048510b85d7179dbbe6823cc421c9",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b2730b85d7179dbbe6823cc421c9",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "KfDfCuwyRISkW4vZT4sqwg",
+                      "shareUrl": "https://open.spotify.com/album/1LHOadZ395NoAaGkjfAbZD?si=KfDfCuwyRISkW4vZT4sqwg"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "1oG1V8UXunKbmLzDGQR9iU",
+                    "uri": "spotify:album:1oG1V8UXunKbmLzDGQR9iU",
+                    "name": "Amsterdam",
+                    "type": "ALBUM",
+                    "date": {
+                      "year": 2023,
+                      "isoString": "2023-07-04T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e021ae691255bbb9a21db375ce7",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d000048511ae691255bbb9a21db375ce7",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b2731ae691255bbb9a21db375ce7",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "3QRFbx6bTYKjTOqDGNDcaQ",
+                      "shareUrl": "https://open.spotify.com/album/1oG1V8UXunKbmLzDGQR9iU?si=3QRFbx6bTYKjTOqDGNDcaQ"
+                    },
+                    "tracks": {
+                      "totalCount": 10
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "24cNzB1YpBZYqjUgnJs3QJ",
+                    "uri": "spotify:album:24cNzB1YpBZYqjUgnJs3QJ",
+                    "name": "Ya Salam",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2023,
+                      "isoString": "2023-07-01T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e02521cad75b97c23ef2ba718ad",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00004851521cad75b97c23ef2ba718ad",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b273521cad75b97c23ef2ba718ad",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "ZMS-0z8iQA6BfS2CnqALrQ",
+                      "shareUrl": "https://open.spotify.com/album/24cNzB1YpBZYqjUgnJs3QJ?si=ZMS-0z8iQA6BfS2CnqALrQ"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "6myOlMXXWjwlOrz7xugqnj",
+                    "uri": "spotify:album:6myOlMXXWjwlOrz7xugqnj",
+                    "name": "6G",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2023,
+                      "isoString": "2023-06-17T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e0266b2d2006e446dd459beddd5",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000485166b2d2006e446dd459beddd5",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b27366b2d2006e446dd459beddd5",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "1cU5aqtIQMao76Mrmwlm2A",
+                      "shareUrl": "https://open.spotify.com/album/6myOlMXXWjwlOrz7xugqnj?si=1cU5aqtIQMao76Mrmwlm2A"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "6T0Xb85Eh4tPxmYCu0k0Da",
+                    "uri": "spotify:album:6T0Xb85Eh4tPxmYCu0k0Da",
+                    "name": "Élégant",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2023,
+                      "isoString": "2023-05-28T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e024c298ec9093783576b00fe1a",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d000048514c298ec9093783576b00fe1a",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b2734c298ec9093783576b00fe1a",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "HYrabNauTG-tUJXImF43EA",
+                      "shareUrl": "https://open.spotify.com/album/6T0Xb85Eh4tPxmYCu0k0Da?si=HYrabNauTG-tUJXImF43EA"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "7bOFKqkY5W9UE8F3GU5tXO",
+                    "uri": "spotify:album:7bOFKqkY5W9UE8F3GU5tXO",
+                    "name": "Très Jolie",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2023,
+                      "isoString": "2023-05-28T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e0299c0a8a2ff0a28777ee54549",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000485199c0a8a2ff0a28777ee54549",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b27399c0a8a2ff0a28777ee54549",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "dI3SG_R8QD-ErJGsmCrMxQ",
+                      "shareUrl": "https://open.spotify.com/album/7bOFKqkY5W9UE8F3GU5tXO?si=dI3SG_R8QD-ErJGsmCrMxQ"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "2RzPc1Ins30ahwlD2GpwFg",
+                    "uri": "spotify:album:2RzPc1Ins30ahwlD2GpwFg",
+                    "name": "Hermano",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2023,
+                      "isoString": "2023-05-28T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e02d0e66d3c21145403729da5a0",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00004851d0e66d3c21145403729da5a0",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b273d0e66d3c21145403729da5a0",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "_V36psFjSzylj0ne9jF9qg",
+                      "shareUrl": "https://open.spotify.com/album/2RzPc1Ins30ahwlD2GpwFg?si=_V36psFjSzylj0ne9jF9qg"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "4aRLAVZQjNbF1UNDBOL0rv",
+                    "uri": "spotify:album:4aRLAVZQjNbF1UNDBOL0rv",
+                    "name": "Amg 2",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2023,
+                      "isoString": "2023-05-28T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e02a63943649a252424d987f082",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00004851a63943649a252424d987f082",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b273a63943649a252424d987f082",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "KosXFNGMSvyUXMixzMHKkw",
+                      "shareUrl": "https://open.spotify.com/album/4aRLAVZQjNbF1UNDBOL0rv?si=KosXFNGMSvyUXMixzMHKkw"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "6jLpoEU1nHnSFcyVhPOLq2",
+                    "uri": "spotify:album:6jLpoEU1nHnSFcyVhPOLq2",
+                    "name": "Pour Les Gang",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2023,
+                      "isoString": "2023-05-15T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e02d39a80c79b2716acd66d45ad",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00004851d39a80c79b2716acd66d45ad",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b273d39a80c79b2716acd66d45ad",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "Uc9BKsreRa-O6lxJPPkupA",
+                      "shareUrl": "https://open.spotify.com/album/6jLpoEU1nHnSFcyVhPOLq2?si=Uc9BKsreRa-O6lxJPPkupA"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "5DoeqvmnOGu4T5zoU56043",
+                    "uri": "spotify:album:5DoeqvmnOGu4T5zoU56043",
+                    "name": "Kima Khalitni",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2023,
+                      "isoString": "2023-03-21T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e02fc746606b3dfa9284efd678c",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00004851fc746606b3dfa9284efd678c",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b273fc746606b3dfa9284efd678c",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "RfuKldrlSN6dLOsc7iaMTw",
+                      "shareUrl": "https://open.spotify.com/album/5DoeqvmnOGu4T5zoU56043?si=RfuKldrlSN6dLOsc7iaMTw"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "2xT9qwoXyDL0JKdRk6tmvj",
+                    "uri": "spotify:album:2xT9qwoXyDL0JKdRk6tmvj",
+                    "name": "Lii",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2023,
+                      "isoString": "2023-03-13T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e021986eed956cded9ea1b81a06",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d000048511986eed956cded9ea1b81a06",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b2731986eed956cded9ea1b81a06",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "rgK2E42yTF2zr3_vlRFP6w",
+                      "shareUrl": "https://open.spotify.com/album/2xT9qwoXyDL0JKdRk6tmvj?si=rgK2E42yTF2zr3_vlRFP6w"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "254QtoJMVKY6Io9CMH2Umu",
+                    "uri": "spotify:album:254QtoJMVKY6Io9CMH2Umu",
+                    "name": "2 Frères",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2023,
+                      "isoString": "2023-02-25T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e02586d364508ca74005583cb14",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00004851586d364508ca74005583cb14",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b273586d364508ca74005583cb14",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "QdZ-34QwShW8_FgfQ9Imjg",
+                      "shareUrl": "https://open.spotify.com/album/254QtoJMVKY6Io9CMH2Umu?si=QdZ-34QwShW8_FgfQ9Imjg"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "5ByEivMB8m1qk6ds1G6Vrt",
+                    "uri": "spotify:album:5ByEivMB8m1qk6ds1G6Vrt",
+                    "name": "Semah",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2023,
+                      "isoString": "2023-02-24T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e02fb36cc1f6e4c8dfee45d33d4",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00004851fb36cc1f6e4c8dfee45d33d4",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b273fb36cc1f6e4c8dfee45d33d4",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "7O_Q8IjQTJmsVAOtRbWkZQ",
+                      "shareUrl": "https://open.spotify.com/album/5ByEivMB8m1qk6ds1G6Vrt?si=7O_Q8IjQTJmsVAOtRbWkZQ"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "3omGlXpxirZ6wKFT25FHTG",
+                    "uri": "spotify:album:3omGlXpxirZ6wKFT25FHTG",
+                    "name": "Omi L7aja",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2023,
+                      "isoString": "2023-02-21T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e0282e6e8d8e70715c252f7cb27",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000485182e6e8d8e70715c252f7cb27",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b27382e6e8d8e70715c252f7cb27",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "BlmhEFFARGms_IuipM8PAg",
+                      "shareUrl": "https://open.spotify.com/album/3omGlXpxirZ6wKFT25FHTG?si=BlmhEFFARGms_IuipM8PAg"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "1Xm9f3GltPZRXz87dneSDO",
+                    "uri": "spotify:album:1Xm9f3GltPZRXz87dneSDO",
+                    "name": "Babel",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2023,
+                      "isoString": "2023-02-20T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e028ad8829a7f118c6991841ee1",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d000048518ad8829a7f118c6991841ee1",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b2738ad8829a7f118c6991841ee1",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "rqeyll5lSfmGFGV0Y4BYAQ",
+                      "shareUrl": "https://open.spotify.com/album/1Xm9f3GltPZRXz87dneSDO?si=rqeyll5lSfmGFGV0Y4BYAQ"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "5qw02s0C0OQmlom0DEc31T",
+                    "uri": "spotify:album:5qw02s0C0OQmlom0DEc31T",
+                    "name": "Ma3lebeli",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2023,
+                      "isoString": "2023-01-26T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e0267e8e92a46dfe920d6eda1d5",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000485167e8e92a46dfe920d6eda1d5",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b27367e8e92a46dfe920d6eda1d5",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "-jiYHMT0R5KWj1fjuBDNIg",
+                      "shareUrl": "https://open.spotify.com/album/5qw02s0C0OQmlom0DEc31T?si=-jiYHMT0R5KWj1fjuBDNIg"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "1xOS3nawCoWhN5bRmzIqWc",
+                    "uri": "spotify:album:1xOS3nawCoWhN5bRmzIqWc",
+                    "name": "Free Shima",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2022,
+                      "isoString": "2022-12-22T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e024c2153c6577976bb4a8d5a06",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d000048514c2153c6577976bb4a8d5a06",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b2734c2153c6577976bb4a8d5a06",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "0is8u5AFRaK4mARhEHU0Qg",
+                      "shareUrl": "https://open.spotify.com/album/1xOS3nawCoWhN5bRmzIqWc?si=0is8u5AFRaK4mARhEHU0Qg"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "4UZ2f5j7U0oHt1zukKB6R3",
+                    "uri": "spotify:album:4UZ2f5j7U0oHt1zukKB6R3",
+                    "name": "7 Years",
+                    "type": "ALBUM",
+                    "date": {
+                      "year": 2022,
+                      "isoString": "2022-12-13T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e02d34a7a2743c95709b293228b",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00004851d34a7a2743c95709b293228b",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b273d34a7a2743c95709b293228b",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "W4PjwT94RaqY0_UYsteSbg",
+                      "shareUrl": "https://open.spotify.com/album/4UZ2f5j7U0oHt1zukKB6R3?si=W4PjwT94RaqY0_UYsteSbg"
+                    },
+                    "tracks": {
+                      "totalCount": 11
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "1sayogoqIhYld62WkJF1sF",
+                    "uri": "spotify:album:1sayogoqIhYld62WkJF1sF",
+                    "name": "No Problem",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2022,
+                      "isoString": "2022-12-10T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e0249216daef681d27d30f0dbd1",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000485149216daef681d27d30f0dbd1",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b27349216daef681d27d30f0dbd1",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "NGCrkjobQDCSAxt3Xq7QYw",
+                      "shareUrl": "https://open.spotify.com/album/1sayogoqIhYld62WkJF1sF?si=NGCrkjobQDCSAxt3Xq7QYw"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "1AnLeUdRBSPUey9nVMsJYU",
+                    "uri": "spotify:album:1AnLeUdRBSPUey9nVMsJYU",
+                    "name": "Watani",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2022,
+                      "isoString": "2022-12-09T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e020efe6ec1439a65c9eaa741df",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d000048510efe6ec1439a65c9eaa741df",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b2730efe6ec1439a65c9eaa741df",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "F8S4flsdRPuQHsxy5uhszg",
+                      "shareUrl": "https://open.spotify.com/album/1AnLeUdRBSPUey9nVMsJYU?si=F8S4flsdRPuQHsxy5uhszg"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "4q73ju7gYbEFuZCr8Ex5kq",
+                    "uri": "spotify:album:4q73ju7gYbEFuZCr8Ex5kq",
+                    "name": "Sous tension",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2022,
+                      "isoString": "2022-12-08T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e0299701f733ad3337283f64491",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000485199701f733ad3337283f64491",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b27399701f733ad3337283f64491",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "DG_gtVmLR_GV_82GYvRqFw",
+                      "shareUrl": "https://open.spotify.com/album/4q73ju7gYbEFuZCr8Ex5kq?si=DG_gtVmLR_GV_82GYvRqFw"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "0cGkSy5xNbR16gSUlqgtIe",
+                    "uri": "spotify:album:0cGkSy5xNbR16gSUlqgtIe",
+                    "name": "Chlonak",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2022,
+                      "isoString": "2022-12-08T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e025f4f917d4a76a49b7a5d22c9",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d000048515f4f917d4a76a49b7a5d22c9",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b2735f4f917d4a76a49b7a5d22c9",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "rrir1bbSSD-veJSxWu1qMw",
+                      "shareUrl": "https://open.spotify.com/album/0cGkSy5xNbR16gSUlqgtIe?si=rrir1bbSSD-veJSxWu1qMw"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "2sJR68ckXbB5gJy0WcDTbP",
+                    "uri": "spotify:album:2sJR68ckXbB5gJy0WcDTbP",
+                    "name": "Labes",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2022,
+                      "isoString": "2022-11-20T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e0269cdd330e969631267f82446",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000485169cdd330e969631267f82446",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b27369cdd330e969631267f82446",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "z_I-xThOSPyuwdtxDajsxw",
+                      "shareUrl": "https://open.spotify.com/album/2sJR68ckXbB5gJy0WcDTbP?si=z_I-xThOSPyuwdtxDajsxw"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "3OHuz4NQeHHKQmZNUqQgAQ",
+                    "uri": "spotify:album:3OHuz4NQeHHKQmZNUqQgAQ",
+                    "name": "Mreyti",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2022,
+                      "isoString": "2022-11-18T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e02153af65a9c96c6c94022460d",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00004851153af65a9c96c6c94022460d",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b273153af65a9c96c6c94022460d",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "7HXmbkx4TZqNq4qqMAXDgg",
+                      "shareUrl": "https://open.spotify.com/album/3OHuz4NQeHHKQmZNUqQgAQ?si=7HXmbkx4TZqNq4qqMAXDgg"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "1tYq5SquXnL3wSSkLPeXpP",
+                    "uri": "spotify:album:1tYq5SquXnL3wSSkLPeXpP",
+                    "name": "Manabrach",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2022,
+                      "isoString": "2022-11-18T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e026315618e2ded8b882336b750",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d000048516315618e2ded8b882336b750",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b2736315618e2ded8b882336b750",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "X5-RFD7dQ6ut13f5_u5VeQ",
+                      "shareUrl": "https://open.spotify.com/album/1tYq5SquXnL3wSSkLPeXpP?si=X5-RFD7dQ6ut13f5_u5VeQ"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "3Sc7uZaeQJYNt5MoSQmOrg",
+                    "uri": "spotify:album:3Sc7uZaeQJYNt5MoSQmOrg",
+                    "name": "Location",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2022,
+                      "isoString": "2022-11-18T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e022904f689491cb6ee47e41b47",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d000048512904f689491cb6ee47e41b47",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b2732904f689491cb6ee47e41b47",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "c8BVh5TPSTy_UcWQOl_LyQ",
+                      "shareUrl": "https://open.spotify.com/album/3Sc7uZaeQJYNt5MoSQmOrg?si=c8BVh5TPSTy_UcWQOl_LyQ"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "3LLJ8bmI6YrK73g6RhHEPK",
+                    "uri": "spotify:album:3LLJ8bmI6YrK73g6RhHEPK",
+                    "name": "Galbi",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2022,
+                      "isoString": "2022-11-06T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e020267dc8cf82dfca31a2fe6aa",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d000048510267dc8cf82dfca31a2fe6aa",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b2730267dc8cf82dfca31a2fe6aa",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "2N7W81pySpmIWNMHVIaZsQ",
+                      "shareUrl": "https://open.spotify.com/album/3LLJ8bmI6YrK73g6RhHEPK?si=2N7W81pySpmIWNMHVIaZsQ"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "5q6JhGTERJe7fWAQOJwz1W",
+                    "uri": "spotify:album:5q6JhGTERJe7fWAQOJwz1W",
+                    "name": "7 Snin",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2022,
+                      "isoString": "2022-10-16T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e02c7080c22e56075a9ead2a441",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00004851c7080c22e56075a9ead2a441",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b273c7080c22e56075a9ead2a441",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "-WtfhPgjS2OerBR7xcmtMA",
+                      "shareUrl": "https://open.spotify.com/album/5q6JhGTERJe7fWAQOJwz1W?si=-WtfhPgjS2OerBR7xcmtMA"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "4xRldT6DB8MdQp60tBVwgq",
+                    "uri": "spotify:album:4xRldT6DB8MdQp60tBVwgq",
+                    "name": "Cicatrice",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2022,
+                      "isoString": "2022-10-07T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e020a09b53db8a7d57e65b3930a",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d000048510a09b53db8a7d57e65b3930a",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b2730a09b53db8a7d57e65b3930a",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "oUyE_MrkSlyZ962bremFEw",
+                      "shareUrl": "https://open.spotify.com/album/4xRldT6DB8MdQp60tBVwgq?si=oUyE_MrkSlyZ962bremFEw"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "3m0HTUkwIf64MyLbCfi3dR",
+                    "uri": "spotify:album:3m0HTUkwIf64MyLbCfi3dR",
+                    "name": "Paradise",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2022,
+                      "isoString": "2022-09-04T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e02830522bde4185a1c6a497cf4",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00004851830522bde4185a1c6a497cf4",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b273830522bde4185a1c6a497cf4",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "rY1wZsZcSiCWVxMWJfRPkQ",
+                      "shareUrl": "https://open.spotify.com/album/3m0HTUkwIf64MyLbCfi3dR?si=rY1wZsZcSiCWVxMWJfRPkQ"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "4AgQtZJxKsuZSC0wFXm4d7",
+                    "uri": "spotify:album:4AgQtZJxKsuZSC0wFXm4d7",
+                    "name": "Finalement",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2022,
+                      "isoString": "2022-08-20T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e027a8fa6b79a7d400ef329c4b5",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d000048517a8fa6b79a7d400ef329c4b5",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b2737a8fa6b79a7d400ef329c4b5",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "j6nOQ8GnTYSVoHJ3kvGvgA",
+                      "shareUrl": "https://open.spotify.com/album/4AgQtZJxKsuZSC0wFXm4d7?si=j6nOQ8GnTYSVoHJ3kvGvgA"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "5JYLLub4A1GNowDyy0XdeL",
+                    "uri": "spotify:album:5JYLLub4A1GNowDyy0XdeL",
+                    "name": "Kadhabin",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2022,
+                      "isoString": "2022-08-03T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e02b9ac66f5eec35f1335cbaceb",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00004851b9ac66f5eec35f1335cbaceb",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b273b9ac66f5eec35f1335cbaceb",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "rsL_nmlXTNm_ri470z5fRw",
+                      "shareUrl": "https://open.spotify.com/album/5JYLLub4A1GNowDyy0XdeL?si=rsL_nmlXTNm_ri470z5fRw"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "0ecg3iEyGhxXXlmCwoEbSc",
+                    "uri": "spotify:album:0ecg3iEyGhxXXlmCwoEbSc",
+                    "name": "La Moula",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2022,
+                      "isoString": "2022-07-18T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e02a5b03a5c1b604c79140f35d2",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00004851a5b03a5c1b604c79140f35d2",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b273a5b03a5c1b604c79140f35d2",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "rlVzzG5pQxa7WrC2D2A5TQ",
+                      "shareUrl": "https://open.spotify.com/album/0ecg3iEyGhxXXlmCwoEbSc?si=rlVzzG5pQxa7WrC2D2A5TQ"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "7oQ5tsytQGb0caO8SDmTUN",
+                    "uri": "spotify:album:7oQ5tsytQGb0caO8SDmTUN",
+                    "name": "Le Dem",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2022,
+                      "isoString": "2022-07-03T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e024b0cc5777f639d2666d9a72c",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d000048514b0cc5777f639d2666d9a72c",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b2734b0cc5777f639d2666d9a72c",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "L3mb0S5zTOSN9wxxYp-n2A",
+                      "shareUrl": "https://open.spotify.com/album/7oQ5tsytQGb0caO8SDmTUN?si=L3mb0S5zTOSN9wxxYp-n2A"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "5oeHxZvGheAX1rrmfYiJkC",
+                    "uri": "spotify:album:5oeHxZvGheAX1rrmfYiJkC",
+                    "name": "Minimum",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2022,
+                      "isoString": "2022-06-25T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e0209f8e1bdb30771057d5aff94",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000485109f8e1bdb30771057d5aff94",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b27309f8e1bdb30771057d5aff94",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "rIsbvwG4QfKfhjO4TyWUnw",
+                      "shareUrl": "https://open.spotify.com/album/5oeHxZvGheAX1rrmfYiJkC?si=rIsbvwG4QfKfhjO4TyWUnw"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "3g6czP944q30tfdtuZp4RI",
+                    "uri": "spotify:album:3g6czP944q30tfdtuZp4RI",
+                    "name": "Lwess",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2022,
+                      "isoString": "2022-05-12T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e02b8dd7cf8385999fb611d4062",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00004851b8dd7cf8385999fb611d4062",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b273b8dd7cf8385999fb611d4062",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "Kz8HzkzoT5OM8ajo-Ehh6Q",
+                      "shareUrl": "https://open.spotify.com/album/3g6czP944q30tfdtuZp4RI?si=Kz8HzkzoT5OM8ajo-Ehh6Q"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "1AsdnLVopB6qlFST8yzkkd",
+                    "uri": "spotify:album:1AsdnLVopB6qlFST8yzkkd",
+                    "name": "Nseni",
+                    "type": "SINGLE",
+                    "date": {
+                      "year": 2022,
+                      "isoString": "2022-04-21T00:00:00Z",
+                      "precision": "DAY"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e0221bb035484abbd606cc30597",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000485121bb035484abbd606cc30597",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b27321bb035484abbd606cc30597",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "TOtI9JwHRomrAHiZkQ3K8Q",
+                      "shareUrl": "https://open.spotify.com/album/1AsdnLVopB6qlFST8yzkkd?si=TOtI9JwHRomrAHiZkQ3K8Q"
+                    },
+                    "tracks": {
+                      "totalCount": 1
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "extensions": {}
+}

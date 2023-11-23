@@ -16,7 +16,8 @@ import { SkillComponent } from './skills/skill/skill.component';
 import { BlogComponent } from './blogs/blog/blog.component';
 import { BlogsComponent } from './blogs/blogs.component'
 import { ContactBoxComponent } from './shared/contact-box/contact-box.component';
-import { PrivacyComponent } from './privacy/privacy.component'
+import { PrivacyComponent } from './privacy/privacy.component';
+import { PartnersComponent } from './partners/partners.component'
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { PrivacyComponent } from './privacy/privacy.component'
     SkillComponent,
     BlogComponent,
     BlogsComponent,
-    PrivacyComponent],
+    PrivacyComponent,
+    PartnersComponent],
   exports: [SidenavComponent]
 
 }

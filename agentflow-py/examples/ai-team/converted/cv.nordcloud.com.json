@@ -1,0 +1,800 @@
+{
+  "_id": "63a46667107241001bb7bac5",
+  "lastModified": "2023-11-22T11:43:38.332Z",
+  "__v": 23,
+  "headline": "Azure cloud architect",
+  "summary": "<div>    <p style=\"font-size: 16px;\">        As a seasoned <strong>technologist</strong>, I, Thaer, have navigated the multifaceted realms of software engineering, leaving a trail of innovation and excellence. My journey has seen me wear many hats – from an <strong>architect</strong> and <strong>cybersecurity expert</strong> to a <strong>DevOps engineer</strong>, each role enriching my skill set and perspective.</p><p style=\"font-size: 16px;\"><br/></p>    <h4 style=\"color: #0056b3;\">Key Contributions and Skills:</h4>    <ul style=\"font-size: 15px;\">        <li><strong>Architectural Prowess:</strong> My architectural expertise is not just confined to building structures but extends to constructing resilient and robust software solutions.</li>        <li><strong>Cybersecurity Savviness:</strong> In the ever-evolving landscape of digital threats, I've honed my skills to ensure robust defense mechanisms are in place, safeguarding vital data and infrastructure.</li>        <li><strong>DevOps Mastery:</strong> My DevOps experience is marked by an agile and proactive approach, ensuring seamless integration and continuous delivery in software development.</li></ul>    <h4 style=\"color: #0056b3;\">Approach and Philosophy:</h4>    <p style=\"font-size: 16px;\">        Leveraging a <strong>diverse background</strong> and profound <strong>knowledge pool</strong>, I'm committed to employing best practices and versatile design patterns. This strategy empowers me to engineer <strong>scalable and highly available</strong> cloud and edge applications, significantly enhancing <strong>web user experiences</strong>.</p>    <h4 style=\"color: #0056b3;\">Commitment to Excellence:</h4>    <p style=\"font-size: 16px;\">        My dedication is unwavering when it comes to delivering <strong>innovative solutions</strong>. I aim for the zenith in performance, security, and efficiency, embodying a relentless pursuit of excellence in the technology sphere.    </p></div>",
+  "interestAbroad": 5,
+  "metadata": {
+    "disabledFields": []
+  },
+  "addition": {
+    "email": "thaer.saidi@nordcloud.com",
+    "phone": "+46708850901",
+    "description": "<div>  <blockquote>    <p style=\"font-size: 16px;\">      I am Thaer, a <strong>Cloud Architect</strong> and      <strong>Cybersecurity Expert</strong>, with a rich background in      <em>software engineering</em>. My approach to technology solutions is      rooted in <em>best practices</em> and a wide array of design patterns      acquired from various frameworks.    </p>  </blockquote>  <p style=\"font-size: 16px;\">    This expertise allows me to architect and develop <strong>scalable</strong>,    <strong>highly available</strong> cloud and edge applications, aimed at    enhancing user experiences both in the cloud and on the web. My efforts are    constantly directed towards <em>diversifying my knowledge</em>, enabling me    to select the most appropriate tools and products that align seamlessly with    consumer needs.</p>  <h4 style=\"color: #0056b3;\">Professional Foundations:</h4>  <p style=\"font-size: 16px;\">    My educational foundation in <strong>mathematics</strong>, particularly in    <strong>data and statistical engineering</strong>, complements my role as a    <em>Data Scientist</em>. This background equips me with the skills necessary    to delve into <strong>artificial intelligence</strong> and related fields.    My focus is always on leveraging data to forge    <em>superior applications</em> and solutions that address complex    challenges.</p>  <h4 style=\"color: #0056b3;\">DevOps Philosophy:</h4>  <p style=\"font-size: 16px;\">    As a motivated <em>DevOps Engineer</em>, I am committed to following    <strong>lean methodologies</strong> and frameworks. This dynamic approach    ensures that I am constantly <em>evolving and adapting</em> in a field that    is perpetually in flux, thereby maintaining my ability to deliver    <strong>cutting-edge</strong>, <strong>efficient solutions</strong> in an    ever-changing technological landscape.  </p></div>"
+  },
+  "courses": ["Azure cloud architect", "Angular developer"],
+  "certifications": [
+    {
+      "name": "Akamai CDN optimization",
+      "_id": "63a9a1ce107241001bb7bb33",
+      "start": {
+        "year": 2018,
+        "month": 2
+      }
+    },
+    {
+      "name": "Akamai WAF Kona site defender",
+      "_id": "63a9a1ce107241001bb7bb32",
+      "start": {
+        "year": 2018,
+        "month": 3
+      }
+    }
+  ],
+  "competence": [
+    {
+      "name": "Azure cloud",
+      "_id": "63a9924f107241001bb7bb04",
+      "extraInfo": "Microsoft technologies",
+      "interest": 5,
+      "skill_years": 5,
+      "skill": 0,
+      "id": "63a9924f107241001bb7bb04"
+    },
+    {
+      "name": "AWS",
+      "_id": "63a9a3af107241001bb7bb3d",
+      "interest": 5,
+      "skill_years": 1,
+      "skill": 0,
+      "id": "63a9a3af107241001bb7bb3d"
+    },
+    {
+      "name": "GCP",
+      "_id": "63a9a3af107241001bb7bb3c",
+      "interest": 5,
+      "skill_years": 2,
+      "skill": 0,
+      "id": "63a9a3af107241001bb7bb3c"
+    },
+    {
+      "name": "Java",
+      "_id": "63a9a3af107241001bb7bb3b",
+      "interest": 3,
+      "skill_years": 8,
+      "skill": 0,
+      "id": "63a9a3af107241001bb7bb3b"
+    },
+    {
+      "name": "Dotnet",
+      "_id": "63a9a3af107241001bb7bb3a",
+      "interest": 3,
+      "skill_years": 6,
+      "skill": 0,
+      "id": "63a9a3af107241001bb7bb3a"
+    },
+    {
+      "name": "Typescript",
+      "_id": "63a9a3af107241001bb7bb39",
+      "interest": 4,
+      "skill_years": 6,
+      "skill": 0,
+      "id": "63a9a3af107241001bb7bb39"
+    },
+    {
+      "name": "DevOps",
+      "_id": "63a9a96d107241001bb7bb45",
+      "interest": 5,
+      "skill_years": 7,
+      "skill": 0,
+      "id": "63a9a96d107241001bb7bb45"
+    },
+    {
+      "name": "Cloud monitoring",
+      "_id": "63a9a96d107241001bb7bb44",
+      "interest": 4,
+      "skill_years": 5,
+      "skill": 0,
+      "id": "63a9a96d107241001bb7bb44"
+    },
+    {
+      "name": "Symfony",
+      "_id": "63a9a96d107241001bb7bb43",
+      "interest": 3,
+      "skill_years": 8,
+      "skill": 0,
+      "id": "63a9a96d107241001bb7bb43"
+    },
+    {
+      "name": "Angular",
+      "_id": "63ac7795107241001bb7bb5d",
+      "interest": 5,
+      "skill_years": 6,
+      "skill": 0,
+      "id": "63ac7795107241001bb7bb5d"
+    },
+    {
+      "name": "AKAMAI",
+      "extraInfo": "",
+      "_id": "63ac7795107241001bb7bb5c",
+      "interest": 4,
+      "skill_years": 6,
+      "skill": 0,
+      "id": "63ac7795107241001bb7bb5c"
+    },
+    {
+      "name": "Machine Learning",
+      "_id": "6557401d107241001bb8041a",
+      "interest": 4,
+      "skill_years": 10,
+      "skill": 0,
+      "id": "6557401d107241001bb8041a"
+    },
+    {
+      "name": "IBM Cloud",
+      "_id": "6557401d107241001bb80419",
+      "interest": 4,
+      "skill_years": 7,
+      "skill": 0,
+      "id": "6557401d107241001bb80419"
+    },
+    {
+      "name": "ChatBots",
+      "_id": "655ddd85107241001bb8048c",
+      "interest": 4,
+      "skill_years": 8,
+      "skill": 0,
+      "id": "655ddd85107241001bb8048c"
+    },
+    {
+      "name": "Distributed systems",
+      "_id": "655ddd85107241001bb8048b",
+      "interest": 5,
+      "skill_years": 6,
+      "skill": 0,
+      "id": "655ddd85107241001bb8048b"
+    },
+    {
+      "name": "OpenAI",
+      "_id": "655ddf8b107241001bb80491",
+      "interest": 5,
+      "skill_years": 1,
+      "skill": 0,
+      "id": "655ddf8b107241001bb80491"
+    },
+    {
+      "name": "Watson",
+      "_id": "655ddf8b107241001bb80490",
+      "interest": 5,
+      "skill_years": 7,
+      "skill": 0,
+      "id": "655ddf8b107241001bb80490"
+    },
+    {
+      "name": "Google Assistant",
+      "_id": "655ddf8b107241001bb8048f",
+      "interest": 5,
+      "skill_years": 7,
+      "skill": 0,
+      "id": "655ddf8b107241001bb8048f"
+    }
+  ],
+  "skills": [],
+  "associations": [],
+  "recommendations": [],
+  "educations": [
+    {
+      "name": "ESPRIT School of Engineering",
+      "degree": "Software Development and Programming engineer",
+      "fieldOfStudy": "<p>Computer science and information technology</p>",
+      "_id": "63a9a1ce107241001bb7bb37",
+      "end": {
+        "year": 2016,
+        "month": 6
+      },
+      "start": {
+        "year": 2013,
+        "month": 9
+      }
+    },
+    {
+      "name": "ESSAI",
+      "degree": "Statistical engineer and data analyst",
+      "fieldOfStudy": "<p>Statistical engineering and data analysis<br/></p>",
+      "_id": "63a9a1ce107241001bb7bb36",
+      "end": {
+        "year": 2013,
+        "month": 6
+      },
+      "start": {
+        "year": 2011,
+        "month": 9
+      }
+    },
+    {
+      "name": "University of Tunis El-Manar",
+      "degree": "Preparatory school studies in Mathematics and physics",
+      "fieldOfStudy": "<p>Studies in Mathematics and physics<br/></p>",
+      "_id": "63a9a1ce107241001bb7bb35",
+      "end": {
+        "year": 2011,
+        "month": 7
+      },
+      "start": {
+        "year": 2008,
+        "month": 10
+      }
+    },
+    {
+      "name": "Bourguiba Pioneer School",
+      "degree": "Mathematics baccalaureate",
+      "fieldOfStudy": "<p>Mathematics baccalaureate<br/></p>",
+      "_id": "63a9a1ce107241001bb7bb34",
+      "end": {
+        "year": 2008,
+        "month": 7
+      },
+      "start": {
+        "year": 2007,
+        "month": 9
+      }
+    }
+  ],
+  "experience": [
+    {
+      "name": "Electrolux AB",
+      "description": "<p><em style=\"font-size: 16px;text-align: left;\">My main position was a cloud platforms Architect, but because of my background as DevOps and software engineer, I kept having some tasks doing the same for Electrolux AB in Europe. </em><em style=\"font-size: 16px;\">I was r</em><em style=\"font-size: 16px;\">eporting to both the technical product team and enterprise architecture team within the consumer experience organisation.</em></p><p><br/></p>",
+      "title": "Cloud Platforms Architect",
+      "_id": "63a9960e107241001bb7bb13",
+      "projects": [
+        {
+          "name": "Concent (Consumer Centric)",
+          "description": "<p><em style=\"font-size: 16px;text-align: left;\">Focused on enhancing the security and delivery of our services in the cloud: AWS hosted EA systems like CRM (SAP cloud for customer), CIAM (SAP customer data cloud) and other external SaaS systems we use for the consumer services in addition to a microservices architecture to serve both the synchronous and asynchronous flows.<br/></em><em style=\"font-size: 16px;text-align: left;\">With the purpose of enhancing our consumer's experiences in a multi cloud environment using Azure cloud native tools like API management, Kubernetes flavors such as Azure Kubernetes Service or Azure Redhat Openshift.</em></p><p><br/></p><p></p><p style=\"font-size: 14px;\"><br/></p><p></p><p></p>",
+          "_id": "63a9960e107241001bb7bb14",
+          "techs": [
+            {
+              "text": "Azure Cloud",
+              "_id": "63a9960e107241001bb7bb1c"
+            },
+            {
+              "text": "Azure DevOps",
+              "_id": "63a9960e107241001bb7bb1b"
+            },
+            {
+              "text": "CI/CD Azure Devops Pipelines",
+              "_id": "63a9960e107241001bb7bb1a"
+            },
+            {
+              "text": "Azure Active Directory",
+              "_id": "63a9960e107241001bb7bb19"
+            },
+            {
+              "text": "Azure API Management",
+              "_id": "63a9960e107241001bb7bb18"
+            },
+            {
+              "text": "AKS",
+              "_id": "63a9960e107241001bb7bb17"
+            },
+            {
+              "text": "Openshift",
+              "_id": "63a9960e107241001bb7bb16"
+            },
+            {
+              "text": "SAP HANA",
+              "_id": "63a9960e107241001bb7bb15"
+            },
+            {
+              "text": "Microservices",
+              "_id": "63ac7dab107241001bb7bb66"
+            },
+            {
+              "text": "MongoDB",
+              "_id": "63ac7dab107241001bb7bb65"
+            },
+            {
+              "text": "Azure CosmosDB",
+              "_id": "63ac7dab107241001bb7bb64"
+            },
+            {
+              "text": "Kafka",
+              "_id": "63ac7dab107241001bb7bb63"
+            },
+            {
+              "text": "Azure EventHub",
+              "_id": "63ac7dab107241001bb7bb62"
+            },
+            {
+              "text": "JAVA-Quarkus",
+              "_id": "63ac8429107241001bb7bb6b"
+            },
+            {
+              "text": "Dotnet core",
+              "_id": "63ac8530107241001bb7bb70"
+            },
+            {
+              "text": "NodeJS",
+              "_id": "63ac8530107241001bb7bb6f"
+            },
+            {
+              "text": "GitHub Actions",
+              "_id": "64fb10fc107241001bb7f74e"
+            },
+            {
+              "text": "Azure Functions",
+              "_id": "64fb10fc107241001bb7f74d"
+            },
+            {
+              "text": "Terraform",
+              "_id": "64fb10fc107241001bb7f74c"
+            }
+          ],
+          "end": {
+            "year": 2023,
+            "month": 1
+          },
+          "start": {
+            "year": 2021
+          }
+        },
+        {
+          "name": "Side by side framework",
+          "description": "<p style=\"font-size: 14px;\"><em style=\"font-size: 16px;text-align: left;\">Designed and implemented a serverless and stateful solution based on MongoDB Atlas DB and Realm capabilities to be used as a framework for extending our CRM solution instead of using microservices architecture. </em></p><p style=\"font-size: 14px;\"><em style=\"font-size: 16px;text-align: left;\">The same solution manages error handling: exceptions, retries and compensation for the asynchronous flows.</em></p><p><br/></p><p></p>",
+          "_id": "63a99afd107241001bb7bb2d",
+          "techs": [
+            {
+              "text": "MongoDB",
+              "_id": "63a99afd107241001bb7bb2f"
+            },
+            {
+              "text": "Non-Relational Database (MongoDb, Cosmos)",
+              "_id": "63a99afd107241001bb7bb2e"
+            },
+            {
+              "text": "Event-driven architecture",
+              "_id": "63ac7dab107241001bb7bb61"
+            },
+            {
+              "text": "NodeJS",
+              "_id": "63ac8530107241001bb7bb6e"
+            },
+            {
+              "text": "Serverless",
+              "_id": "63ac8530107241001bb7bb6d"
+            },
+            {
+              "text": "Github",
+              "_id": "63ac8530107241001bb7bb6c"
+            }
+          ],
+          "end": {
+            "year": 2022,
+            "month": 9
+          },
+          "start": {
+            "year": 2022,
+            "month": 4
+          }
+        }
+      ],
+      "end": {
+        "year": 2023,
+        "month": 1
+      },
+      "start": {
+        "year": 2021,
+        "month": 9
+      }
+    },
+    {
+      "name": "Electrolux AB",
+      "description": "<p><em style=\"font-size: 16px;text-align: left;\">Cloud and Solutions architect for Electrolux IT in Europe.<br/></em></p><p><em style=\"font-size: 16px;text-align: left;\">Consolidating and optimising the European marketing and consumer services related microservices and migrating to Azure cloud.</em></p><div><em style=\"font-size: 16px;text-align: left;\">Setup of Azure API management as the main API gateway in combination with Akamai CDN and WAF for an optimised and secure delivery.<br/></em><p><br/></p></div>",
+      "title": "Digital Platform Architect",
+      "_id": "63a9960e107241001bb7bb08",
+      "projects": [
+        {
+          "name": "Akamai security",
+          "description": "<p><em style=\"font-size: 16px;text-align: left;\">Setting up and fine-tuning Akamai Bot manager as the first layer of security to handle all bot traffic globally on more than 100 sites and for the APIs managed through the API management tool.</em></p>",
+          "_id": "63a9960e107241001bb7bb0f",
+          "techs": [
+            {
+              "text": "CDN - Akamai / Lumen / Cloudfront",
+              "_id": "63a9960e107241001bb7bb12"
+            },
+            {
+              "text": "bot management",
+              "_id": "63a9960e107241001bb7bb10"
+            },
+            {
+              "text": "WAF",
+              "_id": "63a99d90107241001bb7bb30"
+            }
+          ],
+          "end": {
+            "year": 2022
+          },
+          "start": {
+            "year": 2021
+          }
+        },
+        {
+          "name": "API management",
+          "description": "<p style=\"font-size: 14px;\"><em style=\"font-size: 16px;text-align: left;\">Setting up Azure API management to consolidate all APIs and ensuring separation of concerns within our microservices landscape.</em></p><p style=\"font-size: 14px;\"><em style=\"font-size: 16px;text-align: left;\">The architecture relies on Akamai as well for a faster and more secure delivery of the APIs and the APIM developer portal. (<a href=\"http://portal.eluxmkt.com\" target=\"\">https://portal.eluxmkt.com</a>)</em></p>",
+          "_id": "63a9960e107241001bb7bb09",
+          "techs": [
+            {
+              "text": "Azure API Management",
+              "_id": "63a9960e107241001bb7bb0e"
+            },
+            {
+              "text": "Azure Cloud",
+              "_id": "63a9960e107241001bb7bb0d"
+            },
+            {
+              "text": "Microservice Architecture",
+              "_id": "63a9960e107241001bb7bb0c"
+            },
+            {
+              "text": "AKS",
+              "_id": "63a9960e107241001bb7bb0b"
+            },
+            {
+              "text": "Openshift",
+              "_id": "63a9960e107241001bb7bb0a"
+            },
+            {
+              "text": "CDN - Akamai / Lumen / Cloudfront",
+              "_id": "63ac7dab107241001bb7bb60"
+            },
+            {
+              "text": "WAF",
+              "_id": "63ac7dab107241001bb7bb5f"
+            }
+          ],
+          "end": {
+            "year": 2022
+          },
+          "start": {
+            "year": 2021,
+            "month": 8
+          }
+        }
+      ],
+      "end": {
+        "year": 2021,
+        "month": 8
+      },
+      "start": {
+        "year": 2020,
+        "month": 3
+      }
+    },
+    {
+      "name": "Electrolux AB",
+      "description": "<p><em style=\"font-size: 16px;text-align: left;\">Helping our Marketing through the digitalisation from DevOps engineer to SRE.</em></p><p><em style=\"font-size: 16px;text-align: left;\">My position includes assessing the requirements of the organisation with respect to its operations and functions and then translate the requirements to physical and financial aspects.</em><br/></p><p><br/></p>",
+      "title": "Digital Marketing Business Analyst",
+      "_id": "63a99afd107241001bb7bb2c",
+      "projects": [
+        {
+          "name": "GDPR",
+          "description": "<p><em style=\"font-size: 16px;text-align: left;\">Assessment of the general data and protection regulation by analysing the European legislations and come up with a plan to introduce a new compliant customer identity and access management system.</em><br/></p><p><em style=\"font-size: 16px;text-align: left;\">Worked as an Anguler developer and DevOps engineer to host, manage and maintain our CMS based legal site for the privacy statements APIs and client apps for integrations. (<a href=\"http://legal.electrolux.com\" target=\"\">https://legal.electrolux.com</a>)</em></p>",
+          "_id": "63ac7dab107241001bb7bb5e",
+          "techs": [
+            {
+              "text": "Data Protection & GDPR",
+              "_id": "63ac7e1b107241001bb7bb67"
+            },
+            {
+              "text": "Episerver",
+              "_id": "63ac7fc0107241001bb7bb6a"
+            },
+            {
+              "text": "Angular",
+              "_id": "63ac7fc0107241001bb7bb69"
+            },
+            {
+              "text": "Octopus",
+              "_id": "63ac7fc0107241001bb7bb68"
+            }
+          ],
+          "end": {
+            "year": 2020,
+            "month": 2
+          },
+          "start": {
+            "year": 2019,
+            "month": 3
+          }
+        }
+      ],
+      "end": {
+        "year": 2020,
+        "month": 2
+      },
+      "start": {
+        "year": 2019,
+        "month": 3
+      }
+    },
+    {
+      "name": "Electrolux AB",
+      "description": "<div style=\"font-size: 16px;text-align: left;\"><p><em>Working on the EMEA EpiServer dotnet based CMS entreprise solutions from our datacenter or the Cloud like Azure/IBM to our Akamai CDN configurations.<br/></em><em>A Web developer using Angular and dotnet core frameworks to build A.C.I.D solutions for our Digital Marketing.<br/></em></p></div><div style=\"font-size: 16px;text-align: left;\"></div>",
+      "title": "Web Portals DevOps Engineer",
+      "_id": "63a99afd107241001bb7bb1d",
+      "projects": [
+        {
+          "name": "T1",
+          "description": "<div style=\"font-size: 16px;text-align: left;\"><p><em>Maintaining, securing and optimizing over a hundred of Electrolux group brand websites across Europe from our datacenter or the Cloud like Azure/IBM to our Akamai CDN configurations for our EMEA Marketing solutions. </em></p><p><em>Example (<a href=\"http://www.electrolux.se\" target=\"\">https://www.electrolux.se</a>, <a href=\"http://www.aeg.de\" target=\"\">https://www.aeg.de</a>)</em></p></div><div style=\"font-size: 16px;text-align: left;\"></div>",
+          "_id": "63a99afd107241001bb7bb26",
+          "techs": [
+            {
+              "text": "Episerver",
+              "_id": "63a99afd107241001bb7bb2b"
+            },
+            {
+              "text": "Octopus",
+              "_id": "63a99afd107241001bb7bb2a"
+            },
+            {
+              "text": "TeamCity",
+              "_id": "63a99afd107241001bb7bb29"
+            },
+            {
+              "text": "Azure DevOps",
+              "_id": "63a99afd107241001bb7bb28"
+            },
+            {
+              "text": "Azure Cloud",
+              "_id": "63a99afd107241001bb7bb27"
+            }
+          ],
+          "end": {
+            "year": 2019,
+            "month": 2
+          },
+          "start": {
+            "year": 2017,
+            "month": 8
+          }
+        },
+        {
+          "name": "Eden web",
+          "description": "<p><em style=\"font-size: 16px;text-align: left;\">A Web developer using Angular and dotnet core frameworks to build single page applications and microservices to be used as foundation for our Marketing tool modernization.</em></p>",
+          "_id": "63a99afd107241001bb7bb21",
+          "techs": [
+            {
+              "text": "Angular",
+              "_id": "63a99afd107241001bb7bb25"
+            },
+            {
+              "text": "Dotnet core",
+              "_id": "63a99afd107241001bb7bb24"
+            },
+            {
+              "text": "Azure",
+              "_id": "63a99afd107241001bb7bb23"
+            },
+            {
+              "text": "Azure DevOps",
+              "_id": "63a99afd107241001bb7bb22"
+            }
+          ],
+          "end": {
+            "year": 2019
+          },
+          "start": {
+            "year": 2018
+          }
+        },
+        {
+          "name": "Global licensing",
+          "description": "<p style=\"font-size: 14px;\"><em style=\"font-size: 16px;text-align: left;\">Implemented a mobile application for our global licensing team to be able to have an approval flow to sell and buy brands online.</em></p>",
+          "_id": "63a99afd107241001bb7bb1e",
+          "techs": [
+            {
+              "text": "Power Apps",
+              "_id": "63a99afd107241001bb7bb20"
+            },
+            {
+              "text": "Power Automate",
+              "_id": "63a99afd107241001bb7bb1f"
+            }
+          ],
+          "end": {
+            "year": 2018,
+            "month": 9
+          },
+          "start": {
+            "year": 2018,
+            "month": 4
+          }
+        }
+      ],
+      "end": {
+        "year": 2019,
+        "month": 2
+      },
+      "start": {
+        "year": 2017,
+        "month": 8
+      }
+    },
+    {
+      "name": "TATA consultancy services",
+      "description": "<p><em style=\"font-size: 16px;text-align: left;\">Worked as a team leader and systems engineer in mobility division using JavaEE and Ionic Frameworks<br/></em><em style=\"font-size: 16px;text-align: left;\">Data scientist with GESS working with intelligent bot systems using differnt NLP and machine learning Technics and frameworks.</em><br/></p><p><em style=\"font-size: 16px;text-align: left;\">Different POCs internal to TCS and for customers like SBI bank related to intelligent knowledge based chatbot systems.</em></p><p><em style=\"font-size: 16px;text-align: left;\">Also POCs related to augmented reality and cutting edge mobile technologies.</em></p>",
+      "title": "Systems Engineer and Data Scientist",
+      "_id": "63a9a1ce107241001bb7bb38",
+      "projects": [
+        {
+          "name": "GESS",
+          "description": "<p><em style=\"font-size: 16px;text-align: left;\">Data scientist working with intelligent bot systems using differnt NLP and machine learning Technics and frameworks.</em></p><p><!--EndFragment--><span style=\"font-size: 16px;\"><i><br/></i></span><br/><br/></p>",
+          "_id": "6557401d107241001bb8041b",
+          "techs": [
+            {
+              "text": "IBM Cloud",
+              "_id": "6557401d107241001bb80420"
+            },
+            {
+              "text": "api.ai",
+              "_id": "6557401d107241001bb8041f"
+            },
+            {
+              "text": "IBM watson",
+              "_id": "6557401d107241001bb8041e"
+            },
+            {
+              "text": "python",
+              "_id": "6557401d107241001bb8041d"
+            },
+            {
+              "text": "Scala",
+              "_id": "6557401d107241001bb8041c"
+            },
+            {
+              "text": "AngularJS",
+              "_id": "655dde13107241001bb8048e"
+            },
+            {
+              "text": "ReactJS",
+              "_id": "655dde13107241001bb8048d"
+            }
+          ],
+          "end": {
+            "year": 2016
+          },
+          "start": {
+            "year": 2016
+          }
+        }
+      ],
+      "end": {
+        "year": 2016,
+        "month": 9
+      },
+      "start": {
+        "year": 2016,
+        "month": 1
+      }
+    },
+    {
+      "name": "Freelance",
+      "description": "<div style=\"font-size: 16px;text-align: left;\"><p><em>Designed and developed a handful of multi purpose web applications using Symfony framework<br/></em></p></div><div style=\"font-size: 16px;text-align: left;\"></div>",
+      "title": "Full stack developer",
+      "_id": "63ac8f99107241001bb7bb72",
+      "projects": [],
+      "end": {
+        "year": 2015
+      },
+      "start": {
+        "year": 2014
+      }
+    },
+    {
+      "name": "Stream Global Services",
+      "description": "<section id=\"employment\"><div><p><em>Fixing ADSL, telephony and TV for our SFR customers<br/></em></p></div></section><section style=\"font-size: 16px;text-align: left;\"><div class=\"handmade\" style=\"text-align: right;\"></div></section>",
+      "title": "Technical support agent",
+      "_id": "63ac8f99107241001bb7bb71",
+      "projects": [],
+      "end": {
+        "year": 2013,
+        "month": 6
+      },
+      "start": {
+        "year": 2012,
+        "month": 9
+      }
+    },
+    {
+      "name": "Nordcloud",
+      "description": "",
+      "title": "Cloud Architect",
+      "_id": "63cfb3b1107241001bb7c461",
+      "projects": [
+        {
+          "name": "Volvocars/IBM",
+          "description": "<p><span style=\"color: rgba(0, 0, 0, 0.9);font-size: 14px;text-align: left;float: none;\">As an experienced Azure Cloud Architect with software engineering skills, I bring expertise in IBM cloud environments, OpenShift, and Cloud Native tools. I aim to leverage my knowledge to drive efficiency in VolvoCars' Inbound Logistics department, offering innovative solutions and scalable cloud infrastructure designs.</span><!--EndFragment--><br/><br/><br/></p>",
+          "_id": "64fb10fc107241001bb7f745",
+          "techs": [
+            {
+              "text": "Terraform",
+              "_id": "64fb10fc107241001bb7f74b"
+            },
+            {
+              "text": "GitHub Actions",
+              "_id": "64fb10fc107241001bb7f74a"
+            },
+            {
+              "text": "IBM Cloud",
+              "_id": "64fb10fc107241001bb7f749"
+            },
+            {
+              "text": "Python",
+              "_id": "64fb10fc107241001bb7f748"
+            },
+            {
+              "text": "Test Automation",
+              "_id": "64fb10fc107241001bb7f747"
+            },
+            {
+              "text": "Monitoring",
+              "_id": "64fb10fc107241001bb7f746"
+            },
+            {
+              "text": "Openshift",
+              "_id": "65574072107241001bb80422"
+            },
+            {
+              "text": "Microservices and Serverless",
+              "_id": "65574072107241001bb80421"
+            }
+          ],
+          "start": {
+            "year": 2023,
+            "month": 4
+          }
+        }
+      ],
+      "end": {
+        "year": null
+      },
+      "start": {
+        "year": 2023,
+        "month": 2
+      }
+    }
+  ],
+  "location": {
+    "country": "Sweden",
+    "city": "Solna"
+  },
+  "languages": [
+    {
+      "name": "Arabic",
+      "level": "Native proficiency",
+      "_id": "63a9924f107241001bb7bb07"
+    },
+    {
+      "name": "French",
+      "level": "Native proficiency",
+      "_id": "63a9924f107241001bb7bb06"
+    },
+    {
+      "name": "English",
+      "level": "Native proficiency",
+      "_id": "63a9924f107241001bb7bb05"
+    }
+  ],
+  "social": {
+    "linkedin": "https://www.linkedin.com/in/thaersaidi/",
+    "github": "https://github.com/thaer899",
+    "facebook": "https://www.facebook.com/rebelthaersaidi",
+    "personal": "https://www.thaersaidi.com",
+    "twitter": "https://twitter.com/thaer_saidi"
+  },
+  "images": ["/api/images/63a98fb4107241001bb7bb02"],
+  "name": {
+    "first": "Thaer",
+    "last": "Saidi"
+  }
+}

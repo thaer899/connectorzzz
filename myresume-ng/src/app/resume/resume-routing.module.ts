@@ -13,6 +13,7 @@ import { SkillComponent } from './skills/skill/skill.component';
 import { BlogComponent } from './blogs/blog/blog.component';
 import { BlogsComponent } from './blogs/blogs.component';
 import { PrivacyComponent } from './privacy/privacy.component';
+import { PartnersComponent } from './partners/partners.component';
 // import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
@@ -30,6 +31,7 @@ const routes: Routes = [
       { path: 'blogs', component: BlogsComponent, data: { title: 'Blog' } },
       { path: 'blogs/:id', component: BlogComponent, data: { title: 'Blog posts' } },
       { path: 'ask', component: AskComponent, data: { title: 'Ask me' } },
+      { path: 'partners', component: PartnersComponent, data: { title: 'Partners' } },
       { path: 'privacy', component: PrivacyComponent, data: { title: 'Privacy Statement page for ai.thaersaidi.net' } },
 
       // { path: '**', component: PageNotFoundComponent }, // handle no match routes

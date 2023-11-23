@@ -68,6 +68,38 @@ export class DataService {
         );
     }
 
+    private fetchUsersFirebase(): Observable<any> {
+        const fileRef = ref(storage, `users.json`);
+        return from(getDownloadURL(fileRef)).pipe(
+            switchMap(downloadURL => {
+                if (typeof downloadURL === 'string') {
+                    return this.http.get<any>(downloadURL).pipe(
+                        tap(fetchedData => {
+                            this.data.next(fetchedData);
+                            // Update the BehaviorSubject with the fetched data
+                        })
+                    );
+                } else {
+                    // Handle the case where downloadURL is not a string
+                    console.error('downloadURL is not a string:', downloadURL);
+                    return of(null);
+                }
+            }),
+            catchError(error => {
+                console.error("Error getting download URL:", error);
+                return of(null);  // Return a null observable in case of error
+            })
+        );
+    }
+
+    public fetchUsers(): Observable<any> {
+        return this.fetchUsersFirebase().pipe(
+            tap(() => {
+                return this.getData();
+            })
+        );
+    }
+
     public fetchData(): Observable<any> {
         return this.getData();
     }

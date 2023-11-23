@@ -1,10 +1,29 @@
 const express = require('express');
 const router = express.Router();
 const { getFile } = require('../services/api/apiCommunications');
-const { getOpenAIQuote, getOpenAIMessage, getOpenAISkill, getOpenAICompletion, createBlogPost, getLlamaResponse } = require('../controllers/apiController');
+const { getOpenAIQuote, getOpenAIMessage, getOpenAISkill, getOpenAICompletion, createBlogPost, getLlamaResponse, getOpenAIAssistantMessage } = require('../controllers/apiController');
 
 router.get('/', (req, res) => {
     res.send('thaer saidi resume chatbot');
+});
+
+// Route to handle POST requests
+router.post('/thaer_ai_message', async (req, res) => {
+    try {
+        const recipientMessage = req.body.recipientMessage;
+
+        console.log("recipientMessage: ", recipientMessage);
+        if (!recipientMessage) {
+            return res.status(400).send('Missing required parameters.');
+        }
+
+        // Call the OpenAI Assistant completion function
+        const result = await getOpenAIAssistantMessage(recipientMessage);
+        res.json(result);
+    } catch (error) {
+        console.error("Error:", error);
+        res.status(500).send('Error processing the request.');
+    }
 });
 
 router.post('/message', async (req, res) => {

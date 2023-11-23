@@ -1,0 +1,10 @@
+<ng-container *ngIf="data">
+  <button
+    type="button"
+    class="btn skill-set"
+    *ngFor="let partner of data"
+    [routerLink]="['/p', partner.email]"
+  >
+    {{ partner.username }}
+  </button>
+</ng-container>

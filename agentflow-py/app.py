@@ -15,6 +15,7 @@ from starlette.websockets import WebSocketDisconnect
 from src.config import API_KEY, OPENAI_API_KEY
 from src.chat import setup_agent, group_chat
 from src.db import create_profile, read_profile, update_profile, delete_profile
+import websockets
 
 openai.api_key = OPENAI_API_KEY
 
@@ -37,6 +38,15 @@ logging.basicConfig(filename='agent.log', level=logging.DEBUG)
 @app.get("/")
 async def probe():
     return {"status": "OK", "message": "Service is running"}
+
+
+@app.websocket("/ws")
+async def websocket_endpoint(websocket: WebSocket):
+    await websocket.accept()
+    while True:
+        data = await websocket.receive_text()
+        # process your data here
+        await websocket.send_text(f"Message text was: {data}")
 
 
 @app.get("/agentflow/get_chat_id")
@@ -164,7 +174,6 @@ async def profile_handler(request: Request, email: EmailStr = None):
         await delete_profile(email)
         return {"message": "Profile deleted successfully"}
 
-asyncio.run(get_gpt_chat_id())
 
 if __name__ == "__main__":
     manager = Manager()

@@ -1,0 +1,409 @@
+{
+  "tracks": [
+    {
+      "album": {
+        "album_type": "album",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/3Ofbm810VXiC3VaO76oMPP"
+            },
+            "href": "https://api.spotify.com/v1/artists/3Ofbm810VXiC3VaO76oMPP",
+            "id": "3Ofbm810VXiC3VaO76oMPP",
+            "name": "G.G.A",
+            "type": "artist",
+            "uri": "spotify:artist:3Ofbm810VXiC3VaO76oMPP"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/1NyH5ubcU9CCabIjVJkAHO"
+        },
+        "href": "https://api.spotify.com/v1/albums/1NyH5ubcU9CCabIjVJkAHO",
+        "id": "1NyH5ubcU9CCabIjVJkAHO",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b27349ee84602fffc75047556f4e",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e0249ee84602fffc75047556f4e",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d0000485149ee84602fffc75047556f4e",
+            "width": 64
+          }
+        ],
+        "is_playable": true,
+        "name": "Ghram",
+        "release_date": "2021-10-02",
+        "release_date_precision": "day",
+        "total_tracks": 12,
+        "type": "album",
+        "uri": "spotify:album:1NyH5ubcU9CCabIjVJkAHO"
+      },
+      "artists": [
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/3Ofbm810VXiC3VaO76oMPP"
+          },
+          "href": "https://api.spotify.com/v1/artists/3Ofbm810VXiC3VaO76oMPP",
+          "id": "3Ofbm810VXiC3VaO76oMPP",
+          "name": "G.G.A",
+          "type": "artist",
+          "uri": "spotify:artist:3Ofbm810VXiC3VaO76oMPP"
+        },
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/1JKD6r1BHHPW5UjN9JKwia"
+          },
+          "href": "https://api.spotify.com/v1/artists/1JKD6r1BHHPW5UjN9JKwia",
+          "id": "1JKD6r1BHHPW5UjN9JKwia",
+          "name": "Mortadha Ftiti",
+          "type": "artist",
+          "uri": "spotify:artist:1JKD6r1BHHPW5UjN9JKwia"
+        }
+      ],
+      "disc_number": 1,
+      "duration_ms": 184000,
+      "explicit": true,
+      "external_ids": {
+        "isrc": "LBA0H2004431"
+      },
+      "external_urls": {
+        "spotify": "https://open.spotify.com/track/6UmPJTPqQ3HXZkGHzpCR2H"
+      },
+      "href": "https://api.spotify.com/v1/tracks/6UmPJTPqQ3HXZkGHzpCR2H",
+      "id": "6UmPJTPqQ3HXZkGHzpCR2H",
+      "is_local": false,
+      "is_playable": true,
+      "name": "Ghrib",
+      "popularity": 38,
+      "preview_url": "https://p.scdn.co/mp3-preview/ef68b237043df6dbe85327febe53e829d2f8a5e3?cid=d8a5ed958d274c2e8ee717e6a4b0971d",
+      "track_number": 12,
+      "type": "track",
+      "uri": "spotify:track:6UmPJTPqQ3HXZkGHzpCR2H"
+    },
+    {
+      "album": {
+        "album_type": "album",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/3Ofbm810VXiC3VaO76oMPP"
+            },
+            "href": "https://api.spotify.com/v1/artists/3Ofbm810VXiC3VaO76oMPP",
+            "id": "3Ofbm810VXiC3VaO76oMPP",
+            "name": "G.G.A",
+            "type": "artist",
+            "uri": "spotify:artist:3Ofbm810VXiC3VaO76oMPP"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/3XdHLZuz3svE8ugrPQIwr8"
+        },
+        "href": "https://api.spotify.com/v1/albums/3XdHLZuz3svE8ugrPQIwr8",
+        "id": "3XdHLZuz3svE8ugrPQIwr8",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b2735b04658458d1d2f652223e72",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e025b04658458d1d2f652223e72",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d000048515b04658458d1d2f652223e72",
+            "width": 64
+          }
+        ],
+        "is_playable": true,
+        "name": "Lahmer Album",
+        "release_date": "2015-11-01",
+        "release_date_precision": "day",
+        "total_tracks": 16,
+        "type": "album",
+        "uri": "spotify:album:3XdHLZuz3svE8ugrPQIwr8"
+      },
+      "artists": [
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/3Ofbm810VXiC3VaO76oMPP"
+          },
+          "href": "https://api.spotify.com/v1/artists/3Ofbm810VXiC3VaO76oMPP",
+          "id": "3Ofbm810VXiC3VaO76oMPP",
+          "name": "G.G.A",
+          "type": "artist",
+          "uri": "spotify:artist:3Ofbm810VXiC3VaO76oMPP"
+        }
+      ],
+      "disc_number": 1,
+      "duration_ms": 208000,
+      "explicit": true,
+      "external_ids": {
+        "isrc": "USE831573691"
+      },
+      "external_urls": {
+        "spotify": "https://open.spotify.com/track/0DHA9AjDfNGaIW6WJAsezp"
+      },
+      "href": "https://api.spotify.com/v1/tracks/0DHA9AjDfNGaIW6WJAsezp",
+      "id": "0DHA9AjDfNGaIW6WJAsezp",
+      "is_local": false,
+      "is_playable": true,
+      "name": "Yeah",
+      "popularity": 38,
+      "preview_url": "https://p.scdn.co/mp3-preview/4d9c3bf958f203c63434782b19b5ccf98c1dccaf?cid=d8a5ed958d274c2e8ee717e6a4b0971d",
+      "track_number": 5,
+      "type": "track",
+      "uri": "spotify:track:0DHA9AjDfNGaIW6WJAsezp"
+    },
+    {
+      "album": {
+        "album_type": "single",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/3Ofbm810VXiC3VaO76oMPP"
+            },
+            "href": "https://api.spotify.com/v1/artists/3Ofbm810VXiC3VaO76oMPP",
+            "id": "3Ofbm810VXiC3VaO76oMPP",
+            "name": "G.G.A",
+            "type": "artist",
+            "uri": "spotify:artist:3Ofbm810VXiC3VaO76oMPP"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/1cPuoUIkK5GqJWDKgGVScZ"
+        },
+        "href": "https://api.spotify.com/v1/albums/1cPuoUIkK5GqJWDKgGVScZ",
+        "id": "1cPuoUIkK5GqJWDKgGVScZ",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b273d6ce0463925801aed0e98534",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e02d6ce0463925801aed0e98534",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d00004851d6ce0463925801aed0e98534",
+            "width": 64
+          }
+        ],
+        "is_playable": true,
+        "name": "Indica",
+        "release_date": "2023-09-09",
+        "release_date_precision": "day",
+        "total_tracks": 1,
+        "type": "album",
+        "uri": "spotify:album:1cPuoUIkK5GqJWDKgGVScZ"
+      },
+      "artists": [
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/3Ofbm810VXiC3VaO76oMPP"
+          },
+          "href": "https://api.spotify.com/v1/artists/3Ofbm810VXiC3VaO76oMPP",
+          "id": "3Ofbm810VXiC3VaO76oMPP",
+          "name": "G.G.A",
+          "type": "artist",
+          "uri": "spotify:artist:3Ofbm810VXiC3VaO76oMPP"
+        }
+      ],
+      "disc_number": 1,
+      "duration_ms": 219651,
+      "explicit": true,
+      "external_ids": {
+        "isrc": "DGA092346968"
+      },
+      "external_urls": {
+        "spotify": "https://open.spotify.com/track/4gJLd2cOfS0wlzmZ4BIjNm"
+      },
+      "href": "https://api.spotify.com/v1/tracks/4gJLd2cOfS0wlzmZ4BIjNm",
+      "id": "4gJLd2cOfS0wlzmZ4BIjNm",
+      "is_local": false,
+      "is_playable": true,
+      "name": "Indica",
+      "popularity": 36,
+      "preview_url": "https://p.scdn.co/mp3-preview/2cd8d4e0f120483ffe14d30d1956661f85196039?cid=d8a5ed958d274c2e8ee717e6a4b0971d",
+      "track_number": 1,
+      "type": "track",
+      "uri": "spotify:track:4gJLd2cOfS0wlzmZ4BIjNm"
+    },
+    {
+      "album": {
+        "album_type": "single",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/3Ofbm810VXiC3VaO76oMPP"
+            },
+            "href": "https://api.spotify.com/v1/artists/3Ofbm810VXiC3VaO76oMPP",
+            "id": "3Ofbm810VXiC3VaO76oMPP",
+            "name": "G.G.A",
+            "type": "artist",
+            "uri": "spotify:artist:3Ofbm810VXiC3VaO76oMPP"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/0BNZ8NFv1dgWXtkbXarOoh"
+        },
+        "href": "https://api.spotify.com/v1/albums/0BNZ8NFv1dgWXtkbXarOoh",
+        "id": "0BNZ8NFv1dgWXtkbXarOoh",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b27387bdaca871b0b3e66ed9fac8",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e0287bdaca871b0b3e66ed9fac8",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d0000485187bdaca871b0b3e66ed9fac8",
+            "width": 64
+          }
+        ],
+        "is_playable": true,
+        "name": "9anoun El Ghaba",
+        "release_date": "2023-08-19",
+        "release_date_precision": "day",
+        "total_tracks": 1,
+        "type": "album",
+        "uri": "spotify:album:0BNZ8NFv1dgWXtkbXarOoh"
+      },
+      "artists": [
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/3Ofbm810VXiC3VaO76oMPP"
+          },
+          "href": "https://api.spotify.com/v1/artists/3Ofbm810VXiC3VaO76oMPP",
+          "id": "3Ofbm810VXiC3VaO76oMPP",
+          "name": "G.G.A",
+          "type": "artist",
+          "uri": "spotify:artist:3Ofbm810VXiC3VaO76oMPP"
+        },
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/1ZgY6ufOpB64Tn2Ha1Vrjv"
+          },
+          "href": "https://api.spotify.com/v1/artists/1ZgY6ufOpB64Tn2Ha1Vrjv",
+          "id": "1ZgY6ufOpB64Tn2Ha1Vrjv",
+          "name": "Junior Hassen",
+          "type": "artist",
+          "uri": "spotify:artist:1ZgY6ufOpB64Tn2Ha1Vrjv"
+        }
+      ],
+      "disc_number": 1,
+      "duration_ms": 222439,
+      "explicit": true,
+      "external_ids": {
+        "isrc": "DGA082332275"
+      },
+      "external_urls": {
+        "spotify": "https://open.spotify.com/track/1V1BPjvvdRWqJbwIfr3AQF"
+      },
+      "href": "https://api.spotify.com/v1/tracks/1V1BPjvvdRWqJbwIfr3AQF",
+      "id": "1V1BPjvvdRWqJbwIfr3AQF",
+      "is_local": false,
+      "is_playable": true,
+      "name": "9anoun El Ghaba",
+      "popularity": 29,
+      "preview_url": "https://p.scdn.co/mp3-preview/ffc4749a79d0d58662e0521188d7f4c963384699?cid=d8a5ed958d274c2e8ee717e6a4b0971d",
+      "track_number": 1,
+      "type": "track",
+      "uri": "spotify:track:1V1BPjvvdRWqJbwIfr3AQF"
+    },
+    {
+      "album": {
+        "album_type": "single",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/3Ofbm810VXiC3VaO76oMPP"
+            },
+            "href": "https://api.spotify.com/v1/artists/3Ofbm810VXiC3VaO76oMPP",
+            "id": "3Ofbm810VXiC3VaO76oMPP",
+            "name": "G.G.A",
+            "type": "artist",
+            "uri": "spotify:artist:3Ofbm810VXiC3VaO76oMPP"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/0pHEomoislC18WJxzOGQ1M"
+        },
+        "href": "https://api.spotify.com/v1/albums/0pHEomoislC18WJxzOGQ1M",
+        "id": "0pHEomoislC18WJxzOGQ1M",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b2735faaf125d45d664345a6c97d",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e025faaf125d45d664345a6c97d",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d000048515faaf125d45d664345a6c97d",
+            "width": 64
+          }
+        ],
+        "is_playable": true,
+        "name": "Yeah",
+        "release_date": "2014-12-15",
+        "release_date_precision": "day",
+        "total_tracks": 1,
+        "type": "album",
+        "uri": "spotify:album:0pHEomoislC18WJxzOGQ1M"
+      },
+      "artists": [
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/3Ofbm810VXiC3VaO76oMPP"
+          },
+          "href": "https://api.spotify.com/v1/artists/3Ofbm810VXiC3VaO76oMPP",
+          "id": "3Ofbm810VXiC3VaO76oMPP",
+          "name": "G.G.A",
+          "type": "artist",
+          "uri": "spotify:artist:3Ofbm810VXiC3VaO76oMPP"
+        }
+      ],
+      "disc_number": 1,
+      "duration_ms": 211957,
+      "explicit": false,
+      "external_ids": {
+        "isrc": "FR59R1903571"
+      },
+      "external_urls": {
+        "spotify": "https://open.spotify.com/track/1wwy580UP27sYfp58kaYRM"
+      },
+      "href": "https://api.spotify.com/v1/tracks/1wwy580UP27sYfp58kaYRM",
+      "id": "1wwy580UP27sYfp58kaYRM",
+      "is_local": false,
+      "is_playable": true,
+      "name": "Yeah",
+      "popularity": 16,
+      "preview_url": "https://p.scdn.co/mp3-preview/f86e5bdbe0bb187e1205cbea59735ce6f33ceba0?cid=d8a5ed958d274c2e8ee717e6a4b0971d",
+      "track_number": 1,
+      "type": "track",
+      "uri": "spotify:track:1wwy580UP27sYfp58kaYRM"
+    }
+  ]
+}

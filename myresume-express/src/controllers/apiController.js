@@ -3,8 +3,19 @@ const API_KEY = process.env.API_KEY;
 const axios = require('axios');
 const { getFile, searchImages, uploadFile } = require('../services/api/apiCommunications');
 const { optimizeData } = require('../services/chatbot/chatbotLogic');
-const { createOpenAICompletion } = require('../services/chatbot/openai');
+const { createOpenAICompletion, createOpenAIAssistantCompletion } = require('../services/chatbot/openai');
 const { createLlamaCompletion } = require('../services/chatbot/llamaLogic');
+
+
+
+async function getOpenAIAssistantMessage(recipientMessage) {
+    console.log('########### getOpenAIMessage recipientMessage:', recipientMessage);
+    const response = await createOpenAIAssistantCompletion(recipientMessage);
+    console.log('########### getOpenAIMessage response:', response);
+
+    return response;
+}
+
 
 async function getOpenAIMessage(email, recipientMessage) {
     console.log(
@@ -25,6 +36,9 @@ async function getOpenAIMessage(email, recipientMessage) {
     console.log('########### createOpenAICompletion Response Preview:', typeof response === 'string' ? response.substring(0, 100) : JSON.stringify(response).substring(0, 100));
     return response;
 }
+
+
+
 
 async function getOpenAISkill(email, recipientMessage = '') {
     const data = await getFile(email);
@@ -173,5 +187,6 @@ module.exports = {
     validateApiKey,
     getOpenAICompletion,
     createBlogPost,
-    getLlamaResponse
+    getLlamaResponse,
+    getOpenAIAssistantMessage
 };

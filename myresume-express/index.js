@@ -1,11 +1,18 @@
 const express = require('express');
 const cors = require('cors');
-const app = express();
 const serverless = require('serverless-http');
+const OpenAI = require('openai');
 const { validateApiKey } = require('./src/controllers/apiController');
 const routes = require('./src/routes/routes');
 const PORT = process.env.PORT || 4000;
 
+// Initialize OpenAI client
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+
+// Global thread ID
+let globalThreadId = process.env.GLOBAL_THREAD_ID;
+
+const app = express();
 
 // Middleware for logging incoming requests
 app.use((req, res, next) => {
@@ -13,12 +20,8 @@ app.use((req, res, next) => {
   next();
 });
 
-
-// Enable CORS for a specific domain
-app.use(cors({
-  origin: '*'
-}));
-
+// Enable CORS for all domains
+app.use(cors({ origin: '*' }));
 app.options('*', cors());
 
 // Middleware to parse JSON requests
@@ -32,11 +35,30 @@ app.get('/', (req, res, next) => {
   next();
 });
 
+// // Initialize global thread ID
+// async function initializeGlobalThread() {
+//   if (!globalThreadId) {
+//     try {
+//       const thread = await openai.beta.threads.create();
+//       globalThreadId = thread.id;
+//       console.log(`Global thread ID: ${globalThreadId}`);
+//     } catch (error) {
+//       console.error("Error creating global thread:", error);
+//     }
+//   }
+// }
+
+// // Call this function to ensure the global thread ID is initialized
+// initializeGlobalThread();
+
 // Middleware to validate API key
 app.use(validateApiKey);
 
-// Use your routes
-app.use('/myresume/', routes);
+// Use your routes with the global thread ID
+app.use('/myresume/', (req, res, next) => {
+  // req.globalThreadId = globalThreadId;
+  next();
+}, routes);
 
 // Handle not found errors
 app.use((req, res, next) => {
