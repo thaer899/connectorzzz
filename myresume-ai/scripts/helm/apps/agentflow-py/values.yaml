@@ -5,8 +5,8 @@ FIREBASE_CREDENTIALS_PATH: "Li4vLi4vZGF0YS9zZWNyZXQvc2l0ZS1nZW5lcmF0b3ItbmctZmly
 API_KEY: "Rkp4SjJNUnY0dnRBSDBKczgxUTM5MA=="
 certName: "myresume-ai-managed-cert"
 ipName: "myresume-ai-ip"
+containerPort: 33000
 host: "ai.thaersaidi.net"
 clusterName: "myresume-ai"
 projectName: "thaersaidi-da79c"
 location: "europe-west1"
-containerPort: 33000
