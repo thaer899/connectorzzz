@@ -20,7 +20,7 @@ spec:
             - "--cluster={{ .Values.clusterName }}"
             - "--location={{ .Values.location }}"
           ports:
-            - containerPort: "{{ .Values.containerPort }}"
+            - containerPort: {{ .Values.containerPort }}
           env:
             - name: OPENAI_API_KEY
               valueFrom:
@@ -40,12 +40,12 @@ spec:
           livenessProbe:
             httpGet:
               path: /
-              port: "{{ .Values.containerPort }}"
+              port: {{ .Values.containerPort }}
             initialDelaySeconds: 60
             timeoutSeconds: 5
           readinessProbe:
             httpGet:
               path: /
-              port: "{{ .Values.containerPort }}"
+              port: {{ .Values.containerPort }}
             initialDelaySeconds: 60
             timeoutSeconds: 10
