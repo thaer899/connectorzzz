@@ -15,8 +15,12 @@ spec:
       containers:
         - name: "{{.Values.appName}}-container"
           image: "{{.Values.registry}}/{{.Values.projectName}}/{{.Values.appName}}:latest"
+          args:
+            - "--project-id={{ .Values.projectName }}"
+            - "--cluster={{ .Values.clusterName }}"
+            - "--location={{ .Values.location }}"
           ports:
-            - containerPort: 4000
+            - containerPort: "{{ .Values.containerPort }}"
           env:
             - name: OPENAI_API_KEY
               valueFrom:
@@ -36,12 +40,12 @@ spec:
           livenessProbe:
             httpGet:
               path: /
-              port: 4000
+              port: "{{ .Values.containerPort }}"
             initialDelaySeconds: 60
             timeoutSeconds: 5
           readinessProbe:
             httpGet:
               path: /
-              port: 4000
+              port: "{{ .Values.containerPort }}"
             initialDelaySeconds: 60
             timeoutSeconds: 10

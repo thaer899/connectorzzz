@@ -1,0 +1,2191 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "FSM Service Appointment",
+        "description": "FSM Service Appointment production API",
+        "version": "v2-0"
+    },
+    "servers": [
+        {
+            "url": "https://api.eluxmkt.com/external/fsm/service-appointment/v2-0"
+        }
+    ],
+    "paths": {
+        "/v2/serviceappointments/appointmentslots": {
+            "post": {
+                "tags": [
+                    "Appointment"
+                ],
+                "summary": "Retrieve Appointment Slots",
+                "description": "example:\r\n{\r\n    \"Id\": 123,\r\n    \"appointmentId\": \"\",\r\n    \"taskId\": \"\",\r\n    \"itemUUID\": \"02E1F3323F121EECB1912A1018AF65AA\",\r\n    \"slotType\": \"DAY\",\r\n    \"slotFrom\": \"2022-04-29T06:22:48\",\r\n    \"slotTo\": \"2022-04-30T15:00:00\",\r\n    \"consumerId\": 1953059,\r\n    \"faultDescription\": \"BD: Final Performance test on 26/10 - 1\",\r\n    \"language\": \"FR\",\r\n    \"email\": \"matei.almond@yopmail.com\",\r\n    \"skillLevel\": \"NR\",\r\n    \"requestType\": \"REP\",\r\n    \"SerialId\": \"2021_1836933\",\r\n    \"MultipleServiceTechReqd\": \"false\",\r\n    \"productCode\": \"911436018\",\r\n    \"address\": [{\r\n        \"houseNumber\": \"55\",\r\n        \"street\": \"Zwijnaardsesteenweg\",\r\n        \"city\": \"Merelbeke\",\r\n        \"country\": \"BE\",\r\n        \"postalCode\": \"9820\",\r\n        \"telephone1AreaCode\": \"+40\",\r\n        \"telephone1Local\": \"1234567890\",\r\n        \"telephone2AreaCode\": \"+40\",\r\n        \"telephone2Local\": \"1234567890\"\r\n    }],\r\n    \"placePerson\":{\r\n        \"personRelationship\":\"101\",\r\n        \"personId\":\"10754\"\r\n    }\r\n}",
+                "operationId": "Appointment_GetAppointmentSlotAsync",
+                "requestBody": {
+                    "description": "Appointment Slot Request",
+                    "content": {
+                        "application/json-patch+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AppointmentSlotRequest"
+                            },
+                            "example": {
+                                "id": 0,
+                                "appointmentId": "string",
+                                "taskId": "string",
+                                "itemUUID": "string",
+                                "ticketUUID": "string",
+                                "slotType": "string",
+                                "slotFrom": "string",
+                                "slotTo": "string",
+                                "consumerId": 0,
+                                "consumerName": "string",
+                                "faultDescription": "string",
+                                "language": "string",
+                                "email": "string",
+                                "skillLevel": "string",
+                                "requestType": "string",
+                                "serialId": "string",
+                                "multipleServiceTechReqd": "string",
+                                "productCode": "string",
+                                "address": [
+                                    {
+                                        "houseNumber": "string",
+                                        "street": "string",
+                                        "city": "string",
+                                        "state": "string",
+                                        "country": "string",
+                                        "district": "string",
+                                        "postalCode": "string",
+                                        "telephone1AreaCode": "string",
+                                        "telephone1Local": "string",
+                                        "telephone2AreaCode": "string",
+                                        "telephone2Local": "string"
+                                    }
+                                ],
+                                "placePerson": {
+                                    "personRelationship": "string",
+                                    "personId": "string"
+                                }
+                            }
+                        },
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AppointmentSlotRequest"
+                            },
+                            "example": {
+                                "id": 0,
+                                "appointmentId": "string",
+                                "taskId": "string",
+                                "itemUUID": "string",
+                                "ticketUUID": "string",
+                                "slotType": "string",
+                                "slotFrom": "string",
+                                "slotTo": "string",
+                                "consumerId": 0,
+                                "consumerName": "string",
+                                "faultDescription": "string",
+                                "language": "string",
+                                "email": "string",
+                                "skillLevel": "string",
+                                "requestType": "string",
+                                "serialId": "string",
+                                "multipleServiceTechReqd": "string",
+                                "productCode": "string",
+                                "address": [
+                                    {
+                                        "houseNumber": "string",
+                                        "street": "string",
+                                        "city": "string",
+                                        "state": "string",
+                                        "country": "string",
+                                        "district": "string",
+                                        "postalCode": "string",
+                                        "telephone1AreaCode": "string",
+                                        "telephone1Local": "string",
+                                        "telephone2AreaCode": "string",
+                                        "telephone2Local": "string"
+                                    }
+                                ],
+                                "placePerson": {
+                                    "personRelationship": "string",
+                                    "personId": "string"
+                                }
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AppointmentSlotRequest"
+                            },
+                            "example": {
+                                "id": 0,
+                                "appointmentId": "string",
+                                "taskId": "string",
+                                "itemUUID": "string",
+                                "ticketUUID": "string",
+                                "slotType": "string",
+                                "slotFrom": "string",
+                                "slotTo": "string",
+                                "consumerId": 0,
+                                "consumerName": "string",
+                                "faultDescription": "string",
+                                "language": "string",
+                                "email": "string",
+                                "skillLevel": "string",
+                                "requestType": "string",
+                                "serialId": "string",
+                                "multipleServiceTechReqd": "string",
+                                "productCode": "string",
+                                "address": [
+                                    {
+                                        "houseNumber": "string",
+                                        "street": "string",
+                                        "city": "string",
+                                        "state": "string",
+                                        "country": "string",
+                                        "district": "string",
+                                        "postalCode": "string",
+                                        "telephone1AreaCode": "string",
+                                        "telephone1Local": "string",
+                                        "telephone2AreaCode": "string",
+                                        "telephone2Local": "string"
+                                    }
+                                ],
+                                "placePerson": {
+                                    "personRelationship": "string",
+                                    "personId": "string"
+                                }
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AppointmentSlotRequest"
+                            },
+                            "example": {
+                                "id": 0,
+                                "appointmentId": "string",
+                                "taskId": "string",
+                                "itemUUID": "string",
+                                "ticketUUID": "string",
+                                "slotType": "string",
+                                "slotFrom": "string",
+                                "slotTo": "string",
+                                "consumerId": 0,
+                                "consumerName": "string",
+                                "faultDescription": "string",
+                                "language": "string",
+                                "email": "string",
+                                "skillLevel": "string",
+                                "requestType": "string",
+                                "serialId": "string",
+                                "multipleServiceTechReqd": "string",
+                                "productCode": "string",
+                                "address": [
+                                    {
+                                        "houseNumber": "string",
+                                        "street": "string",
+                                        "city": "string",
+                                        "state": "string",
+                                        "country": "string",
+                                        "district": "string",
+                                        "postalCode": "string",
+                                        "telephone1AreaCode": "string",
+                                        "telephone1Local": "string",
+                                        "telephone2AreaCode": "string",
+                                        "telephone2Local": "string"
+                                    }
+                                ],
+                                "placePerson": {
+                                    "personRelationship": "string",
+                                    "personId": "string"
+                                }
+                            }
+                        },
+                        "application/xml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AppointmentSlotRequest"
+                            },
+                            "example": "<AppointmentSlotRequest> <id>0</id> <appointmentId>string</appointmentId> <taskId>string</taskId> <itemUUID>string</itemUUID> <ticketUUID>string</ticketUUID> <slotType>string</slotType> <slotFrom>string</slotFrom> <slotTo>string</slotTo> <consumerId>0</consumerId> <consumerName>string</consumerName> <faultDescription>string</faultDescription> <language>string</language> <email>string</email> <skillLevel>string</skillLevel> <requestType>string</requestType> <serialId>string</serialId> <multipleServiceTechReqd>string</multipleServiceTechReqd> <productCode>string</productCode> <address> <houseNumber>string</houseNumber> <street>string</street> <city>string</city> <state>string</state> <country>string</country> <district>string</district> <postalCode>string</postalCode> <telephone1AreaCode>string</telephone1AreaCode> <telephone1Local>string</telephone1Local> <telephone2AreaCode>string</telephone2AreaCode> <telephone2Local>string</telephone2Local> </address> <placePerson> <personRelationship>string</personRelationship> <personId>string</personId> </placePerson> </AppointmentSlotRequest>"
+                        },
+                        "text/xml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AppointmentSlotRequest"
+                            },
+                            "example": "<AppointmentSlotRequest> <id>0</id> <appointmentId>string</appointmentId> <taskId>string</taskId> <itemUUID>string</itemUUID> <ticketUUID>string</ticketUUID> <slotType>string</slotType> <slotFrom>string</slotFrom> <slotTo>string</slotTo> <consumerId>0</consumerId> <consumerName>string</consumerName> <faultDescription>string</faultDescription> <language>string</language> <email>string</email> <skillLevel>string</skillLevel> <requestType>string</requestType> <serialId>string</serialId> <multipleServiceTechReqd>string</multipleServiceTechReqd> <productCode>string</productCode> <address> <houseNumber>string</houseNumber> <street>string</street> <city>string</city> <state>string</state> <country>string</country> <district>string</district> <postalCode>string</postalCode> <telephone1AreaCode>string</telephone1AreaCode> <telephone1Local>string</telephone1Local> <telephone2AreaCode>string</telephone2AreaCode> <telephone2Local>string</telephone2Local> </address> <placePerson> <personRelationship>string</personRelationship> <personId>string</personId> </placePerson> </AppointmentSlotRequest>"
+                        },
+                        "application/*+xml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AppointmentSlotRequest"
+                            },
+                            "example": "<AppointmentSlotRequest> <id>0</id> <appointmentId>string</appointmentId> <taskId>string</taskId> <itemUUID>string</itemUUID> <ticketUUID>string</ticketUUID> <slotType>string</slotType> <slotFrom>string</slotFrom> <slotTo>string</slotTo> <consumerId>0</consumerId> <consumerName>string</consumerName> <faultDescription>string</faultDescription> <language>string</language> <email>string</email> <skillLevel>string</skillLevel> <requestType>string</requestType> <serialId>string</serialId> <multipleServiceTechReqd>string</multipleServiceTechReqd> <productCode>string</productCode> <address> <houseNumber>string</houseNumber> <street>string</street> <city>string</city> <state>string</state> <country>string</country> <district>string</district> <postalCode>string</postalCode> <telephone1AreaCode>string</telephone1AreaCode> <telephone1Local>string</telephone1Local> <telephone2AreaCode>string</telephone2AreaCode> <telephone2Local>string</telephone2Local> </address> <placePerson> <personRelationship>string</personRelationship> <personId>string</personId> </placePerson> </AppointmentSlotRequest>"
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AppointmentSlotRequest"
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": null
+                                    }
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AppointmentSlotRequest"
+                                },
+                                "example": {
+                                    "id": 0,
+                                    "appointmentId": "string",
+                                    "taskId": "string",
+                                    "itemUUID": "string",
+                                    "ticketUUID": "string",
+                                    "slotType": "string",
+                                    "slotFrom": "string",
+                                    "slotTo": "string",
+                                    "consumerId": 0,
+                                    "consumerName": "string",
+                                    "faultDescription": "string",
+                                    "language": "string",
+                                    "email": "string",
+                                    "skillLevel": "string",
+                                    "requestType": "string",
+                                    "serialId": "string",
+                                    "multipleServiceTechReqd": "string",
+                                    "productCode": "string",
+                                    "address": [
+                                        {
+                                            "houseNumber": "string",
+                                            "street": "string",
+                                            "city": "string",
+                                            "state": "string",
+                                            "country": "string",
+                                            "district": "string",
+                                            "postalCode": "string",
+                                            "telephone1AreaCode": "string",
+                                            "telephone1Local": "string",
+                                            "telephone2AreaCode": "string",
+                                            "telephone2Local": "string"
+                                        }
+                                    ],
+                                    "placePerson": {
+                                        "personRelationship": "string",
+                                        "personId": "string"
+                                    }
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AppointmentSlotRequest"
+                                },
+                                "example": {
+                                    "id": 0,
+                                    "appointmentId": "string",
+                                    "taskId": "string",
+                                    "itemUUID": "string",
+                                    "ticketUUID": "string",
+                                    "slotType": "string",
+                                    "slotFrom": "string",
+                                    "slotTo": "string",
+                                    "consumerId": 0,
+                                    "consumerName": "string",
+                                    "faultDescription": "string",
+                                    "language": "string",
+                                    "email": "string",
+                                    "skillLevel": "string",
+                                    "requestType": "string",
+                                    "serialId": "string",
+                                    "multipleServiceTechReqd": "string",
+                                    "productCode": "string",
+                                    "address": [
+                                        {
+                                            "houseNumber": "string",
+                                            "street": "string",
+                                            "city": "string",
+                                            "state": "string",
+                                            "country": "string",
+                                            "district": "string",
+                                            "postalCode": "string",
+                                            "telephone1AreaCode": "string",
+                                            "telephone1Local": "string",
+                                            "telephone2AreaCode": "string",
+                                            "telephone2Local": "string"
+                                        }
+                                    ],
+                                    "placePerson": {
+                                        "personRelationship": "string",
+                                        "personId": "string"
+                                    }
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AppointmentSlotRequest"
+                                },
+                                "example": "<AppointmentSlotRequest> <id>0</id> <appointmentId>string</appointmentId> <taskId>string</taskId> <itemUUID>string</itemUUID> <ticketUUID>string</ticketUUID> <slotType>string</slotType> <slotFrom>string</slotFrom> <slotTo>string</slotTo> <consumerId>0</consumerId> <consumerName>string</consumerName> <faultDescription>string</faultDescription> <language>string</language> <email>string</email> <skillLevel>string</skillLevel> <requestType>string</requestType> <serialId>string</serialId> <multipleServiceTechReqd>string</multipleServiceTechReqd> <productCode>string</productCode> <address> <houseNumber>string</houseNumber> <street>string</street> <city>string</city> <state>string</state> <country>string</country> <district>string</district> <postalCode>string</postalCode> <telephone1AreaCode>string</telephone1AreaCode> <telephone1Local>string</telephone1Local> <telephone2AreaCode>string</telephone2AreaCode> <telephone2Local>string</telephone2Local> </address> <placePerson> <personRelationship>string</personRelationship> <personId>string</personId> </placePerson> </AppointmentSlotRequest>"
+                            },
+                            "text/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AppointmentSlotRequest"
+                                },
+                                "example": "<AppointmentSlotRequest> <id>0</id> <appointmentId>string</appointmentId> <taskId>string</taskId> <itemUUID>string</itemUUID> <ticketUUID>string</ticketUUID> <slotType>string</slotType> <slotFrom>string</slotFrom> <slotTo>string</slotTo> <consumerId>0</consumerId> <consumerName>string</consumerName> <faultDescription>string</faultDescription> <language>string</language> <email>string</email> <skillLevel>string</skillLevel> <requestType>string</requestType> <serialId>string</serialId> <multipleServiceTechReqd>string</multipleServiceTechReqd> <productCode>string</productCode> <address> <houseNumber>string</houseNumber> <street>string</street> <city>string</city> <state>string</state> <country>string</country> <district>string</district> <postalCode>string</postalCode> <telephone1AreaCode>string</telephone1AreaCode> <telephone1Local>string</telephone1Local> <telephone2AreaCode>string</telephone2AreaCode> <telephone2Local>string</telephone2Local> </address> <placePerson> <personRelationship>string</personRelationship> <personId>string</personId> </placePerson> </AppointmentSlotRequest>"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BadRequestResult"
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": null
+                                    }
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BadRequestResult"
+                                },
+                                "example": {
+                                    "statusCode": 0
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BadRequestResult"
+                                },
+                                "example": {
+                                    "statusCode": 0
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFoundResult"
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": null
+                                    }
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFoundResult"
+                                },
+                                "example": {
+                                    "statusCode": 0
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFoundResult"
+                                },
+                                "example": {
+                                    "statusCode": 0
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v2/serviceappointments": {
+            "post": {
+                "tags": [
+                    "Appointment"
+                ],
+                "summary": "Confirm Service Appointment",
+                "description": "example:\r\n{\r\n   \"appointmentId\": \"114147-2021-07-23T06:33:29\",\r\n   \"guid\": \"00163E53E2A91ED88AF02F6FE7F780CE\",\r\n   \"entityId\" :\"00163EC340EA1EDC8B9DFF54810983B4\",\r\n   \"appointmentSlot\": {\r\n      \"slotNumber\": \"0\",\r\n      \"taskId\": \"109606\",\r\n      \"slotFrom\": \"2021-07-26T00:00:00\",\r\n      \"slotTo\": \"2021-07-29T00:00:00\"          \r\n   }\r\n}",
+                "operationId": "Appointment_ConfirmAppointmentSlotAsync",
+                "requestBody": {
+                    "description": "Confirm Appointment Request",
+                    "content": {
+                        "application/json-patch+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConfirmAppointmentSlot"
+                            },
+                            "example": {
+                                "id": "string",
+                                "guid": "string",
+                                "appointmentId": "string",
+                                "entityId": "string",
+                                "appointmentSlot": {
+                                    "slotNumber": 0,
+                                    "taskId": 0,
+                                    "slotFrom": "string",
+                                    "slotTo": "string",
+                                    "orderRange": "string"
+                                }
+                            }
+                        },
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConfirmAppointmentSlot"
+                            },
+                            "example": {
+                                "id": "string",
+                                "guid": "string",
+                                "appointmentId": "string",
+                                "entityId": "string",
+                                "appointmentSlot": {
+                                    "slotNumber": 0,
+                                    "taskId": 0,
+                                    "slotFrom": "string",
+                                    "slotTo": "string",
+                                    "orderRange": "string"
+                                }
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConfirmAppointmentSlot"
+                            },
+                            "example": {
+                                "id": "string",
+                                "guid": "string",
+                                "appointmentId": "string",
+                                "entityId": "string",
+                                "appointmentSlot": {
+                                    "slotNumber": 0,
+                                    "taskId": 0,
+                                    "slotFrom": "string",
+                                    "slotTo": "string",
+                                    "orderRange": "string"
+                                }
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConfirmAppointmentSlot"
+                            },
+                            "example": {
+                                "id": "string",
+                                "guid": "string",
+                                "appointmentId": "string",
+                                "entityId": "string",
+                                "appointmentSlot": {
+                                    "slotNumber": 0,
+                                    "taskId": 0,
+                                    "slotFrom": "string",
+                                    "slotTo": "string",
+                                    "orderRange": "string"
+                                }
+                            }
+                        },
+                        "application/xml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConfirmAppointmentSlot"
+                            },
+                            "example": "<ConfirmAppointmentSlot> <id>string</id> <guid>string</guid> <appointmentId>string</appointmentId> <entityId>string</entityId> <appointmentSlot> <slotNumber>0</slotNumber> <taskId>0</taskId> <slotFrom>string</slotFrom> <slotTo>string</slotTo> <orderRange>string</orderRange> </appointmentSlot> </ConfirmAppointmentSlot>"
+                        },
+                        "text/xml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConfirmAppointmentSlot"
+                            },
+                            "example": "<ConfirmAppointmentSlot> <id>string</id> <guid>string</guid> <appointmentId>string</appointmentId> <entityId>string</entityId> <appointmentSlot> <slotNumber>0</slotNumber> <taskId>0</taskId> <slotFrom>string</slotFrom> <slotTo>string</slotTo> <orderRange>string</orderRange> </appointmentSlot> </ConfirmAppointmentSlot>"
+                        },
+                        "application/*+xml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConfirmAppointmentSlot"
+                            },
+                            "example": "<ConfirmAppointmentSlot> <id>string</id> <guid>string</guid> <appointmentId>string</appointmentId> <entityId>string</entityId> <appointmentSlot> <slotNumber>0</slotNumber> <taskId>0</taskId> <slotFrom>string</slotFrom> <slotTo>string</slotTo> <orderRange>string</orderRange> </appointmentSlot> </ConfirmAppointmentSlot>"
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ConfirmAppointmentSlot"
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": null
+                                    }
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ConfirmAppointmentSlot"
+                                },
+                                "example": {
+                                    "id": "string",
+                                    "guid": "string",
+                                    "appointmentId": "string",
+                                    "entityId": "string",
+                                    "appointmentSlot": {
+                                        "slotNumber": 0,
+                                        "taskId": 0,
+                                        "slotFrom": "string",
+                                        "slotTo": "string",
+                                        "orderRange": "string"
+                                    }
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ConfirmAppointmentSlot"
+                                },
+                                "example": {
+                                    "id": "string",
+                                    "guid": "string",
+                                    "appointmentId": "string",
+                                    "entityId": "string",
+                                    "appointmentSlot": {
+                                        "slotNumber": 0,
+                                        "taskId": 0,
+                                        "slotFrom": "string",
+                                        "slotTo": "string",
+                                        "orderRange": "string"
+                                    }
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ConfirmAppointmentSlot"
+                                },
+                                "example": "<ConfirmAppointmentSlot> <id>string</id> <guid>string</guid> <appointmentId>string</appointmentId> <entityId>string</entityId> <appointmentSlot> <slotNumber>0</slotNumber> <taskId>0</taskId> <slotFrom>string</slotFrom> <slotTo>string</slotTo> <orderRange>string</orderRange> </appointmentSlot> </ConfirmAppointmentSlot>"
+                            },
+                            "text/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ConfirmAppointmentSlot"
+                                },
+                                "example": "<ConfirmAppointmentSlot> <id>string</id> <guid>string</guid> <appointmentId>string</appointmentId> <entityId>string</entityId> <appointmentSlot> <slotNumber>0</slotNumber> <taskId>0</taskId> <slotFrom>string</slotFrom> <slotTo>string</slotTo> <orderRange>string</orderRange> </appointmentSlot> </ConfirmAppointmentSlot>"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BadRequestResult"
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": null
+                                    }
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BadRequestResult"
+                                },
+                                "example": {
+                                    "statusCode": 0
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BadRequestResult"
+                                },
+                                "example": {
+                                    "statusCode": 0
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFoundResult"
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": null
+                                    }
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFoundResult"
+                                },
+                                "example": {
+                                    "statusCode": 0
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFoundResult"
+                                },
+                                "example": {
+                                    "statusCode": 0
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v2/appointmentslots": {
+            "get": {
+                "tags": [
+                    "AppointmentSlot"
+                ],
+                "summary": "Gets a list of AppointmentSlots",
+                "description": "Gets a list of AppointmentSlots",
+                "operationId": "ServiceAppointment_GetAvailable-GetAppointmentSlotsAsync",
+                "parameters": [
+                    {
+                        "name": "SlotStatus",
+                        "in": "query",
+                        "schema": {
+                            "$ref": "#/components/schemas/SlotStatus"
+                        }
+                    },
+                    {
+                        "name": "AppointmentId",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "SlotFrom",
+                        "in": "query",
+                        "description": "Format - date-time (as date-time in RFC3339).",
+                        "schema": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    },
+                    {
+                        "name": "SlotTo",
+                        "in": "query",
+                        "description": "Format - date-time (as date-time in RFC3339).",
+                        "schema": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    },
+                    {
+                        "name": "TaskId",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ExternalId",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "SlotType",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Country",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "PostalCode",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AppointmentSlotResponse"
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": null
+                                    }
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AppointmentSlotResponse"
+                                },
+                                "example": {
+                                    "appointmentId": "string",
+                                    "taskId": "string",
+                                    "error": "string",
+                                    "appointmentSlots": [
+                                        {
+                                            "slotNumber": 0,
+                                            "taskId": 0,
+                                            "slotFrom": "string",
+                                            "slotTo": "string",
+                                            "orderRange": "string"
+                                        }
+                                    ]
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AppointmentSlotResponse"
+                                },
+                                "example": {
+                                    "appointmentId": "string",
+                                    "taskId": "string",
+                                    "error": "string",
+                                    "appointmentSlots": [
+                                        {
+                                            "slotNumber": 0,
+                                            "taskId": 0,
+                                            "slotFrom": "string",
+                                            "slotTo": "string",
+                                            "orderRange": "string"
+                                        }
+                                    ]
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AppointmentSlotResponse"
+                                },
+                                "example": "<AppointmentSlotResponse> <appointmentId>string</appointmentId> <taskId>string</taskId> <error>string</error> <appointmentSlots> <slotNumber>0</slotNumber> <taskId>0</taskId> <slotFrom>string</slotFrom> <slotTo>string</slotTo> <orderRange>string</orderRange> </appointmentSlots> </AppointmentSlotResponse>"
+                            },
+                            "text/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AppointmentSlotResponse"
+                                },
+                                "example": "<AppointmentSlotResponse> <appointmentId>string</appointmentId> <taskId>string</taskId> <error>string</error> <appointmentSlots> <slotNumber>0</slotNumber> <taskId>0</taskId> <slotFrom>string</slotFrom> <slotTo>string</slotTo> <orderRange>string</orderRange> </appointmentSlots> </AppointmentSlotResponse>"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BadRequestResult"
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": null
+                                    }
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BadRequestResult"
+                                },
+                                "example": {
+                                    "statusCode": 0
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BadRequestResult"
+                                },
+                                "example": {
+                                    "statusCode": 0
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFoundResult"
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": null
+                                    }
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFoundResult"
+                                },
+                                "example": {
+                                    "statusCode": 0
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFoundResult"
+                                },
+                                "example": {
+                                    "statusCode": 0
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "AppointmentSlot"
+                ],
+                "summary": "Request Service Appointment slot",
+                "description": "Create example:\r\n\r\n    {\r\n       \"appointmentId\": \"\",\r\n       \"taskId\": 0,\r\n       \"itemUUID\": \"00163EAB5C1B1EDBBDD35005741EB4A2\",\r\n       \"appointmenTemplateId\": \"DAY\",\r\n       \"slotFrom\": \"2021-12-19T05:09:20.439Z\",\r\n       \"slotTo\": \"2021-12-21T05:09:20.443Z\",\r\n       \"consumerId\": 1953059,\r\n       \"faultDescription\": \"BD: Final Performance test on 26/10 - 1\",\r\n       \"language\": \"FR\",\r\n       \"email\": \"matei.almond@yopmail.com\",\r\n       \"skillLevel\": \"NR\",\r\n       \"requestType\": \"REP\",\r\n       \"SerialId\": \"2021_1836933\",\r\n       \"MultipleServiceTechReqd\": \"false\",\r\n       \"address\": [{\r\n           \"houseNumber\": \"55\",\r\n           \"street\": \"Zwijnaardsesteenweg\",\r\n           \"city\": \"Merelbeke\",\r\n           \"country\": \"BE\",\r\n           \"postalCode\": \"9820\"\r\n       }],\r\n        \"placePerson\":{\r\n            \"personRelationship\":\"101\",\r\n            \"personId\":\"ELUX_BIZ_ID_RP_01\"\r\n        }\r\n    }",
+                "operationId": "ServiceAppointment_CreateOrUpdateAsync",
+                "requestBody": {
+                    "description": "The selected appointment slot",
+                    "content": {
+                        "application/json-patch+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SelectedAppointmentSlot"
+                            },
+                            "example": {
+                                "id": 0,
+                                "appointmentId": "string",
+                                "taskId": 0,
+                                "taskCategory": "string",
+                                "taskEarlierAppointment": "string",
+                                "taskActivityServiceIssueCategory": "string",
+                                "taskDescription": "string",
+                                "taskCancellationReason": "string",
+                                "taskDisplayedError": "string",
+                                "taskStatus": "string",
+                                "taskPlannedDurationMin": "string",
+                                "consumerId": 0,
+                                "consumerName": "string",
+                                "productCode": "string",
+                                "serialId": "string",
+                                "faultDescription": "string",
+                                "language": "string",
+                                "email": "string",
+                                "skillLevel": "string",
+                                "requestType": "string",
+                                "multipleServiceTechReqd": true,
+                                "requestExternalId": "string",
+                                "requestUnitContractId": "string",
+                                "requestUnitCoverage": "string",
+                                "requestUnitComment": "string",
+                                "requestStatus": "string",
+                                "requestMainTicket": "string",
+                                "requestName": "string",
+                                "requestEscalationStatusCode": "string",
+                                "requestPriority": "string",
+                                "requestDistributionChannel": "string",
+                                "requestDivisionCode": "string",
+                                "requestClass": "string",
+                                "requestCategory": "string",
+                                "requestProblemCode": "string",
+                                "requestProblemClass": "string",
+                                "requestDocumentType": "string",
+                                "requestResolutionStts": "string",
+                                "taskExternalId": "string",
+                                "externalReferenceId": "string",
+                                "salesOrganizationId": "string",
+                                "productPurchaseDate": "string",
+                                "purchaseValidated": "string",
+                                "mlCode": "string",
+                                "applianceSerialNo": "string",
+                                "retailer2": "string",
+                                "retailer1": "string",
+                                "productWarrantyId": "string",
+                                "productWarrantyFrom": "string",
+                                "productWarrantyTo": "string",
+                                "address": [
+                                    {
+                                        "houseNumber": "string",
+                                        "street": "string",
+                                        "city": "string",
+                                        "state": "string",
+                                        "country": "string",
+                                        "district": "string",
+                                        "postalCode": "string",
+                                        "telephone1AreaCode": "string",
+                                        "telephone1Local": "string",
+                                        "telephone2AreaCode": "string",
+                                        "telephone2Local": "string"
+                                    }
+                                ],
+                                "placePerson": {
+                                    "personRelationship": "string",
+                                    "personId": "string"
+                                },
+                                "plannedParts": [
+                                    {
+                                        "sapPartId": "string",
+                                        "quantity": "string"
+                                    }
+                                ],
+                                "coverage": "string",
+                                "workDescription": "string",
+                                "coverageCode": "string",
+                                "requestStartDateTime": "string",
+                                "requestEndDateTime": "string",
+                                "resolutionCode": "string",
+                                "whosePlace": "string",
+                                "ruComments": "string",
+                                "plannedQuantity": "string",
+                                "earlierAppointment": true
+                            }
+                        },
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SelectedAppointmentSlot"
+                            },
+                            "example": {
+                                "id": 0,
+                                "appointmentId": "string",
+                                "taskId": 0,
+                                "taskCategory": "string",
+                                "taskEarlierAppointment": "string",
+                                "taskActivityServiceIssueCategory": "string",
+                                "taskDescription": "string",
+                                "taskCancellationReason": "string",
+                                "taskDisplayedError": "string",
+                                "taskStatus": "string",
+                                "taskPlannedDurationMin": "string",
+                                "consumerId": 0,
+                                "consumerName": "string",
+                                "productCode": "string",
+                                "serialId": "string",
+                                "faultDescription": "string",
+                                "language": "string",
+                                "email": "string",
+                                "skillLevel": "string",
+                                "requestType": "string",
+                                "multipleServiceTechReqd": true,
+                                "requestExternalId": "string",
+                                "requestUnitContractId": "string",
+                                "requestUnitCoverage": "string",
+                                "requestUnitComment": "string",
+                                "requestStatus": "string",
+                                "requestMainTicket": "string",
+                                "requestName": "string",
+                                "requestEscalationStatusCode": "string",
+                                "requestPriority": "string",
+                                "requestDistributionChannel": "string",
+                                "requestDivisionCode": "string",
+                                "requestClass": "string",
+                                "requestCategory": "string",
+                                "requestProblemCode": "string",
+                                "requestProblemClass": "string",
+                                "requestDocumentType": "string",
+                                "requestResolutionStts": "string",
+                                "taskExternalId": "string",
+                                "externalReferenceId": "string",
+                                "salesOrganizationId": "string",
+                                "productPurchaseDate": "string",
+                                "purchaseValidated": "string",
+                                "mlCode": "string",
+                                "applianceSerialNo": "string",
+                                "retailer2": "string",
+                                "retailer1": "string",
+                                "productWarrantyId": "string",
+                                "productWarrantyFrom": "string",
+                                "productWarrantyTo": "string",
+                                "address": [
+                                    {
+                                        "houseNumber": "string",
+                                        "street": "string",
+                                        "city": "string",
+                                        "state": "string",
+                                        "country": "string",
+                                        "district": "string",
+                                        "postalCode": "string",
+                                        "telephone1AreaCode": "string",
+                                        "telephone1Local": "string",
+                                        "telephone2AreaCode": "string",
+                                        "telephone2Local": "string"
+                                    }
+                                ],
+                                "placePerson": {
+                                    "personRelationship": "string",
+                                    "personId": "string"
+                                },
+                                "plannedParts": [
+                                    {
+                                        "sapPartId": "string",
+                                        "quantity": "string"
+                                    }
+                                ],
+                                "coverage": "string",
+                                "workDescription": "string",
+                                "coverageCode": "string",
+                                "requestStartDateTime": "string",
+                                "requestEndDateTime": "string",
+                                "resolutionCode": "string",
+                                "whosePlace": "string",
+                                "ruComments": "string",
+                                "plannedQuantity": "string",
+                                "earlierAppointment": true
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SelectedAppointmentSlot"
+                            },
+                            "example": {
+                                "id": 0,
+                                "appointmentId": "string",
+                                "taskId": 0,
+                                "taskCategory": "string",
+                                "taskEarlierAppointment": "string",
+                                "taskActivityServiceIssueCategory": "string",
+                                "taskDescription": "string",
+                                "taskCancellationReason": "string",
+                                "taskDisplayedError": "string",
+                                "taskStatus": "string",
+                                "taskPlannedDurationMin": "string",
+                                "consumerId": 0,
+                                "consumerName": "string",
+                                "productCode": "string",
+                                "serialId": "string",
+                                "faultDescription": "string",
+                                "language": "string",
+                                "email": "string",
+                                "skillLevel": "string",
+                                "requestType": "string",
+                                "multipleServiceTechReqd": true,
+                                "requestExternalId": "string",
+                                "requestUnitContractId": "string",
+                                "requestUnitCoverage": "string",
+                                "requestUnitComment": "string",
+                                "requestStatus": "string",
+                                "requestMainTicket": "string",
+                                "requestName": "string",
+                                "requestEscalationStatusCode": "string",
+                                "requestPriority": "string",
+                                "requestDistributionChannel": "string",
+                                "requestDivisionCode": "string",
+                                "requestClass": "string",
+                                "requestCategory": "string",
+                                "requestProblemCode": "string",
+                                "requestProblemClass": "string",
+                                "requestDocumentType": "string",
+                                "requestResolutionStts": "string",
+                                "taskExternalId": "string",
+                                "externalReferenceId": "string",
+                                "salesOrganizationId": "string",
+                                "productPurchaseDate": "string",
+                                "purchaseValidated": "string",
+                                "mlCode": "string",
+                                "applianceSerialNo": "string",
+                                "retailer2": "string",
+                                "retailer1": "string",
+                                "productWarrantyId": "string",
+                                "productWarrantyFrom": "string",
+                                "productWarrantyTo": "string",
+                                "address": [
+                                    {
+                                        "houseNumber": "string",
+                                        "street": "string",
+                                        "city": "string",
+                                        "state": "string",
+                                        "country": "string",
+                                        "district": "string",
+                                        "postalCode": "string",
+                                        "telephone1AreaCode": "string",
+                                        "telephone1Local": "string",
+                                        "telephone2AreaCode": "string",
+                                        "telephone2Local": "string"
+                                    }
+                                ],
+                                "placePerson": {
+                                    "personRelationship": "string",
+                                    "personId": "string"
+                                },
+                                "plannedParts": [
+                                    {
+                                        "sapPartId": "string",
+                                        "quantity": "string"
+                                    }
+                                ],
+                                "coverage": "string",
+                                "workDescription": "string",
+                                "coverageCode": "string",
+                                "requestStartDateTime": "string",
+                                "requestEndDateTime": "string",
+                                "resolutionCode": "string",
+                                "whosePlace": "string",
+                                "ruComments": "string",
+                                "plannedQuantity": "string",
+                                "earlierAppointment": true
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SelectedAppointmentSlot"
+                            },
+                            "example": {
+                                "id": 0,
+                                "appointmentId": "string",
+                                "taskId": 0,
+                                "taskCategory": "string",
+                                "taskEarlierAppointment": "string",
+                                "taskActivityServiceIssueCategory": "string",
+                                "taskDescription": "string",
+                                "taskCancellationReason": "string",
+                                "taskDisplayedError": "string",
+                                "taskStatus": "string",
+                                "taskPlannedDurationMin": "string",
+                                "consumerId": 0,
+                                "consumerName": "string",
+                                "productCode": "string",
+                                "serialId": "string",
+                                "faultDescription": "string",
+                                "language": "string",
+                                "email": "string",
+                                "skillLevel": "string",
+                                "requestType": "string",
+                                "multipleServiceTechReqd": true,
+                                "requestExternalId": "string",
+                                "requestUnitContractId": "string",
+                                "requestUnitCoverage": "string",
+                                "requestUnitComment": "string",
+                                "requestStatus": "string",
+                                "requestMainTicket": "string",
+                                "requestName": "string",
+                                "requestEscalationStatusCode": "string",
+                                "requestPriority": "string",
+                                "requestDistributionChannel": "string",
+                                "requestDivisionCode": "string",
+                                "requestClass": "string",
+                                "requestCategory": "string",
+                                "requestProblemCode": "string",
+                                "requestProblemClass": "string",
+                                "requestDocumentType": "string",
+                                "requestResolutionStts": "string",
+                                "taskExternalId": "string",
+                                "externalReferenceId": "string",
+                                "salesOrganizationId": "string",
+                                "productPurchaseDate": "string",
+                                "purchaseValidated": "string",
+                                "mlCode": "string",
+                                "applianceSerialNo": "string",
+                                "retailer2": "string",
+                                "retailer1": "string",
+                                "productWarrantyId": "string",
+                                "productWarrantyFrom": "string",
+                                "productWarrantyTo": "string",
+                                "address": [
+                                    {
+                                        "houseNumber": "string",
+                                        "street": "string",
+                                        "city": "string",
+                                        "state": "string",
+                                        "country": "string",
+                                        "district": "string",
+                                        "postalCode": "string",
+                                        "telephone1AreaCode": "string",
+                                        "telephone1Local": "string",
+                                        "telephone2AreaCode": "string",
+                                        "telephone2Local": "string"
+                                    }
+                                ],
+                                "placePerson": {
+                                    "personRelationship": "string",
+                                    "personId": "string"
+                                },
+                                "plannedParts": [
+                                    {
+                                        "sapPartId": "string",
+                                        "quantity": "string"
+                                    }
+                                ],
+                                "coverage": "string",
+                                "workDescription": "string",
+                                "coverageCode": "string",
+                                "requestStartDateTime": "string",
+                                "requestEndDateTime": "string",
+                                "resolutionCode": "string",
+                                "whosePlace": "string",
+                                "ruComments": "string",
+                                "plannedQuantity": "string",
+                                "earlierAppointment": true
+                            }
+                        },
+                        "application/xml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SelectedAppointmentSlot"
+                            },
+                            "example": "<SelectedAppointmentSlot> <id>0</id> <appointmentId>string</appointmentId> <taskId>0</taskId> <taskCategory>string</taskCategory> <taskEarlierAppointment>string</taskEarlierAppointment> <taskActivityServiceIssueCategory>string</taskActivityServiceIssueCategory> <taskDescription>string</taskDescription> <taskCancellationReason>string</taskCancellationReason> <taskDisplayedError>string</taskDisplayedError> <taskStatus>string</taskStatus> <taskPlannedDurationMin>string</taskPlannedDurationMin> <consumerId>0</consumerId> <consumerName>string</consumerName> <productCode>string</productCode> <serialId>string</serialId> <faultDescription>string</faultDescription> <language>string</language> <email>string</email> <skillLevel>string</skillLevel> <requestType>string</requestType> <multipleServiceTechReqd>true</multipleServiceTechReqd> <requestExternalId>string</requestExternalId> <requestUnitContractId>string</requestUnitContractId> <requestUnitCoverage>string</requestUnitCoverage> <requestUnitComment>string</requestUnitComment> <requestStatus>string</requestStatus> <requestMainTicket>string</requestMainTicket> <requestName>string</requestName> <requestEscalationStatusCode>string</requestEscalationStatusCode> <requestPriority>string</requestPriority> <requestDistributionChannel>string</requestDistributionChannel> <requestDivisionCode>string</requestDivisionCode> <requestClass>string</requestClass> <requestCategory>string</requestCategory> <requestProblemCode>string</requestProblemCode> <requestProblemClass>string</requestProblemClass> <requestDocumentType>string</requestDocumentType> <requestResolutionStts>string</requestResolutionStts> <taskExternalId>string</taskExternalId> <externalReferenceId>string</externalReferenceId> <salesOrganizationId>string</salesOrganizationId> <productPurchaseDate>string</productPurchaseDate> <purchaseValidated>string</purchaseValidated> <mlCode>string</mlCode> <applianceSerialNo>string</applianceSerialNo> <retailer2>string</retailer2> <retailer1>string</retailer1> <productWarrantyId>string</productWarrantyId> <productWarrantyFrom>string</productWarrantyFrom> <productWarrantyTo>string</productWarrantyTo> <address> <houseNumber>string</houseNumber> <street>string</street> <city>string</city> <state>string</state> <country>string</country> <district>string</district> <postalCode>string</postalCode> <telephone1AreaCode>string</telephone1AreaCode> <telephone1Local>string</telephone1Local> <telephone2AreaCode>string</telephone2AreaCode> <telephone2Local>string</telephone2Local> </address> <placePerson> <personRelationship>string</personRelationship> <personId>string</personId> </placePerson> <plannedParts> <sapPartId>string</sapPartId> <quantity>string</quantity> </plannedParts> <coverage>string</coverage> <workDescription>string</workDescription> <coverageCode>string</coverageCode> <requestStartDateTime>string</requestStartDateTime> <requestEndDateTime>string</requestEndDateTime> <resolutionCode>string</resolutionCode> <whosePlace>string</whosePlace> <ruComments>string</ruComments> <plannedQuantity>string</plannedQuantity> <earlierAppointment>true</earlierAppointment> </SelectedAppointmentSlot>"
+                        },
+                        "text/xml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SelectedAppointmentSlot"
+                            },
+                            "example": "<SelectedAppointmentSlot> <id>0</id> <appointmentId>string</appointmentId> <taskId>0</taskId> <taskCategory>string</taskCategory> <taskEarlierAppointment>string</taskEarlierAppointment> <taskActivityServiceIssueCategory>string</taskActivityServiceIssueCategory> <taskDescription>string</taskDescription> <taskCancellationReason>string</taskCancellationReason> <taskDisplayedError>string</taskDisplayedError> <taskStatus>string</taskStatus> <taskPlannedDurationMin>string</taskPlannedDurationMin> <consumerId>0</consumerId> <consumerName>string</consumerName> <productCode>string</productCode> <serialId>string</serialId> <faultDescription>string</faultDescription> <language>string</language> <email>string</email> <skillLevel>string</skillLevel> <requestType>string</requestType> <multipleServiceTechReqd>true</multipleServiceTechReqd> <requestExternalId>string</requestExternalId> <requestUnitContractId>string</requestUnitContractId> <requestUnitCoverage>string</requestUnitCoverage> <requestUnitComment>string</requestUnitComment> <requestStatus>string</requestStatus> <requestMainTicket>string</requestMainTicket> <requestName>string</requestName> <requestEscalationStatusCode>string</requestEscalationStatusCode> <requestPriority>string</requestPriority> <requestDistributionChannel>string</requestDistributionChannel> <requestDivisionCode>string</requestDivisionCode> <requestClass>string</requestClass> <requestCategory>string</requestCategory> <requestProblemCode>string</requestProblemCode> <requestProblemClass>string</requestProblemClass> <requestDocumentType>string</requestDocumentType> <requestResolutionStts>string</requestResolutionStts> <taskExternalId>string</taskExternalId> <externalReferenceId>string</externalReferenceId> <salesOrganizationId>string</salesOrganizationId> <productPurchaseDate>string</productPurchaseDate> <purchaseValidated>string</purchaseValidated> <mlCode>string</mlCode> <applianceSerialNo>string</applianceSerialNo> <retailer2>string</retailer2> <retailer1>string</retailer1> <productWarrantyId>string</productWarrantyId> <productWarrantyFrom>string</productWarrantyFrom> <productWarrantyTo>string</productWarrantyTo> <address> <houseNumber>string</houseNumber> <street>string</street> <city>string</city> <state>string</state> <country>string</country> <district>string</district> <postalCode>string</postalCode> <telephone1AreaCode>string</telephone1AreaCode> <telephone1Local>string</telephone1Local> <telephone2AreaCode>string</telephone2AreaCode> <telephone2Local>string</telephone2Local> </address> <placePerson> <personRelationship>string</personRelationship> <personId>string</personId> </placePerson> <plannedParts> <sapPartId>string</sapPartId> <quantity>string</quantity> </plannedParts> <coverage>string</coverage> <workDescription>string</workDescription> <coverageCode>string</coverageCode> <requestStartDateTime>string</requestStartDateTime> <requestEndDateTime>string</requestEndDateTime> <resolutionCode>string</resolutionCode> <whosePlace>string</whosePlace> <ruComments>string</ruComments> <plannedQuantity>string</plannedQuantity> <earlierAppointment>true</earlierAppointment> </SelectedAppointmentSlot>"
+                        },
+                        "application/*+xml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SelectedAppointmentSlot"
+                            },
+                            "example": "<SelectedAppointmentSlot> <id>0</id> <appointmentId>string</appointmentId> <taskId>0</taskId> <taskCategory>string</taskCategory> <taskEarlierAppointment>string</taskEarlierAppointment> <taskActivityServiceIssueCategory>string</taskActivityServiceIssueCategory> <taskDescription>string</taskDescription> <taskCancellationReason>string</taskCancellationReason> <taskDisplayedError>string</taskDisplayedError> <taskStatus>string</taskStatus> <taskPlannedDurationMin>string</taskPlannedDurationMin> <consumerId>0</consumerId> <consumerName>string</consumerName> <productCode>string</productCode> <serialId>string</serialId> <faultDescription>string</faultDescription> <language>string</language> <email>string</email> <skillLevel>string</skillLevel> <requestType>string</requestType> <multipleServiceTechReqd>true</multipleServiceTechReqd> <requestExternalId>string</requestExternalId> <requestUnitContractId>string</requestUnitContractId> <requestUnitCoverage>string</requestUnitCoverage> <requestUnitComment>string</requestUnitComment> <requestStatus>string</requestStatus> <requestMainTicket>string</requestMainTicket> <requestName>string</requestName> <requestEscalationStatusCode>string</requestEscalationStatusCode> <requestPriority>string</requestPriority> <requestDistributionChannel>string</requestDistributionChannel> <requestDivisionCode>string</requestDivisionCode> <requestClass>string</requestClass> <requestCategory>string</requestCategory> <requestProblemCode>string</requestProblemCode> <requestProblemClass>string</requestProblemClass> <requestDocumentType>string</requestDocumentType> <requestResolutionStts>string</requestResolutionStts> <taskExternalId>string</taskExternalId> <externalReferenceId>string</externalReferenceId> <salesOrganizationId>string</salesOrganizationId> <productPurchaseDate>string</productPurchaseDate> <purchaseValidated>string</purchaseValidated> <mlCode>string</mlCode> <applianceSerialNo>string</applianceSerialNo> <retailer2>string</retailer2> <retailer1>string</retailer1> <productWarrantyId>string</productWarrantyId> <productWarrantyFrom>string</productWarrantyFrom> <productWarrantyTo>string</productWarrantyTo> <address> <houseNumber>string</houseNumber> <street>string</street> <city>string</city> <state>string</state> <country>string</country> <district>string</district> <postalCode>string</postalCode> <telephone1AreaCode>string</telephone1AreaCode> <telephone1Local>string</telephone1Local> <telephone2AreaCode>string</telephone2AreaCode> <telephone2Local>string</telephone2Local> </address> <placePerson> <personRelationship>string</personRelationship> <personId>string</personId> </placePerson> <plannedParts> <sapPartId>string</sapPartId> <quantity>string</quantity> </plannedParts> <coverage>string</coverage> <workDescription>string</workDescription> <coverageCode>string</coverageCode> <requestStartDateTime>string</requestStartDateTime> <requestEndDateTime>string</requestEndDateTime> <resolutionCode>string</resolutionCode> <whosePlace>string</whosePlace> <ruComments>string</ruComments> <plannedQuantity>string</plannedQuantity> <earlierAppointment>true</earlierAppointment> </SelectedAppointmentSlot>"
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AppointmentDetails"
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": null
+                                    }
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AppointmentDetails"
+                                },
+                                "example": {
+                                    "appointmentId": "string",
+                                    "taskId": "string"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AppointmentDetails"
+                                },
+                                "example": {
+                                    "appointmentId": "string",
+                                    "taskId": "string"
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AppointmentDetails"
+                                },
+                                "example": "<AppointmentDetails> <appointmentId>string</appointmentId> <taskId>string</taskId> </AppointmentDetails>"
+                            },
+                            "text/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AppointmentDetails"
+                                },
+                                "example": "<AppointmentDetails> <appointmentId>string</appointmentId> <taskId>string</taskId> </AppointmentDetails>"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BadRequestResult"
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": null
+                                    }
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BadRequestResult"
+                                },
+                                "example": {
+                                    "statusCode": 0
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BadRequestResult"
+                                },
+                                "example": {
+                                    "statusCode": 0
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v2/appointmentslots/{itemUUID}": {
+            "get": {
+                "tags": [
+                    "AppointmentSlot"
+                ],
+                "summary": "Gets FSM Request ID and Task ID given C4C Item UUID.",
+                "description": "Gets FSM Request ID and Task ID given C4C Item UUID.",
+                "operationId": "ServiceAppointment_GetAvailable-GetTaskRequest",
+                "parameters": [
+                    {
+                        "name": "itemUUID",
+                        "in": "path",
+                        "description": "C4C Ticket UUID.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "00163ECA81131EDC93885169288774CD"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AppointmentDetails"
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": null
+                                    }
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AppointmentDetails"
+                                },
+                                "example": {
+                                    "appointmentId": "string",
+                                    "taskId": "string"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AppointmentDetails"
+                                },
+                                "example": {
+                                    "appointmentId": "string",
+                                    "taskId": "string"
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AppointmentDetails"
+                                },
+                                "example": "<AppointmentDetails> <appointmentId>string</appointmentId> <taskId>string</taskId> </AppointmentDetails>"
+                            },
+                            "text/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AppointmentDetails"
+                                },
+                                "example": "<AppointmentDetails> <appointmentId>string</appointmentId> <taskId>string</taskId> </AppointmentDetails>"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BadRequestResult"
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": null
+                                    }
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BadRequestResult"
+                                },
+                                "example": {
+                                    "statusCode": 0
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BadRequestResult"
+                                },
+                                "example": {
+                                    "statusCode": 0
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFoundResult"
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": null
+                                    }
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFoundResult"
+                                },
+                                "example": {
+                                    "statusCode": 0
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFoundResult"
+                                },
+                                "example": {
+                                    "statusCode": 0
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v2/appointmentslots/has_predicted_parts/{requestId}": {
+            "get": {
+                "tags": [
+                    "AppointmentSlot"
+                ],
+                "summary": "To Check Whether FSM Predicted Parts for given Request ID.",
+                "description": "To Check Whether FSM Predicted Parts for given Request ID.",
+                "operationId": "ServiceAppointment_HasPredictedParts",
+                "parameters": [
+                    {
+                        "name": "requestId",
+                        "in": "path",
+                        "description": "Request ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "type": "boolean"
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": null
+                                    }
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "type": "boolean"
+                                },
+                                "example": "True"
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "type": "boolean"
+                                },
+                                "example": "True"
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "type": "boolean"
+                                },
+                                "example": "<V2AppointmentslotsHas_predicted_parts-requestId-Get200ApplicationXmlResponse>true</V2AppointmentslotsHas_predicted_parts-requestId-Get200ApplicationXmlResponse>"
+                            },
+                            "text/xml": {
+                                "schema": {
+                                    "type": "boolean"
+                                },
+                                "example": "<V2AppointmentslotsHas_predicted_parts-requestId-Get200TextXmlResponse>true</V2AppointmentslotsHas_predicted_parts-requestId-Get200TextXmlResponse>"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BadRequestResult"
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": null
+                                    }
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BadRequestResult"
+                                },
+                                "example": {
+                                    "statusCode": 0
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BadRequestResult"
+                                },
+                                "example": {
+                                    "statusCode": 0
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v2/status": {
+            "get": {
+                "tags": [
+                    "Status"
+                ],
+                "summary": "Gets the Microservice status.",
+                "description": "Gets the Microservice status.",
+                "operationId": "Status_Get",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/StatusResponse"
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": null
+                                    }
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/StatusResponse"
+                                },
+                                "example": {
+                                    "status": "ok"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/StatusResponse"
+                                },
+                                "example": {
+                                    "status": "ok"
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/StatusResponse"
+                                },
+                                "example": "<StatusResponse> <status>ok</status> </StatusResponse>"
+                            },
+                            "text/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/StatusResponse"
+                                },
+                                "example": "<StatusResponse> <status>ok</status> </StatusResponse>"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Address": {
+                "type": "object",
+                "properties": {
+                    "houseNumber": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "street": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "city": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "state": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "country": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "district": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "postalCode": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "telephone1AreaCode": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "telephone1Local": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "telephone2AreaCode": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "telephone2Local": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "AppointmentDetails": {
+                "type": "object",
+                "properties": {
+                    "appointmentId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "taskId": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "AppointmentSlotDetails": {
+                "type": "object",
+                "properties": {
+                    "slotNumber": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "taskId": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "slotFrom": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "slotTo": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "orderRange": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "AppointmentSlotRequest": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "appointmentId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "taskId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "itemUUID": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "ticketUUID": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "slotType": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "slotFrom": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "slotTo": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "consumerId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "consumerName": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "faultDescription": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "language": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "email": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "skillLevel": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "requestType": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "serialId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "multipleServiceTechReqd": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "productCode": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "address": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Address"
+                        },
+                        "nullable": true
+                    },
+                    "placePerson": {
+                        "$ref": "#/components/schemas/PlacePerson"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "AppointmentSlotResponse": {
+                "type": "object",
+                "properties": {
+                    "appointmentId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "taskId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "error": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "appointmentSlots": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/AppointmentSlotDetails"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "BadRequestResult": {
+                "type": "object",
+                "properties": {
+                    "statusCode": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ConfirmAppointmentSlot": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "guid": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "appointmentId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "entityId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "appointmentSlot": {
+                        "$ref": "#/components/schemas/AppointmentSlotDetails"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "NotFoundResult": {
+                "type": "object",
+                "properties": {
+                    "statusCode": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "PlacePerson": {
+                "type": "object",
+                "properties": {
+                    "personRelationship": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "personId": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "PlannedPart": {
+                "type": "object",
+                "properties": {
+                    "sapPartId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "quantity": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "SelectedAppointmentSlot": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "appointmentId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "taskId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "taskCategory": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "taskEarlierAppointment": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "taskActivityServiceIssueCategory": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "taskDescription": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "taskCancellationReason": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "taskDisplayedError": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "taskStatus": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "taskPlannedDurationMin": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "consumerId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "consumerName": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "productCode": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "serialId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "faultDescription": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "language": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "email": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "skillLevel": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "requestType": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "multipleServiceTechReqd": {
+                        "type": "boolean"
+                    },
+                    "requestExternalId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "requestUnitContractId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "requestUnitCoverage": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "requestUnitComment": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "requestStatus": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "requestMainTicket": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "requestName": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "requestEscalationStatusCode": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "requestPriority": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "requestDistributionChannel": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "requestDivisionCode": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "requestClass": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "requestCategory": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "requestProblemCode": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "requestProblemClass": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "requestDocumentType": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "requestResolutionStts": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "taskExternalId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "externalReferenceId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "salesOrganizationId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "productPurchaseDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "purchaseValidated": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "mlCode": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "applianceSerialNo": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "retailer2": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "retailer1": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "productWarrantyId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "productWarrantyFrom": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "productWarrantyTo": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "address": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Address"
+                        },
+                        "nullable": true
+                    },
+                    "placePerson": {
+                        "$ref": "#/components/schemas/PlacePerson"
+                    },
+                    "plannedParts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/PlannedPart"
+                        },
+                        "nullable": true
+                    },
+                    "coverage": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "workDescription": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "coverageCode": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "requestStartDateTime": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "requestEndDateTime": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "resolutionCode": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "whosePlace": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "ruComments": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "plannedQuantity": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "earlierAppointment": {
+                        "type": "boolean",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "SlotStatus": {
+                "enum": [
+                    "available",
+                    "confirmed"
+                ],
+                "type": "string"
+            },
+            "Status": {
+                "enum": [
+                    "ok"
+                ],
+                "type": "string"
+            },
+            "StatusResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "$ref": "#/components/schemas/Status"
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "securitySchemes": {
+            "apiKeyHeader": {
+                "type": "apiKey",
+                "name": "Ocp-Apim-Subscription-Key",
+                "in": "header"
+            },
+            "apiKeyQuery": {
+                "type": "apiKey",
+                "name": "subscription-key",
+                "in": "query"
+            }
+        }
+    },
+    "security": [
+        {
+            "apiKeyHeader": []
+        },
+        {
+            "apiKeyQuery": []
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+apiVersion: monitoring.googleapis.com/v1
+kind: PodMonitoring
+metadata:
+  name: myresume-express
+spec:
+  selector:
+    matchLabels:
+      app: myresume-express
+  endpoints:
+  - port: "4000"
+    interval: 30s
+targetLabels:
+  fromPod:
+  - from: foo
+    to: foo

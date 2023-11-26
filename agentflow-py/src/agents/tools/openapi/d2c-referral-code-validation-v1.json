@@ -1,0 +1,33 @@
+{
+  "ApiContract": {
+    "id": "/apis/d2c-referral-code-validation-v1",
+    "name": " D2C referral code validation V1",
+    "apiRevision": "2",
+    "description": "referral code validation",
+    "subscriptionRequired": true,
+    "serviceUrl": "https://pathfinder-referralcodevalidation-prd-v1-elux-prd-serving.apps.aro.myaccount.electroluxgroup.eu",
+    "backendId": null,
+    "path": "external/cdc/pathfinder/referral-code-validation",
+    "protocols": ["https"],
+    "authenticationSettings": {
+      "oAuth2": null,
+      "openid": null,
+      "oAuth2AuthenticationSettings": [],
+      "openidAuthenticationSettings": []
+    },
+    "subscriptionKeyParameterNames": {
+      "header": "Ocp-Apim-Subscription-Key",
+      "query": "subscription-key"
+    },
+    "contact": {
+      "name": "Rammohan",
+      "url": null,
+      "email": "rammohan.k@electrolux.com"
+    },
+    "isCurrent": true,
+    "apiRevisionDescription": "Added a new revision for CDC migration to new namespace",
+    "apiVersion": "v1",
+    "apiVersionSetId": "/apiVersionSets/62a88362f7a74f853114ea83"
+  },
+  "ApiHostnames": ["api.eluxmkt.com"]
+}

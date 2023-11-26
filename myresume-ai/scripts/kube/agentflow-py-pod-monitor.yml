@@ -1,0 +1,15 @@
+apiVersion: monitoring.googleapis.com/v1
+kind: PodMonitoring
+metadata:
+  name: agentflow-py
+spec:
+  selector:
+    matchLabels:
+      app: agentflow-py
+  endpoints:
+  - port: "33000"
+    interval: 30s
+targetLabels:
+  fromPod:
+  - from: foo
+    to: foo

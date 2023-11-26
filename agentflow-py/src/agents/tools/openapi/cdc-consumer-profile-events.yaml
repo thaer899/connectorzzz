@@ -1,0 +1,195 @@
+openapi: 3.0.1
+info:
+  title: CDC Consumer Profile Events
+  description: CDC Consumer Profile Events - This API is used by CDC system to send all the events to Microservice layer to sync with C4C System.
+  version: v1
+servers:
+  - url: https://api.eluxmkt.com/external/cdc/cdc-consumer-events/v1
+paths:
+  /cdc:
+    post:
+      summary: /cdc - POST
+      description: /cdc - POST
+      operationId: post-cdc
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventsCDC'
+            example:
+              events:
+                - apiKey: string
+                  data:
+                    accountType: string
+                    uid: string
+                  callId: string
+                  id: string
+                  timestamp: 0
+                  type: string
+                  version: string
+              nonce: string
+              timestamp: 0
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CloudEventResponse'
+              example:
+                error:
+                  errorCode: 0
+                  errorMessage: string
+                status: string
+                statusCode: 0
+                uID: string
+  /isAlive:
+    get:
+      summary: /isAlive - GET
+      description: /isAlive - GET
+      operationId: get-isalive
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IsAliveGet200ApplicationJsonResponse'
+              example: string
+components:
+  schemas:
+    ListCDCEvent:
+      type: array
+      items:
+        $ref: '#/components/schemas/CDCEvent'
+    CDCEvent:
+      type: object
+      properties:
+        apiKey:
+          type: string
+        data:
+          $ref: '#/components/schemas/CDCEventData'
+        callId:
+          type: string
+        id:
+          type: string
+        timestamp:
+          type: integer
+          format: int32
+        type:
+          type: string
+        version:
+          type: string
+    CDCEventData:
+      type: object
+      properties:
+        accountType:
+          type: string
+        uid:
+          type: string
+    EventsCDC:
+      type: object
+      properties:
+        events:
+          $ref: '#/components/schemas/ListCDCEvent'
+        nonce:
+          type: string
+        timestamp:
+          type: integer
+          format: int32
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: integer
+          format: int32
+        errorMessage:
+          type: string
+    CloudEventResponse:
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/ErrorResponse'
+        status:
+          type: string
+        statusCode:
+          type: integer
+          format: int32
+        uID:
+          type: string
+    C4CEventData:
+      type: object
+      properties:
+        Changes:
+          $ref: '#/components/schemas/ListChanges'
+        entity-id:
+          type: string
+        root-entity-id:
+          type: string
+    ListChanges:
+      type: array
+      items:
+        $ref: '#/components/schemas/Changes'
+    Changes:
+      type: object
+      properties:
+        ChangedBy:
+          type: string
+        ChangedFields:
+          $ref: '#/components/schemas/ListChangedFields'
+        Modification:
+          type: string
+        node:
+          type: string
+        nodeID:
+          type: string
+        ParentNodeID:
+          type: string
+    ListChangedFields:
+      type: array
+      items:
+        $ref: '#/components/schemas/ChangedFields'
+    ChangedFields:
+      type: object
+      properties:
+        Fieldname:
+          type: string
+        New:
+          type: string
+        Old:
+          type: string
+    EventsC4C:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/C4CEventData'
+        event-id:
+          type: string
+        event-time:
+          type: string
+        event-type:
+          type: string
+        event-type-version:
+          type: string
+        id:
+          type: string
+        source:
+          type: string
+        specversion:
+          type: string
+        type:
+          type: string
+    IsAliveGet200ApplicationJsonResponse:
+      type: string
+  securitySchemes:
+    apiKeyHeader:
+      type: apiKey
+      name: Ocp-Apim-Subscription-Key
+      in: header
+    apiKeyQuery:
+      type: apiKey
+      name: subscription-key
+      in: query
+security:
+  - apiKeyHeader: [ ]
+  - apiKeyQuery: [ ]

@@ -1,0 +1,3109 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "Eden Archive v2",
+        "description": "Eden Archive REST API",
+        "version": "v2"
+    },
+    "servers": [
+        {
+            "url": "https://api.eluxmkt.com/external/eden/eden-archive/v2"
+        }
+    ],
+    "paths": {
+        "/{Region}/Languages": {
+            "get": {
+                "tags": [
+                    "Definitions"
+                ],
+                "summary": "Gets all languages.",
+                "description": "Returns a list of Language used into API requests.",
+                "operationId": "GetAllLanguages",
+                "parameters": [
+                    {
+                        "name": "Region",
+                        "in": "path",
+                        "description": "The region.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Region"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Language"
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "id": "string",
+                                        "name": "string"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized: when no subscription key provided",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{Region}/AssetTypes": {
+            "get": {
+                "tags": [
+                    "Definitions"
+                ],
+                "summary": "Gets all asset types.",
+                "description": "Returns a list of asset types used into API requests.",
+                "operationId": "GetAllAssetTypes",
+                "parameters": [
+                    {
+                        "name": "Region",
+                        "in": "path",
+                        "description": "The region.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Region"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/AssetType"
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "code": "string",
+                                        "name": "string",
+                                        "section": "string"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized: when no subscription key provided",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{Region}/AssetFormats": {
+            "get": {
+                "tags": [
+                    "Definitions"
+                ],
+                "summary": "Gets all asset formats.",
+                "description": "Returns a list of asset formats used into API requests.",
+                "operationId": "GetAllAssetFormats",
+                "parameters": [
+                    {
+                        "name": "Region",
+                        "in": "path",
+                        "description": "The region.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Region"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/AssetFormat"
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "code": "string",
+                                        "name": "string",
+                                        "classification": "string"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized: when no subscription key provided",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{Region}/Categories/{LanguageCode}": {
+            "get": {
+                "tags": [
+                    "Definitions"
+                ],
+                "summary": "Gets all categories for a language.",
+                "description": "Returns a list of categories for a language used into API requests.",
+                "operationId": "GetAllCategoriesByLanguageCode",
+                "parameters": [
+                    {
+                        "name": "Region",
+                        "in": "path",
+                        "description": "The region.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Region"
+                        }
+                    },
+                    {
+                        "name": "LanguageCode",
+                        "in": "path",
+                        "description": "The language code (xx-xx or xx-xxx).",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Category"
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "id": "string",
+                                        "description": "string"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "BadRequest: when the Language Code is not valid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized: when no subscription key provided",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{Region}/Products/{PNC}/{LanguageCode}/master": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Gets the master data from product.",
+                "description": "Returns the master data from product for a language.",
+                "operationId": "GetProductByLanguage",
+                "parameters": [
+                    {
+                        "name": "Region",
+                        "in": "path",
+                        "description": "The region.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Region"
+                        }
+                    },
+                    {
+                        "name": "PNC",
+                        "in": "path",
+                        "description": "The pnc.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "LanguageCode",
+                        "in": "path",
+                        "description": "The language code (xx-xx or xx-xxx).",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Product"
+                                },
+                                "example": {
+                                    "pnc": "string",
+                                    "language": "string",
+                                    "brand": "string",
+                                    "modelD": "string",
+                                    "ean": "string",
+                                    "category": {
+                                        "id": "string",
+                                        "name": "string"
+                                    },
+                                    "productTitle": "string",
+                                    "productShortDescription": "string",
+                                    "productPicture": {
+                                        "name": "string",
+                                        "code": "string",
+                                        "languageCodes": [
+                                            "string"
+                                        ],
+                                        "formats": [
+                                            {
+                                                "url": "string",
+                                                "code": "string",
+                                                "fileName": "string"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "BadRequest: when the Language Code or Product Code are not valid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized: when no subscription key provided",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{Region}/Products/{PNC}/{LanguageCode}": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Gets the product detail.",
+                "description": "Returns the product details(MasterData, ExtendedData and LegalDocumentation) for a language.",
+                "operationId": "GetProductDetailsByLanguage",
+                "parameters": [
+                    {
+                        "name": "Region",
+                        "in": "path",
+                        "description": "The region.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Region"
+                        }
+                    },
+                    {
+                        "name": "PNC",
+                        "in": "path",
+                        "description": "The pnc.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "LanguageCode",
+                        "in": "path",
+                        "description": "The language code (xx-xx or xx-xxx).",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Master"
+                                },
+                                "example": {
+                                    "masterData": {
+                                        "pnc": "string",
+                                        "language": "string",
+                                        "brand": "string",
+                                        "modelD": "string",
+                                        "ean": "string",
+                                        "category": {
+                                            "id": "string",
+                                            "name": "string"
+                                        },
+                                        "productTitle": "string",
+                                        "productShortDescription": "string",
+                                        "productPicture": {
+                                            "name": "string",
+                                            "code": "string",
+                                            "languageCodes": [
+                                                "string"
+                                            ],
+                                            "formats": [
+                                                {
+                                                    "url": "string",
+                                                    "code": "string",
+                                                    "fileName": "string"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "extendedData": {
+                                        "productLongDescription": "string",
+                                        "technicalSpecifications": [
+                                            {
+                                                "id": "string",
+                                                "name": "string",
+                                                "value": "string",
+                                                "rank": 0
+                                            }
+                                        ],
+                                        "extendedSpecifications": [
+                                            {
+                                                "id": "string",
+                                                "name": "string",
+                                                "value": "string",
+                                                "rank": 0
+                                            }
+                                        ]
+                                    },
+                                    "legalDocumentations": [
+                                        {
+                                            "name": "string",
+                                            "code": "string",
+                                            "languageCodes": [
+                                                "string"
+                                            ],
+                                            "formats": [
+                                                {
+                                                    "url": "string",
+                                                    "code": "string",
+                                                    "fileName": "string"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "BadRequest: when the Language Code or Product Code are not valid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized: when no subscription key provided",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{Region}/Products/{PNC}/{LanguageCode}/legal": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Gets the product legal documentation.",
+                "description": "Returns the product legal documentation for a language.",
+                "operationId": "GetProductLegalDocumentationByLanguage",
+                "parameters": [
+                    {
+                        "name": "Region",
+                        "in": "path",
+                        "description": "The region.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Region"
+                        }
+                    },
+                    {
+                        "name": "PNC",
+                        "in": "path",
+                        "description": "The pnc.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "LanguageCode",
+                        "in": "path",
+                        "description": "The language code (xx-xx or xx-xxx).",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Media"
+                                },
+                                "example": {
+                                    "name": "string",
+                                    "code": "string",
+                                    "languageCodes": [
+                                        "string"
+                                    ],
+                                    "formats": [
+                                        {
+                                            "url": "string",
+                                            "code": "string",
+                                            "fileName": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "BadRequest: when the Language Code or Product Code are not valid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized: when no subscription key provided",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{Region}/Products/Search/{LanguageCode}": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Searches the products.",
+                "description": "Searches the products for a language.",
+                "operationId": "SearchProductForLanguage",
+                "parameters": [
+                    {
+                        "name": "Region",
+                        "in": "path",
+                        "description": "The region.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Region"
+                        }
+                    },
+                    {
+                        "name": "LanguageCode",
+                        "in": "path",
+                        "description": "The language code (xx-xx or xx-xxx).",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "The search Criteria.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Master"
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "masterData": {
+                                            "pnc": "string",
+                                            "language": "string",
+                                            "brand": "string",
+                                            "modelD": "string",
+                                            "ean": "string",
+                                            "category": {
+                                                "id": "string",
+                                                "name": "string"
+                                            },
+                                            "productTitle": "string",
+                                            "productShortDescription": "string",
+                                            "productPicture": {
+                                                "name": "string",
+                                                "code": "string",
+                                                "languageCodes": [
+                                                    "string"
+                                                ],
+                                                "formats": [
+                                                    {
+                                                        "url": "string",
+                                                        "code": "string",
+                                                        "fileName": "string"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        "extendedData": {
+                                            "productLongDescription": "string",
+                                            "technicalSpecifications": [
+                                                {
+                                                    "id": "string",
+                                                    "name": "string",
+                                                    "value": "string",
+                                                    "rank": 0
+                                                }
+                                            ],
+                                            "extendedSpecifications": [
+                                                {
+                                                    "id": "string",
+                                                    "name": "string",
+                                                    "value": "string",
+                                                    "rank": 0
+                                                }
+                                            ]
+                                        },
+                                        "legalDocumentations": [
+                                            {
+                                                "name": "string",
+                                                "code": "string",
+                                                "languageCodes": [
+                                                    "string"
+                                                ],
+                                                "formats": [
+                                                    {
+                                                        "url": "string",
+                                                        "code": "string",
+                                                        "fileName": "string"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "BadRequest: when the Language Code or Product Code are not valid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized: when no subscription key provided",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "413": {
+                        "description": "Client Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{Region}/Products/{PNC}/{LanguageCode}/programs": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Gets all programs of a product.",
+                "description": "Returns the programs of a product for a language.",
+                "operationId": "GetAllProductProgramsByLanguage",
+                "parameters": [
+                    {
+                        "name": "Region",
+                        "in": "path",
+                        "description": "The region.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Region"
+                        }
+                    },
+                    {
+                        "name": "PNC",
+                        "in": "path",
+                        "description": "The pnc.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "LanguageCode",
+                        "in": "path",
+                        "description": "The language code (xx-xx or xx-xxx).",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Program"
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "id": "string",
+                                        "title": "string",
+                                        "bullet": "string",
+                                        "shortDescription": "string",
+                                        "longDescription": "string",
+                                        "medias": [
+                                            {
+                                                "name": "string",
+                                                "code": "string",
+                                                "languageCodes": [
+                                                    "string"
+                                                ],
+                                                "formats": [
+                                                    {
+                                                        "url": "string",
+                                                        "code": "string",
+                                                        "fileName": "string"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "BadRequest: when the Language Code or Product Code are not valid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized: when no subscription key provided",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{Region}/Products/UpdatedProducts": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Gets the updated products.",
+                "description": "Returns the the updated products for a periode and a list of languages.",
+                "operationId": "UpdatedProducts",
+                "parameters": [
+                    {
+                        "name": "Region",
+                        "in": "path",
+                        "description": "The region.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Region"
+                        }
+                    },
+                    {
+                        "name": "From",
+                        "in": "query",
+                        "description": "Format - date-time (as date-time in RFC3339). The from date (yyyy-MM-dd hh:mm:ss).",
+                        "schema": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    },
+                    {
+                        "name": "LanguageList",
+                        "in": "query",
+                        "description": "The language list (xx-xx,xx-xx,...)",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "To",
+                        "in": "query",
+                        "description": "Format - date-time (as date-time in RFC3339). The to date (yyyy-MM-dd hh:mm:ss).",
+                        "schema": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/UpdatedProduct"
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "pnc": "string",
+                                        "languageCodes": [
+                                            "string"
+                                        ],
+                                        "updatedInfo": [
+                                            "string"
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "BadRequest: when the Language Code list or FromDate or ToDate are not well formatted",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized: when no subscription key provided",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{Region}/Products/{PNC}/{LanguageCode}/documents": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Gets the documents of a product.",
+                "description": "Returns the documents of a product for a language.",
+                "operationId": "GetDocumentsByPncAndLanguage",
+                "parameters": [
+                    {
+                        "name": "Region",
+                        "in": "path",
+                        "description": "The region.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Region"
+                        }
+                    },
+                    {
+                        "name": "PNC",
+                        "in": "path",
+                        "description": "The pnc.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "LanguageCode",
+                        "in": "path",
+                        "description": "The language code (xx-xx or xx-xxx).",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Media"
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "name": "string",
+                                        "code": "string",
+                                        "languageCodes": [
+                                            "string"
+                                        ],
+                                        "formats": [
+                                            {
+                                                "url": "string",
+                                                "code": "string",
+                                                "fileName": "string"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "BadRequest: when the Language Code or Product Code are not valid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized: when no subscription key provided",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{Region}/Products/{PNC}/{LanguageCode}/assets": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Gets the assets of a product.",
+                "description": "Returns the assets of a product for a language.",
+                "operationId": "GetAssetsByPncAndLanguage",
+                "parameters": [
+                    {
+                        "name": "Region",
+                        "in": "path",
+                        "description": "The region.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Region"
+                        }
+                    },
+                    {
+                        "name": "PNC",
+                        "in": "path",
+                        "description": "The pnc.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "LanguageCode",
+                        "in": "path",
+                        "description": "The language code (xx-xx or xx-xxx).",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Media"
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "name": "string",
+                                        "code": "string",
+                                        "languageCodes": [
+                                            "string"
+                                        ],
+                                        "formats": [
+                                            {
+                                                "url": "string",
+                                                "code": "string",
+                                                "fileName": "string"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "BadRequest: when the Language Code or Product Code are not valid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized: when no subscription key provided",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{Region}/Programs/{ProgramID}/{LanguageCode}": {
+            "get": {
+                "tags": [
+                    "Programs"
+                ],
+                "summary": " Gets the program by programID and languageCode.",
+                "description": "Returns the program by a programID for a language.",
+                "operationId": "GetProgramByProgramIDAndLanguage",
+                "parameters": [
+                    {
+                        "name": "Region",
+                        "in": "path",
+                        "description": "The region.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Region"
+                        }
+                    },
+                    {
+                        "name": "ProgramID",
+                        "in": "path",
+                        "description": "The Program ID.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "LanguageCode",
+                        "in": "path",
+                        "description": "The Language code (xx-xx or xx-xxx).",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Program"
+                                },
+                                "example": {
+                                    "id": "string",
+                                    "title": "string",
+                                    "bullet": "string",
+                                    "shortDescription": "string",
+                                    "longDescription": "string",
+                                    "medias": [
+                                        {
+                                            "name": "string",
+                                            "code": "string",
+                                            "languageCodes": [
+                                                "string"
+                                            ],
+                                            "formats": [
+                                                {
+                                                    "url": "string",
+                                                    "code": "string",
+                                                    "fileName": "string"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "BadRequest: when the Language Code is not valid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized: when no subscription key provided",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{Region}/Programs/{LanguageCode}": {
+            "get": {
+                "tags": [
+                    "Programs"
+                ],
+                "summary": " Gets the programs by category and languageCode.",
+                "description": "Returns a list of programs by category for a language.",
+                "operationId": "GetProgramsByCategoryAndLanguage",
+                "parameters": [
+                    {
+                        "name": "Region",
+                        "in": "path",
+                        "description": "The region.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Region"
+                        }
+                    },
+                    {
+                        "name": "LanguageCode",
+                        "in": "path",
+                        "description": "The language code (xx-xx or xx-xxx).",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Category",
+                        "in": "query",
+                        "description": "The category name.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Program"
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "id": "string",
+                                        "title": "string",
+                                        "bullet": "string",
+                                        "shortDescription": "string",
+                                        "longDescription": "string",
+                                        "medias": [
+                                            {
+                                                "name": "string",
+                                                "code": "string",
+                                                "languageCodes": [
+                                                    "string"
+                                                ],
+                                                "formats": [
+                                                    {
+                                                        "url": "string",
+                                                        "code": "string",
+                                                        "fileName": "string"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "BadRequest: when the Language Code or the Category are not valid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized: when no subscription key provided",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{Region}/Products/{PNC}/{LanguageCode}/searchDocumentation": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Gets the assets of a product by type",
+                "description": "Returns the assets of a product for a language and a list of type.",
+                "operationId": "GetAssetsByPncAndLanguageAndTypes",
+                "parameters": [
+                    {
+                        "name": "Region",
+                        "in": "path",
+                        "description": "The region.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Region"
+                        }
+                    },
+                    {
+                        "name": "PNC",
+                        "in": "path",
+                        "description": "The pnc.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "LanguageCode",
+                        "in": "path",
+                        "description": "The language.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "types",
+                        "in": "query",
+                        "description": "The types.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Media"
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "name": "string",
+                                        "code": "string",
+                                        "languageCodes": [
+                                            "string"
+                                        ],
+                                        "formats": [
+                                            {
+                                                "url": "string",
+                                                "code": "string",
+                                                "fileName": "string"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "BadRequest: when the Language Code or Product Code or Asset Types are not valid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized: when no subscription key provided",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{Region}/Products/{PNC}/{LanguageCode}/relatedProducts": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Gets the related products of a product.",
+                "description": "Returns the related products of a product for a language.",
+                "operationId": "GetRelatedProductsByPncAndLanguage",
+                "parameters": [
+                    {
+                        "name": "Region",
+                        "in": "path",
+                        "description": "The region.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Region"
+                        }
+                    },
+                    {
+                        "name": "PNC",
+                        "in": "path",
+                        "description": "The pnc.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "LanguageCode",
+                        "in": "path",
+                        "description": "The language code (xx-xx or xx-xxx).",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Master"
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "masterData": {
+                                            "pnc": "string",
+                                            "language": "string",
+                                            "brand": "string",
+                                            "modelD": "string",
+                                            "ean": "string",
+                                            "category": {
+                                                "id": "string",
+                                                "name": "string"
+                                            },
+                                            "productTitle": "string",
+                                            "productShortDescription": "string",
+                                            "productPicture": {
+                                                "name": "string",
+                                                "code": "string",
+                                                "languageCodes": [
+                                                    "string"
+                                                ],
+                                                "formats": [
+                                                    {
+                                                        "url": "string",
+                                                        "code": "string",
+                                                        "fileName": "string"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        "extendedData": {
+                                            "productLongDescription": "string",
+                                            "technicalSpecifications": [
+                                                {
+                                                    "id": "string",
+                                                    "name": "string",
+                                                    "value": "string",
+                                                    "rank": 0
+                                                }
+                                            ],
+                                            "extendedSpecifications": [
+                                                {
+                                                    "id": "string",
+                                                    "name": "string",
+                                                    "value": "string",
+                                                    "rank": 0
+                                                }
+                                            ]
+                                        },
+                                        "legalDocumentations": [
+                                            {
+                                                "name": "string",
+                                                "code": "string",
+                                                "languageCodes": [
+                                                    "string"
+                                                ],
+                                                "formats": [
+                                                    {
+                                                        "url": "string",
+                                                        "code": "string",
+                                                        "fileName": "string"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "BadRequest: when the Product Code or Language are not valid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized: when no subscription key provided",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{Region}/Products/{PNC}/{LanguageCode}/extendedData": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Gets the extended data of a product.",
+                "description": "Returns the extended data of a product for a language.",
+                "operationId": "GetExtendedData",
+                "parameters": [
+                    {
+                        "name": "Region",
+                        "in": "path",
+                        "description": "The region.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Region"
+                        }
+                    },
+                    {
+                        "name": "PNC",
+                        "in": "path",
+                        "description": "The p n c.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "LanguageCode",
+                        "in": "path",
+                        "description": "The language code (xx-xx or xx-xxx).",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "longDesc",
+                        "in": "query",
+                        "description": "If true, long desc.",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    },
+                    {
+                        "name": "techSpecs",
+                        "in": "query",
+                        "description": "If true, tech specs.",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    },
+                    {
+                        "name": "extendedSpecs",
+                        "in": "query",
+                        "description": "If true, extended specs.",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ExtendedData"
+                                },
+                                "example": {
+                                    "productLongDescription": "string",
+                                    "technicalSpecifications": [
+                                        {
+                                            "id": "string",
+                                            "name": "string",
+                                            "value": "string",
+                                            "rank": 0
+                                        }
+                                    ],
+                                    "extendedSpecifications": [
+                                        {
+                                            "id": "string",
+                                            "name": "string",
+                                            "value": "string",
+                                            "rank": 0
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{Region}/Products/{PNC}/{LanguageCode}/Marketing": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Gets the marketing content list of a product.",
+                "description": "Returns the marketing content list of a product for a language.",
+                "operationId": "GetMarketing",
+                "parameters": [
+                    {
+                        "name": "Region",
+                        "in": "path",
+                        "description": "The region.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Region"
+                        }
+                    },
+                    {
+                        "name": "PNC",
+                        "in": "path",
+                        "description": "The p n c.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "LanguageCode",
+                        "in": "path",
+                        "description": "The language code (xx-xx or xx-xxx).",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "benefits",
+                        "in": "query",
+                        "description": "If true, benefits.",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    },
+                    {
+                        "name": "features",
+                        "in": "query",
+                        "description": "If true, features.",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    },
+                    {
+                        "name": "keyTechnologies",
+                        "in": "query",
+                        "description": "If true, keyTechnologies.",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    },
+                    {
+                        "name": "hygienicFactors",
+                        "in": "query",
+                        "description": "If true, hygienicFactors.",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    },
+                    {
+                        "name": "promotional",
+                        "in": "query",
+                        "description": "If true, promotional.",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    },
+                    {
+                        "name": "chemicalCompliance",
+                        "in": "query",
+                        "description": "If true, chemicalCompliance.",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MarketingContentList"
+                                },
+                                "example": {
+                                    "benefits": [
+                                        {
+                                            "id": "string",
+                                            "name": "string",
+                                            "title": "string",
+                                            "bullet": "string",
+                                            "shortDescription": "string",
+                                            "longDescription": "string",
+                                            "claims": "string",
+                                            "disclaimer": "string",
+                                            "medias": [
+                                                {
+                                                    "name": "string",
+                                                    "code": "string",
+                                                    "languageCodes": [
+                                                        "string"
+                                                    ],
+                                                    "formats": [
+                                                        {
+                                                            "url": "string",
+                                                            "code": "string",
+                                                            "fileName": "string"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "features": [
+                                        {
+                                            "id": "string",
+                                            "name": "string",
+                                            "title": "string",
+                                            "bullet": "string",
+                                            "shortDescription": "string",
+                                            "longDescription": "string",
+                                            "claims": "string",
+                                            "disclaimer": "string",
+                                            "medias": [
+                                                {
+                                                    "name": "string",
+                                                    "code": "string",
+                                                    "languageCodes": [
+                                                        "string"
+                                                    ],
+                                                    "formats": [
+                                                        {
+                                                            "url": "string",
+                                                            "code": "string",
+                                                            "fileName": "string"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "keyTechnologies": [
+                                        {
+                                            "id": "string",
+                                            "name": "string",
+                                            "title": "string",
+                                            "bullet": "string",
+                                            "shortDescription": "string",
+                                            "longDescription": "string",
+                                            "claims": "string",
+                                            "disclaimer": "string",
+                                            "medias": [
+                                                {
+                                                    "name": "string",
+                                                    "code": "string",
+                                                    "languageCodes": [
+                                                        "string"
+                                                    ],
+                                                    "formats": [
+                                                        {
+                                                            "url": "string",
+                                                            "code": "string",
+                                                            "fileName": "string"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "hygienicFactors": [
+                                        {
+                                            "id": "string",
+                                            "name": "string",
+                                            "title": "string",
+                                            "bullet": "string",
+                                            "shortDescription": "string",
+                                            "longDescription": "string",
+                                            "claims": "string",
+                                            "disclaimer": "string",
+                                            "medias": [
+                                                {
+                                                    "name": "string",
+                                                    "code": "string",
+                                                    "languageCodes": [
+                                                        "string"
+                                                    ],
+                                                    "formats": [
+                                                        {
+                                                            "url": "string",
+                                                            "code": "string",
+                                                            "fileName": "string"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "promotional": [
+                                        {
+                                            "id": "string",
+                                            "name": "string",
+                                            "title": "string",
+                                            "bullet": "string",
+                                            "shortDescription": "string",
+                                            "longDescription": "string",
+                                            "claims": "string",
+                                            "disclaimer": "string",
+                                            "medias": [
+                                                {
+                                                    "name": "string",
+                                                    "code": "string",
+                                                    "languageCodes": [
+                                                        "string"
+                                                    ],
+                                                    "formats": [
+                                                        {
+                                                            "url": "string",
+                                                            "code": "string",
+                                                            "fileName": "string"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "chemicalCompliance": [
+                                        {
+                                            "id": "string",
+                                            "name": "string",
+                                            "title": "string",
+                                            "bullet": "string",
+                                            "shortDescription": "string",
+                                            "longDescription": "string",
+                                            "claims": "string",
+                                            "disclaimer": "string",
+                                            "medias": [
+                                                {
+                                                    "name": "string",
+                                                    "code": "string",
+                                                    "languageCodes": [
+                                                        "string"
+                                                    ],
+                                                    "formats": [
+                                                        {
+                                                            "url": "string",
+                                                            "code": "string",
+                                                            "fileName": "string"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{Region}/Products/{PNC}/{LanguageCode}/searchDocumentation/{type}/{Format}": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Gets the assets of a product by type and format",
+                "description": "Returns the assets of a product for a format and a type.",
+                "operationId": "GetAssetsByFormatAndType",
+                "parameters": [
+                    {
+                        "name": "Region",
+                        "in": "path",
+                        "description": "The region.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Region"
+                        }
+                    },
+                    {
+                        "name": "PNC",
+                        "in": "path",
+                        "description": "The pnc.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "LanguageCode",
+                        "in": "path",
+                        "description": "The language code (xx-xx or xx-xxx).",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Format",
+                        "in": "path",
+                        "description": "The format.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "type",
+                        "in": "path",
+                        "description": "The type.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Media"
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "name": "string",
+                                        "code": "string",
+                                        "languageCodes": [
+                                            "string"
+                                        ],
+                                        "formats": [
+                                            {
+                                                "url": "string",
+                                                "code": "string",
+                                                "fileName": "string"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "BadRequest: when the Product Code or Asset Format or Asset Type are not valid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized: when no subscription key provided",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                },
+                                "example": {
+                                    "type": "string",
+                                    "title": "string",
+                                    "status": 0,
+                                    "detail": "string",
+                                    "instance": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "AssetFormat": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "classification": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "AssetType": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "section": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "Category": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "description": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "CategoryProduct": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ExtendedData": {
+                "type": "object",
+                "properties": {
+                    "productLongDescription": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "technicalSpecifications": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/TechnicalSpecification"
+                        },
+                        "nullable": true
+                    },
+                    "extendedSpecifications": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/TechnicalSpecification"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "Language": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "MarketingContent": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "title": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "bullet": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "shortDescription": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "longDescription": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "claims": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "disclaimer": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "medias": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Media"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "MarketingContentList": {
+                "type": "object",
+                "properties": {
+                    "benefits": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/MarketingContent"
+                        },
+                        "nullable": true
+                    },
+                    "features": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/MarketingContent"
+                        },
+                        "nullable": true
+                    },
+                    "keyTechnologies": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/MarketingContent"
+                        },
+                        "nullable": true
+                    },
+                    "hygienicFactors": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/MarketingContent"
+                        },
+                        "nullable": true
+                    },
+                    "promotional": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/MarketingContent"
+                        },
+                        "nullable": true
+                    },
+                    "chemicalCompliance": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/MarketingContent"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "Master": {
+                "type": "object",
+                "properties": {
+                    "masterData": {
+                        "$ref": "#/components/schemas/Product"
+                    },
+                    "extendedData": {
+                        "$ref": "#/components/schemas/ExtendedData"
+                    },
+                    "legalDocumentations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Media"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "Media": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "code": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "languageCodes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "nullable": true
+                    },
+                    "formats": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/MediaFormat"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "MediaFormat": {
+                "type": "object",
+                "properties": {
+                    "url": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "code": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "fileName": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ProblemDetails": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "title": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "status": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "detail": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "instance": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": {}
+            },
+            "Product": {
+                "required": [
+                    "brand",
+                    "category",
+                    "language",
+                    "modelD",
+                    "pnc"
+                ],
+                "type": "object",
+                "properties": {
+                    "pnc": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "language": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "brand": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "modelD": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "ean": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "category": {
+                        "$ref": "#/components/schemas/CategoryProduct"
+                    },
+                    "productTitle": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "productShortDescription": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "productPicture": {
+                        "$ref": "#/components/schemas/Media"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "Program": {
+                "required": [
+                    "id"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "bullet": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "shortDescription": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "longDescription": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "medias": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Media"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "Region": {
+                "enum": [
+                    "All",
+                    "EMEA",
+                    "APAC",
+                    "VINTEC"
+                ],
+                "type": "string",
+                "description": "The region."
+            },
+            "TechnicalSpecification": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "value": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "rank": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "UpdatedProduct": {
+                "type": "object",
+                "properties": {
+                    "pnc": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "languageCodes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "nullable": true
+                    },
+                    "updatedInfo": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "securitySchemes": {
+            "apiKeyHeader": {
+                "type": "apiKey",
+                "name": "Ocp-Apim-Subscription-Key",
+                "in": "header"
+            },
+            "apiKeyQuery": {
+                "type": "apiKey",
+                "name": "subscription-key",
+                "in": "query"
+            }
+        }
+    },
+    "security": [
+        {
+            "apiKeyHeader": []
+        },
+        {
+            "apiKeyQuery": []
+        }
+    ]
+}
