@@ -1,17 +1,16 @@
-[![myresume-ng](https://github.com/thaer899/thaersaidi.net/actions/workflows/myresume-ng.yml/badge.svg?branch=master)](https://github.com/thaer899/thaersaidi.net/actions/workflows/myresume-ng.yml)
-[![site-generator-ng](https://github.com/thaer899/thaersaidi.net/actions/workflows/site-generator-ng.yml/badge.svg?branch=master)](https://github.com/thaer899/thaersaidi.net/actions/workflows/site-generator-ng.yml)
-[![myresume-ai-automate](https://github.com/thaer899/thaersaidi.net/actions/workflows/myresume-ai-automate.yml/badge.svg?branch=master)](https://github.com/thaer899/thaersaidi.net/actions/workflows/myresume-ai-automate.yml)
+[![myresume-ng](https://github.com/thaer899/connectorzzz/actions/workflows/myresume-ng.yml/badge.svg?branch=master)](https://github.com/thaer899/connectorzzz/actions/workflows/myresume-ng.yml)
+[![site-generator-ng](https://github.com/thaer899/connectorzzz/actions/workflows/site-generator-ng.yml/badge.svg?branch=master)](https://github.com/thaer899/connectorzzz/actions/workflows/site-generator-ng.yml)
+[![myresume-ai-automate](https://github.com/thaer899/connectorzzz/actions/workflows/myresume-ai-automate.yml/badge.svg?branch=master)](https://github.com/thaer899/connectorzzz/actions/workflows/myresume-ai-automate.yml)
 
-### MyResume Project
+### Connectorzzz Project
 
 This repository serves as the nucleus of an ensemble of projects and utilities.
 Engineered with precision for crafting and deploying top-notch applications.
-
+https://log-book-ng.web.app/
 The project is exposed across multiple domains and subdomains:
 
-- 🌎 Resume UI: [`thaersaidi.net`](https://thaersaidi.net)
-- 🛠️ Dashboard: [`console.thaersaidi.net`](https://console.thaersaidi.net)
-- 🧠 AI Utilities: [`ai.thaersaidi.net`](https://ai.thaersaidi.net)
+- 🌎 Resume UI: [`log-book-ng.web.app`](https://log-book-ng.web.app)
+- 🛠️ Dashboard: [`connectorzzz.com`](https://connectorzzz.com)
 
 The architecture is methodically structured.
 Facilitating a streamlined workflow for managing the diverse project facets.
@@ -100,35 +99,35 @@ classDiagram
 
 ### Workflows:
 
-🔄 [myresume-ai-automate ](https://github.com/thaer899/thaersaidi.net/tree/master/.github/workflows/myresume-ai-automate): Build, deploy, and test Microservices hosted in GCP Kubernetes.
+🔄 [myresume-ai-automate ](https://github.com/thaer899/connectorzzz/tree/master/.github/workflows/myresume-ai-automate): Build, deploy, and test Microservices hosted in GCP Kubernetes.
 
-🔄 [myresume-ng ](https://github.com/thaer899/thaersaidi.net/tree/master/.github/workflows/myresume-ng): Build, deploy, and test MyResumeNG website hosted in Firebase Hosting.
+🔄 [myresume-ng ](https://github.com/thaer899/connectorzzz/tree/master/.github/workflows/myresume-ng): Build, deploy, and test MyResumeNG website hosted in Firebase Hosting.
 
-🔄 [site-generator-ng ](https://github.com/thaer899/thaersaidi.net/tree/master/.github/workflows/site-generator-ng): Build, deploy, and test SiteGeneratorNG website hosted in Firebase Hosting.
+🔄 [site-generator-ng ](https://github.com/thaer899/connectorzzz/tree/master/.github/workflows/site-generator-ng): Build, deploy, and test SiteGeneratorNG website hosted in Firebase Hosting.
 
 ---
 
 ### Apps:
 
-🖥️ [myresume-ng ](https://github.com/thaer899/thaersaidi.net/tree/master/myresume-ng):
+🖥️ [myresume-ng ](https://github.com/thaer899/connectorzzz/tree/master/myresume-ng):
 Angular-based application showcasing my professional journey and skill set.
 
-🌐 [site-generator-ng ](https://github.com/thaer899/thaersaidi.net/tree/master/site-generator-ng):
+🌐 [site-generator-ng ](https://github.com/thaer899/connectorzzz/tree/master/site-generator-ng):
 A dynamic site generator engineered with Angular, facilitating seamless site creation and management.
 
-🧠 [myresume-ai ](https://github.com/thaer899/thaersaidi.net/tree/master/myresume-ai):
+🧠 [myresume-ai ](https://github.com/thaer899/connectorzzz/tree/master/myresume-ai):
 A suite of tools and components to interact with Kubernetes cluster and AI models.
 
-🛠️ [myresume-express ](https://github.com/thaer899/thaersaidi.net/tree/master/myresume-express):
+🛠️ [myresume-express ](https://github.com/thaer899/connectorzzz/tree/master/myresume-express):
 ExpressJS powered backend service, designed to deliver robust support for my online resume portal.
 
-🛠️ [agentflow-py ](https://github.com/thaer899/thaersaidi.net/tree/master/agentflow-py):
+🛠️ [agentflow-py ](https://github.com/thaer899/connectorzzz/tree/master/agentflow-py):
 FastAPI powered backend service, designed to deliver websocket connection between OpenAI LLMs and the dashboard.
 
-🛠️ [myagents-py ](https://github.com/thaer899/thaersaidi.net/tree/master/myagents-py):
+🛠️ [myagents-py ](https://github.com/thaer899/connectorzzz/tree/master/myagents-py):
 FastAPI powered backend service, designed to deliver chat solution using Autogen.
 
-🧰 [myresume-utils ](https://github.com/thaer899/thaersaidi.net/tree/master/myresume-utils):
+🧰 [myresume-utils ](https://github.com/thaer899/connectorzzz/tree/master/myresume-utils):
 A collection of utility tools and libraries enhancing development and operational efficiencies.
 
 #
@@ -136,7 +135,7 @@ A collection of utility tools and libraries enhancing development and operationa
 ### Project Structure
 
 ```plaintext
-\---thaersaidi.net
+\---connectorzzz
     +---.github
     |   \---workflows
     +---myresume-ai
