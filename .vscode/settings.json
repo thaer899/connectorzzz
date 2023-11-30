@@ -1,0 +1,40 @@
+{
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.autopep8"
+  },
+  "python.formatting.provider": "none",
+  "auto-run-command.rules": [
+    {
+      "condition": "isRootFolder:myagents-py",
+      "command": "workbench.action.tasks.runTask",
+      "message": "Running myagents task",
+      "arguments": [
+        "Run myagents"
+      ]
+    },
+    {
+      "condition": "isRootFolder:site-generator-ng",
+      "command": "workbench.action.tasks.runTask",
+      "message": "Running site-generator-ng task",
+      "arguments": [
+        "Run site-generator-ng"
+      ]
+    },
+    {
+      "condition": "isRootFolder:myresume-ng",
+      "command": "workbench.action.tasks.runTask",
+      "message": "Running myresume-ng task",
+      "arguments": [
+        "Run myresume-ng"
+      ]
+    },
+    {
+      "condition": "isRootFolder:myresume-express",
+      "command": "workbench.action.tasks.runTask",
+      "message": "Running myresume-express task",
+      "arguments": [
+        "Run myresume-express"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run agentflow-py",
+      "type": "shell",
+      "command": "source myenv/Scripts/activate && python app.py",
+      "options": {
+        "cwd": "${workspaceFolder}/agentflow-py"
+      },
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
+    },
+    {
+      "label": "Run site-generator-ng",
+      "type": "shell",
+      "command": "export NODE_OPTIONS=--openssl-legacy-provider && ng serve",
+      "options": {
+        "cwd": "${workspaceFolder}/site-generator-ng"
+      },
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
+    },
+    {
+      "label": "Run myresume-ng",
+      "type": "shell",
+      "command": "ng serve --port 5000",
+      "options": {
+        "cwd": "${workspaceFolder}/myresume-ng"
+      },
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
+    },
+    {
+      "label": "Run myresume-express",
+      "type": "shell",
+      "command": "node index.js",
+      "options": {
+        "cwd": "${workspaceFolder}/myresume-express"
+      },
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
+    }
+  ]
+}
