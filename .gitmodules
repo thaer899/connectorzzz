@@ -1,3 +1,3 @@
 [submodule "db"]
 	path = db
-	url = ../../../db
+	url = https://github.com/azizjl/connectorzzz-db
