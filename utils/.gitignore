@@ -168,14 +168,3 @@ cython_debug/
 # pytest
 assets/
 tests_report.html
-
-# ignore reports
-/locust_report_*.csv
-/locust_report.html
-/locustfile.log
-
-# ignore vscode
-.vscode/
-
-# ignore selenium screenshots
-/screenshots/*.png
