@@ -36,36 +36,27 @@ https://github.com/OthersideAI/self-operating-computer/assets/42594239/9e8abc96-
 ## Quick Start Instructions
 Below are instructions to set up the Self-Operating Computer Framework locally on your computer.
 
-1. **Clone the repo** to a directory on your computer:
-```
-git clone https://github.com/OthersideAI/self-operating-computer.git
-```
-2. **Cd into directory**:
-
-```
-cd computer_agent
-```
-3. **Create a Python virtual environment**. [Learn more about Python virtual environment](https://docs.python.org/3/library/venv.html).
+2. **Create a Python virtual environment**. [Learn more about Python virtual environment](https://docs.python.org/3/library/venv.html).
 ```
 python3 -m venv venv
 ```
-4. **Activate the virtual environment**:
+3. **Activate the virtual environment**:
 ```
 source venv/bin/activate
 ```
-5. **Install the project requirements**:
+4. **Install the project requirements**:
 ```
 pip install -r requirements.txt
 ```
-6. **Add your Open AI key to your new `.env` file. If you don't have one, you can obtain an OpenAI key [here](https://platform.openai.com/account/api-keys)**:
+5. **Add your Open AI key to your new `.env` file. If you don't have one, you can obtain an OpenAI key [here](https://platform.openai.com/account/api-keys)**:
 ```
 OPENAI_API_KEY='your-key-here'
 ```
-7. **Run it**!
+6. **Run it**!
 ```
 python main.py
 ```
-10. **Final Step**: As a last step, the Terminal app will ask for permission for "Screen Recording" and "Accessibility" in the "Security & Privacy" page of Mac's "System Preferences".
+7. **Final Step**: As a last step, the Terminal app will ask for permission for "Screen Recording" and "Accessibility" in the "Security & Privacy" page of Mac's "System Preferences".
 
 <div align="center">
   <img src="https://github.com/OthersideAI/self-operating-computer/blob/main/readme/terminal-access-1.png" width="300"  style="margin: 10px;"/>
