@@ -1,0 +1,29 @@
+$flaticon_mycollection-font: "flaticon_mycollection";
+
+@font-face {
+    font-family: $flaticon_mycollection-font;
+    src: url("./flaticon_mycollection.ttf?bcb97ce71dd2ded4a015d530c247516a") format("truetype"),
+url("./flaticon_mycollection.woff?bcb97ce71dd2ded4a015d530c247516a") format("woff"),
+url("./flaticon_mycollection.woff2?bcb97ce71dd2ded4a015d530c247516a") format("woff2"),
+url("./flaticon_mycollection.eot?bcb97ce71dd2ded4a015d530c247516a#iefix") format("embedded-opentype"),
+url("./flaticon_mycollection.svg?bcb97ce71dd2ded4a015d530c247516a#flaticon_mycollection") format("svg");
+}
+
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
+    font-family: flaticon_mycollection !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+$flaticon_mycollection-map: (
+    "industrial-robot": "\f101",
+);
+
+.flaticon-industrial-robot:before {
+    content: map-get($flaticon_mycollection-map, "industrial-robot");
+}
