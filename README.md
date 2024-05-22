@@ -140,6 +140,7 @@ A collection of utility tools and libraries enhancing development and operationa
     |   \---workflows
     +---myresume-ai
     |   \---src
+    |
 ```
 
 ### Running the project
