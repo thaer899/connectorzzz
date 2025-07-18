@@ -1,6 +1,6 @@
 # autogen
 
-pip install pyautogen
+pip install ag2
 
 pip install docker
 
@@ -11,7 +11,7 @@ source myenv/Scripts/activate
 
 pip install -r requirements.txt
 
-pip install "pyautogen[blendsearch]"
+pip install "ag2[blendsearch]"
 
 
 python -m uvicorn main:app --host 0.0.0.0 --port 33000 --reload

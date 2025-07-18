@@ -1,7 +1,7 @@
 docker
 openai
 packaging>=23.2
-pyautogen>=0.1.12
+ag2>=0.1.12
 pydantic>=2.4.2
 pydantic_core>=2.10.1
 pyOpenSSL>=23.2.0
@@ -20,5 +20,5 @@ asyncpg
 pydantic[email]
 openai-wrapper
 tiktoken
-pyautogen==0.2.0b5
+ag2==0.2.0b5
 fastapi

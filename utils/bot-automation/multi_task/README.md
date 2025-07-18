@@ -1,6 +1,6 @@
 # autogen
 
-pip install pyautogen
+pip install ag2
 
 pip install docker
 
