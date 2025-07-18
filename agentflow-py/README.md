@@ -1,9 +1,9 @@
 # autogen
 
 pip install -r requirements.txt
-pip install pyautogen
+pip install ag2
 pip install docker
-pip install "pyautogen[blendsearch]"
+pip install "ag2[blendsearch]"
 
 python -m venv myenv
 
